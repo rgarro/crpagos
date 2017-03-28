@@ -1,4 +1,4 @@
-# Uncomment the following to prevent the httpoxy vulnerability
+# Uncment the following to prevent the httpoxy vulnerability
 # See: https://httpoxy.org/
 #<IfModule mod_headers.c>
 #    RequestHeader unset Proxy
