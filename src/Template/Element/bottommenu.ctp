@@ -1,4 +1,7 @@
+
 <?php
+$session = $this->request->session();
+?><?php
 	$i = 0;
 	$MenuItems = array("AboutUs", "Personal", "Bussiness", "ContactUs");
 	$TotItems = count($MenuItems);
