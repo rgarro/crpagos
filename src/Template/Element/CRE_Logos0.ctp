@@ -1,0 +1,1 @@
+<img src="/img/logos/logos_credomatic.jpg" alt="Amex Dinners JCB Master Card Visa" width="707" height="113">
