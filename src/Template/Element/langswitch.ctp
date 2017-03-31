@@ -3,7 +3,7 @@ $session = $this->request->session();
 ?>
 <div class="langchange">
 	<?php
-	if (count(explode("/", $this -> here)) < 4) {
+	if (is_string($this->here) && count(explode("/", $this -> here)) < 4) {
 		$ThisLink = '';
 		$i = false;
 		//Once to Get The IDX

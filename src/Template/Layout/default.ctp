@@ -26,21 +26,21 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
   	<meta http-equiv="Expires" content="Mon, 01 Jan 1990 00:00:01 GMT" >
   	<meta name="robots" content="no index,no follow">
   	<meta name="robots" content="all">
-    <?= $this->Html->charset() ?>
+    <? //$this->Html->charset() ?>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
       <?php echo $title_for_layout  ?>
         <?= $this->fetch('title') ?>
     </title>
-  
+
 
 
 	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="/css/crpagos.css" />
 	<script type="text/javascript" src="/js/jquery/jquery.js"></script>
 	<?php
-		echo $scripts_for_layout . "\n";
+		//echo $scripts_for_layout . "\n";
 	?>
 	<script language="javascript" src="/js/jquery/jquery.corner.js"></script>
 	<script language="JavaScript" type="text/javascript">
