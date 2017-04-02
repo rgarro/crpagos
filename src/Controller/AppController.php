@@ -14,9 +14,11 @@
  */
 namespace App\Controller;
 
+use Cake\Core\Configure;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
+use App\Lib\L10n;
 /**
  * Application Controller
  *
@@ -28,21 +30,9 @@ use Cake\ORM\TableRegistry;
 class AppController extends Controller
 {
 
-    /**
-     * Initialization hook method.
-     *
-     * Use this method to add common initialization code like loading components.
-     *
-     * e.g. `$this->loadComponent('Security');`
-     *
-     * @return void
-     */
-     var $helpers = array('Form', 'Html', 'Javascript');
-   	//var $components = array('Cookie');
     public function initialize()
     {
         parent::initialize();
-
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Cookie');
@@ -66,11 +56,11 @@ class AppController extends Controller
     			session_name('CRPagos');
     			$this -> loadModel('Locales');
     			$LangQ = $this -> Locales -> index();
-          
+
     			$session -> write('Languages', $LangQ);
     			$session -> write('ValidLangCodes', array());
     			foreach ($LangQ as $ThisLan) {
-    				$_SESSION['ValidLangCodes'][] = $ThisLan['Locales']['LocaleCode'];
+    				$_SESSION['ValidLangCodes'][] = $ThisLan['LocaleCode'];
     			}
     			$session -> write('LocaleCode', 'spa_cr');
     			$this -> Cookie -> write('lang', 'spa_cr', null, '+350 day');
@@ -92,7 +82,7 @@ class AppController extends Controller
     		//L10n
     		$this -> L10n = new L10n();
     		$this -> L10n -> get($session -> read('LocaleCode'));
-    		if($this->Session->read('LocaleCode') == 'spa_cr'){
+    		if($session->read('LocaleCode') == 'spa_cr'){
     			setlocale(LC_ALL, 'es_CR');
     		}else{
     			setlocale(LC_ALL, 'en_US');
