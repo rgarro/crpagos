@@ -89,12 +89,12 @@ class AppController extends Controller
     		}
     		Configure::write('Config.language', $session -> read('LocaleCode'));
     		//Check if Session has timed out
-    		if ($this -> viewPath != 'pages' && $this -> viewPath != 'code') {
+    		/*if ($this -> viewPath != 'pages' && $this -> viewPath != 'code') {
     			$Allowed = array("/", "/login/", "/myaccount/recpass/", "/contactus/", "/contactenos/", "/invoice-code/", "/codigo-de-solicitud/");
     			if (!$session -> check('Company.CurrentCompanyID') && !in_array($this -> here, $Allowed)) {
     				$this -> redirect("/" . __('CodeLink', true) . "/?timedout=true");
     			}
-    		}
+    		}*/
     		//Avoid peering eyes, but allow Pages
     		$AllowPaths = array('pages', 'pay_invoice');
     		if ($session -> check('Company.PayURL') === true && $this -> here !== $session -> read('Company.PayURL') && !in_array($this -> viewPath, $AllowPaths)) {
