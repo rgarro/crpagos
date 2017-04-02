@@ -1,8 +1,8 @@
 <?php
 $session = $this->request->session();
 	$this->pageTitle=__('Welcome', true);
-	$this->html->meta('keywords', '', array(), false);
-	$this->html->meta('description', '', array(), false);
+	//$this->html->meta('keywords', '', array(), false);
+	//$this->html->meta('description', '', array(), false);
 ?>
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 	<tr>
