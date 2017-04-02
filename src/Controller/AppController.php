@@ -16,7 +16,7 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
-
+use Cake\ORM\TableRegistry;
 /**
  * Application Controller
  *
@@ -37,20 +37,89 @@ class AppController extends Controller
      *
      * @return void
      */
+     var $helpers = array('Form', 'Html', 'Javascript');
+   	//var $components = array('Cookie');
     public function initialize()
     {
         parent::initialize();
 
         $this->loadComponent('RequestHandler');
-        $this->loadComponent('Session');
         $this->loadComponent('Flash');
-
+        $this->loadComponent('Cookie');
         /*
          * Enable the following components for recommended CakePHP security settings.
          * see http://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
         //$this->loadComponent('Csrf');
+        $session = $this->request->session();
+        //Check if we are loggin out;
+    		if (isset($_GET['logout']) && $_GET['logout'] == 'yes') {
+    			$session -> destroy();
+    			unset($_GET['logout']);
+    			$this -> redirect("/");
+    		}
+    		//Time Zone Fix
+    		putenv("TZ=America/Costa_Rica");
+    		//Language Change
+    		if (!$session -> check('Languages')) {
+    			session_name('CRPagos');
+    			$this -> loadModel('Locales');
+    			$LangQ = $this -> Locales -> index();
+          
+    			$session -> write('Languages', $LangQ);
+    			$session -> write('ValidLangCodes', array());
+    			foreach ($LangQ as $ThisLan) {
+    				$_SESSION['ValidLangCodes'][] = $ThisLan['Locales']['LocaleCode'];
+    			}
+    			$session -> write('LocaleCode', 'spa_cr');
+    			$this -> Cookie -> write('lang', 'spa_cr', null, '+350 day');
+    			$session -> write('MenuLinks_eng_us', array("about-us", "personal", "bussiness", "contact-us", "terms-and-coditions"));
+    			$session -> write('MenuLinks_spa_cr', array("acerca-de", "personas", "negocios", "contactenos", "terminos-y-condiciones"));
+    		}
+    		if (isset($_GET['Lang'])) {
+    			$lang = Sanitize::paranoid($_GET['Lang'], array("_"));
+    			if ($lang != $session -> read('LocaleCode')) {
+    				if (in_array($lang, $session -> read('ValidLangCodes'))) {
+    					$session -> write('LocaleCode', $lang);
+    				} else {
+    					$lang = $session -> read('DefaultLang');
+    				}
+    				$this -> Cookie -> write('lang', $lang, null, '+350 day');
+    				$session -> write('LocaleCode', $lang);
+    			}
+    		}
+    		//L10n
+    		$this -> L10n = new L10n();
+    		$this -> L10n -> get($session -> read('LocaleCode'));
+    		if($this->Session->read('LocaleCode') == 'spa_cr'){
+    			setlocale(LC_ALL, 'es_CR');
+    		}else{
+    			setlocale(LC_ALL, 'en_US');
+    		}
+    		Configure::write('Config.language', $session -> read('LocaleCode'));
+    		//Check if Session has timed out
+    		if ($this -> viewPath != 'pages' && $this -> viewPath != 'code') {
+    			$Allowed = array("/", "/login/", "/myaccount/recpass/", "/contactus/", "/contactenos/", "/invoice-code/", "/codigo-de-solicitud/");
+    			if (!$session -> check('Company.CurrentCompanyID') && !in_array($this -> here, $Allowed)) {
+    				$this -> redirect("/" . __('CodeLink', true) . "/?timedout=true");
+    			}
+    		}
+    		//Avoid peering eyes, but allow Pages
+    		$AllowPaths = array('pages', 'pay_invoice');
+    		if ($session -> check('Company.PayURL') === true && $this -> here !== $session -> read('Company.PayURL') && !in_array($this -> viewPath, $AllowPaths)) {
+    			//Redirect to company's Pay URL
+    			$this -> redirect($session -> read('Company.PayURL'));
+    			exit ;
+    		}
+
+    		//Avoid unauthorizeed access to user's
+    		if ($session -> read('User.AccessLevel') > 1 && $this -> viewPath == 'users') {
+    			//Redirect to company's Pay URL
+    			$this -> redirect($session -> read('Company.PayURL'));
+    			exit ;
+    		}
+
     }
 
     /**

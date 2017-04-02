@@ -29,10 +29,8 @@ use Cake\View\Exception\MissingTemplateException;
 class PagesController extends AppController
 {
 
-  public function initialize()
-  {
+  public function initialize(){
       parent::initialize();
-
       $this->loadComponent('Crypter');
   }
 

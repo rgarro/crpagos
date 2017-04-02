@@ -7,6 +7,7 @@ $session = $this->request->session();
 	foreach($MenuItems as $ThisMenu){
 		$LinkMenu = 'MenuLinks_'.$session->read('LocaleCode');
 		$ThisLink = "/".$_SESSION[$LinkMenu][$i].".htm";
+		//$ThisLink = "/".$session->read($LinkMenu);
 		//$ThisLink = "/".$ThisMenu.".htm";
 		if($this->here == $ThisLink){
 			$TheClass="sel";
