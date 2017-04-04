@@ -82,7 +82,7 @@ if(stristr($_SERVER['REQUEST_URI'], '.htm') === FALSE) {
   Router::connect('/'.$TheName.'.htm', array('controller' => 'pages', 'action' => 'display', $TheName));
 }
 
-Router::connect('/clients/:action/:id',  array('controller' => 'clients', 'action' => 'index'), array('pass' => array('id'), 0) );
+/*Router::connect('/clients/:action/:id',  array('controller' => 'clients', 'action' => 'index'), array('pass' => array('id'), 0) );
 Router::connect('/users/:action/:id',  array('controller' => 'users', 'action' => 'index'), array('pass' => array('id'), 0) );
 Router::connect('/myaccount/:action/:id',  array('controller' => 'myaccount', 'action' => 'index'), array('pass' => array('id'), 0) );
 Router::connect('/mycompany/:action/:id',  array('controller' => 'mycompany', 'action' => 'index'));
@@ -91,7 +91,7 @@ Router::connect('/contactenos/',  array('controller' => 'contactus', 'action' =>
 Router::connect('/code/',  array('controller' => 'pages', 'action' => 'display', 'code'));
 Router::connect('/codigo/',  array('controller' => 'pages', 'action' => 'display', 'code'));
 Router::connect('/login/',  array('controller' => 'login', 'action' => 'index'));
-Router::connect('/terms/',  array('controller' => 'pages', 'action' => 'terms'));
+Router::connect('/terms/',  array('controller' => 'pages', 'action' => 'terms'));*/
 
 
 /*$Companies = array(
