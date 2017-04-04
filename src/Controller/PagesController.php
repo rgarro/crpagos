@@ -121,9 +121,7 @@ class PagesController extends AppController
      *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
      */
      public function display($page = home){
-
  			$this->render("/Pages/".$page);
-
  		}
     /*public function display(...$path)
     {

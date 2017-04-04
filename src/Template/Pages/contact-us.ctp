@@ -1,12 +1,14 @@
-<?php 
+<?php
 	$this->pageTitle='Contact Us';
-	$html->meta('keywords', '', array(), false);
-	$html->meta('description', '', array(), false);
-	$javascript->link("jquery/validate", false);	
+	//$html->meta('keywords', '', array(), false);
+	//$html->meta('description', '', array(), false);
+	//$javascript->link("jquery/validate", false);
 	//localized validation code
-	$TheJs = $session->read('LocaleCode').'/checkform';
-	$javascript->link($TheJs, false);
+	$TheJs = "/js/".$session->read('LocaleCode').'/checkform.js';
+	//$javascript->link($TheJs, false);
 ?>
+<script src="/js/jquery/validate.js"></script>
+<script src="<?php echo $TheJs; ?>"></script>
 <div class="contenttxt">
 To Contact Us, please fill out the following form:
 <form method="post" action="/contactus/" align="right" name="TheForm" id="TheForm">

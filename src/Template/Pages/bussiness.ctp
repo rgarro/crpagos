@@ -1,12 +1,14 @@
-<?php 
+<?php
 	$this->pageTitle='Business Affiliation';
-	$html->meta('keywords', '', array(), false);
-	$html->meta('description', '', array(), false);
-	$javascript->link("jquery/validate", false);	
+	//$html->meta('keywords', '', array(), false);
+	//$html->meta('description', '', array(), false);
+	//$javascript->link("jquery/validate", false);
 	//localized validation code
-	$TheJs = $session->read('LocaleCode').'/checkform';
-	$javascript->link($TheJs, false);	
+	$TheJs = "/js/".$session->read('LocaleCode').'/checkform.js';
+	//$javascript->link($TheJs, false);	
 ?>
+<script src="/js/jquery/validate.js"></script>
+<script src="<?php echo $TheJs; ?>"></script>
 <div class="contenttxt">
 <h1>Business</h1>
 If your business needs to receive payments from reservations, services 	provided to international clients, the selling of products not having an E-commerce website, <b>CR Pagos</b> is the solution you have being waiting for.
@@ -76,4 +78,4 @@ To request information please complete the following form:
     </table>
 </form>
 </p>
-</div>	
+</div>

@@ -1,7 +1,7 @@
-<?php 
+<?php
 	$this->pageTitle='Acerca de CRPagos';
-	$html->meta('keywords', '', array(), false);
-	$html->meta('description', '', array(), false); 	
+	//$html->meta('keywords', '', array(), false);
+	//$html->meta('description', '', array(), false); 	
 ?>
 <div class="contenttxt">
 	<h1>Acerca de...</h1>

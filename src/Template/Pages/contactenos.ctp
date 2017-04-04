@@ -1,12 +1,15 @@
-<?php 
+<?php
+$session = $this->request->session();
 	$this->pageTitle='Cont&aacute;ctenos';
-	$html->meta('keywords', '', array(), false);
-	$html->meta('description', '', array(), false);
-	$javascript->link("jquery/validate", false); 
+	//$html->meta('keywords', '', array(), false);
+	//$html->meta('description', '', array(), false);
+	//$javascript->link("jquery/validate", false);
 	//localized validation code
-	$TheJs = $session->read('LocaleCode').'/checkform';
-	$javascript->link($TheJs, false);	
+	$TheJs = "/js/".$session->read('LocaleCode').'/checkform.js';
+	//$javascript->link($TheJs, false);
 ?>
+<script src="/js/jquery/validate.js"></script>
+<script src="<?php echo $TheJs; ?>"></script>
 <div class="contenttxt">
 Para contactarnos, por favor use el siguiente formulario:
 <form method="post" action="/contactenos/" align="right" name="TheForm" id="TheForm">

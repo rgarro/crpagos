@@ -1,10 +1,10 @@
-<?php 
+<?php
 	$this->pageTitle='About CRPagos';
-	$html->meta('keywords', '', array(), false);
-	$html->meta('description', '', array(), false); 
+	//$html->meta('keywords', '', array(), false);
+	//$html->meta('description', '', array(), false);
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/checkform';
-	$javascript->link($TheJs, false);
+	//$javascript->link($TheJs, false);
 ?>
 <div class="contenttxt">
 	<h1>About Us</h1>

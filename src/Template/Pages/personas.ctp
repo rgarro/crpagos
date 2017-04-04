@@ -1,12 +1,17 @@
-<?php 
+<?php
+$session = $this->request->session();
 	$this->pageTitle='Afiliaci&oacute;n de Personas';
-	$html->meta('keywords', '', array(), false);
-	$html->meta('description', '', array(), false); 
-	$javascript->link("jquery/validate", false);
+	//$html->meta('keywords', '', array(), false);
+	//$html->meta('description', '', array(), false);
+	//$javascript->link("jquery/validate", false);
+	//echo $this->Html->script('jquery/validate');
 	//localized validation code
-	$TheJs = $session->read('LocaleCode').'/checkform';
-	$javascript->link($TheJs, false);	
+	$TheJs = "/js/".$session->read('LocaleCode').'/checkform.js';
+	//$javascript->link($TheJs, false);
+	//echo $this->Html->script($TheJs);
 ?>
+<script src="/js/jquery/validate.js"></script>
+<script src="<?php echo $TheJs; ?>"></script>
 <div class="contenttxt">
 <h1>Personas</h1>
 Cualquier persona que requiera hacer su gesti&oacute;n de cobro por medio de Tarjeta de Cr&eacute;dito, se puede ver beneficiado al hacer uso de <b>CR Pagos</b>.

@@ -75,10 +75,12 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 
-Router::connect('/pay-invoice/',  array('controller' => 'PayInvoice', 'action' => 'index'));
-Router::connect('/CredomaticResponse/',  array('controller' => 'CredomaticResponse', 'action' => 'index'));
-
-//Route .htm to Pages and use the filen name to call the page
+if(stristr($_SERVER['REQUEST_URI'], '.htm') === FALSE) {
+    //echo '"earth" not found in string';
+}else{
+  $TheName =  basename(strtolower($_SERVER['REQUEST_URI']), ".htm");
+  Router::connect('/'.$TheName.'.htm', array('controller' => 'pages', 'action' => 'display', $TheName));
+}
 
 Router::connect('/clients/:action/:id',  array('controller' => 'clients', 'action' => 'index'), array('pass' => array('id'), 0) );
 Router::connect('/users/:action/:id',  array('controller' => 'users', 'action' => 'index'), array('pass' => array('id'), 0) );
@@ -91,32 +93,8 @@ Router::connect('/codigo/',  array('controller' => 'pages', 'action' => 'display
 Router::connect('/login/',  array('controller' => 'login', 'action' => 'index'));
 Router::connect('/terms/',  array('controller' => 'pages', 'action' => 'terms'));
 
-if(stristr($_SERVER['REQUEST_URI'], '.htm') === FALSE) {
-    //echo '"earth" not found in string';
-}else{
-  $TheName =  basename(strtolower($_SERVER['REQUEST_URI']), ".htm");
-//echo $TheName;
-//exit;
-  Router::connect('/(.*).htm', array('controller' => 'pages', 'action' => 'display', $TheName));
-}
-/*if(isset($_GET['url'])){
-  $TheName =  basename(strtolower($_GET['url']), ".htm");
-  Router::connect('/(.*).htm', array('controller' => 'pages', 'action' => 'display', $TheName));
-}*/
-//Route Clients and Users
-/*Router::connect('/clients/:action/:id',  array('controller' => 'clients', 'action' => 'index'), array('pass' => array('id'), 0) );
-Router::connect('/users/:action/:id',  array('controller' => 'users', 'action' => 'index'), array('pass' => array('id'), 0) );
-Router::connect('/myaccount/:action/:id',  array('controller' => 'myaccount', 'action' => 'index'), array('pass' => array('id'), 0) );
-Router::connect('/mycompany/:action/:id',  array('controller' => 'mycompany', 'action' => 'index'));
-Router::connect('/contactus/',  array('controller' => 'contactus', 'action' => 'index'));
-Router::connect('/contactenos/',  array('controller' => 'contactus', 'action' => 'index'));
-Router::connect('/code/',  array('controller' => 'pages', 'action' => 'display', 'code'));
-Router::connect('/codigo/',  array('controller' => 'pages', 'action' => 'display', 'code'));
-Router::connect('/login/',  array('controller' => 'login', 'action' => 'index'));
-Router::connect('/terms/',  array('controller' => 'pages', 'action' => 'terms'));*/
 
-
-$Companies = array(
+/*$Companies = array(
   "1"=>"/pragmatico/",
   "2"=>"/pragmasoft/",
   "3"=>"/crmotos/",
@@ -167,10 +145,7 @@ if($TheKey !== false){
   }
 }else{
   Router::connect($_SERVER['REQUEST_URI'], array('controller' => 'pages', 'action' => 'display', 'code'));
-}
-
-
-//Else Use Company Array
+}*/
 
 /**
  * Load all plugin routes.  See the Plugin documentation on
