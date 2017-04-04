@@ -1,4 +1,5 @@
 <?php
+$session = $this->request->session();
 	$this->pageTitle='Contact Us';
 	//$html->meta('keywords', '', array(), false);
 	//$html->meta('description', '', array(), false);
