@@ -1,11 +1,13 @@
-<?php 
+<?php
+$session = $this->request->session();
 	$this->pageTitle='Afiliaci&oacute;n de Negocios';
-	$html->meta('keywords', '', array(), false);
-	$html->meta('description', '', array(), false);
-	$javascript->link("jquery/validate", false);
+	//$html->meta('keywords', '', array(), false);
+	//$html->meta('description', '', array(), false);
+	//$javascript->link("jquery/validate", false);
 	//localized validation code
 	$TheJs = $session->read('LocaleCode').'/checkform';
-	$javascript->link($TheJs, false); 	
+	//$javascript->link($TheJs, false);
+	exit;
 ?>
 <div class="contenttxt">
 <h1>Negocios</h1>
@@ -76,4 +78,4 @@ Para solicitar informaci&oacute;n, por favor complete el siguiente formulario:
     </table>
 </form>
 </p>
-</div>	
+</div>
