@@ -36,8 +36,8 @@ class ContactusController extends AppController
       $Email->replyTo(array("info@crpagos.com" => "InfoCRPagos"));
       $Email->cc(array("bcc@grupochanto.com"=>"Administrator"));
       $Email->subject($EmailSubject);
-      //$Email->to(array('info@crpagos.com' => 'InfoCRPagos'));
-      $Email->to(array('rgarro@gmail.com' => 'InfoCRPagos'));
+      $Email->to(array('info@crpagos.com' => 'InfoCRPagos'));
+      //$Email->to(array('rgarro@gmail.com' => 'InfoCRPagos'));
       $Email->send();
     }else{
       if($session->read('LocaleCode') == 'spa_cr'){
