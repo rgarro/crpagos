@@ -27,9 +27,9 @@ class ContactusController extends AppController
         break;
       }
 
-      $EmailSubject .=" # ".date("F j, Y, g:i a");//$FormID;
-      /*$this->set('Title', $EmailSubject);
-      $this->SwiftMailer->charset = "iso-8859-1";
+      $EmailSubject .=" # ".date("F j, Y, g:i a");
+      $this->set('Title', $EmailSubject);
+      /*$this->SwiftMailer->charset = "iso-8859-1";
       $this->SwiftMailer->from = "info@crpagos.com";
       $this->SwiftMailer->fromName = "Servicio Al Cliente";
       $this->SwiftMailer->to = array('info@crpagos.com'=>'Servicio Al Cliente');
