@@ -26,7 +26,6 @@ class ContactusController extends AppController
           $EmailSubject = __('ContactUsForm', true);
         break;
       }
-
       $EmailSubject .=" # ".date("F j, Y, g:i a");
       $Email = new Email('default');
       $Email->viewVars(array('Title'=>$EmailSubject));
