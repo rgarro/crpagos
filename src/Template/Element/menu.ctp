@@ -1,5 +1,6 @@
 <?php
-$UrlLocation = explode("/", $this->here);
+$session = $this->request->session();
+$UrlLocation = explode("/", $_SERVER['REQUEST_URI']);
 	if(count($UrlLocation)< 4 || $UrlLocation[2] == 'search' || $UrlLocation[2] == 'terms') {
 		if($this->here==$session->read('Company.CurrentURL')){$TheClass="sel";}else{$TheClass="";}
 		echo '<div class="menuitem',$TheClass,'"><a class="menuitemlink',$TheClass,'" href="',$session->read('Company.CurrentURL'),'">',__('Invoices'),'</a></div>';

@@ -23,8 +23,11 @@ class LoginController extends AppController
     $this -> pageTitle = __('Welcome', true);
     if (isset($_POST['Login'])) {
       $CheckLoginQ = $this -> Users -> index();
+echo count($CheckLoginQ);
+print_r($CheckLoginQ);
+exit;
       //we're in, set variables
-      if (count($CheckLoginQ) == 1) {
+      if (isset($CheckLoginQ['UserID'])) {
         $CheckLogin = current($CheckLoginQ);
         $CheckCompanyQ = $this -> Users -> CheckCompany($CheckLogin['Users']['UserID']);
         if (count($CheckCompanyQ) > 0) {
@@ -55,12 +58,14 @@ class LoginController extends AppController
           $this -> redirect($CheckCompanyQ[0]['Companies']['CompanyUrl']);
         } else {
           //No Company, give the login error
-          $session -> setFlash(__('ErrorLogin', true));
+          //$session -> setFlash(__('ErrorLogin', true));
+          $this->Flash->error(__('ErrorLogin'));
           $this -> redirect('/login/');
         }
         //not in, set flash, and try again
       } else {
-        $session -> setFlash(__('ErrorLogin', true));
+        //$session -> setFlash(__('ErrorLogin', true));
+        $this->Flash->error(__('ErrorLogin'));
         $this -> redirect('/login/');
       }
     }
