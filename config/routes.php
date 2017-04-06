@@ -74,8 +74,11 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->fallbacks(DashedRoute::class);
 });
+
 Router::connect('/contactus/',  array('controller' => 'contactus', 'action' => 'index'));
 Router::connect('/contactenos/',  array('controller' => 'contactus', 'action' => 'index'));
+Router::connect('/login/',  array('controller' => 'login', 'action' => 'index'));
+
 if(stristr($_SERVER['REQUEST_URI'], '.htm') === FALSE) {
     //echo '"earth" not found in string';
 }else{
@@ -90,7 +93,7 @@ Router::connect('/mycompany/:action/:id',  array('controller' => 'mycompany', 'a
 
 Router::connect('/code/',  array('controller' => 'pages', 'action' => 'display', 'code'));
 Router::connect('/codigo/',  array('controller' => 'pages', 'action' => 'display', 'code'));
-Router::connect('/login/',  array('controller' => 'login', 'action' => 'index'));
+
 Router::connect('/terms/',  array('controller' => 'pages', 'action' => 'terms'));*/
 
 

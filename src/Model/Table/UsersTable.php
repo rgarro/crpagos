@@ -20,12 +20,6 @@ use Cake\Validation\Validator;
 class UsersTable extends Table
 {
 
-    /**
-     * Initialize method
-     *
-     * @param array $config The configuration for the Table.
-     * @return void
-     */
     public function initialize(array $config)
     {
         parent::initialize($config);
@@ -35,12 +29,7 @@ class UsersTable extends Table
         $this->setPrimaryKey('UserID');
     }
 
-    /**
-     * Default validation rules.
-     *
-     * @param \Cake\Validation\Validator $validator Validator instance.
-     * @return \Cake\Validation\Validator
-     */
+
     public function validationDefault(Validator $validator)
     {
         $validator
@@ -84,4 +73,97 @@ class UsersTable extends Table
 
         return $validator;
     }
+
+    public function index(){
+			$TheLogin = $_POST['Login'];
+			$ThePass = $_POST['Password'];
+			$TheSql ="SELECT * ";
+			$TheSql.=" FROM Users ";
+			$TheSql.=" WHERE UserStatus = 1 AND Email <> ''";
+			$TheSql.=" AND Email ='".trim($TheLogin)."'";
+			$TheSql.=" AND Password = '".trim($ThePass)."'";
+			$TheSql.=" ORDER BY AccessLevelID, FirstName, LastName= '".trim($ThePass)."'";
+			return $this->connection()->execute($TheSql)->fetch('assoc');
+		}
+
+		public function CheckCompany($UserID = null){
+			$TheSql ="SELECT * ";
+			$TheSql.=" FROM Companies ";
+			$TheSql.=" INNER JOIN CompanyUsers ON Companies.CompanyID = CompanyUsers.CompanyID";
+			$TheSql.=" WHERE CompanyUsers.UserID = ".$UserID;
+			$TheSql.=" AND Companies.CompanyStatus = 1";
+			$TheSql.=" ORDER BY Companies.CompanyID";
+			return $this->connection()->execute($TheSql)->fetchAll('assoc');
+		}
+
+		public function GetUsers($UserID = null){
+			$TheSql = " SELECT * ";
+			$TheSql.= " FROM Users ";
+			$TheSql.= " INNER JOIN CompanyUsers ON Users.UserID = CompanyUsers.UserID ";
+			$TheSql.= " INNER JOIN AccessLevels ON Users.AccessLevelID = AccessLevels.AccessLevelID ";
+			$TheSql.= " WHERE CompanyUsers.CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
+			$TheSql.= " AND  Users.AccessLevelID >= ". $_SESSION['User']['AccessLevelID'];
+			if($UserID !== null){
+				$TheSql.= " AND Users.UserID = ".$UserID;
+			}
+			$TheSql.= " ORDER BY Users.AccessLevelID, Users.FirstName, Users.LastName  ";
+			return $this->connection()->execute($TheSql)->fetchAll('assoc');
+		}
+
+		public function FindUserByEmail($SafeMail = null){
+			$TheSql ="SELECT FirstName, LastName, Password, Email ";
+			$TheSql.=" FROM Users ";
+			$TheSql.=" WHERE UserStatus <> 0 ";
+			$TheSql.=" AND Email ='".$SafeMail."'";
+			return $this->connection()->execute($TheSql)->fetchAll('assoc');
+		}
+
+		public function AddNewUser(){
+			$TheSql = " INSERT INTO Users (FirstName, LastName, Email, Password, AccessLevelID, UserStatus,EnteredBy)";
+			$TheSql.=" VALUES ('".substr(trim($_POST['FirstName']))."',";
+			$TheSql.="'".substr(trim($_POST['LastName']),0,50)."',";
+			$TheSql.="'".substr(trim($_POST['Email']),0,100)."',";
+			$TheSql.="'".substr(trim($_POST['Password']),0,20)."',";
+			$TheSql.= trim($_POST['AccessLevelID']).",";
+			$TheSql.= trim($_POST['UserStatus']).",";
+			$TheSql.="'".substr(trim($_SESSION['User']['FullName']),0,200)."')";
+			$DataSet = $this->query($TheSql);
+			$UserID = mysql_insert_id();
+      return $this->connection()->execute($TheSql);
+		}
+
+		public function UpdateUser($UserID = 0){
+			$TheSql = " UPDATE Users ";
+			$TheSql.=" SET FirstName = '".substr(trim($_POST['FirstName']),0,50)."',";
+			$TheSql.=" LastName = '".substr(trim($_POST['LastName']),0,50)."',";
+			$TheSql.=" Email = '".substr(trim($_POST['Email']),0,100)."',";
+			$TheSql.=" Password = '".substr(trim($_POST['Password']),0,20)."',";
+			$TheSql.=" AccessLevelID =".trim($_POST['AccessLevelID']).",";
+			$TheSql.=" UserStatus =".trim($_POST['UserStatus']).",";
+			$TheSql.=" Modified = NOW(),";
+			$TheSql.=" ModifiedBy ='".substr(trim($_SESSION['User']['FullName']),0,200)."'";
+			$TheSql.=" WHERE UserID = ".$UserID;
+      return $this->connection()->execute($TheSql);
+		}
+
+		public function AddUserToCompany($UserID = 0){
+			$TheSql = " INSERT INTO CompanyUsers( CompanyID, UserID ) ";
+			$TheSql.= " VALUES (".$_SESSION['Company']['CurrentCompanyID'].",";
+			$TheSql.= $UserID.")";
+
+			return $this->connection()->execute($TheSql);
+		}
+
+		public function SaveMySettings(){
+			$TheSql = " UPDATE Users ";
+			$TheSql.=" SET FirstName = '".substr(trim($_POST['FirstName']),0,50)."',";
+			$TheSql.=" LastName = '".substr(trim($_POST['LastName']),0,50)."',";
+			if(trim($_POST['Password']) != '' ){
+				$TheSql.=" Password = '".substr(trim($_POST['Password']),0,20)."',";
+			}
+			$TheSql.=" Email = '".substr(trim($_POST['Email']),0,100)."'";
+			$TheSql.=" WHERE UserID = ".$_SESSION['User']['UserID'];
+			return $this->connection()->execute($TheSql);
+		}
+
 }
