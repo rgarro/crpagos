@@ -46,8 +46,14 @@ class AppController extends Controller
         //Check if we are loggin out;
     		if (isset($_GET['logout']) && $_GET['logout'] == 'yes') {
 
+          $session->delete("User");
+          $session->delete("Company");
+
     			$session -> destroy();
-    			unset($_GET['logout']);
+          header("Location: /");
+          exit;
+print_r($_SESSION);
+exit;
     			$this -> redirect("/");
     		}
     		//Time Zone Fix
@@ -69,7 +75,7 @@ class AppController extends Controller
     			$session -> write('MenuLinks_spa_cr', array("acerca-de", "personas", "negocios", "contactenos", "terminos-y-condiciones"));
     		}
     		if (isset($_GET['Lang'])) {
-    			$lang = Sanitize::paranoid($_GET['Lang'], array("_"));
+    			$lang = $_GET['Lang'];
     			if ($lang != $session -> read('LocaleCode')) {
     				if (in_array($lang, $session -> read('ValidLangCodes'))) {
     					$session -> write('LocaleCode', $lang);
@@ -106,7 +112,7 @@ class AppController extends Controller
 
     		//Avoid unauthorizeed access to user's
     		if ($session -> read('User.AccessLevel') > 1 && $this -> viewPath == 'users') {
-    			//Redirect to company's Pay URL
+    			//Redirect to company's Pay
     			$this -> redirect($session -> read('Company.PayURL'));
     			exit ;
     		}
