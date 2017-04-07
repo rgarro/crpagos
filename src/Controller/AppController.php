@@ -45,6 +45,7 @@ class AppController extends Controller
         $session = $this->request->session();
         //Check if we are loggin out;
     		if (isset($_GET['logout']) && $_GET['logout'] == 'yes') {
+
     			$session -> destroy();
     			unset($_GET['logout']);
     			$this -> redirect("/");
