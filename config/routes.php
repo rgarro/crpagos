@@ -75,18 +75,9 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 
-Router::connect('/contactus/',  array('controller' => 'contactus', 'action' => 'index'));
-Router::connect('/contactenos/',  array('controller' => 'contactus', 'action' => 'index'));
-Router::connect('/login/',  array('controller' => 'login', 'action' => 'index'));
 
-if(stristr($_SERVER['REQUEST_URI'], '.htm') === FALSE) {
-    //echo '"earth" not found in string';
-}else{
-  $TheName =  basename(strtolower($_SERVER['REQUEST_URI']), ".htm");
-  Router::connect('/'.$TheName.'.htm', array('controller' => 'pages', 'action' => 'display', $TheName));
-}
-
-/*Router::connect('/clients/:action/:id',  array('controller' => 'clients', 'action' => 'index'), array('pass' => array('id'), 0) );
+/******/
+Router::connect('/clients/:action/:id',  array('controller' => 'clients', 'action' => 'index'), array('pass' => array('id'), 0) );
 Router::connect('/users/:action/:id',  array('controller' => 'users', 'action' => 'index'), array('pass' => array('id'), 0) );
 Router::connect('/myaccount/:action/:id',  array('controller' => 'myaccount', 'action' => 'index'), array('pass' => array('id'), 0) );
 Router::connect('/mycompany/:action/:id',  array('controller' => 'mycompany', 'action' => 'index'));
@@ -94,64 +85,111 @@ Router::connect('/mycompany/:action/:id',  array('controller' => 'mycompany', 'a
 Router::connect('/code/',  array('controller' => 'pages', 'action' => 'display', 'code'));
 Router::connect('/codigo/',  array('controller' => 'pages', 'action' => 'display', 'code'));
 
-Router::connect('/terms/',  array('controller' => 'pages', 'action' => 'terms'));*/
+Router::connect('/terms/',  array('controller' => 'pages', 'action' => 'terms'));
+/********/
 
+Router::connect('/contactus/',  array('controller' => 'contactus', 'action' => 'index'));
+Router::connect('/contactenos/',  array('controller' => 'contactus', 'action' => 'index'));
+Router::connect('/login/',  array('controller' => 'login', 'action' => 'index'));
 
-/*$Companies = array(
-  "1"=>"/pragmatico/",
-  "2"=>"/pragmasoft/",
-  "3"=>"/crmotos/",
-  "4"=>"/tachiztravel/",
-  "5"=>"/hotelaeropuerto/",
-  "6"=>"/intercontinental/",
-  "7"=>"/hampton/",
-  "8"=>"/hiex/",
-  "9"=>"/crst/",
-  "10"=>"/hotelsanjose/",
-  "11"=>"/hotelirazu/",
-  "12"=>"/hoteljaco/",
-  "13"=>"/grayline/"
-  );
+/*******/
+$controller = '/pragmatico';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/pragmasoft';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/crmotos';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/tachiztravel';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/hotelaeropuerto';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/intercontinental';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/hampton';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/hiex';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/crst';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/hotelsanjose';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/hotelirazu';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/hoteljaco';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+$controller = '/grayline';
+Router::connect($controller.'/codigo-de-solicitud/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/invoice-code/',array('controller' => 'code', 'action' => 'index', $controller));
+Router::connect($controller.'/:action/:id',array('controller' => 'company', 'action' => 'index', $controller),array('pass' => array('id'), 1));
+Router::connect($controller,array('controller' => 'response', 'action' => 'index'));
+/*******/
 
-//$Base = explode("/",$this->request->here);
+if(stristr($_SERVER['REQUEST_URI'], '.htm') === FALSE) {
 
-$Base = explode("/",$_SERVER['REQUEST_URI']);
+    /***********/
+    /*$companies = ["pragmatico","pragmasoft","crmotos","tachiztravel","hotelaeropuerto","intercontinental","hampton","hiex","crst","hotelsanjose","hotelirazu","hoteljaco","grayline"];
+    $parts = explode("/",$_SERVER['REQUEST_URI']);
+    $controller = $parts[1];
+    $company_found = in_array($controller, $companies);
+    $isAjax = false;
 
-if(isset($Base[2]) && $Base[2] != ''){
-  $isAjax = true;
-}
-$Base = "/".$Base[1]."/";
-$TheKey = array_search($Base, $Companies);
-if($TheKey !== false){
+echo $controller;
+exit;*/
 
-  if(strtoupper($_SERVER['REQUEST_METHOD']) == 'GET' || isset($isAjax)){
-    Router::connect(
-      $Base.'codigo-de-solicitud/',
-      array('controller' => 'code', 'action' => 'index', $TheKey)
-    );
+    /*if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+        $isAjax = true;
+    }
 
-    Router::connect(
-      $Base.' invoice-code/',
-      array('controller' => 'code', 'action' => 'index', $TheKey)
-    );
+    if($company_found){
 
-    Router::connect(
-      $Base.':action/:id',
-      array('controller' => 'company', 'action' => 'index', $TheKey),
-      array('pass' => array('id'), 1)
-    );
-  }else{
-    Router::connect(
-      $Base,
-      array('controller' => 'response', 'action' => 'index')
-    );
-  }
+      if(strtoupper($_SERVER['REQUEST_METHOD']) == 'GET' || isset($isAjax)){
+
+      }else{
+
+      }
+    }else{
+      Router::connect($_SERVER['REQUEST_URI'], array('controller' => 'pages', 'action' => 'display', 'code'));
+    }*/
+    /************/
 }else{
-  Router::connect($_SERVER['REQUEST_URI'], array('controller' => 'pages', 'action' => 'display', 'code'));
-}*/
+  $TheName =  basename(strtolower($_SERVER['REQUEST_URI']), ".htm");
+  Router::connect('/'.$TheName.'.htm', array('controller' => 'pages', 'action' => 'display', $TheName));
+}
 
-/**
- * Load all plugin routes.  See the Plugin documentation on
- * how to customize the loading of plugin routes.
- */
 Plugin::routes();

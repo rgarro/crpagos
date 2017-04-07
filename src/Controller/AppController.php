@@ -52,8 +52,6 @@ class AppController extends Controller
     			$session -> destroy();
           header("Location: /");
           exit;
-print_r($_SESSION);
-exit;
     			$this -> redirect("/");
     		}
     		//Time Zone Fix
