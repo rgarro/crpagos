@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use Cake\Core\Configure;
 use App\Controller\AppController;
+use Cake\Mailer\Email;
 
 /**
  * Response Controller
@@ -94,11 +95,6 @@ class ResponseController extends AppController {
 				$this -> setAction("Error", 3);
 			}
 		} else {
-
-      print_r($_POST);
-          echo "xxxxxxxxhereIII";
-          exit;
-
 			//**No XML on Post
 			$this -> setAction("Error", 4);
 		}
@@ -179,16 +175,21 @@ class ResponseController extends AppController {
 			$this -> Invoices -> AddInvoiceLog($InvoiceID, 10, $TheError);
 			$this -> Invoices -> UpdateInvoiceStatus($InvoiceID, 6);
 		}
-		$Subject = $session -> read('Company.CurrentName')." Error Processing Card : " . $TheError;
-		/*$this -> SwiftMailer -> charset = "iso-8859-1";
-		$this -> SwiftMailer -> from = "info@crpagos.com";
-		$this -> SwiftMailer -> fromName = "CRPagos Error";
-		$this -> SwiftMailer -> to = array('mensajes1@pragmatico.com' => 'Mensajes');
-		//$this -> SwiftMailer -> cc = array('kchanto@pragmasoft.co.cr' => 'Kenneth');
-		$this -> SwiftMailer -> sendAs = "text";
-		if (!$this -> SwiftMailer -> send("error", $Subject, 'text')) {
-			$this -> log('Error sending email ' . $Subject, LOG_ERROR);
-		}*/
+    /*****/
+    $EmailSubject = $session -> read('Company.CurrentName')." Error Processing Card : " . $TheError;
+    $Email = new Email('default');
+    $Email->setCharset("iso-8859-1");
+    //$Email->viewVars(array('Title'=>$EmailSubject));
+    $Email->emailFormat('text');
+    $Email->template("error_text");
+    $Email->from(array('info@crpagos.com' => 'CRPagos Error'));
+    $Email->replyTo(array("info@crpagos.com" => "InfoCRPagos"));
+    $Email->cc(array('kchanto@pragmasoft.co.cr' => 'Kenneth'));
+    $Email->subject($EmailSubject);
+    //$Email->to(array('mensajes1@pragmatico.com' => 'Mensajes'));
+    $Email->to(array('rgarro@gmail.com' => 'InfoCRPagos'));
+    $Email->send();
+    /*****/
 		$this->Flash->error(__('BadError'));
 		$this -> redirect('/' . __('ContactUsLink', true) . '.htm');
 	}
