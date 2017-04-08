@@ -18,7 +18,6 @@ class LoginController extends AppController
     $session = $this->request->session();
     if ($session->check('User.UserID')) {
       $this->redirect($session->read('Company.CurrentURL'));
-      exit();
     }
     $this -> pageTitle = __('Welcome', true);
     if (isset($_POST['Login'])) {
