@@ -186,8 +186,8 @@ class ResponseController extends AppController {
     $Email->replyTo(array("info@crpagos.com" => "InfoCRPagos"));
     $Email->cc(array('kchanto@pragmasoft.co.cr' => 'Kenneth'));
     $Email->subject($EmailSubject);
-    //$Email->to(array('mensajes1@pragmatico.com' => 'Mensajes'));
-    $Email->to(array('rgarro@gmail.com' => 'InfoCRPagos'));
+    $Email->to(array('mensajes1@pragmatico.com' => 'Mensajes'));
+    //$Email->to(array('rgarro@gmail.com' => 'InfoCRPagos'));
     $Email->send();
     /*****/
 		$this->Flash->error(__('BadError'));
