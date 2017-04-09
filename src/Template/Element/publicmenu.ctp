@@ -9,7 +9,7 @@ $session = $this->request->session();
 		$ThisLink = "/".$_SESSION[$LinkMenu][$i].".htm";
 		//$ThisLink = "/".$session->read($LinkMenu);
 		//$ThisLink = "/".$ThisMenu.".htm";
-		if($this->here == $ThisLink){
+		if($this->request->here() == $ThisLink){
 			$TheClass="sel";
 		}else{
 			$TheClass="";

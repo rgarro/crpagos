@@ -19,6 +19,8 @@ use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\ORM\TableRegistry;
 use App\Lib\L10n;
+use Cake\I18n\I18n;
+use Cake\Controller\Component\CookieComponent;
 /**
  * Application Controller
  *
@@ -83,17 +85,27 @@ class AppController extends Controller
     					$lang = $session -> read('DefaultLang');
     				}
     				$this -> Cookie -> write('lang', $lang, null, '+350 day');
+
     				$session -> write('LocaleCode', $lang);
     			}
     		}
     		//L10n
-    		$this -> L10n = new L10n();
+    		/*$this -> L10n = new L10n();
     		$this -> L10n -> get($session -> read('LocaleCode'));
     		if($session->read('LocaleCode') == 'spa_cr'){
     			setlocale(LC_ALL, 'es_CR');
     		}else{
     			setlocale(LC_ALL, 'en_US');
-    		}
+    		}*/
+
+        if($session->read('LocaleCode') == 'spa_cr'){
+          I18n::locale('es_cr');
+        }else{          
+          I18n::locale('en_us');
+        }
+
+
+
     		Configure::write('Config.language', $session -> read('LocaleCode'));
     		//Check if Session has timed out
     		/*if ($this -> viewPath != 'pages' && $this -> viewPath != 'code') {

@@ -1,3 +1,6 @@
+<?php
+$session = $this->request->session();
+?>
 <form method="post" action="/login/">
 <div class="loginround">
 	<div class="loginleft">

@@ -63,6 +63,7 @@ use Cake\Mailer\Email;
 use Cake\Network\Request;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
+use Cake\I18n\I18n;
 
 /*
  * Read configuration file and inject configuration into various

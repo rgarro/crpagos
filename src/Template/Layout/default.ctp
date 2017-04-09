@@ -79,7 +79,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 				?>
 			</div>
 
-			<?php if($this->here != $session->read('Company.PayURL')){?>
+			<?php if($this->request->here() != $session->read('Company.PayURL')){?>
 			<div class="topmenu">
 				<?php
 				if ($session -> check('User.UserID')) {
@@ -98,7 +98,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 					/*if ($session -> flash() != "") {
 						echo $session -> flash();
 					}*/
-					if($this->here == $session->read('Company.CurrentURL')){
+					if($this->request->here() == $session->read('Company.CurrentURL')){
 						echo '<div style="float:right">';
 						include VIEWS.'elements'.DS.'companyselect.ctp' ;
 						echo '</div>';
@@ -110,9 +110,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 			</div>
 			<div class="line"></div>
 			<div class="bottom">
-			<?php if($this->here != $session->read('Company.PayURL')){?>
+			<?php if($this->request->here() != $session->read('Company.PayURL')){?>
 			<?php
-				if ($this -> here == '/') {
+				if ($this->request->here() == '/') {
 					echo $this->element('bottomhome');
 				}
 				echo $this ->element('bottommenu');
