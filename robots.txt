@@ -1,0 +1,4 @@
+# robots.txt for http://www.reveseremoney.com/
+
+User-agent: *
+Disallow: /

@@ -60,11 +60,13 @@ class AppController extends Controller
     		if (!$session -> check('Languages')) {
     			session_name('CRPagos');
     			$this -> loadModel('Locales');
-    			$LangQ = $this -> Locales -> index();
+    			$Langs = $this -> Locales -> index();
+//print_r($LangQ);
+//exit;
 
-    			$session -> write('Languages', $LangQ);
+    			$session -> write('Languages', $Langs);
     			$session -> write('ValidLangCodes', array());
-    			foreach ($LangQ as $ThisLan) {
+    			foreach ($Langs as $ThisLan) {
     				$_SESSION['ValidLangCodes'][] = $ThisLan['LocaleCode'];
     			}
     			$session -> write('LocaleCode', 'spa_cr');
@@ -102,7 +104,7 @@ class AppController extends Controller
     		}*/
     		//Avoid peering eyes, but allow Pages
     		$AllowPaths = array('pages', 'pay_invoice');
-    		if ($session -> check('Company.PayURL') === true && $this -> here !== $session -> read('Company.PayURL') && !in_array($this -> viewPath, $AllowPaths)) {
+    		if ($session -> check('Company.PayURL') === true && $this->request->here() !== $session -> read('Company.PayURL') && !in_array($this -> viewPath, $AllowPaths)) {
     			//Redirect to company's Pay URL
     			$this -> redirect($session -> read('Company.PayURL'));
     			exit ;
