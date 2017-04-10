@@ -1,0 +1,55 @@
+<?php 
+	$this->pageTitle= __('InvoiceRequestFrom', true).' '.$session->read('Company.CurrentName');
+	$ThisInvoice = current($InvoiceQ);
+	$html->css("nyroModal","stylesheet", array(), false);
+	$javascript->link("nyroModal/nyroModal", false);	
+	//localized validation code
+	$TheJs = $session->read('LocaleCode').'/checkpay';
+	$javascript->link($TheJs, false);
+	if($ThisInvoice['Invoices']['StatusID'] == 3){ 
+		$ShowAuthCode = "yes"; include 'invoice.ctp';
+		unset($_SESSION['Company']);
+		unset($_SESSION['Client']);
+		unset($_SESSION['User']);	
+	 }else{ 
+		if(strrchr($_SESSION['Company']['KeyName'], '.') == '.TESTING'){
+			$TheActionURL = "https://servicios.alignet.com/VPOS/MM/transactionStart20.do";
+		}else{
+			$TheActionURL = "https://vpayment.verifika.com/VPOS/MM/transactionStart20.do";
+		}
+ ?>
+	<form name="TheForm" id="TheForm" method="post" action="<?php echo $TheActionURL ?>">
+	<INPUT TYPE="hidden" NAME="IDACQUIRER" value="<?php echo $session->read('Company.AcquirerID'); ?>">
+	<INPUT TYPE="hidden" NAME="IDCOMMERCE" value="<?php echo $session->read('Company.CommerceID'); ?>">
+	<INPUT TYPE="hidden" NAME="XMLREQ" value="<?php echo $VPosData['XMLREQ'];?>">
+	<INPUT TYPE="hidden" NAME="DIGITALSIGN" value="<?php echo $VPosData['DIGITALSIGN'];?>">
+	<INPUT TYPE="hidden" NAME="SESSIONKEY" value="<?php echo $VPosData['SESSIONKEY'];?>">
+	<table border="0" align="center"width="850">
+		<tr>
+			<td colspan="4">
+			<?php $ShowCedJur = "yes"; include 'invoice.ctp' ?>
+		</td>
+		</tr>
+	  <tr>
+	    <th colspan="4">
+	    	<?php 
+			echo '<p align="center"><b>',__('WhenPressed'),'&ldquo;',__('PayThisInvoice'),'&rdquo;, ',__('PayInstructions4'),'</b></p>'; 
+			if($session->read('LocaleCode') == 'eng_us'){
+				$TheLink ='terms-and-conditions.htm';
+			}else{
+				$TheLink= 'terminos-y-condiciones.htm';
+			}
+			
+			?>
+			<input type="checkbox" value="OK" id="CheckTC" name="CheckTC"><a href="<?php echo $TheLink ?>" class="nyroModal"><?php echo __('UndrestoodTS')?></a>
+			</th>
+		</tr>
+		<tr>
+			<th colspan="4" align="center">
+	      <input type="image" name="Pay" id="Pay" width="266" height="42" alt="<?php echo __('PayThisInvoice')?>" src="/img/<?php echo strtolower(__('Pay', true))?>.gif">
+	   </th>
+	  </tr>
+	  <tr><td colspan="4"><?php echo '<em>',__('VerifyLock'),'</em>';  ?></td></tr>
+	</table>
+	</form>
+<?php } ?>

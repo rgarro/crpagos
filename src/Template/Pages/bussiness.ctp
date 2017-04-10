@@ -1,11 +1,12 @@
 <?php
+$session = $this->request->session();
 	$this->pageTitle='Business Affiliation';
 	//$html->meta('keywords', '', array(), false);
 	//$html->meta('description', '', array(), false);
 	//$javascript->link("jquery/validate", false);
 	//localized validation code
 	$TheJs = "/js/".$session->read('LocaleCode').'/checkform.js';
-	//$javascript->link($TheJs, false);	
+	//$javascript->link($TheJs, false);
 ?>
 <script src="/js/jquery/validate.js"></script>
 <script src="<?php echo $TheJs; ?>"></script>

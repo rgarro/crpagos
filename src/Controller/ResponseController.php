@@ -4,7 +4,7 @@ namespace App\Controller;
 use Cake\Core\Configure;
 use App\Controller\AppController;
 use Cake\Mailer\Email;
-
+use Cake\I18n\I18n;
 /**
  * Response Controller
  *
@@ -14,7 +14,7 @@ class ResponseController extends AppController {
 
   public function initialize(){
       parent::initialize();
-      $this->loadModel('L10n');
+      //$this->loadModel('L10n');
       $this->loadModel('Vpos');
       $this->loadModel('Transactions');
       $this->loadModel('Invoices');
@@ -29,6 +29,7 @@ class ResponseController extends AppController {
 			$VposResponse = array('authorizationResult' => '00', 'errorMessage' => 'Demo Ok', 'authorizationCode' => 'Demo Result');
 			$lang = $session -> read('LocaleCode');
 			$this -> L10n -> get($lang);
+      //I18n::locale($lang);
 			Configure::write('Config.language', $lang);
 			$this -> setAction('ResponseOK', $VposResponse);
 		}
@@ -78,6 +79,7 @@ class ResponseController extends AppController {
 				if ($CurrentInvoice) {
 					//Set the other Localized Values
 					$lang = $CurrentInvoice['Invoices']['LocaleCode'];
+          //I18n::locale($lang);
 					$this -> L10n -> get($lang);
 					Configure::write('Config.language', $lang);
 					$session -> write('LocaleCode', $lang);
@@ -123,18 +125,22 @@ class ResponseController extends AppController {
 			//Save The Log
 			$Comment = __('VPOSReply', true) . ' Result ' . $VposResponse['authorizationResult'] . ' Message ' . $VposResponse['errorMessage'];
 			$this -> Invoices -> AddInvoiceLog($InvoiceID, 10, $Comment);
-			$session -> setFlash(__('ErrorProcessingCard', true));
-			$Subject = $session -> read('Company.CurrentName')." Error Processing Card : " . $TheError;
-			$this -> SwiftMailer -> charset = "iso-8859-1";
-			$this -> SwiftMailer -> from = "info@crpagos.com";
-			$this -> SwiftMailer -> fromName = "CRPagos Error";
-			$this -> SwiftMailer -> to = array('mensajes1@pragmatico.com' => 'Mensajes');
-			//$this -> SwiftMailer -> cc = array('kchanto@pragmasoft.co.cr' => 'Kenneth');
-			$this -> Set('VposResponse', $VposResponse);
-			$this -> SwiftMailer -> sendAs = "text";
-			if (!$this -> SwiftMailer -> send("invalid", $Subject)) {
-				$this -> log('Error sending email ' . $Subject, LOG_ERROR);
-			}
+			$this->Flash->error(__('ErrorProcessingCard'));
+
+
+      $EmailSubject = $session -> read('Company.CurrentName')." Error Processing Card : " . $TheError;
+      $Email = new Email('default');
+      $Email->setCharset("iso-8859-1");
+      $Email->viewVars(array('VposResponse'=>$VposResponse));
+      $Email->emailFormat('text');
+      $Email->template("invalid_text");
+      $Email->from(array('info@crpagos.com' => 'CRPagos Error'));
+      $Email->replyTo(array("info@crpagos.com" => "InfoCRPagos"));
+      $Email->cc(array('kchanto@pragmasoft.co.cr' => 'Kenneth'));
+      $Email->subject($EmailSubject);
+      $Email->to(array('mensajes1@pragmatico.com' => 'Mensajes'));
+      //$Email->to(array('rgarro@gmail.com' => 'InfoCRPagos'));
+      $Email->send();
 		}
 		//Redirect
 
@@ -163,6 +169,7 @@ class ResponseController extends AppController {
 
 		//Update The Response
 		$lang = $this -> Cookie -> read('lang');
+      //I18n::locale($lang);
 		$this -> L10n -> get($lang);
 		Configure::write('Config.language', $lang);
 		$session -> write('LocaleCode', $lang);

@@ -189,6 +189,8 @@ exit;*/
     /************/
 }else{
   $TheName =  basename(strtolower($_SERVER['REQUEST_URI']), ".htm");
+  $TheName = (stristr($TheName, '?') === FALSE? $TheName : array_shift((explode("?",$TheName))));//aqui se gano el dolar del dia
+  $TheName =  basename(strtolower($TheName), ".htm");
   Router::connect('/'.$TheName.'.htm', array('controller' => 'pages', 'action' => 'display', $TheName));
 }
 

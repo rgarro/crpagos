@@ -1,9 +1,13 @@
 <?php
+$session = $this->request->session();
 	$this->pageTitle='About CRPagos';
 	//$html->meta('keywords', '', array(), false);
 	//$html->meta('description', '', array(), false);
 //localized validation code
-	$TheJs = $session->read('LocaleCode').'/checkform';
+	$TheJs = $session->read('LocaleCode').'/checkform.js';
+//echo $TheJs;
+//exit;
+	echo $this->Html->script($TheJs);
 	//$javascript->link($TheJs, false);
 ?>
 <div class="contenttxt">

@@ -90,19 +90,19 @@ class AppController extends Controller
     			}
     		}
     		//L10n
-    		/*$this -> L10n = new L10n();
+    	$this -> L10n = new L10n();
     		$this -> L10n -> get($session -> read('LocaleCode'));
     		if($session->read('LocaleCode') == 'spa_cr'){
     			setlocale(LC_ALL, 'es_CR');
     		}else{
     			setlocale(LC_ALL, 'en_US');
-    		}*/
+    		}
 
-        if($session->read('LocaleCode') == 'spa_cr'){
+        /*if($session->read('LocaleCode') == 'spa_cr'){
           I18n::locale('es_cr');
-        }else{          
+        }else{
           I18n::locale('en_us');
-        }
+        }*/
 
 
 
