@@ -79,4 +79,36 @@ class TransactionsTable extends Table
 
         return $validator;
     }
+
+    public function index($TransactionID = 0){
+			$TheSql=" SELECT * ";
+			$TheSql.=" FROM Transactions ";
+			$TheSql.=" WHERE TransactionID = ".$TransactionID;
+			$TheSql.=" AND ResponseDate is null";
+      $DataSet = $this->connection()->execute($TheSql)->fetch('assoc');
+      return $DataSet;
+		}
+
+		public function AddTransaction(){
+			$TheSql =" INSERT INTO Transactions (IP, InvoiceID, SessionID, CommerceID, UserAgent)";
+			$TheSql.=" VALUES (";
+			$TheSql.="'".substr(trim($_SERVER['REMOTE_ADDR']),0,20)."',";
+			$TheSql.="'".$_SESSION['Client']['InvoiceID']."',";
+			$TheSql.= "'".$_COOKIE['CRPAGOS']."',";
+			$TheSql.= intval($_SESSION['Company']['CommerceID']).",";
+			$TheSql.= "'".$_SERVER['HTTP_USER_AGENT']."')";
+      $res = $this->connection()->execute($TheSql);
+      return $res->lastInsertId();
+		}
+
+
+		public function UpdateTransResponse($TransactionID = 0, $FullResponse =''){
+			$TheSql =" UPDATE Transactions ";
+			$TheSql.=" SET ResponseDate = NOW(),";
+			$TheSql.=" FullResponse = '".$FullResponse."'";
+			$TheSql.=" WHERE TransactionID = ".$TransactionID;
+      $res = $this->connection()->execute($TheSql);
+      return $res;
+		}
+
 }

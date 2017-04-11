@@ -32,6 +32,7 @@ use Cake\Controller\Component\CookieComponent;
 class AppController extends Controller
 {
 
+var $L10n;
     public function initialize()
     {
         parent::initialize();

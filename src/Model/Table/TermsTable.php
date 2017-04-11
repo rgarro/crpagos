@@ -97,11 +97,11 @@ class TermsTable extends Table
 
   	public function Update($LocaleCode = null, $Content = null) {
   		$TheSql = "UPDATE Terms ";
-  		$TheSql .= " SET Content = '" . Sanitize::clean(trim($Content), array('escape' => false)) . "',";
+  		$TheSql .= " SET Content = '" . trim($Content) . "',";
   		$TheSql .= " Modified = NOW(), ";
-  		$TheSql .= " ModifiedBy = " . Sanitize::paranoid($_SESSION['User']['UserID']);
-  		$TheSql .= " WHERE CompanyID = " . Sanitize::paranoid($_SESSION['Company']['CurrentCompanyID']);
-  		$TheSql .= " AND LocaleCode = '" . Sanitize::paranoid($LocaleCode, array('_')) . "'";
+  		$TheSql .= " ModifiedBy = " . $_SESSION['User']['UserID'];
+  		$TheSql .= " WHERE CompanyID = " . $_SESSION['Company']['CurrentCompanyID'];
+  		$TheSql .= " AND LocaleCode = '" . $LocaleCode . "'";
       $res = $this->connection()->execute($TheSql);
       return $res;
   	}
