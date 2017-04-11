@@ -132,4 +132,49 @@ class CompaniesTable extends Table
 
         return $validator;
     }
+
+    public function index($CommerceID = 0){
+			$TheSql=" SELECT * ";
+			$TheSql.=" FROM Companies ";
+			$TheSql.=" WHERE CompanyStatus = 1 ";
+			$TheSql.=" AND CommerceID = ".$CommerceID;
+      //$this->connection()->execute($TheSql);
+			//$DataSet = $this->query($TheSql);
+			//return $DataSet;
+      return $this->connection()->execute($TheSql)->fetchAll('assoc');
+		}
+
+		public function GetSites($ThisSite = 0){
+			$TheSql="SELECT * ";
+			$TheSql.=" FROM Companies ";
+			if($ThisSite){
+				if(is_numeric($ThisSite)){
+					$TheSql.="WHERE CompanyID = ".$ThisSite;
+				}else{
+					$TheSql.="WHERE CompanyName = '".$ThisSite."'";
+				}
+			}
+			$DataSet = $this->connection()->execute($TheSql)->fetchAll('assoc');
+			return $DataSet;
+		}
+
+		public function SaveMyCompanySettings(){
+			$TheSql = " UPDATE Companies ";
+			$TheSql.=" SET LocaleCode = '".substr(trim($_POST['LocaleCode']),0,50)."',";
+			$TheSql.=" CompanyName = '".substr(trim($_POST['CompanyName']),0,150)."',";
+			$TheSql.=" Email = '".substr(trim($_POST['Email']), array('@', '.', '-'),0,100)."',";
+			if($_FILES['Logo']['error'] == 0){
+				$TheSql.=" Logo = '".substr(trim($_FILES['Logo']['name']),0,100)."',";
+			}
+			$TheSql.=" CompanyName = '".substr(trim($_POST['CompanyName']),0,150)."',";
+			//$TheSql.=" EmailSubject = '".substr(Sanitize::escape(trim($_POST['EmailSubject'])),0,100)."',";
+			$TheSql.=" TaxID = '".substr(trim($_POST['TaxID']),0,100)."',";
+			$TheSql.=" CompanyInfo = '".trim($_POST['CompanyInfo'])."',";
+			$TheSql.=" DefaultNote = '".trim($_POST['DefaultNote'])."',";
+			$TheSql.=" Modified = NOW(),";
+			$TheSql.=" ModifiedBy ='".substr(trim($_SESSION['User']['FullName']),0,200)."'";
+			$TheSql.=" WHERE CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
+			$DataSet = $this->connection()->execute($TheSql);
+			return $DataSet;
+		}
 }

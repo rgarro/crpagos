@@ -127,9 +127,10 @@ class UsersTable extends Table
 			$TheSql.= trim($_POST['AccessLevelID']).",";
 			$TheSql.= trim($_POST['UserStatus']).",";
 			$TheSql.="'".substr(trim($_SESSION['User']['FullName']),0,200)."')";
-			$DataSet = $this->query($TheSql);
-			$UserID = mysql_insert_id();
-      return $this->connection()->execute($TheSql);
+			//$DataSet = $this->query($TheSql);
+			//$UserID = mysql_insert_id();
+      $res = $this->connection()->execute($TheSql);
+      return $res->lastInsertId();
 		}
 
 		public function UpdateUser($UserID = 0){
@@ -150,8 +151,8 @@ class UsersTable extends Table
 			$TheSql = " INSERT INTO CompanyUsers( CompanyID, UserID ) ";
 			$TheSql.= " VALUES (".$_SESSION['Company']['CurrentCompanyID'].",";
 			$TheSql.= $UserID.")";
-
-			return $this->connection()->execute($TheSql);
+      $res = $this->connection()->execute($TheSql);
+      return $res->lastInsertId();
 		}
 
 		public function SaveMySettings(){

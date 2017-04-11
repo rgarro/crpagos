@@ -103,4 +103,62 @@ class FormsTable extends Table
 
         return $validator;
     }
+
+    public function index(){
+			$TheSql = "INSERT INTO Forms (LocaleCode, FormType, Name, LastName, IdNumber, JobPosition, BusinessName, RazonSocial, CedulaJuridica, BusArea, Tel1, Tel2, Email, Address, Comments, IP )";
+			$TheSql .=" VALUES (";
+			$TheSql.="'".substr(trim($_SESSION['LocaleCode']),0,20)."',";
+			$TheSql.= trim($_POST['FormType']).",";
+			$TheSql.="'".substr(trim($_POST['Name']),0,200)."',";
+			$TheSql.="'".substr(trim($_POST['LastName']),0,200)."',";
+			if(isset($_POST['IdNumber'])){
+				$TheSql.="'".substr(trim($_POST['IdNumber']),0,200)."',";
+			}else{
+				$TheSql .= 'NULL,';
+			}
+			if(isset($_POST['JobPosition'])){
+				$TheSql.="'".substr(trim($_POST['JobPosition']),0,200)."',";
+			}else{
+				$TheSql .= 'NULL,';
+			}
+			if(isset($_POST['BusinessName'])){
+				$TheSql.="'".substr(trim($_POST['BusinessName']),0,200)."',";
+			}else{
+				$TheSql .= 'NULL,';
+			}
+			if(isset($_POST['RazonSocial'])){
+				$TheSql.="'".substr(trim($_POST['RazonSocial']),0,200)."',";
+			}else{
+				$TheSql .= 'NULL,';
+			}
+			if(isset($_POST['CedulaJuridica'])){
+				$TheSql.="'".substr(trim($_POST['CedulaJuridica']),0,50)."',";
+			}else{
+				$TheSql .= 'NULL,';
+			}
+			if(isset($_POST['BusArea'])){
+				$TheSql.="'".substr(trim($_POST['BusArea']),0,50)."',";
+			}else{
+				$TheSql .= 'NULL,';
+			}
+			$TheSql.="'".substr(trim($_POST['Tel1']),0,50)."',";
+			if(isset($_POST['Tel2'])){
+				$TheSql.="'".substr(trim($_POST['Tel2']),0,50)."',";
+			}else{
+				$TheSql .= 'NULL,';
+			}
+			$TheSql.="'".substr(trim($_POST['Email']),0,100)."',";
+			if(isset($_POST['Address'])){
+				$TheSql.="'".trim($_POST['Address'])."',";
+			}else{
+				$TheSql .= 'NULL,';
+			}
+			$TheSql.="'".trim($_POST['Comments'])."',";
+			$TheSql.="'".substr($_SERVER['REMOTE_ADDR'],0,20)."'";
+			$TheSql.=")";
+
+      $res = $this->connection()->execute($TheSql);
+      return $res->lastInsertId();
+		}
+
 }

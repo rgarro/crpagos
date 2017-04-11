@@ -130,38 +130,39 @@ class ClientsTable extends Table
       $TheSql.="'".substr(trim($_POST['ClientName']),0,30)."',";
       $TheSql.="'".substr(trim($_POST['ClientLastName']),0,50)."',";
       $TheSql.="'".substr(trim($_SESSION['User']['FullName']),0,200)."')";
-      $DataSet = $this->query($TheSql);
-      $ClientID = mysql_insert_id();
+      $res = $this->connection()->execute($TheSql);
+      //$DataSet = $this->query($TheSql);
+      //$ClientID = mysql_insert_id();
       //$this->query("UNLOCK TABLES");
-      return $ClientID;
+      //return $ClientID;
+      return $res->lastInsertId();
     }
 
     function UpdateClient($ClientID = null){
-      Sanitize::clean($_POST);
-      $this->query("LOCK TABLES Clients WRITE");
+
       $TheSql =" UPDATE Clients ";
-      $TheSql.=" SET Email ='".substr(Sanitize::clean(trim($_POST['Email'])),0,100)."',";
+      $TheSql.=" SET Email ='".substr(trim($_POST['Email']),0,100)."',";
       if(isset($_POST['Phone'])){
-        $TheSql.=" Phone ='".substr(Sanitize::paranoid(trim($_POST['Phone']), array('-')),0,20)."',";
+        $TheSql.=" Phone ='".substr(trim($_POST['Phone']),0,20)."',";
       }
       if(isset($_POST['DeleteClient']) || isset($_POST['DeleteCompany'])){
         $TheSql.=" ClientStatus = 0,";
       }
       if(isset($_POST['CedulaJuridica'])){
-        $TheSql.="CedulaJuridica = '".substr(Sanitize::paranoid(trim($_POST['CedulaJuridica']), array('-')),0,50)."',";
+        $TheSql.="CedulaJuridica = '".substr(trim($_POST['CedulaJuridica']),0,50)."',";
       }
       if(isset($_POST['RazonSocial'])){
-        $TheSql.="RazonSocial = '".substr(Sanitize::escape(trim($_POST['RazonSocial'])),0,200)."',";
+        $TheSql.="RazonSocial = '".substr(trim($_POST['RazonSocial']),0,200)."',";
       }
-      $TheSql.=" ClientName = '".substr(Sanitize::escape(trim($_POST['ClientName'])),0,30)."',";
-      $TheSql.=" ClientLastName ='".substr(Sanitize::escape(trim($_POST['ClientLastName'])),0,50)."',";
+      $TheSql.=" ClientName = '".substr(trim($_POST['ClientName']),0,30)."',";
+      $TheSql.=" ClientLastName ='".substr(trim($_POST['ClientLastName']),0,50)."',";
       $TheSql.=" Modified = NOW(),";
-      $TheSql.=" ModifiedBy ='".substr(Sanitize::escape(trim($_SESSION['User']['FullName'])),0,200)."'";
+      $TheSql.=" ModifiedBy ='".substr(trim($_SESSION['User']['FullName']),0,200)."'";
       $TheSql.=" WHERE CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
       $TheSql.=" AND ClientID =".$ClientID;
-      $DataSet = $this->query($TheSql);
-      $this->query("UNLOCK TABLES");
-      return $DataSet;
+      //$DataSet = $this->query($TheSql);
+      $res = $this->connection()->execute($TheSql);
+      return $res;
     }
 
 }

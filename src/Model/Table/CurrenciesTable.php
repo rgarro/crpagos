@@ -59,4 +59,15 @@ class CurrenciesTable extends Table
 
         return $validator;
     }
+
+    public function index(){
+      $TheSql="SELECT Currencies.* ";
+      $TheSql.=" FROM Currencies ";
+      $TheSql.=" INNER JOIN CompanyCurrencies ON Currencies.CurrencyID = CompanyCurrencies.CurrencyID ";
+      $TheSql.=" WHERE CompanyCurrencies.CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
+      $TheSql.=" ORDER BY CompanyCurrencies.CurrencyOrder ";
+      $DataSet = $this->connection()->execute($TheSql)->fetchAll('assoc');//$this->query($TheSql);
+      return $DataSet;
+    }
+
 }
