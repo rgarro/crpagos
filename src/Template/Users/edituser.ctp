@@ -1,12 +1,13 @@
 <?php
+$session = $this->request->session();
 	$CurrentUser = current($GetUserQ);
 	$this->pageTitle= __('Editing', true).' '.$CurrentUser['Users']['FirstName'].' '.$CurrentUser['Users']['LastName'];
-	$html->css("zebra","stylesheet", array(), false);
-	$javascript->link("zebra/zebra", false);
-	$javascript->link("jquery/validate", false);
+	echo $this->Html->css("zebra");
+	echo $this->Html->script("zebra/zebra");
+	echo $this->Html->script("jquery/validate");
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/checkuser';
-	$javascript->link($TheJs, false);
+	echo $this->Html->script($TheJs);
 	//echo '<p align="center"><a href="/',$this->viewPath,'/" onclick="return confirm(\'', __('BackConfirm'),'\');">', __('BackToUserList'),'</a></p>';
 ?>
 	<h1><?php echo $this->pageTitle ?></h1>

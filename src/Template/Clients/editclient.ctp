@@ -1,19 +1,20 @@
 <?php
+$session = $this->request->session();
 	$CurrentClient = current($GetClientQ);
 	if($CurrentClient['Clients']['ClientID'] != ''){
 		$this->pageTitle= __('Editing', true).' '.$CurrentClient['Clients']['ClientName'];
 	}else{
 		$this->pageTitle = __('AddingNewClient', true).' '.$session->read('Company.CurrentName');
 	}
-	$html->css("zebra","stylesheet", array(), false);
-	$html->css("ui","stylesheet", array(), false);
-	$javascript->link("zebra/zebra", false);
-	$javascript->link("jquery/jquery.ui", false);
-	$javascript->link("jquery/jquery.cookie", false);
-	$javascript->link("jquery/validate", false);
+	echo $this->Html->css("zebra");
+	echo $this->Html->css("ui");
+	echo $this->Html->script("zebra/zebra");
+	echo $this->Html->script("jquery/jquery.ui");
+	echo $this->Html->script("jquery/jquery.cookie");
+	echo $this->Html->script("jquery/validate");
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/checkclient';
-	$javascript->link($TheJs, false);
+	echo $this->Html->script($TheJs);
 //	echo '<p align="center"><a href="/',$this->viewPath,'/" onclick="return confirm(\'', __('BackConfirm'),'\');">', __('BackToClientList'),'</a></p>';
 ?>
 <h1><?php echo $this->pageTitle ?></h1>

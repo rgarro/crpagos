@@ -1,7 +1,8 @@
 <?php
-$html -> css("ui", "stylesheet", array(), false);
-$javascript -> link("jquery/jquery.ui", false);
-$javascript -> link("check", false);
+$session = $this->request->session();
+echo $this->Html->css("ui");
+echo $this->Html->script("jquery/jquery.ui");
+echo $this->Html->script("check");
 ?>
 <fieldset style="width: 400px; margin: 10px auto;">
 	<ol style="list-style: none">

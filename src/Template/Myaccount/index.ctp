@@ -1,16 +1,17 @@
-<?php 
+<?php
+$session = $this->request->session();
 	$CurrentUser = current($GetUserQ);
 	if($session->read('LocaleCode') == 'spa_cr'){
-		$this->pageTitle= 'Cuenta de  '.$CurrentUser['Users']['FirstName'];	
+		$this->pageTitle= 'Cuenta de  '.$CurrentUser['Users']['FirstName'];
 	}else{
-		$this->pageTitle= $CurrentUser['Users']['FirstName'].'&rsquo;s Account';	
+		$this->pageTitle= $CurrentUser['Users']['FirstName'].'&rsquo;s Account';
 	}
-	$html->css("zebra","stylesheet", array(), false);
-	$javascript->link("zebra/zebra", false);
-	$javascript->link("jquery/validate", false);	
+	echo $this->Html->css("zebra");
+	echo $this->Html->script("zebra/zebra");
+	echo $this->Html->script("jquery/validate");
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/checkmyaccount';
-	$javascript->link($TheJs, false);
+	echo $this->Html->script($TheJs);
 ?>
 <h1><?php echo $this->pageTitle ?></h1>
 	<form method="post" action="/myaccount/saveme/" id="TheForm" name="TheForm">

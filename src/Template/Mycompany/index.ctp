@@ -1,18 +1,17 @@
 <?php
-
-
+$session = $this->request->session();
 	$CurrentCompany = current($GetMyCompanyQ);
 	if($session->read('LocaleCode') == 'spa_cr'){
 		$this->pageTitle= 'Cuenta de  '.$CurrentCompany['Companies']['CompanyName'];
 	}else{
 		$this->pageTitle= $CurrentCompany['Companies']['CompanyName'].'&rsquo;s Account';
 	}
-	$html->css("zebra","stylesheet", array(), false);
-	$javascript->link("zebra/zebra", false);
-	$javascript->link("jquery/validate", false);
+	echo $this->Html->css("zebra");
+	echo $this->Html->script("zebra/zebra");
+	echo $this->Html->script("jquery/validate");
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/checkmycompany';
-	$javascript->link($TheJs, false);
+	echo $this->Html->script($TheJs);
 ?>
 <h1><?php echo $this->pageTitle ?></h1>
 	<form method="post" action="/mycompany/saveme/" id="TheForm" name="TheForm" enctype="multipart/form-data">

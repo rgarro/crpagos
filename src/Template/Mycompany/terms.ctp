@@ -1,5 +1,5 @@
 <?php
-
+$session = $this->request->session();
 	$CurrentCompany = current($GetMyCompanyQ);
 	if($session->read('LocaleCode') == 'spa_cr'){
 		$this->pageTitle= __('Terms', true).' de '.$CurrentCompany['Companies']['CompanyName'];
@@ -7,18 +7,21 @@
 		$this->pageTitle= $CurrentCompany['Companies']['CompanyName'].'&rsquo;s '.__('Terms', true);
 	}
 
-	$html->css("zebra","stylesheet", array(), false);
-	$javascript->link("zebra/zebra", false);
-	$javascript->link("jquery/jquery.tinymce", false);
+	echo $this->Html->css("zebra");
+	echo $this->Html->script("zebra/zebra");
+	echo $this->Html->script("jquery/jquery.tinymce");
 	$ThePageLang = substr($session -> read('LocaleCode'), 0, 2);
 	if($ThePageLang == 'sp'){
 		$ThePageLang = 'es';
 	}
-	$TheBlock = "var locale = '" . $ThePageLang . "'";
-	$this -> addScript($javascript -> codeBlock($TheBlock));
-	$javascript->link("tinymce", false);
-
-
+	$TheBlock = "var locale = '" . $ThePageLang . "';";
+	?>
+	<script type="text/javascript">
+	<?php echo $TheBlock; ?>
+	</script>	
+	<?php
+	//$this -> addScript($javascript -> codeBlock($TheBlock));
+	echo $this->Html->script("tinymce");
 ?>
 <h1><?php echo $this->pageTitle ?></h1>
 	<form method="post" action="/mycompany/terms/" id="TheForm" name="TheForm" enctype="multipart/form-data">

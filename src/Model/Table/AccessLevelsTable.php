@@ -52,4 +52,18 @@ class AccessLevelsTable extends Table
 
         return $validator;
     }
+
+    public function index(){
+			if(!isset($_SESSION['User']['AccessLevelID'])){$AccessLevel = 2;}else($AccessLevel = $_SESSION['User']['AccessLevelID']);
+			$TheSql=" SELECT * ";
+			$TheSql.=" FROM AccessLevels ";
+			if($AccessLevel != 0){
+				$TheSql.=" WHERE  AccessLevelID > 0 ";
+			}
+			$TheSql.=" ORDER BY AccessLevelID ";
+			//$DataSet = $this->query($TheSql);
+			//return $DataSet;
+      return $this->connection()->execute($TheSql)->fetchAll('assoc');
+		}
+
 }

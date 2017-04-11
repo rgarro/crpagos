@@ -1,7 +1,7 @@
-<?php 
+<?php
 	$this->pageTitle= __('UsersOf', true).' '.$session->read('Company.CurrentName');
-	$html->css("zebra","stylesheet", array(), false);
-	$javascript->link("zebra/zebra", false);
+	echo $this->Html->css("zebra");
+	echo $this->Html->script("zebra/zebra");
 ?>
 <h1><?php echo $this->pageTitle ?></h1>
 <?php if(count($GetUsersQ) > 0){?>
@@ -21,10 +21,10 @@
 		if($CurrentUser['Users']['UserStatus'] == 1){
 			__('Active');
 		}else{
-			__('InActive');	
+			__('InActive');
 		}
 		echo '</td>';
-		echo '<td align="center">',__($CurrentUser['AccessLevels']['AccessLevel']),'</td>';	
+		echo '<td align="center">',__($CurrentUser['AccessLevels']['AccessLevel']),'</td>';
 		echo '<td align="center">',$CurrentUser['Users']['FirstName'],'</td>';
 		echo '<td align="center">',$CurrentUser['Users']['LastName'],'</td>';
 		echo '<td align="center"><a href="mailto:',$CurrentUser['Users']['Email'],'">',$CurrentUser['Users']['Email'],'</a></td>';

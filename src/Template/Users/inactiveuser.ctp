@@ -1,5 +1,5 @@
-<?php 
-	$javascript->link("nyroModal/nyroModal", false);
+<?php
+	echo $this->Html->script("nyroModal/nyroModal");
 	$CurrentSearch['Members']['ParentID']=$session->read('User.MemberID')
 	?>
 	<link rel="stylesheet" href="/js/nyroModal/nyroModal.css" type="text/css" media="screen" />
