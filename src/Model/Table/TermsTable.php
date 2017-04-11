@@ -70,4 +70,40 @@ class TermsTable extends Table
 
         return $validator;
     }
+
+    public function index($ShowLocale = true) {
+  		$TheSql = "SELECT LocaleCode, Content ";
+  		$TheSql .= " FROM Terms ";
+  		$TheSql .= " WHERE CompanyID = " . $_SESSION['Company']['CurrentCompanyID'];
+  		if($ShowLocale){
+  			$TheSql .= " AND LocaleCode = '" . $_SESSION['LocaleCode']. "'";
+  		}
+      $DataSet = $this->connection()->execute($TheSql)->fetchAll('assoc');
+      return $DataSet;
+  	}
+
+  	public function AddNew($LocaleCode = null, $Content = null) {
+  		$TheSql = "INSERT INTO Terms (CompanyID, LocaleCode, Content, Entered, EnteredBy) ";
+  		$TheSql .= " VALUES(" . $_SESSION['Company']['CurrentCompanyID'] . ",";
+  		$TheSql .= "'" . $LocaleCode. "',";
+  		$TheSql .= "'" . trim($Content) . "',";
+  		$TheSql .= "NOW(),";
+  		$TheSql .= $_SESSION['User']['UserID'];
+  		$TheSql .= " )";
+
+      $res = $this->connection()->execute($TheSql);
+      return $res->lastInsertId();
+  	}
+
+  	public function Update($LocaleCode = null, $Content = null) {
+  		$TheSql = "UPDATE Terms ";
+  		$TheSql .= " SET Content = '" . Sanitize::clean(trim($Content), array('escape' => false)) . "',";
+  		$TheSql .= " Modified = NOW(), ";
+  		$TheSql .= " ModifiedBy = " . Sanitize::paranoid($_SESSION['User']['UserID']);
+  		$TheSql .= " WHERE CompanyID = " . Sanitize::paranoid($_SESSION['Company']['CurrentCompanyID']);
+  		$TheSql .= " AND LocaleCode = '" . Sanitize::paranoid($LocaleCode, array('_')) . "'";
+      $res = $this->connection()->execute($TheSql);
+      return $res;
+  	}
+
 }

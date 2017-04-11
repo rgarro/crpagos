@@ -52,4 +52,19 @@ class StatusTable extends Table
 
         return $validator;
     }
+
+    public function index($StatusID = null) {
+  		$TheSql = "SELECT * ";
+  		$TheSql .= " FROM Status ";
+  		$TheSql .= " WHERE StatusID <> 3 ";
+  		if ($StatusID) {
+  			$TheSql .= " AND StatusID >= " . $StatusID;
+  		} else {
+  			$TheSql .= " AND StatusID <> 2";
+  		}
+  		$TheSql .= " ORDER BY StatusID ";
+      $DataSet = $this->connection()->execute($TheSql)->fetchAll('assoc');
+      return $DataSet;
+  	}
+
 }
