@@ -25,19 +25,19 @@ class MyaccountController extends AppController {
 				$UserQ = $this -> Users -> FindUserByEmail($SafeMail);
 				if (count($UserQ) > 0) {
 					$UserQ = current($UserQ);
-/*
-          $this -> SwiftMailer -> charset = "utf-8";
-					$this -> SwiftMailer -> from = "info@crpagos.com";
-					$this -> SwiftMailer -> fromName = "Servicio al cliente crpagos.com";
-					$this -> SwiftMailer -> to = array($UserQ['Users']['Email'] => $UserQ['Users']['FirstName'] . " " . $UserQ['Users']['LastName']);
-					//$this -> SwiftMailer -> bcc = array('kchanto@pragmasoft.co.cr' => 'Amin');
-					$this -> SwiftMailer -> replyTo = "info@crpagos.com";
-					$this -> SwiftMailer -> sendAs = "html";
-					$this -> set('UserQ', $UserQ);
-					if (!$this -> SwiftMailer -> send('recpass', 'Recordatorio de clave crpagos.com')) {
-						$this -> log('Error sending email "register".', LOG_ERROR);
-					}
-          */
+          $EmailSubject ="Recordatorio de clave crpagos.com";
+          $Email = new Email('default');
+          $Email->setCharset("utf-8");
+          $Email->viewVars(array('UserQ'=>$UserQ));
+          $Email->emailFormat('html');
+          $Email->template("recpass_html");
+          $Email->from(array('info@crpagos.com' => 'Servicio al cliente crpagos.com'));
+          $Email->replyTo(array("info@crpagos.com" => "Servicio al cliente crpagos.com"));
+          $Email->cc(array('kchanto@pragmasoft.co.cr' => 'Amin'));
+          $Email->subject($EmailSubject);
+          $Email->to(array($UserQ['Users']['Email'] => $UserQ['Users']['FirstName'] . " " . $UserQ['Users']['LastName']));
+          //$Email->to(array('rgarro@gmail.com' => 'InfoCRPagos'));
+          $Email->send();
 					$this ->Flash->success(__('PassSent', true));
 					$this -> redirect('/login/');
 				} else {

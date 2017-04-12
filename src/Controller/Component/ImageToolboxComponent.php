@@ -8,7 +8,7 @@ class ImageToolboxComponent extends Object {
 	public function __construct()
 	{
 		parent::__construct();
-		App::import('Vendor', 'Swift', array('file' => 'imagetoolbox'.DS.'Image_Toolbox.class.php'));
+		include('Image_Toolbox.class.php');
 	}
 	public function makeToolbox()
 	{
