@@ -126,7 +126,7 @@ class PayInvoiceController extends AppController
 					//Requery to reflect new status
 					$InvoiceQ = current($this -> Invoices -> index($InvoiceID));
 					$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
-					$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['Invoices']['InvoiceNumber'] . ' ' . __('ConfirmPaid', true);
+					$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmPaid', true);
 					$_POST['CopyClient'] = 1;
 					$TheTemplate = "invoicepaid";
 					include App::path('Template') . '/Company/mail.ctp';
@@ -177,7 +177,7 @@ class PayInvoiceController extends AppController
 			$InvoiceID = $session -> read('Client.InvoiceID');
 			$this -> Invoices -> AddInvoiceLog($InvoiceID, 6, $TheError . print_r($_GET, true));
 		}
-    
+
     $EmailSubject =$session -> read('Company.CurrentName')." Credomatic Error Processing Card : " . $TheError;
     $Email = new Email('default');
     $Email->setCharset("iso-8859-1");

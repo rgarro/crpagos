@@ -89,11 +89,11 @@ class MycompanyController extends AppController
 		$LocalesQ = $this -> Locales -> index();
 		if (count($TermsQ) > 0) {
 			foreach ($TermsQ as $ThisTerm) {
-				$TheTerms[$ThisTerm['Terms']['LocaleCode']] = $ThisTerm['Terms']['Content'];
+				$TheTerms[$ThisTerm['LocaleCode']] = $ThisTerm['Content'];
 			}
 		} else {
 			foreach ($LocalesQ as $ThisTerm) {
-				$TheTerms[$ThisTerm['Locales']['LocaleCode']] = null;
+				$TheTerms[$ThisTerm['LocaleCode']] = null;
 			}
 		}
 

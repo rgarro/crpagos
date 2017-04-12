@@ -115,7 +115,7 @@ class UsersTable extends Table
 			$TheSql.=" FROM Users ";
 			$TheSql.=" WHERE UserStatus <> 0 ";
 			$TheSql.=" AND Email ='".$SafeMail."'";
-			return $this->connection()->execute($TheSql)->fetchAll('assoc');
+			return $this->connection()->execute($TheSql)->fetch('assoc');
 		}
 
 		public function AddNewUser(){

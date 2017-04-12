@@ -35,7 +35,7 @@ class MyaccountController extends AppController {
           $Email->replyTo(array("info@crpagos.com" => "Servicio al cliente crpagos.com"));
           $Email->cc(array('kchanto@pragmasoft.co.cr' => 'Amin'));
           $Email->subject($EmailSubject);
-          $Email->to(array($UserQ['Users']['Email'] => $UserQ['Users']['FirstName'] . " " . $UserQ['Users']['LastName']));
+          $Email->to(array($UserQ['Email'] => $UserQ['FirstName'] . " " . $UserQ['LastName']));
           //$Email->to(array('rgarro@gmail.com' => 'InfoCRPagos'));
           $Email->send();
 					$this ->Flash->success(__('PassSent', true));

@@ -25,12 +25,12 @@ $session = $this->request->session();
 	</ul>
 	<div id="Bus">
 		<form method="post" action="/<?php echo $this->viewPath ?>/saveclient/" id="TheBusForm" name="TheBusForm">
-			<?php if($CurrentClient['Clients']['ClientID'] != ''){?>
-			<input type="hidden" name="ClientID" value="<?php echo base64_encode($CurrentClient['Clients']['ClientID']) ?>">
+			<?php if($CurrentClient['ClientID'] != ''){?>
+			<input type="hidden" name="ClientID" value="<?php echo base64_encode($CurrentClient['ClientID']) ?>">
 			<?php } ?>
 			<table border="0" class="zebra" align="center" width="600">
 				<tr><th colspan="2">&nbsp;</th></tr>
-			<?php if($CurrentClient['Clients']['ClientID'] != '' && $session->read('User.AccessLevelID') < 2 ){?>
+			<?php if($CurrentClient['ClientID'] != '' && $session->read('User.AccessLevelID') < 2 ){?>
 				<tr>
 					<td><label for="DeleteCompany">*<?php  __('DeleteCompany') ?></label></td>
 					<td><input type="checkbox" name="DeleteCompany" id="DeleteCompany" tabindex="7"></td>
@@ -39,25 +39,25 @@ $session = $this->request->session();
 			<?php } ?>
 				<tr>
 					<td><label for="ClientName">*<?php __('CompanyName') ?></label></td>
-					<td><input type="text" name="ClientName" tabindex="8" size="30" maxlength="30" value="<?php echo $CurrentClient['Clients']['ClientName'] ?>"></td>
+					<td><input type="text" name="ClientName" tabindex="8" size="30" maxlength="30" value="<?php echo $CurrentClient['ClientName'] ?>"></td>
 				</tr>
 
 				<tr>
 					<td><label for="Email">*<?php  __('Email') ?></label></td>
-					<td><input type="text" name="Email"  tabindex="9" size="30" maxlength="100" value="<?php echo $CurrentClient['Clients']['Email'] ?>"></td>
+					<td><input type="text" name="Email"  tabindex="9" size="30" maxlength="100" value="<?php echo $CurrentClient['Email'] ?>"></td>
 				</tr>
 				<tr>
 					<td><label for="CedulaJuridica"><?php __('CedulaJuridica') ?></label></td>
-					<td><input type="text" name="CedulaJuridica"  tabindex="10" size="30" maxlength="50" value="<?php echo $CurrentClient['Clients']['CedulaJuridica'] ?>"></td>
+					<td><input type="text" name="CedulaJuridica"  tabindex="10" size="30" maxlength="50" value="<?php echo $CurrentClient['CedulaJuridica'] ?>"></td>
 				</tr>
 					</tr>
 				<tr>
 					<td><label for="RazonSocial"><?php  __('RazonSocial') ?></label></td>
-					<td><input type="text" name="RazonSocial"  tabindex="11" size="30" maxlength="200" value="<?php echo $CurrentClient['Clients']['RazonSocial'] ?>"></td>
+					<td><input type="text" name="RazonSocial"  tabindex="11" size="30" maxlength="200" value="<?php echo $CurrentClient['RazonSocial'] ?>"></td>
 				</tr>
 				<tr>
 					<td><label for="Phone"><?php __('Phone') ?></label></td>
-					<td><input type="text" name="Phone" tabindex="12" size="30" maxlength="20" value="<?php echo $CurrentClient['Clients']['Phone'] ?>"></td>
+					<td><input type="text" name="Phone" tabindex="12" size="30" maxlength="20" value="<?php echo $CurrentClient['Phone'] ?>"></td>
 				</tr>
 				<tr>
 					<th colspan="2" align="center">
@@ -69,12 +69,12 @@ $session = $this->request->session();
 	</div>
 	<div id="Per">
 			<form method="post" action="/<?php echo $this->viewPath ?>/saveclient/" id="TheClientForm" name="TheClientForm">
-			<?php if($CurrentClient['Clients']['ClientID'] != ''){?>
-			<input type="hidden" name="ClientID" value="<?php echo base64_encode($CurrentClient['Clients']['ClientID']) ?>">
+			<?php if($CurrentClient['ClientID'] != ''){?>
+			<input type="hidden" name="ClientID" value="<?php echo base64_encode($CurrentClient['ClientID']) ?>">
 			<?php } ?>
 			<table border="0" class="zebra" align="center" width="600">
 				<tr><th colspan="2">&nbsp;</th></tr>
-			<?php if($CurrentClient['Clients']['ClientID'] != ''){?>
+			<?php if($CurrentClient['ClientID'] != ''){?>
 				<tr>
 					<td><label for="DeleteClient">*<?php  __('DeleteClient') ?></label></td>
 					<td><input type="checkbox" name="DeleteClient" id="DeleteClient" tabindex="7"></td>
@@ -83,7 +83,7 @@ $session = $this->request->session();
 			<?php } ?>
 				<tr>
 					<td><label for="ClientName">*<?php __('ClientName') ?></label></td>
-					<td><input type="text" name="ClientName" tabindex="8" size="30" maxlength="200" value="<?php echo $CurrentClient['Clients']['ClientName'] ?>"></td>
+					<td><input type="text" name="ClientName" tabindex="8" size="30" maxlength="200" value="<?php echo $CurrentClient['ClientName'] ?>"></td>
 				</tr>
 							<tr>
 					<td><label for="ClientName">*<?php __('ClientLastName') ?></lablientel></td>
