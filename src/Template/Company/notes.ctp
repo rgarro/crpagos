@@ -1,8 +1,8 @@
 <?php if(count($InvoiceLogQ) > 0){?>
 <tr>
 	<td>
-		<div class="hidecomments"><a href="#" class="commentslink">-<?php __('HideComments')?></a></div>
-		<div class="showcomments"><a href="#" class="commentslink">+<?php __('ShowComments')?></a></div>
+		<div class="hidecomments"><a href="#" class="commentslink">-<?php echo __('HideComments')?></a></div>
+		<div class="showcomments"><a href="#" class="commentslink">+<?php echo __('ShowComments')?></a></div>
 	</td>
 </tr>
 <tr>

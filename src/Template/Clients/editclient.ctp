@@ -1,8 +1,8 @@
 <?php
 $session = $this->request->session();
 	$CurrentClient = current($GetClientQ);
-	if($CurrentClient['Clients']['ClientID'] != ''){
-		$this->pageTitle= __('Editing', true).' '.$CurrentClient['Clients']['ClientName'];
+	if($CurrentClient['ClientID'] != ''){
+		$this->pageTitle= __('Editing', true).' '.$CurrentClient['ClientName'];
 	}else{
 		$this->pageTitle = __('AddingNewClient', true).' '.$session->read('Company.CurrentName');
 	}
@@ -12,7 +12,7 @@ $session = $this->request->session();
 	echo $this->Html->script("jquery/jquery.ui");
 	echo $this->Html->script("jquery/jquery.cookie");
 	echo $this->Html->script("jquery/validate");
-//localized validation code
+  //localized validation code
 	$TheJs = $session->read('LocaleCode').'/checkclient';
 	echo $this->Html->script($TheJs);
 //	echo '<p align="center"><a href="/',$this->viewPath,'/" onclick="return confirm(\'', __('BackConfirm'),'\');">', __('BackToClientList'),'</a></p>';
@@ -32,31 +32,31 @@ $session = $this->request->session();
 				<tr><th colspan="2">&nbsp;</th></tr>
 			<?php if($CurrentClient['ClientID'] != '' && $session->read('User.AccessLevelID') < 2 ){?>
 				<tr>
-					<td><label for="DeleteCompany">*<?php  __('DeleteCompany') ?></label></td>
+					<td><label for="DeleteCompany">*<?php echo __('DeleteCompany') ?></label></td>
 					<td><input type="checkbox" name="DeleteCompany" id="DeleteCompany" tabindex="7"></td>
 
 				</tr>
 			<?php } ?>
 				<tr>
-					<td><label for="ClientName">*<?php __('CompanyName') ?></label></td>
+					<td><label for="ClientName">*<?php echo __('CompanyName') ?></label></td>
 					<td><input type="text" name="ClientName" tabindex="8" size="30" maxlength="30" value="<?php echo $CurrentClient['ClientName'] ?>"></td>
 				</tr>
 
 				<tr>
-					<td><label for="Email">*<?php  __('Email') ?></label></td>
+					<td><label for="Email">*<?php echo __('Email') ?></label></td>
 					<td><input type="text" name="Email"  tabindex="9" size="30" maxlength="100" value="<?php echo $CurrentClient['Email'] ?>"></td>
 				</tr>
 				<tr>
-					<td><label for="CedulaJuridica"><?php __('CedulaJuridica') ?></label></td>
+					<td><label for="CedulaJuridica"><?php echo __('CedulaJuridica') ?></label></td>
 					<td><input type="text" name="CedulaJuridica"  tabindex="10" size="30" maxlength="50" value="<?php echo $CurrentClient['CedulaJuridica'] ?>"></td>
 				</tr>
 					</tr>
 				<tr>
-					<td><label for="RazonSocial"><?php  __('RazonSocial') ?></label></td>
+					<td><label for="RazonSocial"><?php echo __('RazonSocial') ?></label></td>
 					<td><input type="text" name="RazonSocial"  tabindex="11" size="30" maxlength="200" value="<?php echo $CurrentClient['RazonSocial'] ?>"></td>
 				</tr>
 				<tr>
-					<td><label for="Phone"><?php __('Phone') ?></label></td>
+					<td><label for="Phone"><?php echo __('Phone') ?></label></td>
 					<td><input type="text" name="Phone" tabindex="12" size="30" maxlength="20" value="<?php echo $CurrentClient['Phone'] ?>"></td>
 				</tr>
 				<tr>
@@ -76,31 +76,31 @@ $session = $this->request->session();
 				<tr><th colspan="2">&nbsp;</th></tr>
 			<?php if($CurrentClient['ClientID'] != ''){?>
 				<tr>
-					<td><label for="DeleteClient">*<?php  __('DeleteClient') ?></label></td>
+					<td><label for="DeleteClient">*<?php echo __('DeleteClient') ?></label></td>
 					<td><input type="checkbox" name="DeleteClient" id="DeleteClient" tabindex="7"></td>
 
 				</tr>
 			<?php } ?>
 				<tr>
-					<td><label for="ClientName">*<?php __('ClientName') ?></label></td>
+					<td><label for="ClientName">*<?php echo __('ClientName') ?></label></td>
 					<td><input type="text" name="ClientName" tabindex="8" size="30" maxlength="200" value="<?php echo $CurrentClient['ClientName'] ?>"></td>
 				</tr>
 							<tr>
-					<td><label for="ClientName">*<?php __('ClientLastName') ?></lablientel></td>
-					<td><input type="text" name="ClientLastName" tabindex="8" size="30" maxlength="50" value="<?php echo $CurrentClient['Clients']['ClientLastName'] ?>"></td>
+					<td><label for="ClientName">*<?php echo __('ClientLastName') ?></lablientel></td>
+					<td><input type="text" name="ClientLastName" tabindex="8" size="30" maxlength="50" value="<?php echo $CurrentClient['ClientLastName'] ?>"></td>
 				</tr>
 				<tr>
-					<td><label for="Email">*<?php __('Email') ?></label></td>
-					<td><input type="text" name="Email"  tabindex="9" size="30" maxlength="100" value="<?php echo $CurrentClient['Clients']['Email'] ?>"></td>
+					<td><label for="Email">*<?php echo __('Email') ?></label></td>
+					<td><input type="text" name="Email"  tabindex="9" size="30" maxlength="100" value="<?php echo $CurrentClient['Email'] ?>"></td>
 				</tr>
 				<tr>
-					<td><label for="CedulaJuridica"><?php __('Cedula') ?></label></td>
-					<td><input type="text" name="CedulaJuridica"  tabindex="10" size="30" maxlength="50" value="<?php echo $CurrentClient['Clients']['CedulaJuridica'] ?>"></td>
+					<td><label for="CedulaJuridica"><?php echo __('Cedula') ?></label></td>
+					<td><input type="text" name="CedulaJuridica"  tabindex="10" size="30" maxlength="50" value="<?php echo $CurrentClient['CedulaJuridica'] ?>"></td>
 				</tr>
 					</tr>
 				<tr>
-					<td><label for="Phone"><?php __('Phone') ?></label></td>
-					<td><input type="text" name="Phone" tabindex="12" size="30" maxlength="20" value="<?php echo $CurrentClient['Clients']['Phone'] ?>"></td>
+					<td><label for="Phone"><?php echo __('Phone') ?></label></td>
+					<td><input type="text" name="Phone" tabindex="12" size="30" maxlength="20" value="<?php echo $CurrentClient['Phone'] ?>"></td>
 				</tr>
 				<tr>
 					<th colspan="2" align="center">

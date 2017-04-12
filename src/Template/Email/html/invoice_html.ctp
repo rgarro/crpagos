@@ -12,7 +12,7 @@
 ?>	
 <p>&nbsp;</p><table width="720" border="0" align="center">
   <tr>
-    <td colspan="2" bgcolor="#CCD6D8" align="center"><?php __('PayInstructions1') ?></td>
+    <td colspan="2" bgcolor="#CCD6D8" align="center"><?php echo __('PayInstructions1') ?></td>
   </tr>
   <tr>
     <td width="50%" align="center" valign="top"><?php

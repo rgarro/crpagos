@@ -1,14 +1,14 @@
 <?php
 $this -> pageTitle = __('InvoicesFor', true) . ' ' . $session -> read('Company.CurrentName');
-$html -> css("zebra", "stylesheet", array(), false);
-$html -> css("ui", "stylesheet", array(), false);
-$javascript -> link("zebra/zebra", false);
-$javascript -> link("jquery/jquery.ui", false);
-$javascript -> link("jquery/jquery.cookie", false);
-$javascript -> link("tabs2", false);
+echo $this->Html-> css("zebra");
+echo $this->Html-> css("ui");
+echo $this->Html->script("zebra/zebra");
+echo $this->Html->script("jquery/jquery.ui");
+echo $this->Html->script("jquery/jquery.cookie");
+echo $this->Html->script("tabs2");
 //localized validation code
 $TheJs = $session -> read('LocaleCode') . '/checkradios';
-$javascript -> link($TheJs, false);
+echo $this->Html->script($TheJs);
 ?>
 	<h1><?php echo $this->pageTitle ?></h1>
 	<?php

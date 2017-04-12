@@ -1,5 +1,11 @@
 <?php
-	class FileHandler {
+namespace App\Lib;
+
+use Cake\Core\Configure;
+
+use App\Lib\Object;
+
+	class FileHandler extends Object{
 		var $name = 'FileHandler';
 		var $useTable = false;
 

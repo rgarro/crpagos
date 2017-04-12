@@ -107,8 +107,6 @@ class ClientsTable extends Table
     }
 
     public function AddClient(){
-      //Sanitize::clean($_POST);
-      //$this->query("LOCK TABLES Clients WRITE");
       $TheSql = " INSERT INTO Clients (CompanyID, Email, Phone, CedulaJuridica, RazonSocial, ClientName, ClientLastName, EnteredBy)";
       $TheSql.=" VALUES (".$_SESSION['Company']['CurrentCompanyID'].",";
       $TheSql.="'".substr(trim($_POST['Email']),0,100)."',";
@@ -118,7 +116,7 @@ class ClientsTable extends Table
         $TheSql.="null,";
       }
       if(isset($_POST['CedulaJuridica'])){
-        $TheSql.="'".substr(trim($_POST['CedulaJuridica']), array('-'),0,50)."',";
+        $TheSql.="'".substr(trim($_POST['CedulaJuridica']),0,50)."',";
       }else{
         $TheSql.="null,";
       }
@@ -128,18 +126,13 @@ class ClientsTable extends Table
         $TheSql.="null,";
       }
       $TheSql.="'".substr(trim($_POST['ClientName']),0,30)."',";
-      $TheSql.="'".substr(trim($_POST['ClientLastName']),0,50)."',";
+      $TheSql.="'".substr(trim((isset($_POST['ClientLastName'])? $_POST['ClientLastName'] : " ")),0,50)."',";
       $TheSql.="'".substr(trim($_SESSION['User']['FullName']),0,200)."')";
       $res = $this->connection()->execute($TheSql);
-      //$DataSet = $this->query($TheSql);
-      //$ClientID = mysql_insert_id();
-      //$this->query("UNLOCK TABLES");
-      //return $ClientID;
       return $res->lastInsertId();
     }
 
     function UpdateClient($ClientID = null){
-
       $TheSql =" UPDATE Clients ";
       $TheSql.=" SET Email ='".substr(trim($_POST['Email']),0,100)."',";
       if(isset($_POST['Phone'])){
@@ -155,12 +148,11 @@ class ClientsTable extends Table
         $TheSql.="RazonSocial = '".substr(trim($_POST['RazonSocial']),0,200)."',";
       }
       $TheSql.=" ClientName = '".substr(trim($_POST['ClientName']),0,30)."',";
-      $TheSql.=" ClientLastName ='".substr(trim($_POST['ClientLastName']),0,50)."',";
+      $TheSql.=" ClientLastName ='".substr(trim((isset($_POST['ClientLastName'])? $_POST['ClientLastName'] : " ")),0,50)."',";
       $TheSql.=" Modified = NOW(),";
       $TheSql.=" ModifiedBy ='".substr(trim($_SESSION['User']['FullName']),0,200)."'";
       $TheSql.=" WHERE CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
       $TheSql.=" AND ClientID =".$ClientID;
-      //$DataSet = $this->query($TheSql);
       $res = $this->connection()->execute($TheSql);
       return $res;
     }

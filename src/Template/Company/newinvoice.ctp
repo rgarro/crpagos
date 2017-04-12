@@ -71,7 +71,7 @@
 				<optgroup label="-------------------------------------">
 				<option value="-1"><?php echo __('AddNewClient') ?></option>
 				</optgroup>
-				</select>&nbsp;<input tabindex="7" type="button" name="New" id="New" value="<?php __('AddNewClient')?>">
+				</select>&nbsp;<input tabindex="7" type="button" name="New" id="New" value="<?php echo __('AddNewClient')?>">
 	</td>
 </tr>
 	<tr>

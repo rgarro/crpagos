@@ -103,7 +103,7 @@ echo '<h1>', $this -> pageTitle, '</h1>';
 				 <optgroup label="-------------------------------------">
 				<option value="-1"><?php echo __('AddNewClient') ?></option>
 				</optgroup>
-    			</select>&nbsp;<input type="button" name="New" id="New" value="<?php __('AddNewClient')?>">
+    			</select>&nbsp;<input type="button" name="New" id="New" value="<?php echo __('AddNewClient')?>">
 	</td>
   </tr>
     <tr>
@@ -163,7 +163,7 @@ echo '<h1>', $this -> pageTitle, '</h1>';
     <tr>
     <th>
       <input tabindex="23" name="Continue" type="submit" id="Continue" value="<?php echo __('Continue') ?>">&nbsp;
-     <?php echo __('CopyClient') ?>:<input type="checkbox" name="CopyClient" id="CopyClient" checked="checked" value="1" onclick="if(this.checked==false){return confirm('<?php __('DoNotCopyClient')?>');}"><br>&nbsp;
+     <?php echo __('CopyClient') ?>:<input type="checkbox" name="CopyClient" id="CopyClient" checked="checked" value="1" onclick="if(this.checked==false){return confirm('<?php echo __('DoNotCopyClient')?>');}"><br>&nbsp;
    </th>
   </tr>
 </table>

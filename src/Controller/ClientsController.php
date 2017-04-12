@@ -42,7 +42,7 @@ class ClientsController extends AppController
        $ClientID = $this->Clients->AddClient();
     }
     if(!$this->Clients->index($ClientID)){
-      $this->Clients->AddClientToCompany($ClientID);
+      //$this->Clients->AddClientToCompany($ClientID);
     }
     if(isset($_POST['RazonSocial'])){
       $this->Flash->success(__('CompanySaved', true));

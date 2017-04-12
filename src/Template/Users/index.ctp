@@ -7,11 +7,11 @@
 <?php if(count($GetUsersQ) > 0){?>
 <table border="0" width="80%" align="center" cellpadding="5"  class="zebra" >
 <tr>
-	<th><?php __('Status') ?></th>
-	<th><?php __('AccessLevel') ?></th>
-	<th><?php __('FirstName') ?></th>
-	<th><?php __('LastName' )?></th>
-	<th><?php __('Email') ?></th>
+	<th><?php echo __('Status') ?></th>
+	<th><?php echo __('AccessLevel') ?></th>
+	<th><?php echo __('FirstName') ?></th>
+	<th><?php echo __('LastName' )?></th>
+	<th><?php echo __('Email') ?></th>
 	<th>&nbsp;</th>
 </tr>
 <?php
@@ -37,7 +37,7 @@
 	<form>
 		<tr>
 			<th colspan="6">
-				<input type="button" name="AddNew" value="<?php __('AddNewUser') ?>" onclick="window.location.href='/users/addnewuser/<?php base64_encode(0)?>'">
+				<input type="button" name="AddNew" value="<?php echo __('AddNewUser') ?>" onclick="window.location.href='/users/addnewuser/<?php base64_encode(0)?>'">
 			</th>
 		</tr>
 	</form>

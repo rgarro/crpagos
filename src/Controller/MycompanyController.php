@@ -6,6 +6,7 @@ use App\Lib\FileHandler;
 use App\Controller\Component\ImageToolboxComponent;
 use App\Controller\Component\Image_Toolbox;
 use App\Lib\L10n;
+use Cake\Core\Configure;
 /**
  * Mycompany Controller
  *
@@ -21,8 +22,9 @@ class MycompanyController extends AppController
       $this->loadModel('Locales');
       $this->loadModel('Companies');
       $this->loadModel('Terms');
+
       $this->FileHandler = new FileHandler();
-      $this->loadComponent('ImageToolbox');
+      //$this->loadComponent('ImageToolbox');
   }
 
   function index() {
@@ -37,7 +39,7 @@ class MycompanyController extends AppController
 			$ImgDir = WWW_ROOT . 'img' . $session -> read('Company.CurrentURL');
 			$DeleteLogo = $ImgDir . $session -> read('Company.CurrentLogo');
 			@unlink($DeleteLogo);
-			$FileHandler = &new FileHandler();
+			$FileHandler = new FileHandler();
 			$TheImage = $FileHandler -> save($_FILES['Logo']['tmp_name'], $_FILES['Logo']['name'], $ImgDir, true);
 			//App::import('Vendor', 'imagetoolbox', array('file' => 'imagetoolbox' . DS . 'Image_Toolbox.class.php'));
 			$box1 = new Image_Toolbox($TheImage);

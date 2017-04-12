@@ -1,7 +1,7 @@
 <form name="SearchForm" id="SearchForm" method="post" action="<?php echo $session -> read('Company.CurrentURL') ?>search/">
 	<table border="0" class="zebra" align="center" width="500">
 		<tr>
-			<td valign="top"><label for="InvoiceNumber"><?php __('InvoiceNumber') ?>:</label></td>
+			<td valign="top"><label for="InvoiceNumber"><?php echo __('InvoiceNumber') ?>:</label></td>
 			<td><input type="text" name="InvoiceNumber" id="InvoiceNumber" value="" size="15" maxlength="25"></td>
 		</tr>
 		<tr>
@@ -9,11 +9,11 @@
 			<td><input type="text" name="ClientName" size="30" maxlength="30" value=""></td>
 		</tr>
 		<tr>
-			<td><label for="ClientLastName"><?php __('ClientLastName') ?>:</label></td>
+			<td><label for="ClientLastName"><?php echo __('ClientLastName') ?>:</label></td>
 			<td><input type="text" name="ClientLastName" size="30" maxlength="50" value=""></td>
 		</tr>
 		<tr>
-			<td  valign="top"><label for="Email"><?php __('Email') ?>:</label></td>
+			<td  valign="top"><label for="Email"><?php echo __('Email') ?>:</label></td>
 			<td><input type="text" name="Email" size="30" maxlength="100" value=""></td>
 		</tr>
 		</tr>

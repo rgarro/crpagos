@@ -48,11 +48,11 @@ $session = $this->request->session();
 	</ol>
 </fieldset>
 
-<div id="paydialog" title="<?php __('Wait')?>..." style="display:none;text-align:center">
+<div id="paydialog" title="<?php echo __('Wait')?>..." style="display:none;text-align:center">
   <p align="center">
     <h4 style="font-size:1.5em;margin-bottom: 20px">
-    	<?php __('ContactingBank') ?>
+    	<?php echo __('ContactingBank') ?>
     </h4>
-    <img src="/img/nyroModal/loading.gif" width="43" height="43" border="0" alt="<?php __('Wait')?>...">
+    <img src="/img/nyroModal/loading.gif" width="43" height="43" border="0" alt="<?php echo __('Wait')?>...">
   </p>
 </div>

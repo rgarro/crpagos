@@ -35,7 +35,7 @@
 			<?php $ShowReq = "yes"; include 'notes.ctp'; ?>
 		    <th align="center" colspan="2">
 		      <input tabindex="23" name="Continue" type="submit" id="Continue" value="<?php echo __('PayThisInvoice') ?>">
-		     <?php echo __('CopyClient') ?>:<input type="checkbox" name="CopyClient" id="CopyClient" checked="checked" value="1" onclick="if(this.checked==false){return confirm('<?php __('DoNotCopyClient')?>');}"><br>&nbsp;
+		     <?php echo __('CopyClient') ?>:<input type="checkbox" name="CopyClient" id="CopyClient" checked="checked" value="1" onclick="if(this.checked==false){return confirm('<?php echo __('DoNotCopyClient')?>');}"><br>&nbsp;
 		   </th>
 		  </tr>
 		</table>

@@ -3,12 +3,16 @@ namespace App\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\Controller\ComponentRegistry;
+use Cake\Core\Configure;
+
+use App\Lib\Object;
+
 
 class ImageToolboxComponent extends Object {
 	public function __construct()
 	{
 		parent::__construct();
-		include('Image_Toolbox.class.php');
+		include('Image_Toolbox.php');
 	}
 	public function makeToolbox()
 	{

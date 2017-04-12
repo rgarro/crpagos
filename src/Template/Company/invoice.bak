@@ -161,6 +161,6 @@
   </tr>
 	<?php }?>
 	<tr> 
-    <td><hr><blockquote><?php __('Thanks')?></blockquote></td>
+    <td><hr><blockquote><?php echo __('Thanks')?></blockquote></td>
   </tr>
 </table>

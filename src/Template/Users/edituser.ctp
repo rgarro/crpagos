@@ -18,17 +18,17 @@ $session = $this->request->session();
 	<table border="0" class="zebra" align="center" width="600">
 		<tr><th colspan="2">&nbsp;</th></tr>
 		<tr>
-			<td><label for="UserStatus">*<?php  __('Status') ?></label></td>
+			<td><label for="UserStatus">*<?php echo __('Status') ?></label></td>
 			<td>
-				<input type="Radio" value="1" name="UserStatus" id="UserStatus" tabindex="1" <?php if($CurrentUser['Users']['UserStatus'] == 1){echo 'checked="checked"';}?> ><?php __('Active')?>
-				<input type="Radio" value="0"  name="UserStatus" id="UserStatus" tabindex="2" <?php if($CurrentUser['Users']['UserStatus'] == 0){echo 'checked="checked"';}?> ><?php __('InActive')?>
+				<input type="Radio" value="1" name="UserStatus" id="UserStatus" tabindex="1" <?php if($CurrentUser['Users']['UserStatus'] == 1){echo 'checked="checked"';}?> ><?php echo __('Active')?>
+				<input type="Radio" value="0"  name="UserStatus" id="UserStatus" tabindex="2" <?php if($CurrentUser['Users']['UserStatus'] == 0){echo 'checked="checked"';}?> ><?php echo __('InActive')?>
 			</td>
 		</tr>
 		<tr>
 			<td><label for="AccessLevelID">*<?php echo __('AccessLevel') ?>:</label></td>
 				<td nowrap="nowrap">
 					<select name="AccessLevelID" id="AccessLevelID" tabindex="3">
-					<option value=""><?php __('PleaseSelect') ?></option>
+					<option value=""><?php echo __('PleaseSelect') ?></option>
 			    	<?php foreach($GetLevelsQ as $ThisLevel){
 			   			if($ThisLevel['AccessLevels']['AccessLevelID'] == $CurrentUser['Users']['AccessLevelID']){$Sel = " Selected ";}else{$Sel = "";}
 						echo  '<option value="',$ThisLevel['AccessLevels']['AccessLevelID'] ,'"',$Sel,'>',__($ThisLevel['AccessLevels']['AccessLevel']),'</option>',"\n";
@@ -38,19 +38,19 @@ $session = $this->request->session();
 				</td>
 		</tr>
 		<tr>
-			<td><label for="FirstName">*<?php  __('FirstName') ?></label></td>
+			<td><label for="FirstName">*<?php echo __('FirstName') ?></label></td>
 			<td><input type="text" name="FirstName" id="FirstName" tabindex="4" size="30" maxlength="50" value="<?php echo $CurrentUser['Users']['FirstName'] ?>"></td>
 		</tr>
 		<tr>
-			<td><label for="LastName">*<?php  __('LastName') ?></label></td>
+			<td><label for="LastName">*<?php echo __('LastName') ?></label></td>
 			<td><input type="text" name="LastName" id="LastName"  tabindex="5" size="30" maxlength="50" value="<?php echo $CurrentUser['Users']['LastName'] ?>"></td>
 		</tr>
 		<tr>
-			<td><label for="Email">*<?php  __('Email') ?></label></td>
+			<td><label for="Email">*<?php echo __('Email') ?></label></td>
 			<td><input type="text" name="Email" id="Email"  tabindex="6" size="30" maxlength="100" value="<?php echo $CurrentUser['Users']['Email'] ?>"></td>
 		</tr>
 		<tr>
-			<td><label for="Password">*<?php  __('Password') ?></label></td>
+			<td><label for="Password">*<?php echo __('Password') ?></label></td>
 			<td><input type="password" " name="Password" id="Password"  tabindex="7" size="30" maxlength="20" value="<?php echo $CurrentUser['Users']['Password'] ?>"></td>
 		</tr>
 

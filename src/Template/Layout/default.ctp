@@ -66,7 +66,7 @@ $cakeDescription = 'crpagos cakephp3 version';
 		<![endif]-->
 		<center>
 			<noscript>
-				 <div class="jsmessage"><p><?php __('NoJavaScript')?></p></div>
+				 <div class="jsmessage"><p><?php echo __('NoJavaScript')?></p></div>
 			 </noscript>
 
 			<div class="mainwrap">
@@ -130,7 +130,7 @@ $cakeDescription = 'crpagos cakephp3 version';
 			?>
 			</div>
 			<div class="copy">
-				<?php __('CopyRights')?>
+				<?php echo __('CopyRights')?>
 			</div>
 			<?php } ?>
 		</center>
