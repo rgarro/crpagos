@@ -5,6 +5,7 @@ use App\Controller\AppController;
 use App\Lib\FileHandler;
 use App\Controller\Component\ImageToolboxComponent;
 use App\Controller\Component\Image_Toolbox;
+use App\Lib\L10n;
 /**
  * Mycompany Controller
  *
@@ -43,26 +44,26 @@ class MycompanyController extends AppController
       //$box1 = new ImageToolboxComponent($TheImage);
 			$box1 -> newOutputSize(0, 75, 0, false, "#ffffff");
 			$box1 -> save($TheImage);
-			$this -> Session -> write('Company.CurrentLogo', $_FILES['Logo']['name']);
+			$session -> write('Company.CurrentLogo', $_FILES['Logo']['name']);
 		}
 		$this -> Companies -> SaveMyCompanySettings();
-		$this -> Session -> write('Company.CurrentInfo', html_entity_decode(nl2br(Sanitize::html(trim($_POST['CompanyInfo']), ENT_NOQUOTES, 'iso-8859-1'))));
-		$this -> Session -> write('Company.CurrentName', html_entity_decode(Sanitize::html(trim($_POST['CompanyName']), ENT_NOQUOTES, 'iso-8859-1')));
-		$this -> Session -> write('Company.CurrentDefaultNote', html_entity_decode(Sanitize::html(trim($_POST['DefaultNote']), ENT_NOQUOTES, 'iso-8859-1')));
-		$this -> Session -> write('Company.CurrentEmail', $_POST['Email']);
-		if ($this -> Session -> read('LocaleCode') != $_POST['LocaleCode']) {
-			$this -> Session -> write('LocaleCode', $_POST['LocaleCode']);
+		$session -> write('Company.CurrentInfo', html_entity_decode(nl2br(trim($_POST['CompanyInfo']))));
+		$session -> write('Company.CurrentName', html_entity_decode(trim($_POST['CompanyName'])));
+		$session -> write('Company.CurrentDefaultNote', html_entity_decode(trim($_POST['DefaultNote'])));
+		$session -> write('Company.CurrentEmail', $_POST['Email']);
+		if ($session -> read('LocaleCode') != $_POST['LocaleCode']) {
+			$session -> write('LocaleCode', $_POST['LocaleCode']);
 			$this -> L10n = new L10n();
-			$this -> L10n -> get($this -> Session -> read('LocaleCode'));
-			Configure::write('Config.language', $this -> Session -> read('LocaleCode'));
+			$this -> L10n -> get($session -> read('LocaleCode'));
+			Configure::write('Config.language', $session -> read('LocaleCode'));
 		}
 		//refresh companies
 		$this->loadModel('Users');
-		$this -> Session -> delete('Companies');
+		$session -> delete('Companies');
 		$CheckCompanyQ = $this -> Users -> CheckCompany($this->Session->read('User.UserID'));
-		$this -> Session -> write('Companies', $CheckCompanyQ);
+		$session -> write('Companies', $CheckCompanyQ);
 
-		$this -> Session -> setFlash(__('SettingsSaved', true));
+		$this -> Flash->success(__('SettingsSaved', true));
 		$this -> redirect("/mycompany/");
 	}
 
@@ -80,7 +81,7 @@ class MycompanyController extends AppController
 					$this -> Terms -> Update($ThisLocale, $Content);
 				}
 			}
-			$this -> Session -> setFlash(__('SettingsSaved', true));
+			$this -> Flash->success(__('SettingsSaved', true));
 			$this -> redirect("/mycompany/terms/");
 		}
 		$TheTerms = array();
@@ -96,11 +97,8 @@ class MycompanyController extends AppController
 			}
 		}
 
-		$this -> Set('GetMyCompanyQ', $this -> Companies -> GetSites($this -> Session -> read('Company.CurrentCompanyID')));
+		$this -> Set('GetMyCompanyQ', $this -> Companies -> GetSites($session -> read('Company.CurrentCompanyID')));
 		$this -> Set('TermsQ', $TheTerms);
 		$this -> Set('LocalesQ', $LocalesQ);
 	}
-
-
-
 }
