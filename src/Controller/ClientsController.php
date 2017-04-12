@@ -5,6 +5,7 @@ use Cake\Core\Configure;
 use App\Controller\AppController;
 use Cake\Mailer\Email;
 use Cake\I18n\I18n;
+use App\Lib\L10n;
 /**
  * Clients Controller
  *
@@ -52,7 +53,7 @@ class ClientsController extends AppController
       $this->Flash->success(__('ClientDeleted', true));
     }
     if(isset($_POST['DeleteCompany'])){
-      $this->Flash->success(__('CompanyDeleted', true));			
+      $this->Flash->success(__('CompanyDeleted', true));
     }
 
     if(isset($_POST['DeleteClient']) || isset($_POST['DeleteCompany'])){

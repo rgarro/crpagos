@@ -17,6 +17,7 @@ class CodeController extends AppController
       $this->loadModel('Invoices');
       $this->loadModel('Companies');
       $this->loadComponent('Crypter');
+      $this->loadComponent('Cookie');
   }
 
   function  index($CompanyID =  null){
@@ -59,39 +60,39 @@ class CodeController extends AppController
         $lang = $CurrentCompany['Invoices']['LocaleCode'];
         $this->L10n->get($lang);
         Configure::write('Config.language', $lang);
-        $this->Session->write('LocaleCode', $lang);
+        $session->write('LocaleCode', $lang);
         $this->Cookie->write('lang', $lang, null, '+350 day');
-        $this->Session->write('Client.InvoiceID', $InvoiceID);
-        $this->Session->write('User.FullName', $_SERVER['REMOTE_ADDR']);
-        $this->Session->write('Company.CurrentCompanyID', $CurrentCompany['Companies']['CompanyID'] );
-        $this->Session->write('Company.CurrentName', $CurrentCompany['Companies']['CompanyName'] );
-        $this->Session->write('Company.CurrentSubject', $CurrentCompany['Companies']['EmailSubject'] );
-        $this->Session->write('Company.CurrentLogo', $CurrentCompany['Companies']['Logo'] );
-        $this->Session->write('Company.CurrentURL', $CurrentCompany['Companies']['CompanyUrl'] );
-        $this->Session->write('Company.CurrentEmail', $CurrentCompany['Companies']['Email'] );
-        $this->Session->write('Company.CurrentBgColor', $CurrentCompany['Companies']['BgColor'] );
-        $this->Session->write('Company.CurrentBgImage', $CurrentCompany['Companies']['BgImage'] );
-        $this->Session->write('Company.CurrentName', html_entity_decode($CurrentCompany['Companies']['CompanyName'],ENT_NOQUOTES,'iso-8859-1'));
-        $this->Session->write('Company.CurrentInfo', html_entity_decode(nl2br($CurrentCompany['Companies']['CompanyInfo']),ENT_NOQUOTES,'iso-8859-1'));
-        $this->Session->write('Company.PayURL',$CurrentCompany['Companies']['CompanyUrl'].strtolower(__('PayUrl', true)).'/');
+        $session->write('Client.InvoiceID', $InvoiceID);
+        $session->write('User.FullName', $_SERVER['REMOTE_ADDR']);
+        $session->write('Company.CurrentCompanyID', $CurrentCompany['Companies']['CompanyID'] );
+        $session->write('Company.CurrentName', $CurrentCompany['Companies']['CompanyName'] );
+        $session->write('Company.CurrentSubject', $CurrentCompany['Companies']['EmailSubject'] );
+        $session->write('Company.CurrentLogo', $CurrentCompany['Companies']['Logo'] );
+        $session->write('Company.CurrentURL', $CurrentCompany['Companies']['CompanyUrl'] );
+        $session->write('Company.CurrentEmail', $CurrentCompany['Companies']['Email'] );
+        $session->write('Company.CurrentBgColor', $CurrentCompany['Companies']['BgColor'] );
+        $session->write('Company.CurrentBgImage', $CurrentCompany['Companies']['BgImage'] );
+        $session->write('Company.CurrentName', html_entity_decode($CurrentCompany['Companies']['CompanyName'],ENT_NOQUOTES,'iso-8859-1'));
+        $session->write('Company.CurrentInfo', html_entity_decode(nl2br($CurrentCompany['Companies']['CompanyInfo']),ENT_NOQUOTES,'iso-8859-1'));
+        $session->write('Company.PayURL',$CurrentCompany['Companies']['CompanyUrl'].strtolower(__('PayUrl', true)).'/');
         $Comment = __('InvoiceDisplayed', true).' '.$_SERVER['REMOTE_ADDR'];
 //BNCR Stuff
-        $this->Session->write('Company.AcquirerID', $CurrentCompany['Companies']['AcquirerID']);
-        $this->Session->write('Company.CommerceID', $CurrentCompany['Companies']['CommerceID']);
-        $this->Session->write('Company.MallID', $CurrentCompany['Companies']['MallID']);
-        $this->Session->write('Company.TerminalID', $CurrentCompany['Companies']['TerminalID']);
-        $this->Session->write('Company.HexNumber', $CurrentCompany['Companies']['HexNumber']);
-        $this->Session->write('Company.KeyName', $CurrentCompany['Companies']['KeyName']);
+        $session->write('Company.AcquirerID', $CurrentCompany['Companies']['AcquirerID']);
+        $session->write('Company.CommerceID', $CurrentCompany['Companies']['CommerceID']);
+        $session->write('Company.MallID', $CurrentCompany['Companies']['MallID']);
+        $session->write('Company.TerminalID', $CurrentCompany['Companies']['TerminalID']);
+        $session->write('Company.HexNumber', $CurrentCompany['Companies']['HexNumber']);
+        $session->write('Company.KeyName', $CurrentCompany['Companies']['KeyName']);
 
-        $this->Session->write('Company.Processor', $CurrentCompany['Companies']['Processor']);
+        $session->write('Company.Processor', $CurrentCompany['Companies']['Processor']);
 
         $this->Invoices->AddInvoiceLog($InvoiceID, 7, $Comment);
 //Redirect to company's PayURL
-        $this->redirect($this->Session->read('Company.PayURL'));
+        $this->redirect($session->read('Company.PayURL'));
       }else{
 //Invalid Number,  send to "Home"
         $this->layout = 'noheader';
-        $this->Session->setFlash(__('NoneFound', true));
+        $this->Flash(__('NoneFound', true));
       }
     }else{
 //No Code, send to "Home"
