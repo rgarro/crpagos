@@ -33,8 +33,7 @@ $cakeDescription = 'crpagos cakephp3 version';
   	<meta name="robots" content="all">
     <? //$this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="/css/normalize.min.css">
-		<script src="/js/pace.min.js"></script>
+
 		<link rel="stylesheet" href="/css/main.css">
 
 		<script src="/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -48,6 +47,11 @@ $cakeDescription = 'crpagos cakephp3 version';
 	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="/css/crpagos.css" />
 	<script type="text/javascript" src="/js/jquery/jquery.js"></script>
+	<link rel="stylesheet" href="/css/normalize.min.css">
+	<script src="/js/pace.min.js"></script>
+	<link href="/css/animate.css" rel="stylesheet"></script>
+	<link href="/css/noty.css" rel="stylesheet"></script>
+<script src="/js/noty.min.js" type="text/javascript"></script>
 	<?php
 		//echo $scripts_for_layout . "\n";
 	?>
