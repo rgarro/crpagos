@@ -85,7 +85,7 @@ $cakeDescription = 'crpagos cakephp3 version';
          <span class="icon-bar"></span>
        </button>
        <a class="navbar-brand" href="/">
-<img src="/img/logo.gif" width="150" alt="CRPagos.com Facil y Seguro" border="0"/>
+<img src="/img/logo.gif" width="133" alt="CRPagos.com Facil y Seguro" border="0"/>
 			 </a>
      </div>
 
@@ -114,11 +114,6 @@ $cakeDescription = 'crpagos cakephp3 version';
 		 <?php } ?>
    </div>
  </nav>
-
-
-
-
-
 			<div class="container-fluid contentwrap">
 
 				<div class="row" style="min-height:50%;">
@@ -133,7 +128,7 @@ $cakeDescription = 'crpagos cakephp3 version';
 						echo '</div>';
 					}
 					//echo $content_for_layout;
-						?><div class="col-md-12" >
+						?><div class="col-md-12" style="margin-top:8%;">
               <?= $this->fetch('content') ?>
 						</div>
 				</div>
