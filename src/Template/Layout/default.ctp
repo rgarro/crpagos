@@ -34,6 +34,7 @@ $cakeDescription = 'crpagos cakephp3 version';
     <? //$this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="/css/normalize.min.css">
+		<script src="/js/pace.min.js"></script>
 		<link rel="stylesheet" href="/css/main.css">
 
 		<script src="/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
