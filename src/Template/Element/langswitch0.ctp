@@ -23,8 +23,12 @@ $session = $this->request->session();
 					$LinkMenu = 'MenuLinks_' . $ThisLanguage['LocaleCode'];
 					$ThisLink = "/" . $_SESSION[$LinkMenu][$i] . ".htm";
 				}
-
-				echo '<a href="', $ThisLink, '?Lang=', $ThisLanguage['LocaleCode'], '"><b>', $ThisLanguage['Locale'], '</b></a>&nbsp;';
+				if($ThisLanguage['LocaleCode']=="spa_cr"){
+					$icon = "spa.png";
+				}else{
+					$icon = "eng.png";
+				}
+				echo '<a href="', $ThisLink, '?Lang=', $ThisLanguage['LocaleCode'], '"><img class="img-rounded" width="45" src="/img/'.$icon.'"/><br><b>', $ThisLanguage['Locale'], '</b></a>&nbsp;';
 			}
 
 		}

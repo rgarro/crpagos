@@ -91,9 +91,11 @@ $cakeDescription = 'crpagos cakephp3 version';
 
 		 <?php
 		 if ($session -> check('User.UserID')) {
-		 	echo '<div class="welcome"><b>', __('Welcome'), '<br>', $session -> read('User.FullName'), '</b>';
-		 	echo $this->element('langswitch');
-		 	echo '</div>';
+			 echo $this->element('langswitch');
+		 	echo '<span class="welcome navbar-right"><b>', __('Welcome'), ' ', $session -> read('User.FullName'), '</b>';
+			echo '</span>';
+
+		 	//echo '</div>';
 		 } else {
 		 	echo $this->element('toplogin');
 		 }
@@ -101,7 +103,7 @@ $cakeDescription = 'crpagos cakephp3 version';
 
 
 		 <?php if($this->request->here() != $session->read('Company.PayURL')){?>
-		 <ul class="nav nav-pills">
+		 <ul class="nav nav-pills" style="margin-top:1%;">
 		 <?php
 		 if ($session -> check('User.UserID')) {
 		 echo $this -> element('menu');
