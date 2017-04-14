@@ -62,7 +62,7 @@ class MycompanyController extends AppController
 		//refresh companies
 		$this->loadModel('Users');
 		$session -> delete('Companies');
-		$CheckCompanyQ = $this -> Users -> CheckCompany($this->Session->read('User.UserID'));
+		$CheckCompanyQ = $this -> Users -> CheckCompany($session->read('User.UserID'));
 		$session -> write('Companies', $CheckCompanyQ);
 
 		$this -> Flash->success(__('SettingsSaved', true));

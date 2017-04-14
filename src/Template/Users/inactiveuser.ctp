@@ -1,4 +1,5 @@
 <?php
+$session = $this->request->session();
 	echo $this->Html->script("nyroModal/nyroModal");
 	$CurrentSearch['Members']['ParentID']=$session->read('User.MemberID')
 	?>
@@ -10,7 +11,7 @@
 	<table align="center" border="0">
 		<tr style="background-color:#FFFFFF">
 			<?php if(count($GetParentsQ)> 0){ ?>
-			<td><?php $SelectedParent = $CurrentSearch['Members']['ParentID']; include VIEWS.'/common/parent_select.php'?></td>
+			<td><?php $SelectedParent = $CurrentSearch['ParentID']; include VIEWS.'/common/parent_select.php'?></td>
 			<td><input type="submit" value="Re-Assign"></td>
 			<?php }?>
 		</tr>

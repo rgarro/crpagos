@@ -33,6 +33,8 @@ class ClientsTable extends Table
         $this->setTable('clients');
         $this->setDisplayField('ClientID');
         $this->setPrimaryKey('ClientID');
+        $this->belongsTo('Companies', ['className' => 'Companies']);
+        $this->hasMany('Invoices', ['className' => 'Invoices']);
     }
 
     /**

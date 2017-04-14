@@ -1,4 +1,5 @@
 <?php
+$session = $this->request->session();
 	$this->pageTitle= __('UsersOf', true).' '.$session->read('Company.CurrentName');
 	echo $this->Html->css("zebra");
 	echo $this->Html->script("zebra/zebra");
@@ -18,18 +19,18 @@
 	foreach($GetUsersQ as $CurrentUser){
 		echo '<tr>';
 		echo '<td align="center" class="left">';
-		if($CurrentUser['Users']['UserStatus'] == 1){
+		if($CurrentUser['UserStatus'] == 1){
 			__('Active');
 		}else{
 			__('InActive');
 		}
 		echo '</td>';
-		echo '<td align="center">',__($CurrentUser['AccessLevels']['AccessLevel']),'</td>';
-		echo '<td align="center">',$CurrentUser['Users']['FirstName'],'</td>';
-		echo '<td align="center">',$CurrentUser['Users']['LastName'],'</td>';
-		echo '<td align="center"><a href="mailto:',$CurrentUser['Users']['Email'],'">',$CurrentUser['Users']['Email'],'</a></td>';
+		echo '<td align="center">',__($CurrentUser['AccessLevel']),'</td>';
+		echo '<td align="center">',$CurrentUser['FirstName'],'</td>';
+		echo '<td align="center">',$CurrentUser['LastName'],'</td>';
+		echo '<td align="center"><a href="mailto:',$CurrentUser['Email'],'">',$CurrentUser['Email'],'</a></td>';
 		echo '<td align="center" class="right">';
-		echo '<a href="/users/edituser/',base64_encode($CurrentUser['Users']['UserID']),'/">',__('Edit'),'</a>';
+		echo '<a href="/users/edituser/',base64_encode($CurrentUser['UserID']),'/">',__('Edit'),'</a>';
 		echo '</td>';
 		echo '</tr>';
 	}

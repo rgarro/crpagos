@@ -33,6 +33,8 @@ class CompaniesTable extends Table
         $this->setTable('companies');
         $this->setDisplayField('CompanyID');
         $this->setPrimaryKey('CompanyID');
+        $this->hasMany('Clients', ['className' => 'Clients']);
+        $this->hasMany('Invoices', ['className' => 'Invoices']);
     }
 
     /**
@@ -162,7 +164,7 @@ class CompaniesTable extends Table
 			$TheSql = " UPDATE Companies ";
 			$TheSql.=" SET LocaleCode = '".substr(trim($_POST['LocaleCode']),0,50)."',";
 			$TheSql.=" CompanyName = '".substr(trim($_POST['CompanyName']),0,150)."',";
-			$TheSql.=" Email = '".substr(trim($_POST['Email']), array('@', '.', '-'),0,100)."',";
+			$TheSql.=" Email = '".substr(trim($_POST['Email']),0,100)."',";
 			if($_FILES['Logo']['error'] == 0){
 				$TheSql.=" Logo = '".substr(trim($_FILES['Logo']['name']),0,100)."',";
 			}
