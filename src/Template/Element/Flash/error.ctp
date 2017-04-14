@@ -8,6 +8,7 @@ if (!isset($params['escape']) || $params['escape'] !== false) {
 new Noty({
     text: '<?= $message ?>',
     type:'error',
+    timeout:4000,
     layout:'top',
     animation: {
         open: 'animated bounceInLeft', // Animate.css class names
