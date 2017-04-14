@@ -120,7 +120,7 @@ class UsersTable extends Table
 
 		public function AddNewUser(){
 			$TheSql = " INSERT INTO Users (FirstName, LastName, Email, Password, AccessLevelID, UserStatus,EnteredBy)";
-			$TheSql.=" VALUES ('".substr(trim($_POST['FirstName']))."',";
+			$TheSql.=" VALUES ('".trim($_POST['FirstName'])."',";
 			$TheSql.="'".substr(trim($_POST['LastName']),0,50)."',";
 			$TheSql.="'".substr(trim($_POST['Email']),0,100)."',";
 			$TheSql.="'".substr(trim($_POST['Password']),0,20)."',";

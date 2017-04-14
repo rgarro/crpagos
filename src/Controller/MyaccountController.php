@@ -22,9 +22,10 @@ class MyaccountController extends AppController {
 		if (!$session -> check('User.UserID')) {
 			if (isset($_POST['email'])) {
 				$SafeMail = $_POST['email'];
-				$UserQ = $this -> Users -> FindUserByEmail($SafeMail);
-				if (count($UserQ) > 0) {
-					$UserQ = current($UserQ);
+        $user = $this->Users->find('all',['conditions'=>['Users.email'=>$_POST['email']]]);
+				//$UserQ = $this -> Users -> FindUserByEmail($SafeMail);
+				if($user->count()) {
+					$UserQ = $user->first();
           $EmailSubject ="Recordatorio de clave crpagos.com";
           $Email = new Email('default');
           $Email->setCharset("utf-8");

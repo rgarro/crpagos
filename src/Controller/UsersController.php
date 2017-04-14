@@ -46,7 +46,7 @@ class UsersController extends AppController {
   				$this->Users->AddUserToCompany($UserID);
   			}
   			$this->Flash->error(__('UserSaved', true));
-  			$this->Redirect('/'.$this->viewPath.'/');
+  			$this->Redirect('/users/edituser/'.base64_encode($UserID));
   		}
 
 }
