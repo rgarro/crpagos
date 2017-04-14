@@ -42,12 +42,14 @@ $cakeDescription = 'crpagos cakephp3 version';
         <?= $this->fetch('title') ?>
     </title>
 
-
-
 	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="/css/crpagos.css" />
 	<script type="text/javascript" src="/js/jquery/jquery.js"></script>
 	<link rel="stylesheet" href="/css/normalize.min.css">
+
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script src="/js/bootstrap.min.js"></script>
+
 	<script src="/js/pace.min.js"></script>
 	<link href="/css/animate.css" rel="stylesheet"></script>
 	<link href="/css/noty.css" rel="stylesheet"></script>
@@ -69,46 +71,57 @@ $cakeDescription = 'crpagos cakephp3 version';
 		<!--[if lt IE 8]>
 				<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 		<![endif]-->
-		<center>
 			<noscript>
 				 <div class="jsmessage"><p><?php echo __('NoJavaScript')?></p></div>
 			 </noscript>
 
-			<div class="mainwrap">
-				<?php
-				if ($session -> check('Company.CurrentURL')) {
-					$HomeLink = $session -> read('Company.CurrentURL');
-				} else {
-					$HomeLink = "/";
-				}
-				echo '<a href="', $HomeLink, '">';
-				?>
-				<img src="/img/logo.gif" width="277" height="80" alt="CRPagos.com Facil y Seguro" border="0" align="left"></a>
-				<?php
-					if ($session -> check('User.UserID')) {
-						echo '<div class="welcome"><b>', __('Welcome'), '<br>', $session -> read('User.FullName'), '</b>';
-						echo $this->element('langswitch');
-						echo '</div>';
-					} else {
-						echo $this->element('toplogin');
-					}
-				?>
-			</div>
+			 <nav class="navbar navbar-default navbar-fixed-top navbar-static-top">
+   <div class="container-fluid">
+     <div class="navbar-header">
+       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
+       <a class="navbar-brand" href="/">
+<img src="/img/logo.gif" width="150" alt="CRPagos.com Facil y Seguro" border="0"/>
+			 </a>
+     </div>
 
-			<?php if($this->request->here() != $session->read('Company.PayURL')){?>
-			<div class="topmenu">
-				<?php
-				if ($session -> check('User.UserID')) {
-					echo $this -> element('menu');
-				} else {
-					echo $this -> element('publicmenu');
-				}
-			?>
-			</div>
-			<?php } ?>
-			<div class="contentwrap">
+		 <?php
+		 if ($session -> check('User.UserID')) {
+		 	echo '<div class="welcome"><b>', __('Welcome'), '<br>', $session -> read('User.FullName'), '</b>';
+		 	echo $this->element('langswitch');
+		 	echo '</div>';
+		 } else {
+		 	echo $this->element('toplogin');
+		 }
+		 ?>
 
-				<div class="content">
+
+		 <?php if($this->request->here() != $session->read('Company.PayURL')){?>
+		 <ul class="nav nav-pills">
+		 <?php
+		 if ($session -> check('User.UserID')) {
+		 echo $this -> element('menu');
+		 } else {
+		 echo $this -> element('publicmenu');
+		 }
+		 ?>
+		 </ul>
+
+		 <?php } ?>
+   </div>
+ </nav>
+
+
+
+
+
+			<div class="container-fluid contentwrap">
+
+				<div class="row" style="min-height:50%;">
           <?= $this->Flash->render() ?>
 					<?php
 					/*if ($session -> flash() != "") {
@@ -120,12 +133,13 @@ $cakeDescription = 'crpagos cakephp3 version';
 						echo '</div>';
 					}
 					//echo $content_for_layout;
-						?>
+						?><div class="col-md-12" >
               <?= $this->fetch('content') ?>
+						</div>
 				</div>
 			</div>
-			<div class="line"></div>
-			<div class="bottom">
+			<div class="container-fluid line"></div>
+			<div class="container-fluid bottom">
 			<?php if($this->request->here() != $session->read('Company.PayURL')){?>
 			<?php
 				if ($this->request->here() == '/') {
@@ -134,10 +148,6 @@ $cakeDescription = 'crpagos cakephp3 version';
 				echo $this ->element('bottommenu');
 			?>
 			</div>
-			<div class="copy">
-				<?php echo __('CopyRights')?>
-			</div>
 			<?php } ?>
-		</center>
 	</body>
 </html>

@@ -10,7 +10,7 @@ $session = $this->request->session();
 		}else{
 			$TheClass="";
 		}
-		echo '<div class="menuitem',$TheClass,'"><a class="menuitemlink',$TheClass,'" href="',$ThisLink,'">',__($ThisMenu),'</a></div>';
+		echo '<li class="menuitem',$TheClass,'"><a class="menuitemlink',$TheClass,'" href="',$ThisLink,'">',__($ThisMenu),'</a></li>';
 	$i++;
 	}
 ?>
