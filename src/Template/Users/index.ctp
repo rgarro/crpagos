@@ -4,7 +4,7 @@ $session = $this->request->session();
 	echo $this->Html->css("zebra");
 	echo $this->Html->script("zebra/zebra");
 ?>
-<h1><?php echo $this->pageTitle ?></h1>
+<h3><?php echo $this->pageTitle ?></h3>
 <?php if(count($GetUsersQ) > 0){?>
 <table border="0" width="80%" align="center" cellpadding="5"  class="zebra" >
 <tr>
@@ -45,5 +45,5 @@ $session = $this->request->session();
 
 	</table>
 <?php }else{ ?>
-	<h1>We're Sorry, but you have no users assigned yet!</h1>
+	<h3>We're Sorry, but you have no users assigned yet!</h3>
 <?php } ?>

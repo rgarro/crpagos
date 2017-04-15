@@ -10,7 +10,7 @@ $session = $this->request->session();
 	echo $this->Html->script($TheJs);
 	//echo '<p align="center"><a href="/',$this->viewPath,'/" onclick="return confirm(\'', __('BackConfirm'),'\');">', __('BackToUserList'),'</a></p>';
 ?>
-	<h1><?php echo $this->pageTitle ?></h1>
+	<h3><?php echo $this->pageTitle ?></h3>
 	<form method="post" action="/<?php echo $this->viewPath ?>/saveuser/" id="TheForm" name="TheForm">
 	<?php if($CurrentUser['UserID'] != ''){?>
 	<input type="hidden" name="UserID" Id="UserID" value="<?php echo base64_encode($CurrentUser['UserID']) ?>">

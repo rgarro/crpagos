@@ -62,7 +62,7 @@ echo $this->Html->script("check");
 
 <div id="dialog" title="<?php echo __('PleaseWait')?>" style="display:none;text-align:center">
   <p align="center">
-    <h1><?php echo __('ContactingBank')?></h1>
+    <h3><?php echo __('ContactingBank')?></h3>
     <img src="/img/loading.gif" width="43" height="43" border="0" alt="<?php echo __('PleaseWait')?>">
   </p>
 </div>

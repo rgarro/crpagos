@@ -198,7 +198,8 @@ class ResponseController extends AppController {
     $Email->send();
     /*****/
 		$this->Flash->error(__('BadError'));
-		$this -> redirect('/' . __('ContactUsLink', true) . '.htm');
+		//$this -> redirect('/' . __('ContactUsLink', true) . '.htm');
+    $this -> redirect('/mycompany');
 	}
 
 }

@@ -1,4 +1,5 @@
 <?php
+$session = $this->request->session();
 $this -> pageTitle = __('InvoicesFor', true) . ' ' . $session -> read('Company.CurrentName');
 echo $this->Html-> css("zebra");
 echo $this->Html-> css("ui");
@@ -10,7 +11,7 @@ echo $this->Html->script("tabs2");
 $TheJs = $session -> read('LocaleCode') . '/checkradios';
 echo $this->Html->script($TheJs);
 ?>
-	<h1><?php echo $this->pageTitle ?></h1>
+	<h3><?php echo $this->pageTitle ?></h3>
 	<?php
 		if (count($InvoicesQ) > 0) {
 			echo '<div id="tabs" style="width:95%">';

@@ -1,11 +1,11 @@
-<h1 lang="es-ES">&Iacute;ndice</h1>
+<h3 lang="es-ES">&Iacute;ndice</h3>
 <ol>
 <li><a href="#Banquets">Pol&iacute;ticas de 					Banquetes</a></li>
 <li><a href="#Security">Pol&iacute;tica de 					Seguridad</a></li>
 <li><a href="#Privacy">Pol&iacute;tica de 					Privacidad</a></li>
 </ol>
 <p lang="es-ES">&nbsp;</p>
-<h1 lang="es-ES"><a name="Banquets"></a>1. Pol&iacute;ticas de 					Banquetes</h1>
+<h3 lang="es-ES"><a name="Banquets"></a>1. Pol&iacute;ticas de 					Banquetes</h3>
 <p lang="es-ES">1-CONTRATACIONES 					EXTERNAS</p>
 <p lang="es-ES">A)La contrataci&oacute;n 					de equipos musicales, arreglos florales, plantas&hellip; corren por 					cuenta del cliente, en caso de requerir que el hotel les proporcione 					estos servicios deber&aacute; avisarlo con anticipaci&oacute;n. En 					caso de requerir plantas deber&aacute;n venir cubiertas o con sus 					macetones bien presentables. El decorador que coloque cualquier 					decoraci&oacute;n deber&aacute; colocar pl&aacute;sticos o alg&uacute;n</p>
 <p lang="es-ES">protector que cubra las 					alfombras de cualquier da&ntilde;o o suciedad.</p>
@@ -51,12 +51,12 @@
 <p lang="es-ES">El evento, deber&aacute; 					esta 100% cancelado antes de la realizaci&oacute;n del mismo</p>
 <p lang="es-ES">C)Se deber&aacute; dejar 					un voucher abierto de tarjeta de cr&eacute;dito firmado para cubrir 					cargos adicionales que se pueden presentar el d&iacute;a del evento.</p>
 <p lang="es-ES">&nbsp;</p>
-<h1 lang="es-ES"><a name="Security"></a>2. Pol&iacute;tica de 					Seguridad</h1>
+<h3 lang="es-ES"><a name="Security"></a>2. Pol&iacute;tica de 					Seguridad</h3>
 <p lang="es-ES">Las 					transacciones realizadas est&aacute;n protegidas bajo el protocolo 					HTTPS que asegura la encriptaci&oacute;n de datos. Esto significa que 					sus datos viajan encriptados y seguros, dado que no son descifrables.</p>
 <p lang="es-ES">El 					sistema llamado HTTPS se basa en el Secure Socket Layers (SSL) que 					crea un canal cifrado por donde viajan los datos.</p>
 <p lang="es-ES">Los protocolos HTTPS 					pueden ser aplicados desde cualquier navegador que usted utilice 					(como Safari, Internet Explorer, Mozilla Firefox, Opera, etc.).</p>
 <p lang="es-ES">&nbsp;</p>
-<h1 lang="es-ES"><a name="Privacy"></a>3. Pol&iacute;tica de 					Privacidad</h1>
+<h3 lang="es-ES"><a name="Privacy"></a>3. Pol&iacute;tica de 					Privacidad</h3>
 <p lang="es-ES">SU PRIVACIDAD ES 					IMPORTANTE PARA NOSOTROS</p>
 <p lang="es-ES">Somos conscientes de su 					preocupaci&oacute;n por la privacidad de sus datos. No es nuestro 					deseo ni intenci&oacute;n violar su privacidad, y no brindaremos sus 					datos personales a ninguna persona.</p>
 <p lang="es-ES">Cuando usted brinde sus 					datos personales, como nombre, direcci&oacute;n, email y n&uacute;mero 					de tel&eacute;fono, no entregaremos ni venderemos estos datos a nadie 					fuera de la compa&ntilde;&iacute;a para ning&uacute;n uso.</p>

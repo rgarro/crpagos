@@ -10,7 +10,7 @@ $session = $this->request->session();
 			<img src="/img/home_<?php echo $session->read('LocaleCode')?>.jpg" width="557" height="311" alt="<?php echo __('TheSolution') ?>"/>
 		</td>
 		<td colspan="2" style="text-align:center"><?php
-			echo '<h1>',__('Home1'),'</h1>';
+			echo '<h3>',__('Home1'),'</h3>';
 			echo '<h3>',__('Home2'),'</h3>';
 			echo '<h2>',__('Home3'),'</h2>';
 		?></td>

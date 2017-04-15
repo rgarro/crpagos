@@ -18,7 +18,7 @@ $javascript -> link($TheJs1, false);
 //localized datepiecker
 $TheUiJs = 'jquery/ui/i18n/ui.datepicker-' . $session -> read('LocaleCode');
 $javascript -> link($TheUiJs, false);
-echo '<h1>', $this -> pageTitle, '</h1>';
+echo '<h3>', $this -> pageTitle, '</h3>';
 ?>
 <form name="TheForm" id="TheForm" method="post" action="<?php echo $session->read('Company.CurrentURL'),'saveinvoice/'?>">
 <input type="hidden" value="<?php echo base64_encode($ThisInvoice['Invoices']['InvoiceID']) ?>" name="InvoiceID" id="InvoiceID">
@@ -28,7 +28,7 @@ echo '<h1>', $this -> pageTitle, '</h1>';
 			<table width="100%" border="0">
 				<tr>
 					<td><img hspace="10" src="<?php echo '/img',$session->read('Company.CurrentURL'),$session->read('Company.CurrentLogo') ?>" alt=""></td>
-					<td style="text-align:center;"><h1 style="font-size:23pt"><?php echo __('InvoiceRequestFrom') ?></h1></td>
+					<td style="text-align:center;"><h3 style="font-size:23pt"><?php echo __('InvoiceRequestFrom') ?></h3></td>
 				</tr>
 				<tr>
 					<td>

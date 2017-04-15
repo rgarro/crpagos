@@ -1,4 +1,4 @@
-<h1>Rules & Restrictions</h1>
+<h3>Rules & Restrictions</h3>
 <ul>
 	<li>
 		This reservation can be held until 6PM on the check-in day, or guaranteed with a credit card for late arrival.

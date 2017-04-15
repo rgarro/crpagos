@@ -15,7 +15,7 @@ $session = $this->request->session();
 	$TheJs = $session->read('LocaleCode').'/checkmycompany';
 	echo $this->Html->script($TheJs);
 ?>
-<h1><?php echo $this->pageTitle ?></h1>
+<h3><?php echo $this->pageTitle ?></h3>
 	<form method="post" action="/mycompany/saveme/" id="TheForm" name="TheForm" enctype="multipart/form-data">
 	<table border="0" class="zebra" align="center" width="600">
 		<tr><th colspan="2">&nbsp;</th></tr>

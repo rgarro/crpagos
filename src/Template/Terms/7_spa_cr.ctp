@@ -1,4 +1,4 @@
-<h1> Reglas y Restricciones </h1>
+<h3> Reglas y Restricciones </h3>
 <ul>
 	<li>
 		Esta reservaci&oacute;n pueder ser sostenidad hasta las 6PM en el d&iacute;a de llegada, o garantizada para llegar luego de esa hora por medio de un tarjeta de cr&eacute;dito.

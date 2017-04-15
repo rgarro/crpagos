@@ -9,7 +9,7 @@
 ?>
 
 <?php if($ThisInvoice['Invoices']['StatusID'] == 3){
-		echo '<h1><b>***',__('InvoicePaid'),'***</b></h1>';
+		echo '<h3><b>***',__('InvoicePaid'),'***</b></h3>';
 	}
 ?>
 <?php if($ThisInvoice['Invoices']['StatusID'] == 4){
@@ -22,7 +22,7 @@
 			<table width="100%" border="0">
 				<tr>
 					<td><img src="<?php echo $Protocol,$_SERVER['SERVER_NAME'],'/img',$session->read('Company.CurrentURL'),$session->read('Company.CurrentLogo') ?>" alt="<?php echo $session->read('Company.CurrentName') ?>" align="left"></td>
-					<td style="text-align:center;"><h1 style="font-size:23pt"><b><?php echo __('InvoiceRequestFrom') ?></b></h1></td>
+					<td style="text-align:center;"><h3 style="font-size:23pt"><b><?php echo __('InvoiceRequestFrom') ?></b></h3></td>
 				</tr>
 				<tr>
 					<td align="left" nowrap="nowrap"><?php

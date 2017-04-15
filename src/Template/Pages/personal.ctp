@@ -11,7 +11,7 @@ $session = $this->request->session();
 <script src="/js/jquery/validate.js"></script>
 <script src="<?php echo $TheJs; ?>"></script>
 <div class="contenttxt">
-<h1>Personal</h1>
+<h3>Personal</h3>
 Any person who requires to collect payments via Credit Card can benefit 	from the use of <b>CR Pagos</b>.
 <p><b>CR Pagos</b> will facilitate the collection of the payments for your services, either in Costa Rica or internationally.</p>
 <p>In addition, you will benefit your Customer Service experience, from facilitating the payment to your clients using a high end technology.</p>

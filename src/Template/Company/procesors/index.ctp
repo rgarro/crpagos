@@ -11,7 +11,7 @@ $session = $this->request->session();
 	<ol>
 
 		<?php
-			echo '<li><h1>',__('ChooseAmount'),'</h1></li>';
+			echo '<li><h3>',__('ChooseAmount'),'</h3></li>';
 			echo '<li>';
 			$DefaultAmount = 50;
 			$Amounts = array(25,50,100,250,500);
@@ -37,10 +37,10 @@ $session = $this->request->session();
 			echo '</div><div class="TextRight"></div>';
 			echo '</li>';
 
-			echo '<li><h1>', __('ContactandBillingInformation'), '</h1></li>';
+			echo '<li><h3>', __('ContactandBillingInformation'), '</h3></li>';
 			include 'contactinfo.ctp';
 
-			echo '<li><h1>', __(' PaymentInformation'), '</h1></li>';
+			echo '<li><h3>', __(' PaymentInformation'), '</h3></li>';
 			include 'ccinfo.ctp';
 
 			echo '<input type="submit" value="',  __('DonateNow'), '" id="DonateButton">';

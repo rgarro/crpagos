@@ -17,7 +17,7 @@ $session = $this->request->session();
 	echo $this->Html->script($TheJs);
 //	echo '<p align="center"><a href="/',$this->viewPath,'/" onclick="return confirm(\'', __('BackConfirm'),'\');">', __('BackToClientList'),'</a></p>';
 ?>
-<h1><?php echo $this->pageTitle ?></h1>
+<h3><?php echo $this->pageTitle ?></h3>
 <div id="ClientEditForm">
 	<ul>
 		<li><a href="#Bus">Negocios</a></li>

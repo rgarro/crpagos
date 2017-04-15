@@ -1,4 +1,4 @@
-<h1> Pol&iacute;ticas de Cancelaci&oacute;n Hotel Holiday Inn Express. </h1>
+<h3> Pol&iacute;ticas de Cancelaci&oacute;n Hotel Holiday Inn Express. </h3>
 <h2> Normas de modificaci&oacute;n y cancelaci&oacute;n </h2>
 <ul>
 	<li>

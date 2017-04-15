@@ -1,10 +1,10 @@
-<h1 lang="en-US">Index</h1>
+<h3 lang="en-US">Index</h3>
 <ol>
 <li><a href="#Banquet">Banquet Policy</a>&nbsp;</li>
 <li><a href="#Security">Security Policy</a></li>
 <li><a href="#Privacy">Privacy Policy</a></li>
 </ol>
-<h1 lang="en-US"><a name="Banquet"></a>1. BANQUET POLICIES</h1>
+<h3 lang="en-US"><a name="Banquet"></a>1. BANQUET POLICIES</h3>
 <p>EXTERNAL HIRES</p>
 <p>The hiring of music, floral arrangements, plants ... is responsibility of the client, unless the advised to the hotel with anticipation.</p>
 <p>It is strictly prohibited to nail, paint, hang or glue on the meeting room walls, also, it is not allowed the use of hydrogen or any other flammable substance inside the meeting rooms.</p>
@@ -43,11 +43,11 @@
 <p lang="en-US">2- 50% of the total of the event should be paid at the signature of the contract (30 days prior to the event, the 50% left should be paid 3 days before the beginning of the event</p>
 <p>3- The total amount of the event should be paid before the realization</p>
 <p>&nbsp;</p>
-<h1 lang="en-US"><a name="Security"></a>2. Security Policy</h1>
+<h3 lang="en-US"><a name="Security"></a>2. Security Policy</h3>
 <p lang="en-US">All transactions are protected under the HTTPS protocol, which assures the encription of the data. This means that your information is transmitted encripted and secure, as it can't be decoded.</p>
 <p lang="en-US">The HTTPS protocol is based in Secure Socket Layers (SSL), which creates a coded channel in which your information travels. This protocol provide communication security over the Internet.</p>
 <p lang="en-US">The HTTPS protocols can be accesed from any browser you are using, such as Safari, Internet Explorer, Mozilla Firefox, Opera, etc.</p>
-<h1 lang="en-US"><br /><a name="Privacy"></a>3. Privacy Policy</h1>
+<h3 lang="en-US"><br /><a name="Privacy"></a>3. Privacy Policy</h3>
 <p lang="en-US">YOUR PRIVACY IS IMPORTANT FOR US</p>
 <p lang="en-US">We are aware of your concern for the privacy of your information. It is not our wish or intent to violate your privacy, so we will not share your personal information with any person.</p>
 <p lang="en-US">When you provide your personal information such as name, address, email, or telephone number, it will not be delivered or sold to a third party for any use.</p>

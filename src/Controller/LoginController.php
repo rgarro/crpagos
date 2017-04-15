@@ -40,6 +40,7 @@ class LoginController extends AppController
           $session -> write('Company.CurrentSubject', $CurrentCompany['EmailSubject']);
           $session -> write('Company.CurrentLogo', $CurrentCompany['Logo']);
           $session -> write('Company.CurrentURL', $CurrentCompany['CompanyUrl']);
+          //$session -> write('Company.CurrentURL',"/company?currentCo=".$CurrentCompany['CompanyID']);
           $session -> write('Company.CurrentCompanyURL', $CurrentCompany['CompanyUrl']);
           $session -> write('Company.CurrentEmail', $CurrentCompany['Email']);
           $session -> write('Company.CurrentBgColor', $CurrentCompany['BgColor']);
@@ -52,7 +53,10 @@ class LoginController extends AppController
           //Keep companies on a Variable for future use
           $session -> write('Companies', $CheckCompanyQ);
           //Redirect to company's URL
+//echo $CheckCompanyQ[0]['CompanyUrl'];
+//exit;
           $this -> redirect($CheckCompanyQ[0]['CompanyUrl']);
+          //$this -> redirect("/clients");
         } else {
           //No Company, give the login error
           //$session -> setFlash(__('ErrorLogin', true));

@@ -23,7 +23,7 @@ $session = $this->request->session();
 	//$this -> addScript($javascript -> codeBlock($TheBlock));
 	echo $this->Html->script("tinymce");
 ?>
-<h1><?php echo $this->pageTitle ?></h1>
+<h3><?php echo $this->pageTitle ?></h3>
 	<form method="post" action="/mycompany/terms/" id="TheForm" name="TheForm" enctype="multipart/form-data">
 	<table border="0" class="zebra" align="center" width="600">
 		<?php

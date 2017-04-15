@@ -13,7 +13,7 @@ $session = $this->request->session();
 <script src="/js/jquery/validate.js"></script>
 <script src="<?php echo $TheJs; ?>"></script>
 <div class="contenttxt">
-<h1>Personas</h1>
+<h3>Personas</h3>
 Cualquier persona que requiera hacer su gesti&oacute;n de cobro por medio de Tarjeta de Cr&eacute;dito, se puede ver beneficiado al hacer uso de <b>CR Pagos</b>.
 <p><b>CR Pagos</b> le facilita el cobro de sus servicios, ya sea a nivel nacional o internacional.</p>
 <p>Adicionalmente mejora su Servicio al Cliente, al facilitar el pago por sus 	servicios, utilizando una herramienta de &uacute;ltima tecnolog&iacute;a.</p>

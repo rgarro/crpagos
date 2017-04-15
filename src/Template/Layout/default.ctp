@@ -126,7 +126,8 @@ $cakeDescription = 'crpagos cakephp3 version';
 					}*/
 					if($this->request->here() == $session->read('Company.CurrentURL')){
 						echo '<div style="float:right">';
-						include VIEWS.'elements'.DS.'companyselect.ctp' ;
+						//include VIEWS.'elements'.DS.'companyselect.ctp' ;
+						 echo $this -> element('companyselect');
 						echo '</div>';
 					}
 					//echo $content_for_layout;

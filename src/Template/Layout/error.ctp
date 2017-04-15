@@ -32,7 +32,7 @@
 <body>
     <div id="container">
         <div id="header">
-            <h1><?= __('Error') ?></h1>
+            <h3><?= __('Error') ?></h3>
         </div>
         <div id="content">
             <?= $this->Flash->render() ?>

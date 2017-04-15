@@ -13,7 +13,7 @@ $session = $this->request->session();
 	$TheJs = $session->read('LocaleCode').'/checkmyaccount';
 	echo $this->Html->script($TheJs);
 ?>
-<h1><?php echo $this->pageTitle ?></h1>
+<h3><?php echo $this->pageTitle ?></h3>
 	<form method="post" action="/myaccount/saveme/" id="TheForm" name="TheForm">
 	<input type="hidden" name="UserID" Id="UserID" value="<?php echo base64_encode($CurrentUser['Users']['UserID']) ?>">
 	<table border="0" class="zebra" align="center" width="600">

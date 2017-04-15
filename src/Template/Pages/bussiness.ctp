@@ -11,7 +11,7 @@ $session = $this->request->session();
 <script src="/js/jquery/validate.js"></script>
 <script src="<?php echo $TheJs; ?>"></script>
 <div class="contenttxt">
-<h1>Business</h1>
+<h3>Business</h3>
 If your business needs to receive payments from reservations, services 	provided to international clients, the selling of products not having an E-commerce website, <b>CR Pagos</b> is the solution you have being waiting for.
 <p>With your business benefit in mind, we offer the development of custom 	made applications, that will provide a better use of <b>CR Pagos</b>.
 <p>Our service will only be provided to persons resident in Costa Rica.</p>

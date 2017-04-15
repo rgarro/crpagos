@@ -11,7 +11,7 @@ $session = $this->request->session();
 	//$javascript->link($TheJs, false);
 ?>
 <div class="contenttxt">
-	<h1>About Us</h1>
+	<h3>About Us</h3>
 	<b>CR Pagos</b> is a division of Pragm&aacute;tico Consultores, S.A., a company with more than 10 years providing consultancy in the area of Internet.
 	<p><b>CR Pagos</b> was developed with the idea of allowing any Business or Person established in Costa Rica, to easily and safely collect online payments via Credit Cards.</p>
 	<p>To use our service an E-Commerce web site is not needed.</p>

@@ -8,7 +8,7 @@
  ?>
  <div align="center">
  	<?php 
-		echo '<h1>',$this->pageTitle,'</h1>';	
+		echo '<h3>',$this->pageTitle,'</h3>';	
 	 	include 'invoice.ctp';
 		if($ThisInvoice['Invoices']['StatusID'] < 3){
 	?>
