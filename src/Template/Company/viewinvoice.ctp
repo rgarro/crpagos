@@ -1,14 +1,15 @@
-<?php 
+<?php
+$session = $this->request->session();
 	$ThisInvoice = current($InvoiceQ);
-	$javascript->link("jquery/validate", false);	
+	echo $this->Html->script("jquery/validate");
 	$this->pageTitle= __('InvoiceRequestFrom', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['Invoices']['InvoiceNumber'];
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/confirmsend';
-	$javascript->link($TheJs, false);
+	echo $this->Html->script($TheJs);
  ?>
  <div align="center">
- 	<?php 
-		echo '<h3>',$this->pageTitle,'</h3>';	
+ 	<?php
+		echo '<h3>',$this->pageTitle,'</h3>';
 	 	include 'invoice.ctp';
 		if($ThisInvoice['Invoices']['StatusID'] < 3){
 	?>
@@ -24,7 +25,7 @@
 						}
 					?>
    	 				</select>
-				</td>	
+				</td>
 				<td class="total"><label for="LocaleCode">*<?php echo __('Language') ?>:</label></td>
     			<td nowrap="nowrap">
     				<select name="LocaleCode" id="LocaleCode" tabindex="2">

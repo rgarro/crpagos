@@ -1,11 +1,11 @@
 <?php 
 	$ThisInvoice = current($InvoiceQ);
-	$html->css("nyroModal","stylesheet", array(), false);
+	echo $this->Html-> css("nyroModal","stylesheet", array(), false);
 	$this->pageTitle= __('Paying', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['Invoices']['InvoiceNumber'];
-	$javascript->link("jquery/validate", false);	
+	echo $this->Html->script("jquery/validate", false);	
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/payinvoice';
-	$javascript->link($TheJs, false);
+	echo $this->Html->script($TheJs, false);
  ?>
  <div align="center">
  	<?php 

@@ -1,3 +1,6 @@
+<?php
+$session = $this->request->session();
+?>
 <div style="text-align:left">
 	<blockquote>
 		<ol>
@@ -7,6 +10,6 @@
 		</ol>
 	</blockquote>
 	</div>
-<?php 
+<?php
 	echo '<a href="',$session->read('Company.CurrentURL'),'">', __('BackToList'),'</a>';
 ?>

@@ -1,17 +1,18 @@
 <?php
+$session = $this->request->session();
 	$this->pageTitle= __('InvoiceRequestFrom', true).' '.$session->read('Company.CurrentName');
 	$ThisInvoice = current($InvoiceQ);
-	$html->css("nyroModal","stylesheet", array(), false);
-	$javascript->link("nyroModal/nyroModal", false);
+	echo $this->Html-> css("nyroModal");
+	echo $this->Html->script("nyroModal/nyroModal");
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/checkpay';
-	$javascript->link($TheJs, false);
+	echo $this->Html->script($TheJs);
 	if($ThisInvoice['Invoices']['StatusID'] != 2){
 		$ShowAuthCode = "yes"; include 'invoice.ctp';
 		$this->Set('ClearSession', true);
 	 }else{
 	    if($_SESSION['Company']['CurrentCompanyID'] == 2){
-	     $TheActionURL="/pragmasoft/";
+	     $TheActionURL="/company/";
 	   }
 ?>
 <form name="TheForm" id="TheForm" method="post" action="<?php echo $TheActionURL ?>">

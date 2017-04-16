@@ -1,7 +1,7 @@
 <?php
 $session = $this->request->session();
 ?>
-<form name="SearchForm" id="SearchForm" method="post" action="<?php echo $session -> read('Company.CurrentURL') ?>search/">
+<form name="SearchForm" id="SearchForm" method="post" action="/company/search/">
 	<table border="0" class="zebra" align="center" width="500">
 		<tr>
 			<td valign="top"><label for="InvoiceNumber"><?php echo __('InvoiceNumber') ?>:</label></td>

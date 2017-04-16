@@ -1,4 +1,5 @@
 <?php
+$session = $this->request->session();
 	if(!isset($Protocol)){
 		if(isset($_SERVER['HTTPS'])){
 			$Protocol = "https://";

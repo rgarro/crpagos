@@ -1,27 +1,31 @@
 <?php
+use Cake\Core\Configure;
+use Cake\Error\Debugger;
+
+$session = $this->request->session();
 $ThisInvoice = current($InvoiceQ);
-$this -> pageTitle = __('Editing', true) . ' ' . __('InvoiceNumber', true) . ' ' . $ThisInvoice['Invoices']['InvoiceNumber'];
-//$html->css("default/ui.datepicker","stylesheet", array(), false);
-$html -> css("ui", "stylesheet", array(), false);
+$this -> pageTitle = __('Editing', true) . ' ' . __('InvoiceNumber', true) . ' ' . $ThisInvoice['InvoiceNumber'];
+//echo $this->Html-> css("default/ui.datepicker","stylesheet", array(), false);
+echo $this->Html-> css("ui");
 //$html -> css("tabs", "stylesheet", array(), false);
-$javascript -> link("jquery/jquery.form", false);
-$javascript -> link("jquery/jquery.addtolist", false);
-$javascript -> link("jquery/jquery.ui", false);
-$javascript -> link("jquery/validate", false);
-$javascript -> link("jquery/jquery.cookie", false);
-$javascript -> link("invoice", false);
+echo $this->Html->script("jquery/jquery.form");
+echo $this->Html->script("jquery/jquery.addtolist");
+echo $this->Html->script("jquery/jquery.ui");
+echo $this->Html->script("jquery/validate");
+echo $this->Html->script("jquery/jquery.cookie");
+echo $this->Html->script("invoice");
 //localized validation code
 $TheJs = $session -> read('LocaleCode') . '/validateinvoice';
-$javascript -> link($TheJs, false);
+echo $this->Html->script($TheJs);
 $TheJs1 = $session -> read('LocaleCode') . '/checkclient';
-$javascript -> link($TheJs1, false);
+echo $this->Html->script($TheJs1);
 //localized datepiecker
 $TheUiJs = 'jquery/ui/i18n/ui.datepicker-' . $session -> read('LocaleCode');
-$javascript -> link($TheUiJs, false);
+echo $this->Html->script($TheUiJs);
 echo '<h3>', $this -> pageTitle, '</h3>';
 ?>
 <form name="TheForm" id="TheForm" method="post" action="<?php echo $session->read('Company.CurrentURL'),'saveinvoice/'?>">
-<input type="hidden" value="<?php echo base64_encode($ThisInvoice['Invoices']['InvoiceID']) ?>" name="InvoiceID" id="InvoiceID">
+<input type="hidden" value="<?php echo base64_encode($ThisInvoice['InvoiceID']) ?>" name="InvoiceID" id="InvoiceID">
 <table align="center" class="main" border="0">
 	<tr>
    		 <td>
@@ -36,10 +40,10 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 				<select name="StatusID" id="StatusID" tabindex="1">
 			    	<?php
 					foreach ($StatusQ as $ThisStatus) {
-						if ($ThisStatus['Status']['StatusID'] == $ThisInvoice['Invoices']['StatusID']) {$Sel = " Selected ";
+						if ($ThisStatus['StatusID'] == $ThisInvoice['StatusID']) {$Sel = " Selected ";
 						} else {$Sel = "";
 						}
-						echo '<option value="', $ThisStatus['Status']['StatusID'], '"', $Sel, '>', __($ThisStatus['Status']['Status']), '</option>', "\n";
+						echo '<option value="', $ThisStatus['StatusID'], '"', $Sel, '>', __($ThisStatus['Status']), '</option>', "\n";
 					}
 					?>
    	 				</select><br>
@@ -52,10 +56,10 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 					<select name="LocaleCode" id="LocaleCode" tabindex="2">
 				    	<?php
 						foreach ($LocalesQ as $ThisLocale) {
-							if ($ThisLocale['Locales']['LocaleCode'] == Configure::read('Config.language')) {$Sel = " Selected ";
+							if ($ThisLocale['LocaleCode'] == Configure::read('Config.language')) {$Sel = " Selected ";
 							} else {$Sel = "";
 							}
-							echo '<option value="', $ThisLocale['Locales']['LocaleCode'], '"', $Sel, '>', $ThisLocale['Locales']['Locale'], '</option>', "\n";
+							echo '<option value="', $ThisLocale['LocaleCode'], '"', $Sel, '>', $ThisLocale['Locale'], '</option>', "\n";
 						}
 					?>
 				    </select><br>
@@ -64,13 +68,13 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 					 	if(count($CurrencyQ) > 1){
 					 		echo '<select id="CurrencyID" name="CurrencyID" tabindex="3">';
 						 	foreach($CurrencyQ as $ThisCurrency){
-								echo '<option value="',$ThisCurrency['Currencies']['CurrencyID'],'" symbol="',$ThisCurrency['Currencies']['CurrencySymbol'],'">',$ThisCurrency['Currencies']['CurrencyName'];
-								echo ' ( ',$ThisCurrency['Currencies']['CurrencySymbol'],' )','</option>',"\n";
+								echo '<option value="',$ThisCurrency['CurrencyID'],'" symbol="',$ThisCurrency['CurrencySymbol'],'">',$ThisCurrency['CurrencyName'];
+								echo ' ( ',$ThisCurrency['CurrencySymbol'],' )','</option>',"\n";
 						 	}
 							echo '</select>';
 					 	}else{
-								echo '<input id="CurrencyID"  name="CurrencyID" type="hidden" value="',$CurrencyQ[0]['Currencies']['CurrencyID'],'" >';
-								echo $CurrencyQ[0]['Currencies']['CurrencyName'],' ( ',$CurrencyQ[0]['Currencies']['CurrencySymbol'],' )';
+								echo '<input id="CurrencyID"  name="CurrencyID" type="hidden" value="',$CurrencyQ[0]['CurrencyID'],'" >';
+								echo $CurrencyQ[0]['CurrencyName'],' ( ',$CurrencyQ[0]['CurrencySymbol'],' )';
 						}
 					?>
 					</td>
@@ -80,8 +84,8 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 						if ($session -> read('LocaleCode') == 'spa_cr') {$DateMask = "m/d/Y";
 						} else {$DateMask = "m/d/Y";
 						}
- ?> <input type="text" name="InvoiceDate" id="InvoiceDate" value="<?php echo date($DateMask, strtotime($ThisInvoice['Invoices']['InvoiceDate'])); ?>" size="10" maxlength="10" tabindex="4"><br>
-<label for="InvoiceNumber">*<?php echo __('InvoiceNumber') ?>:</label><input type="text" name="InvoiceNumber" id="InvoiceNumber" value="<?php echo $ThisInvoice['Invoices']['InvoiceNumber'] ?>" size="15" maxlength="25"></td>
+ ?> <input type="text" name="InvoiceDate" id="InvoiceDate" value="<?php echo date($DateMask, strtotime($ThisInvoice['InvoiceDate'])); ?>" size="10" maxlength="10" tabindex="4"><br>
+<label for="InvoiceNumber">*<?php echo __('InvoiceNumber') ?>:</label><input type="text" name="InvoiceNumber" id="InvoiceNumber" value="<?php echo $ThisInvoice['InvoiceNumber'] ?>" size="15" maxlength="25"></td>
 					</td>
 					</tr>
       		</table>
@@ -94,10 +98,10 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 					<option value=""><?php echo __('PleaseSelect') ?></option>
 			    	<?php
 						foreach ($ClientsQ as $ThisClient) {
-							if ($ThisClient['Clients']['ClientID'] == $ThisInvoice['Invoices']['ClientID']) {$Sel = " Selected ";
+							if ($ThisClient['ClientID'] == $ThisInvoice['ClientID']) {$Sel = " Selected ";
 							} else {$Sel = "";
 							}
-							echo '<option value="', $ThisClient['Clients']['ClientID'], '"', $Sel, '>', $ThisClient['Clients']['ClientName'], ' ', $ThisClient['Clients']['ClientLastName'], ' (', $ThisClient['Clients']['Email'], ')</option>', "\n";
+							echo '<option value="', $ThisClient['ClientID'], '"', $Sel, '>', $ThisClient['ClientName'], ' ', $ThisClient['ClientLastName'], ' (', $ThisClient['Email'], ')</option>', "\n";
 						}
 					?>
 				 <optgroup label="-------------------------------------">
@@ -107,10 +111,10 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 	</td>
   </tr>
     <tr>
-    <td nowrap="nowrap"><label for="EmailSubject">*<?php echo __('EmailSubject') ?>:</label> <input tabindex="15" type="text" id="EmailSubject" size="79" maxlength="255" name="EmailSubject" value="<?php echo $ThisInvoice['Invoices']['EmailSubject'] ?>"></td>
+    <td nowrap="nowrap"><label for="EmailSubject">*<?php echo __('EmailSubject') ?>:</label> <input tabindex="15" type="text" id="EmailSubject" size="79" maxlength="255" name="EmailSubject" value="<?php echo $ThisInvoice['EmailSubject'] ?>"></td>
   </tr>
   <tr>
-    <td><label for="Note"><?php echo __('Note') ?>:</label><blockquote><textarea tabindex="16" wrap="soft" cols="75" rows="3" id="Note" name="Note"><?php echo $ThisInvoice['Invoices']['Note'] ?></textarea></blockquote></td>
+    <td><label for="Note"><?php echo __('Note') ?>:</label><blockquote><textarea tabindex="16" wrap="soft" cols="75" rows="3" id="Note" name="Note"><?php echo $ThisInvoice['Note'] ?></textarea></blockquote></td>
   </tr>
 
   <tr>
@@ -128,10 +132,10 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 		$LineNum = 1;
 		foreach ($InvoiceDetailQ as $ThisDetail) {
 			echo '<tr id="Line', $LineNum, '" class="line">';
-			echo '<td align="center" nowrap="nowrap"> <input name="Qty[]" type="text" id="Qty" size="2" maxlength="2" value="', $ThisDetail['InvoiceDetail']['Qty'], '" class="qty"></td>';
-			echo '<td nowrap="nowrap"><input name="Desc[]" type="text" id="Desc" size="50" maxlength="255" value="', $ThisDetail['InvoiceDetail']['Description'], '"></td>';
-			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['Currencies']['CurrencySymbol'], '</span></label><input name="UnitPrice[]"  type="text" id="UnitPrice" size="9" maxlength="9" class="unitprice" value="', number_format($ThisDetail['InvoiceDetail']['UnitPrice'], 2), '"></td>';
-			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['Currencies']['CurrencySymbol'], '</span></label><input name="Amount[]" type="text" id="Amount" tabindex="-1" value="', number_format($ThisDetail['InvoiceDetail']['Amount'], 2), '" size="9" maxlength="9" readonly="readonly" class="amount"></td>';
+			echo '<td align="center" nowrap="nowrap"> <input name="Qty[]" type="text" id="Qty" size="2" maxlength="2" value="', $ThisDetail['Qty'], '" class="qty"></td>';
+			echo '<td nowrap="nowrap"><input name="Desc[]" type="text" id="Desc" size="50" maxlength="255" value="', $ThisDetail['Description'], '"></td>';
+			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="UnitPrice[]"  type="text" id="UnitPrice" size="9" maxlength="9" class="unitprice" value="', number_format($ThisDetail['UnitPrice'], 2), '"></td>';
+			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="Amount[]" type="text" id="Amount" tabindex="-1" value="', number_format($ThisDetail['Amount'], 2), '" size="9" maxlength="9" readonly="readonly" class="amount"></td>';
 			echo '<td align="center" nowrap="nowrap" style="text-align:center;width:30px;">';
 	      	if($LineNum == 1){
 	  			$TheStyle = 'display:none';
@@ -142,7 +146,9 @@ echo '<h3>', $this -> pageTitle, '</h3>';
       		echo '</td>';
 			echo '</tr>';
 			$LineNum++;
-			$Total = $Total + $ThisDetail['InvoiceDetail']['Amount'];
+print_r($ThisDetail);
+
+			$Total = $Total + $ThisDetail;
 		}
 	?>
       <tr id="LastLine">
@@ -152,7 +158,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
         <td align="right">&nbsp;</td>
         <td align="center"><a href="#" name="AddRow" id="AddRow" tabindex="20"><b>&raquo;<?php echo __('AddRow') ?></b></a></td>
         <td align="right"><label><b><?php echo __('Total') ?>:</b></label></td>
-        <td align="center" nowrap="nowrap"><label><span class="currency"><?php echo $ThisInvoice['Currencies']['CurrencySymbol'] ?></span></label><input name="InvoiceTotal" type="text" id="InvoiceTotal" tabindex="-1" size="9" maxlength="12" readonly="readonly" class="total" value="<?php echo number_format($Total, 2) ?>"></td>
+        <td align="center" nowrap="nowrap"><label><span class="currency"><?php echo $ThisInvoice['CurrencySymbol'] ?></span></label><input name="InvoiceTotal" type="text" id="InvoiceTotal" tabindex="-1" size="9" maxlength="12" readonly="readonly" class="total" value="<?php echo number_format($Total, 2) ?>"></td>
         </tr>
 			</table>
 			</td>
@@ -172,5 +178,3 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 	include 'quickadd.ctp';
 	echo '<p align="center"><a href="', $session -> read('Company.CurrentURL'), '" onclick="return confirm(\'',  __('BackConfirm'), '\');">',  __('BackToList'), '</a></p>';
 ?>
-
-

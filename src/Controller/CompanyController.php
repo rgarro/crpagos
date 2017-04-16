@@ -156,7 +156,7 @@ var $L10n;
     $session = $this->request->session();
 		$InvoiceID = base64_decode($InvoiceID);
 		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
-		if ($this -> viewVars['InvoiceQ'][0]['Invoices']['StatusID'] != 1) {
+		if ($this -> viewVars['InvoiceQ'][0]['StatusID'] != 1) {
 			$this -> redirect($session -> read('Company.CurrentURL') . '/viewinvoice/' . base64_encode($InvoiceID) . '/');
 			exit();
 		}
@@ -166,7 +166,7 @@ var $L10n;
 		$this -> Set('StatusQ', $this -> Status -> index());
 		//Use Selected Language IF Any
 		if (!isset($_GET['Lang'])) {
-			$lang = $this -> viewVars['InvoiceQ'][0]['Invoices']['LocaleCode'];
+			$lang = $this -> viewVars['InvoiceQ'][0]['LocaleCode'];
 			$this -> L10n -> get($lang);
 			Configure::write('Config.language', $lang);
 		}
@@ -176,16 +176,18 @@ var $L10n;
 
 	//View Invoice
 	function ViewInvoice($InvoiceID = null) {
+    $session = $this->request->session();
 		$InvoiceID = base64_decode($InvoiceID);
 		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
 		$this -> Set('InvoiceDetailQ', $this -> Invoices -> GetInvoiceDetail($InvoiceID));
 		$this -> Set('InvoiceLogQ', $this -> Invoices -> GetInvoiceLog($InvoiceID));
 		$this -> Set('LocalesQ', $this -> Locales -> index());
-		$this -> Set('StatusQ', $this -> Status -> index($this -> viewVars['InvoiceQ'][0]['Invoices']['StatusID']));
+		$this -> Set('StatusQ', $this -> Status -> index($this -> viewVars['InvoiceQ'][0]['StatusID']));
 	}
 
 	//Void Invoice
 	function VoidInvoice($InvoiceID = null) {
+    $session = $this->request->session();
 		$InvoiceID = base64_decode($InvoiceID);
 		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
 		if ($this -> viewVars['InvoiceQ'][0]['Invoices']['StatusID'] < 2) {
@@ -195,22 +197,22 @@ var $L10n;
 		$this -> Set('InvoiceDetailQ', $this -> Invoices -> GetInvoiceDetail($InvoiceID));
 		$this -> Set('InvoiceLogQ', $this -> Invoices -> GetInvoiceLog($InvoiceID));
 		$this -> Set('LocalesQ', $this -> Locales -> index());
-		$this -> Set('StatusQ', $this -> Status -> index($this -> viewVars['InvoiceQ'][0]['Invoices']['StatusID']));
+		$this -> Set('StatusQ', $this -> Status -> index($this -> viewVars['InvoiceQ'][0]['StatusID']));
 	}
 
 	//pay Invoice
 	function PayInvoice($InvoiceID = null) {
-
+$session = $this->request->session();
 		$InvoiceID = base64_decode($InvoiceID);
 		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
-		if ($this -> viewVars['InvoiceQ'][0]['Invoices']['StatusID'] < 2) {
+		if ($this -> viewVars['InvoiceQ'][0]['StatusID'] < 2) {
 			$this -> redirect($session -> read('Company.CurrentURL') . '/viewinvoice/' . base64_encode($InvoiceID) . '/');
 			exit;
 		}
 		$this -> Set('InvoiceDetailQ', $this -> Invoices -> GetInvoiceDetail($InvoiceID));
 		$this -> Set('InvoiceLogQ', $this -> Invoices -> GetInvoiceLog($InvoiceID));
 		$this -> Set('LocalesQ', $this -> Locales -> index());
-		$this -> Set('StatusQ', $this -> Status -> index($this -> viewVars['InvoiceQ'][0]['Invoices']['StatusID']));
+		$this -> Set('StatusQ', $this -> Status -> index($this -> viewVars['InvoiceQ'][0]['StatusID']));
 	}
 
 	//Save Invoice
@@ -278,14 +280,14 @@ var $L10n;
 		if ($ActionID == 8) {
 			$InvoiceQ = current($this -> Invoices -> index($InvoiceID));
 			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
-			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['Invoices']['InvoiceNumber'] . ' ' . __('ConfirmManualPaid', true);
+			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmManualPaid', true);
 			$TheTemplate = "invoicepaid";
 			include VIEWS . 'company' . DS . 'mail.ctp';
 		}
 		if ($ActionID == 9) {
 			$InvoiceQ = current($this -> Invoices -> index($InvoiceID));
 			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
-			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['Invoices']['InvoiceNumber'] . ' ' . __('ConfirmVoid', true);
+			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmVoid', true);
 			$TheTemplate = "invoicepaid";
 			include VIEWS . 'company' . DS . 'mail.ctp';
 		}
@@ -322,15 +324,15 @@ var $L10n;
 			$this -> Invoices -> UpdateInvoiceStatus($InvoiceID, 2);
 			$this -> Invoices -> AddInvoiceLog($InvoiceID, $ActionID, $Comment);
 			//Email Goes Here
-			$Subject = $InvoiceQ['Invoices']['EmailSubject'] . '. ' . __('InvoiceNumber', true) . ': ' . $InvoiceQ['Invoices']['InvoiceNumber'];
+			$Subject = $InvoiceQ['EmailSubject'] . '. ' . __('InvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'];
 			$TheTemplate = "invoice";
 			$this -> Set('ThisInvoice', $InvoiceQ);
 			$this -> Set('InvoiceDetailQ', $InvoiceDetailQ);
 			$this -> Set('TheCode', rawurlencode($this -> Crypter -> enCrypt($InvoiceID)));
 			//Force Client Copy
 			$_POST['CopyClient'] = 1;
-			include VIEWS . 'company' . DS . 'mail.ctp';
-			$SentTo[] = $InvoiceQ['Clients']['ClientName'] . ' ' . $InvoiceQ['Clients']['ClientLastName'] . '(' . $InvoiceQ['Clients']['Email'] . ') ' . __('InvoiceNumber', true) . ': ' . $InvoiceQ['Invoices']['InvoiceNumber'] . ' ' . __('Amount', true) . ':' . $InvoiceQ['Currencies']['CurrencySymbol'] . number_format($InvoiceQ['0']['TheTotal'], 2);
+      include App::path('Template') . '/Company/mail.ctp';
+			$SentTo[] = $InvoiceQ['ClientName'] . ' ' . $InvoiceQ['ClientLastName'] . '(' . $InvoiceQ['Email'] . ') ' . __('InvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('Amount', true) . ':' . $InvoiceQ['CurrencySymbol'] . number_format($InvoiceQ['TheTotal'], 2);
 		}
 		$this -> Set('SentTo', $SentTo);
 		$HowMany = count($SentTo);
@@ -352,15 +354,15 @@ var $L10n;
 		$InvoiceQ = $this -> Invoices -> index($InvoiceID, 1);
 
 		//Prepare the values for the VPOS plugin only if not paid
-		if (count($InvoiceQ) > 0 && $InvoiceQ[0]['Invoices']['StatusID'] == 2) {
+		if (count($InvoiceQ) > 0 && $InvoiceQ[0]['StatusID'] == 2) {
 			$Amount = $InvoiceQ[0][0]['TheTotal'];
-			$InvoiceNumber = $InvoiceQ[0]['Invoices']['InvoiceNumber'];
-			$VposCurCode = $InvoiceQ[0]['Currencies']['VPOSCurCode'];
-			$VposLocaleCode = $InvoiceQ[0]['Locales']['VPOSLangCode'];
-			$ClientName = substr($InvoiceQ[0]['Clients']['ClientName'], 0, 30);
-			$ClientLastName = substr($InvoiceQ[0]['Clients']['ClientLastName'],0, 50);
-			$ClientEmail = substr($InvoiceQ[0]['Clients']['Email'],0, 50);
-			$ClientPhone = substr($InvoiceQ[0]['Clients']['Phone'],0, 15);
+			$InvoiceNumber = $InvoiceQ[0]['InvoiceNumber'];
+			$VposCurCode = $InvoiceQ[0]['VPOSCurCode'];
+			$VposLocaleCode = $InvoiceQ[0]['VPOSLangCode'];
+			$ClientName = substr($InvoiceQ[0]['ClientName'], 0, 30);
+			$ClientLastName = substr($InvoiceQ[0]['ClientLastName'],0, 50);
+			$ClientEmail = substr($InvoiceQ[0]['Email'],0, 50);
+			$ClientPhone = substr($InvoiceQ[0]['Phone'],0, 15);
 			$session->write('Client.ClientName', $ClientName);
 			$session->write('Client.ClientLastName', $ClientLastName);
 			$session->write('Client.ClientEmail', $ClientEmail);
@@ -390,7 +392,7 @@ var $L10n;
 					$this->Set('TheActionURL',"https://vpayment.verifika.com/VPOS/MM/transactionStart20.do");
 				}
 				if ($_SESSION['Company']['CurrentCompanyID'] == 2) {
-					$this->Set('TheActionURL', "/pragmasoft/");
+					$this->Set('TheActionURL', "/company/");
 				}
 			//if ($_SESSION['Company']['CurrentCompanyID'] == 6) {
 			//	$this->Set('TheActionURL', "/intercontinental/");
@@ -412,6 +414,7 @@ var $L10n;
 	}
 
 	function Delete() {
+    $session = $this->request->session();
 		$SentTo = array();
 		foreach ($_POST['InvoiceID'] as $ThisInvoice) {
 			$InvoiceID = base64_decode($ThisInvoice);

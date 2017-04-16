@@ -1,21 +1,22 @@
 <?php
+$session = $this->request->session();
 	$this->pageTitle= __('AddNewInvoiceFor', true).' '.$session->read('Company.CurrentName');
-	$html->css("ui","stylesheet", array(), false);
-//	$html->css("tabs","stylesheet", array(), false);
-	$javascript->link("jquery/jquery.ui", false);
-	$javascript->link("jquery/jquery.form", false);
-	$javascript->link("jquery/jquery.addtolist", false);
-	$javascript->link("jquery/jquery.cookie", false);
-	$javascript->link("jquery/validate", false);
-	$javascript->link("invoice", false);
+	echo $this->Html-> css("ui","stylesheet", array(), false);
+//	echo $this->Html-> css("tabs","stylesheet", array(), false);
+	echo $this->Html->script("jquery/jquery.ui", false);
+	echo $this->Html->script("jquery/jquery.form", false);
+	echo $this->Html->script("jquery/jquery.addtolist", false);
+	echo $this->Html->script("jquery/jquery.cookie", false);
+	echo $this->Html->script("jquery/validate", false);
+	echo $this->Html->script("invoice", false);
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/validateinvoice';
-	$javascript->link($TheJs, false);
+	echo $this->Html->script($TheJs, false);
 	$TheJs1 = $session->read('LocaleCode').'/checkclient';
-	$javascript->link($TheJs1, false);
+	echo $this->Html->script($TheJs1, false);
 //localized datepiecker
 	$TheUiJs = 'jquery/ui/i18n/ui.datepicker-'.$session->read('LocaleCode');
-	$javascript->link("$TheUiJs", false);
+	echo $this->Html->script("$TheUiJs", false);
 	echo '<h3>',$this->pageTitle,'</h3>';
 ?>
 <form name="TheForm" id="TheForm" method="post" action="<?php echo $session->read('Company.CurrentURL'),'saveinvoice/'?>">

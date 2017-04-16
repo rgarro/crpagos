@@ -1,11 +1,11 @@
 <?php 
 	$this->pageTitle= __('InvoiceRequestFrom', true).' '.$session->read('Company.CurrentName');
 	$ThisInvoice = current($InvoiceQ);
-	$html->css("nyroModal","stylesheet", array(), false);
-	$javascript->link("nyroModal/nyroModal", false);	
+	echo $this->Html-> css("nyroModal","stylesheet", array(), false);
+	echo $this->Html->script("nyroModal/nyroModal", false);	
 	//localized validation code
 	$TheJs = $session->read('LocaleCode').'/checkpay';
-	$javascript->link($TheJs, false);
+	echo $this->Html->script($TheJs, false);
 	if($ThisInvoice['Invoices']['StatusID'] == 3){ 
 		$ShowAuthCode = "yes"; include 'invoice.ctp';
 		unset($_SESSION['Company']);

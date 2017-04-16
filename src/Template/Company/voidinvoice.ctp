@@ -1,14 +1,15 @@
-<?php 
+<?php
+$session = $this->request->session();
 	$ThisInvoice = current($InvoiceQ);
-	$javascript->link("jquery/validate", false);	
+	echo $this->Html->script("jquery/validate");
 	$this->pageTitle= __('Voiding', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['Invoices']['InvoiceNumber'];
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/voidinvoice';
-	$javascript->link($TheJs, false);
+	echo $this->Html->script($TheJs);
  ?>
  <div align="center">
- 	<?php 
-		echo '<h3>',$this->pageTitle,'</h3>';	
+ 	<?php
+		echo '<h3>',$this->pageTitle,'</h3>';
 	 	include 'invoice.ctp';
 		if($ThisInvoice['Invoices']['StatusID'] < 3){
 	?>
@@ -20,7 +21,7 @@
 			  <tr>
 			    <td>
 			    	<label for="Note">*<?php echo __('Note') ?>:</label>
-					
+
 					<blockquote><em><?php echo htmlspecialchars_decode($ThisInvoice['Invoices']['Note']) ?></em><br>
 						<textarea tabindex="16" wrap="soft" cols="75" rows="3" id="Note" name="Note"></textarea></blockquote>
 					</td>

@@ -4,7 +4,7 @@ $session = $this->request->session();
 	$RecordCount = count($InvoicesQ);
 
 	$CurrentStatus = "0";
-	foreach($InvoicesQ as $ThisInvoice){	
+	foreach($InvoicesQ as $ThisInvoice){
 		if($CurrentStatus != $ThisInvoice['StatusID']){
 			if(($CurrentRow != 0) && ($CurrentRow != $RecordCount)){
 //make sure it won't do it on first or last rows
@@ -26,10 +26,10 @@ $session = $this->request->session();
 			echo "\n";
 			echo '<div id="tabs-',$ThisInvoice['StatusID'] ,'">';
 			if($ThisInvoice['StatusID'] < 3){
-				echo '<form method="post" action="',$session->read('Company.CurrentCompanyURL'),'sendmail/" name="Resend" id="Resend">';
+				echo '<form method="post" action="/company/sendmail/" name="Resend" id="Resend">';
 				$ResendOK = "Ok";
 			}elseif($ThisInvoice['StatusID'] == 5){
-				echo '<form method="post" action="',$session->read('Company.CurrentCompanyURL'),'delete/" name="Delete" id="Delete">';
+				echo '<form method="post" action="/company/delete/" name="Delete" id="Delete">';
 				$DeleteOK = "Ok";
 			}
 
@@ -70,15 +70,15 @@ $session = $this->request->session();
 		echo '<td align="center" class="right" >';
 		if($ThisInvoice['StatusID'] == 1){
 //Pending: Edit all
-			echo '&bull;<a href="',$session->read('Company.CurrentCompanyURL'),'editinvoice/',base64_encode($ThisInvoice['InvoiceID']),'/">',__('EditInvoice'),'</a>';
+			echo '&bull;<a href="/company/editinvoice/',base64_encode($ThisInvoice['InvoiceID']),'/">',__('EditInvoice'),'</a>';
 		}elseif($ThisInvoice['StatusID'] == 2){
 //Sent: PayManually / Void
-			echo '&bull;<a href="',$session->read('Company.CurrentCompanyURL'),'payinvoice/',base64_encode($ThisInvoice['InvoiceID']),'/">',__('PayLink'),'</a>';
+			echo '&bull;<a href="/company/payinvoice/',base64_encode($ThisInvoice['InvoiceID']),'/">',__('PayLink'),'</a>';
 			echo '<br>';
-			echo '&bull;<a href="',$session->read('Company.CurrentCompanyURL'),'voidinvoice/',base64_encode($ThisInvoice['InvoiceID']),'/">',__('VoidLink'),'</a>';
+			echo '&bull;<a href="/company/voidinvoice/',base64_encode($ThisInvoice['InvoiceID']),'/">',__('VoidLink'),'</a>';
 		}else{
 //Paid: Read Only
-			echo '&bull;<a href="',$session->read('Company.CurrentCompanyURL'),'viewinvoice/',base64_encode($ThisInvoice['InvoiceID']),'/">',__('ViewLink'),'</a>';
+			echo '&bull;<a href="/company/viewinvoice/',base64_encode($ThisInvoice['InvoiceID']),'/">',__('ViewLink'),'</a>';
 		}
 		echo '</td>';
 		echo '</tr>';
