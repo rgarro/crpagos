@@ -1,3 +1,6 @@
+<?php
+$session = $this->request->session();
+?>
 <form name="SearchForm" id="SearchForm" method="post" action="<?php echo $session -> read('Company.CurrentURL') ?>search/">
 	<table border="0" class="zebra" align="center" width="500">
 		<tr>

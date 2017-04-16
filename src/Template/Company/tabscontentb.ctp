@@ -4,7 +4,7 @@ $session = $this->request->session();
 	$RecordCount = count($InvoicesQ);
 
 	$CurrentStatus = "0";
-	foreach($InvoicesQ as $ThisInvoice){	
+	foreach($InvoicesQ as $ThisInvoice){
 		if($CurrentStatus != $ThisInvoice['StatusID']){
 			if(($CurrentRow != 0) && ($CurrentRow != $RecordCount)){
 //make sure it won't do it on first or last rows
@@ -65,8 +65,8 @@ $session = $this->request->session();
 		echo '</td>';
 		echo '<td align="center">',$ThisInvoice['InvoiceNumber'],'</td>';
 		echo '<td style="font-size:0.8em">',$ThisInvoice['ClientName'],' ',$ThisInvoice['ClientLastName'],' (',$ThisInvoice['Email'],')</td>';
-		echo '<td align="right" nowrap="nowrap">',$ThisInvoice['Currencies']['CurrencySymbol'],' ', number_format($ThisInvoice['TheTotal'], "2"),'</td>';
-		echo '<td style="font-size:0.8em">',$ThisInvoice['ShortDesc'],'</td>';
+		echo '<td align="right" nowrap="nowrap">',$ThisInvoice['Currencies']['CurrencySymbol'],' ', number_format($ThisInvoice['0']['TheTotal'], "2"),'</td>';
+		echo '<td style="font-size:0.8em">',$ThisInvoice['0']['ShortDesc'],'</td>';
 		echo '<td align="center" class="right" >';
 		if($ThisInvoice['StatusID'] == 1){
 //Pending: Edit all

@@ -37,7 +37,35 @@ var $L10n;
       $this->L10n = new L10n();
   }
 
-  function index($ThisCompany = 0) {
+  //el regimen se acabo ....
+  public function index(){
+    $session = $this->request->session();
+    if ($session -> read('Users.AccessLevel') == 0) {
+			$this -> Set('UsersQ', $this -> Users -> GetUsers());
+		}
+		$this -> Set('ClientsQ', $this -> Clients -> index());
+		if(isset($_GET['Sort'])){
+			if($_GET['Sort'] == 'asc'){
+				$TheSort = 'asc';
+			}else{
+				$TheSort = 'desc';
+			}
+		}else{
+			$TheSort = 'desc';
+		}
+		if($TheSort == "desc" ){
+			$this->Set('SortImage', 'desc.jpg');
+			$this->Set('TheSort', 'desc');
+			$this->Set('OtherSort','asc');
+		}else{
+			$this->Set('SortImage', 'asc.jpg');
+			$this->Set('TheSort', 'asc');
+			$this->Set('OtherSort','desc');
+		}
+		$this -> Set('InvoicesQ', $this -> Invoices -> index(null,null,null, $TheSort));
+  }
+
+  function indexb($ThisCompany = 0) {
     $session = $this->request->session();
     if(isset($_GET['currentCo'])){
       $ThisCompany = $_GET['currentCo'];
@@ -45,8 +73,6 @@ var $L10n;
 		//Check if we're swtiching companies
 		if ($session -> read('Company.CurrentCompanyID') != $ThisCompany) {
 			$session -> write('Company.CurrentCompanyID', $ThisCompany);
-print_r($session->read('Companies'));
-exit;
 			foreach ($session->read('Companies') as $CurrentCompany) {
 				if ($CurrentCompany['CompanyID'] == $ThisCompany) {
 					//If Access OK, set the variables

@@ -12,16 +12,15 @@ $TheJs = $session -> read('LocaleCode') . '/checkradios';
 echo $this->Html->script($TheJs);
 ?>
 	<h3><?php echo $this->pageTitle ?></h3>
-  <?php
-
+	<?php
 		if (count($InvoicesQ) > 0) {
 			echo '<div id="tabs" style="width:95%">';
 			echo '<ul>';
 			$CurrentStatus = "0";
 			foreach ($InvoicesQ as $ThisInvoice) {
-				if ($CurrentStatus != $ThisInvoice['StatusID']) {
-					echo '<li><a href="#tabs-', $ThisInvoice['StatusID'], '">', __($ThisInvoice['Status'] . 'pl'), '</a></li>';
-					$CurrentStatus = $ThisInvoice['StatusID'];
+				if ($CurrentStatus != $ThisInvoice['Status']['StatusID']) {
+					echo '<li><a href="#tabs-', $ThisInvoice['Status']['StatusID'], '">', __($ThisInvoice['Status']['Status'] . 'pl'), '</a></li>';
+					$CurrentStatus = $ThisInvoice['Status']['StatusID'];
 				}
 			}
 			echo '<li><a href="#tabs-search">',__('Search'),'</a></li>';
