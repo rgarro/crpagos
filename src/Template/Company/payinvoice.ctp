@@ -1,12 +1,12 @@
 <?php
-$session = $this->request->session(); 
+$session = $this->request->session();
 	$ThisInvoice = current($InvoiceQ);
-	echo $this->Html-> css("nyroModal","stylesheet", array(), false);
-	$this->pageTitle= __('Paying', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['Invoices']['InvoiceNumber'];
-	echo $this->Html->script("jquery/validate", false);
+	echo $this->Html-> css("nyroModal");
+	$this->pageTitle= __('Paying', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['InvoiceNumber'];
+	echo $this->Html->script("jquery/validate");
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/payinvoice';
-	echo $this->Html->script($TheJs, false);
+	echo $this->Html->script($TheJs);
  ?>
  <div align="center">
  	<?php
@@ -14,10 +14,10 @@ $session = $this->request->session();
 	 	include 'invoice.ctp';
 		if($ThisInvoice['Invoices']['StatusID'] < 3){
 	?>
-	<form name="TheForm" id="TheForm" method="post" action="<?php echo $session->read('Company.CurrentURL'),'saveinvoice/'?>">
-	<input type="hidden" value="<?php echo base64_encode($ThisInvoice['Invoices']['InvoiceID']) ?>" name="InvoiceID" id="InvoiceID">
+	<form name="TheForm" id="TheForm" method="post" action="<?php echo '/company/','saveinvoice/'?>">
+	<input type="hidden" value="<?php echo base64_encode($ThisInvoice['InvoiceID']) ?>" name="InvoiceID" id="InvoiceID">
 	<input type="hidden" name="StatusID" value="4">
-	<input type="hidden" name="CurrentNote" value="<?php  echo base64_encode($ThisInvoice['Invoices']['Note']) ?>">
+	<input type="hidden" name="CurrentNote" value="<?php  echo base64_encode($ThisInvoice['Note']) ?>">
   		<table border="0" align="center" width="720" class="main">
   			<tr>
 				<td>
@@ -29,7 +29,7 @@ $session = $this->request->session();
 			    <td>
 			    	<label for="Note">*<?php echo __('Note') ?>:</label>
 
-					<blockquote><em><?php echo html_entity_decode(str_replace("\\r\\n", "<br>", $ThisInvoice['Invoices']['Note'])) ?></em><br>
+					<blockquote><em><?php echo html_entity_decode(str_replace("\\r\\n", "<br>", $ThisInvoice['Note'])) ?></em><br>
 						<textarea tabindex="16" wrap="soft" cols="75" rows="3" id="Note" name="Note"></textarea></blockquote>
 					</td>
 			  </tr>

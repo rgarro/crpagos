@@ -24,7 +24,7 @@ $TheUiJs = 'jquery/ui/i18n/ui.datepicker-' . $session -> read('LocaleCode');
 echo $this->Html->script($TheUiJs);
 echo '<h3>', $this -> pageTitle, '</h3>';
 ?>
-<form name="TheForm" id="TheForm" method="post" action="<?php echo $session->read('Company.CurrentURL'),'saveinvoice/'?>">
+<form name="TheForm" id="TheForm" method="post" action="/company/saveinvoice/">
 <input type="hidden" value="<?php echo base64_encode($ThisInvoice['InvoiceID']) ?>" name="InvoiceID" id="InvoiceID">
 <table align="center" class="main" border="0">
 	<tr>
@@ -147,7 +147,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 			echo '</tr>';
 			$LineNum++;
 
-			$Total = $Total + $ThisDetail;
+			$Total = $Total + $ThisDetail['Amount'];
 		}
 	?>
       <tr id="LastLine">
@@ -175,5 +175,5 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 </form>
 <?php
 	include 'quickadd.ctp';
-	echo '<p align="center"><a href="', $session -> read('Company.CurrentURL'), '" onclick="return confirm(\'',  __('BackConfirm'), '\');">',  __('BackToList'), '</a></p>';
-?>
+	?>
+<p align="center"><a href='/company' onclick="return confirm('<?php echo  __('BackConfirm')?>')"><?php echo  __('BackToList')?></a></p>

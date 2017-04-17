@@ -157,7 +157,7 @@ class InvoicesTable extends Table
 			$TheSql.=" VALUES (".$_SESSION['CurrentCompanyID'].",";
 			$TheSql.="1,";
 			$TheSql.=$_POST['ClientID'].",";
-			$TheSql.="'".substr(trim($_POST['InvoiceNumber']),0,25)."',";
+			$TheSql.="'".$_POST['InvoiceNumber']."',";
 			$TheLocale = $_POST['LocaleCode'];
 			$TheSql.="'".$TheLocale."',";
 			if($TheLocale == 'eng_us'){
@@ -167,9 +167,9 @@ class InvoicesTable extends Table
 			}
 			$TheSql.="STR_TO_DATE('".$_POST['InvoiceDate']."', '$DateFormat'),";
 			$TheSql.=$_POST['CurrencyID'].",";
-			$TheSql.="'".trim($_POST['Note'])."',";
-			$TheSql.="'".trim($_POST['EmailSubject'])."',";
-			$TheSql.="'".substr(trim($_SESSION['User']['FullName']),0,200)."')";
+			$TheSql.="'".$_POST['Note']."',";
+			$TheSql.="'".$_POST['EmailSubject']."',";
+			$TheSql.="'".$_SESSION['User']['FullName']."')";
       $res = $this->connection()->execute($TheSql);
       return $res->lastInsertId();
 		}
@@ -180,7 +180,7 @@ class InvoicesTable extends Table
 			$TheSql.=$UnitPrice.",";
 			$TheSql.=$Qty.",";
 			$TheSql.=$Amount.",";
-			$TheSql.="'".substr(trim($Description),0,200)."')";
+			$TheSql.="'".$Description."')";
       $res = $this->connection()->execute($TheSql);
       return $res->lastInsertId();
 		}
@@ -191,8 +191,8 @@ class InvoicesTable extends Table
 			$TheSql.=$ActionID.",";
 			$TheSql.="NOW(),";
 			$TheSql.="'".$Comments."',";
-			$TheSql.="'".substr($_SESSION['User']['FullName'],0,150)."',";
-			$TheSql.="'".substr($_SERVER['REMOTE_ADDR'], array('.'),0,20)."'";
+			$TheSql.="'".$_SESSION['User']['FullName']."',";
+			$TheSql.="'".$_SERVER['REMOTE_ADDR']."'";
 			$TheSql.=")";
       $res = $this->connection()->execute($TheSql);
       return $res->lastInsertId();
@@ -206,11 +206,11 @@ class InvoicesTable extends Table
 				$TheSql.=" LocaleCode ='".$TheLocale."',";
 			}
 			if($_POST['StatusID'] == 4){
-				$TheSql.=" AuthNumber ='".substr($_POST['RefNumber'], 0, 100)."',";
+				$TheSql.=" AuthNumber ='".$_POST['RefNumber']."',";
 				$TheSql.=" PaidDate = NOW(),";
 			}
 			if($_POST['StatusID'] == 5){
-				$TheSql.=" AuthNumber ='".substr($_SESSION['User']['FullName'],0, 100)."',";
+				$TheSql.=" AuthNumber ='".$_SESSION['User']['FullName']."',";
 				$TheSql.=" VoidDate = NOW(),";
 			}
 			if(isset($_POST['InvoiceNumber'])){
@@ -244,7 +244,7 @@ class InvoicesTable extends Table
 			}
 			$TheSql.=" StatusID =".$_POST['StatusID'].",";
 			$TheSql.=" Modified = NOW(),";
-			$TheSql.=" ModifiedBy ='".substr(trim($_SESSION['User']['FullName']),0,200)."'";
+			$TheSql.=" ModifiedBy ='".trim($_SESSION['User']['FullName'])."'";
 			$TheSql.=" WHERE InvoiceID =".$InvoiceID;
 			$TheSql.=" AND CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
 
@@ -255,12 +255,12 @@ class InvoicesTable extends Table
 		public function PayInvoice($InvoiceID = 0, $AuthNumber='', $TransactionID = 0){
 			$TheSql =" UPDATE Invoices";
 			$TheSql.=" SET ";
-			$TheSql.=" AuthNumber ='".substr($AuthNumber, 0, 100)."',";
+			$TheSql.=" AuthNumber ='".$AuthNumber."',";
 			$TheSql.=" PaidDate = NOW(),";
 			$TheSql.=" StatusID = 3,";
 			$TheSql.=" TransactionID = ".$TransactionID.",";
 			$TheSql.=" Modified = NOW(),";
-			$TheSql.=" ModifiedBy ='".substr(trim($_SESSION['User']['FullName']),0,200)."'";
+			$TheSql.=" ModifiedBy ='".trim($_SESSION['User']['FullName'])."'";
 			$TheSql.=" WHERE InvoiceID =".$InvoiceID;
 			$TheSql.=" AND CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
       $res = $this->connection()->execute($TheSql);
@@ -272,7 +272,7 @@ class InvoicesTable extends Table
 			$TheSql =" UPDATE Invoices";
 			$TheSql.=" SET StatusID ='".$StatusID."'";
 			if($AuthNumber){
-				$TheSql.=", AuthNumber ='".substr($AuthNumber,0, 100)."',";
+				$TheSql.=", AuthNumber ='".$AuthNumber."',";
 				$TheSql.=" PaidDate = NOW()";
 			}
 			$TheSql.=" WHERE InvoiceID =".$InvoiceID;
@@ -315,7 +315,7 @@ class InvoicesTable extends Table
 			$TheSql.=" FROM InvoiceDetail ";
 			$TheSql.=" WHERE InvoiceID =".$InvoiceID;
 			$TheSql.=" ORDER BY InvoiceDetailID ";
-      $res = $this->connection()->execute($TheSql)->fetch('assoc');
+      $res = $this->connection()->execute($TheSql)->fetchAll('assoc');
 			return $res;
 		}
 

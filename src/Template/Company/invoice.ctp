@@ -9,11 +9,11 @@ $session = $this->request->session();
 	}
 ?>
 
-<?php if($ThisInvoice['Invoices']['StatusID'] == 3){
+<?php if($ThisInvoice['StatusID'] == 3){
 		echo '<h3><b>***',__('InvoicePaid'),'***</b></h3>';
 	}
 ?>
-<?php if($ThisInvoice['Invoices']['StatusID'] == 4){
+<?php if($ThisInvoice['StatusID'] == 4){
 		echo '<h2><b>***',__('InvoicePaidManually'),'***</b></h2>';
 	}
 ?>
@@ -37,7 +37,7 @@ $session = $this->request->session();
 						<?php
 						echo '<b>', __('InvoiceDate'), ':</b> ';
 						if($session->read('LocaleCode') == 'spa_cr'){
-							echo $fecha->get_date_spanish(strtotime($ThisInvoice['InvoiceDate']), true);
+							echo strtotime($ThisInvoice['InvoiceDate']);
 						}else{
 							echo date('l, F j Y', strtotime($ThisInvoice['InvoiceDate']));
 						}
@@ -45,10 +45,10 @@ $session = $this->request->session();
 						if($session->check('TransactionID')){
 							echo '<br><b>',__('TransactionID'),':</b> ', $session->read('TransactionID');
 						}
-						if($ThisInvoice['Invoices']['StatusID'] == 3){
+						if($ThisInvoice['StatusID'] == 3){
 							echo '<br><b>', __('PaidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
-								echo $fecha->get_date_spanish(strtotime($ThisInvoice['PaidDate']));
+								echo strtotime($ThisInvoice['PaidDate']);
 							}else{
 								echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
 							}
@@ -58,7 +58,7 @@ $session = $this->request->session();
 							if($ThisInvoice['StatusID'] == 4){
 							echo '<br><b>', __('ManualPaidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
-								echo $fecha->get_date_spanish(strtotime($ThisInvoice['PaidDate']));
+								echo strtotime($ThisInvoice['PaidDate']);
 							}else{
 								echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
 							}
@@ -67,7 +67,7 @@ $session = $this->request->session();
 							if($ThisInvoice['StatusID'] == 5){
 							echo '<br><b>', __('VoidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
-								echo $fecha->get_date_spanish(strtotime($ThisInvoice['VoidDate']));
+								echo strtotime($ThisInvoice['VoidDate']);
 							}else{
 								echo date('l, F j Y', strtotime($ThisInvoice['VoidDate']));
 							}
@@ -115,12 +115,14 @@ $session = $this->request->session();
 		<?php
 		$Total = 0;
 		foreach($InvoiceDetailQ as $ThisDetail){
+
 			echo '<tr>';
 			echo '<td class="detailc">',$ThisDetail['Qty'],'</td>';
 			echo '<td class="detailc">',$ThisDetail['Description'],'</td>';
 			echo '<td class="detail">',$ThisInvoice['CurrencySymbol'],number_format($ThisDetail['UnitPrice'], 2),'&nbsp;&nbsp;&nbsp;&nbsp;</td>';
 			echo '<td class="detail">',$ThisInvoice['CurrencySymbol'],number_format($ThisDetail['Amount'],2),'</td>';
         echo '</tr>';
+
 		$Total = $Total + $ThisDetail['Amount'];
 		}?>
 			</table>
@@ -131,7 +133,7 @@ $session = $this->request->session();
 			<table class="detail" align="right">
         <tr>
 					<td class="total" width="150px" align="right"><b><?php echo __('Total') ?>:</b></td>
-					<td class="detail" width="150px" align="right"><?php echo $ThisInvoice['CurrencySymbol'],number_format($Total, 2) ?>&nbsp;</td>
+					<td class="detail" width="150px" align="right"><?php echo $ThisInvoice['CurrencySymbol']; ?>&nbsp;</td>
 			  </tr>
 			</table>		</td>
   </tr>

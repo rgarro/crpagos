@@ -11,5 +11,5 @@ $session = $this->request->session();
 	</blockquote>
 	</div>
 <?php
-	echo '<a href="',$session->read('Company.CurrentURL'),'">', __('BackToList'),'</a>';
+	echo '<a href="','/company/','">', __('BackToList'),'</a>';
 ?>

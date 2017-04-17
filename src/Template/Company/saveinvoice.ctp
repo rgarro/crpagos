@@ -6,7 +6,7 @@ $session = $this->request->session();
 	echo '<p align="center">',__('SendInstructions'),'</a></p>';
 ?>
 
-<form name="TheForm" id="TheForm" method="post" action="<?php echo $session->read('Company.CurrentURL'),'sendmail/'?>">
+<form name="TheForm" id="TheForm" method="post" action="<?php echo '/company/sendmail/'?>">
 <input type="hidden" value="<?php echo  base64_encode($ThisInvoice['InvoiceID']) ?>" name="InvoiceID[]" id="InvoiceID">
 <table border="0" align="center"width="750">
   <tr>
@@ -19,8 +19,8 @@ $session = $this->request->session();
      <tr>
     <th colspan="4" align="center">
       <input name="SendMail" type="submit" id="SendMail" value="<?php echo __('SendEmailTo'),' ',$ThisInvoice['Email'];  ?>" onclick="return confirm('<?php echo __('SendMailConfirm'),' ',$ThisInvoice['Email']  ?>?')">
-	&nbsp;<input name="Edit" type="Button" id="SendMail" value="<?php echo __('EditInvoice') ?>" onclick="window.location.href='<?php echo $session->read('Company.CurrentURL'),'editinvoice/',base64_encode($ThisInvoice['InvoiceID'])?>/'">
+	&nbsp;<input name="Edit" type="Button" id="SendMail" value="<?php echo __('EditInvoice') ?>" onclick="window.location.href='<?php echo '/company/editinvoice/',base64_encode($ThisInvoice['InvoiceID'])?>/'">
    </th>
   </tr>
 </table>
-<?php echo '<p align="center"><a href="',$session->read('Company.CurrentURL'),'">', __('BackToList'),'</a></p>'; ?>
+<p align="center"><a href="/company/"><?php echo  __('BackToList') ?></a></p>

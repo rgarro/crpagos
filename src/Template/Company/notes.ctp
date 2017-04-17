@@ -19,7 +19,7 @@ $session = $this->request->session();
 					echo '<div class="commentheader"><b>',__($CurrentLog['Action']),'</b><br>';
 					echo '<em>** ',$CurrentLog['ActionBy'];
 					if(Configure::read('Config.language') == 'spa_cr'){
-						echo ' el ',$this->Fecha->get_date_spanish(strtotime($CurrentLog['ActionDate']));
+						echo ' el ',strtotime($CurrentLog['ActionDate']);
 					}else{
 						echo ' on ',date('l, F j Y g:i a', strtotime($CurrentLog['ActionDate']));
 					}

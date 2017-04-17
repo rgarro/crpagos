@@ -35,5 +35,5 @@ $session = $this->request->session();
 		</table>
 	 </form>
 	 <?php } ?>
-	 <?php echo '<p align="center"><a href="',$session->read('Company.CurrentURL'),'">', __('BackToList'),'</a></p>';  ?>
+	 <?php echo '<p align="center"><a href="','/company/','">', __('BackToList'),'</a></p>';  ?>
 </div>

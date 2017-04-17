@@ -40,6 +40,7 @@ var $L10n;
   //el regimen se acabo ....
   public function index(){
     $session = $this->request->session();
+    $_SESSION['CurrentCompanyID'] = $_SESSION['Company']['CurrentCompanyID'];
     if ($session -> read('Users.AccessLevel') == 0) {
 			$this -> Set('UsersQ', $this -> Users -> GetUsers());
 		}
@@ -157,7 +158,7 @@ var $L10n;
 		$InvoiceID = base64_decode($InvoiceID);
 		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
 		if ($this -> viewVars['InvoiceQ'][0]['StatusID'] != 1) {
-			$this -> redirect($session -> read('Company.CurrentURL') . '/viewinvoice/' . base64_encode($InvoiceID) . '/');
+			$this -> redirect('/company/viewinvoice/' . base64_encode($InvoiceID) . '/');
 			exit();
 		}
 		$this -> Set('LocalesQ', $this -> Locales -> index());
@@ -170,7 +171,8 @@ var $L10n;
 			$this -> L10n -> get($lang);
 			Configure::write('Config.language', $lang);
 		}
-		$this -> Set('InvoiceDetailQ', $this -> Invoices -> GetInvoiceDetail($InvoiceID));
+    $ivq = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
+		$this -> Set('InvoiceDetailQ', $ivq);
 		$this -> Set('InvoiceLogQ', $this -> Invoices -> GetInvoiceLog($InvoiceID));
 	}
 
@@ -191,7 +193,7 @@ var $L10n;
 		$InvoiceID = base64_decode($InvoiceID);
 		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
 		if ($this -> viewVars['InvoiceQ'][0]['Invoices']['StatusID'] < 2) {
-			$this -> redirect($session -> read('Company.CurrentURL') . '/viewinvoice/' . base64_encode($InvoiceID) . '/');
+			$this -> redirect('/company/viewinvoice/' . base64_encode($InvoiceID) . '/');
 			exit();
 		}
 		$this -> Set('InvoiceDetailQ', $this -> Invoices -> GetInvoiceDetail($InvoiceID));
@@ -206,7 +208,7 @@ $session = $this->request->session();
 		$InvoiceID = base64_decode($InvoiceID);
 		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
 		if ($this -> viewVars['InvoiceQ'][0]['StatusID'] < 2) {
-			$this -> redirect($session -> read('Company.CurrentURL') . '/viewinvoice/' . base64_encode($InvoiceID) . '/');
+			$this -> redirect('/company/viewinvoice/' . base64_encode($InvoiceID) . '/');
 			exit;
 		}
 		$this -> Set('InvoiceDetailQ', $this -> Invoices -> GetInvoiceDetail($InvoiceID));
@@ -282,19 +284,19 @@ $session = $this->request->session();
 			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
 			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmManualPaid', true);
 			$TheTemplate = "invoicepaid";
-			include VIEWS . 'company' . DS . 'mail.ctp';
+			require VIEWS . 'company' . DS . 'mail.ctp';
 		}
 		if ($ActionID == 9) {
 			$InvoiceQ = current($this -> Invoices -> index($InvoiceID));
 			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
 			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmVoid', true);
 			$TheTemplate = "invoicepaid";
-			include VIEWS . 'company' . DS . 'mail.ctp';
+			require VIEWS . 'company' . DS . 'mail.ctp';
 		}
 		//Before redirect to assure it'll get set
 		$this->Flash->success($Flash);
 		if (isset($Redirect)) {
-			$this -> redirect($session -> read('Company.CurrentURL') . '/viewinvoice/' . base64_encode($InvoiceID) . '/');
+			$this -> redirect('/company/viewinvoice/' . base64_encode($InvoiceID) . '/');
 			exit;
 		}
 		//Query the DB	to reflect new changes
@@ -331,7 +333,7 @@ $session = $this->request->session();
 			$this -> Set('TheCode', rawurlencode($this -> Crypter -> enCrypt($InvoiceID)));
 			//Force Client Copy
 			$_POST['CopyClient'] = 1;
-      include App::path('Template') . '/Company/mail.ctp';
+      require App::path('Template') . '/Company/mail.ctp';
 			$SentTo[] = $InvoiceQ['ClientName'] . ' ' . $InvoiceQ['ClientLastName'] . '(' . $InvoiceQ['Email'] . ') ' . __('InvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('Amount', true) . ':' . $InvoiceQ['CurrencySymbol'] . number_format($InvoiceQ['TheTotal'], 2);
 		}
 		$this -> Set('SentTo', $SentTo);
@@ -459,24 +461,24 @@ $session = $this->request->session();
 				$InvoicesQ = $this -> Invoices -> index(null, null, $TheQuery);
 				$RecordCount = count($InvoicesQ);
 				if($RecordCount == 0){
-					$this -> Flash->success(__('NoRecordsFound', true));
+					$this -> Flash->success(__('NoRecordsFound'));
 					$this -> redirect($session -> read('Company.CurrentURL').'#tabs-search');
 				}else{
 					if($RecordCount == 1){
-						$TheFlash = __('Found1Record', true);
+						$TheFlash = __('Found1Record');
 					}else{
-						$TheFlash = __('Found', true).' '.$RecordCount.' '.__('Records', true);
+						$TheFlash = __('Found', true).' '.$RecordCount.' '.__('Records');
 					}
 					$this -> Flash->success($TheFlash);
 					$this -> Set('InvoicesQ', $InvoicesQ);
 					$this->render('index');
 				}
 			}else{
-				$this -> Flash->success(__('NothingToSearch', true));
+				$this -> Flash->success(__('NothingToSearch'));
 				$this -> redirect($session -> read('Company.CurrentURL'));
 			}
 		}else{
-			$this -> Flash->success(__('NothingToSearch', true));
+			$this -> Flash->success(__('NothingToSearch'));
 			$this -> redirect($session -> read('Company.CurrentURL').'#tabs-search');
 		}
 
