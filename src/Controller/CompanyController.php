@@ -192,7 +192,8 @@ var $L10n;
     $session = $this->request->session();
 		$InvoiceID = base64_decode($InvoiceID);
 		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
-		if ($this -> viewVars['InvoiceQ'][0]['Invoices']['StatusID'] < 2) {
+
+		if ($this -> viewVars['InvoiceQ'][0]['StatusID'] < 2) {
 			$this -> redirect('/company/viewinvoice/' . base64_encode($InvoiceID) . '/');
 			exit();
 		}
@@ -283,15 +284,16 @@ $session = $this->request->session();
 			$InvoiceQ = current($this -> Invoices -> index($InvoiceID));
 			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
 			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmManualPaid', true);
-			$TheTemplate = "invoicepaid";
-			require VIEWS . 'company' . DS . 'mail.ctp';
+			$TheTemplate = "invoicepaid_html";
+			require getcwd() . '/src/Template/Company' . DS . 'mail.ctp';
 		}
 		if ($ActionID == 9) {
 			$InvoiceQ = current($this -> Invoices -> index($InvoiceID));
 			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
 			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmVoid', true);
-			$TheTemplate = "invoicepaid";
-			require VIEWS . 'company' . DS . 'mail.ctp';
+			$TheTemplate = "invoicepaid_html";
+			//require VIEWS . 'company' . DS . 'mail.ctp';
+      require getcwd() . '/src/Template/Company' . DS . 'mail.ctp';
 		}
 		//Before redirect to assure it'll get set
 		$this->Flash->success($Flash);

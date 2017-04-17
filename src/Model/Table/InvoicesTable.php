@@ -249,7 +249,8 @@ class InvoicesTable extends Table
 			$TheSql.=" AND CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
 
       $res = $this->connection()->execute($TheSql);
-      return $res->lastInsertId();
+      //return $res->lastInsertId();
+      return $InvoiceID;
 		}
 
 		public function PayInvoice($InvoiceID = 0, $AuthNumber='', $TransactionID = 0){
@@ -264,7 +265,8 @@ class InvoicesTable extends Table
 			$TheSql.=" WHERE InvoiceID =".$InvoiceID;
 			$TheSql.=" AND CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
       $res = $this->connection()->execute($TheSql);
-      return $res->lastInsertId();
+      //return $res->lastInsertId();
+      return $InvoiceID;
 		}
 
 
@@ -280,7 +282,8 @@ class InvoicesTable extends Table
 				$TheSql.=" AND CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
 			}
       $res = $this->connection()->execute($TheSql);
-      return $res->lastInsertId();
+      //return $res->lastInsertId();
+      return $InvoiceID;
 		}
 
 		public function DeleteInvoiceDetail($InvoiceID){

@@ -2,7 +2,7 @@
 $session = $this->request->session();
 	$ThisInvoice = current($InvoiceQ);
 	echo $this->Html->script("jquery/validate");
-	$this->pageTitle= __('Voiding', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['Invoices']['InvoiceNumber'];
+	$this->pageTitle= __('Voiding', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['InvoiceNumber'];
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/voidinvoice';
 	echo $this->Html->script($TheJs);
@@ -11,7 +11,7 @@ $session = $this->request->session();
  	<?php
 		echo '<h3>',$this->pageTitle,'</h3>';
 	 	require 'invoice.ctp';
-		if($ThisInvoice['Invoices']['StatusID'] < 3){
+		if($ThisInvoice['StatusID'] < 3){
 	?>
 	<form name="TheForm" id="TheForm" method="post" action="<?php echo '/company/saveinvoice/'?>">
 	<input type="hidden" value="<?php echo base64_encode($ThisInvoice['InvoiceID']) ?>" name="InvoiceID" id="InvoiceID">
