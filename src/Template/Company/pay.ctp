@@ -7,7 +7,7 @@ $session = $this->request->session();
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/checkpay';
 	echo $this->Html->script($TheJs);
-	if($ThisInvoice['Invoices']['StatusID'] != 2){
+	if($ThisInvoice['StatusID'] != 2){
 		$ShowAuthCode = "yes"; include 'invoice.ctp';
 		$this->Set('ClearSession', true);
 	 }else{
@@ -25,7 +25,7 @@ $session = $this->request->session();
 		</tr>
 		<tr>
 			<td colspan="4" style="text-align:left"><?php
-			include 'procesors' . DS . $session -> read('Company.Processor') . ".ctp";
+			require 'procesors' . DS . $session -> read('Company.Processor') . ".ctp";
 			?></td>
 		</tr>
 		<tr>

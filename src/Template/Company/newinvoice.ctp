@@ -1,25 +1,26 @@
 <?php
+use Cake\Core\Configure;
 $session = $this->request->session();
-	$this->pageTitle= __('AddNewInvoiceFor', true).' '.$session->read('Company.CurrentName');
-	echo $this->Html-> css("ui","stylesheet", array(), false);
+	$this->pageTitle= __('AddNewInvoiceFor').' '.$session->read('Company.CurrentName');
+	echo $this->Html-> css("ui");
 //	echo $this->Html-> css("tabs","stylesheet", array(), false);
-	echo $this->Html->script("jquery/jquery.ui", false);
-	echo $this->Html->script("jquery/jquery.form", false);
-	echo $this->Html->script("jquery/jquery.addtolist", false);
-	echo $this->Html->script("jquery/jquery.cookie", false);
-	echo $this->Html->script("jquery/validate", false);
-	echo $this->Html->script("invoice", false);
+	echo $this->Html->script("jquery/jquery.ui");
+	echo $this->Html->script("jquery/jquery.form");
+	echo $this->Html->script("jquery/jquery.addtolist");
+	echo $this->Html->script("jquery/jquery.cookie");
+	echo $this->Html->script("jquery/validate");
+	echo $this->Html->script("invoice");
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/validateinvoice';
-	echo $this->Html->script($TheJs, false);
+	echo $this->Html->script($TheJs);
 	$TheJs1 = $session->read('LocaleCode').'/checkclient';
-	echo $this->Html->script($TheJs1, false);
+	echo $this->Html->script($TheJs1);
 //localized datepiecker
 	$TheUiJs = 'jquery/ui/i18n/ui.datepicker-'.$session->read('LocaleCode');
-	echo $this->Html->script("$TheUiJs", false);
+	echo $this->Html->script($TheUiJs);
 	echo '<h3>',$this->pageTitle,'</h3>';
 ?>
-<form name="TheForm" id="TheForm" method="post" action="<?php echo $session->read('Company.CurrentURL'),'saveinvoice/'?>">
+<form name="TheForm" id="TheForm" method="post" action="/company/saveinvoice/">
 <table align="center" class="main" border="0">
 	<tr>
 			<td>
@@ -34,7 +35,7 @@ $session = $this->request->session();
 					<select name="LocaleCode" id="LocaleCode" tabindex="2">
 						<?php foreach($LocalesQ as $ThisLocale){
 							if($ThisLocale['Locales']['LocaleCode'] == Configure::read('Config.language')){$Sel = " Selected ";}else{$Sel = "";}
-							echo  '<option value="',$ThisLocale['Locales']['LocaleCode'],'"',$Sel,'>',$ThisLocale['Locales']['Locale'],'</option>',"\n";
+							echo  '<option value="',$ThisLocale['LocaleCode'],'"',$Sel,'>',$ThisLocale['Locale'],'</option>',"\n";
 							}?>
 					</select><br>
 					<label for="CurrencyID">*<?php echo __('Currency') ?>:</label>&nbsp;&nbsp;
@@ -42,13 +43,13 @@ $session = $this->request->session();
 						if(count($CurrencyQ) > 1){
 							echo '<select id="CurrencyID" name="CurrencyID" tabindex="3">';
 							foreach($CurrencyQ as $ThisCurrency){
-								echo '<option value="',$ThisCurrency['Currencies']['CurrencyID'],'" symbol="',$ThisCurrency['Currencies']['CurrencySymbol'],'">',$ThisCurrency['Currencies']['CurrencyName'];
-								echo ' ( ',$ThisCurrency['Currencies']['CurrencySymbol'],' )','</option>',"\n";
+								echo '<option value="',$ThisCurrency['CurrencyID'],'" symbol="',$ThisCurrency['CurrencySymbol'],'">',$ThisCurrency['CurrencyName'];
+								echo ' ( ',$ThisCurrency['CurrencySymbol'],' )','</option>',"\n";
 							}
 							echo '</select>';
 						}else{
-								echo '<input id="CurrencyID"  name="CurrencyID" type="hidden" value="',$CurrencyQ[0]['Currencies']['CurrencyID'],'" >';
-								echo $CurrencyQ[0]['Currencies']['CurrencyName'],' ( ',$CurrencyQ[0]['Currencies']['CurrencySymbol'],' )';
+								echo '<input id="CurrencyID"  name="CurrencyID" type="hidden" value="',$CurrencyQ[0]['CurrencyID'],'" >';
+								echo $CurrencyQ[0]['CurrencyName'],' ( ',$CurrencyQ[0]['CurrencySymbol'],' )';
 						}
 					?>
 					</td>
@@ -67,7 +68,7 @@ $session = $this->request->session();
 				<select name="ClientID" id="ClientID" tabindex="6" style="width:316px;">
 					<option value=""><?php echo __('PleaseSelect') ?></option>
 					<?php foreach($ClientsQ as $ThisClient){
-							echo  '<option value="',$ThisClient['Clients']['ClientID'],'">',$ThisClient['Clients']['ClientName'],' ',$ThisClient['Clients']['ClientLastName'],' (',$ThisClient['Clients']['Email'],')</option>',"\n";
+							echo  '<option value="',$ThisClient['ClientID'],'">',$ThisClient['ClientName'],' ',$ThisClient['ClientLastName'],' (',$ThisClient['Email'],')</option>',"\n";
 					}?>
 				<optgroup label="-------------------------------------">
 				<option value="-1"><?php echo __('AddNewClient') ?></option>
@@ -119,7 +120,7 @@ $session = $this->request->session();
 </form>
 <?php
 	include 'quickadd.ctp';
-	echo '<p align="center"><a href="',$session->read('Company.CurrentURL'),'" onclick="return confirm(\'', __('BackConfirm'),'\');">', __('BackToList'),'</a></p>';
+	echo '<p align="center"><a href="/company/" onclick="return confirm(\'', __('BackConfirm'),'\');">', __('BackToList'),'</a></p>';
 ?>
 <script language="JavaScript">
 	$(document).ready(function(){

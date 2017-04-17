@@ -1,10 +1,13 @@
+<?php
+$session = $this->request->session();
+?>
 <div id="ClientForm" >
 	<ul style="float:none">
 		<li><a href="#Bus"><?php echo __('Company') ?></a></li>
 		<li><a href="#Per"><?php echo __('Personal') ?></a></li>
 	</ul>
 	<div id="Bus" style="padding:0px">
-			<form method="post" action="<?php echo $session->read('Company.CurrentURL')?>quickaddclient/" id="TheBusForm" name="TheBusForm" style="margin:10px 25px 10px 5px;">
+			<form method="post" action="/company/quickaddclient/" id="TheBusForm" name="TheBusForm" style="margin:10px 25px 10px 5px;">
 			<input type="hidden" name="save_to" value="ClientID.data">
 			<input type="hidden" value="<?php echo __('Save') ?>" id="ButOrValB">
 			<table border="0" class="zebra" align="center" width="500">
@@ -39,7 +42,7 @@
 		</form>
 	</div>
 	<div id="Per"  style="padding:0px">
-			<form method="post"  action="<?php echo $session->read('Company.CurrentURL')?>quickaddclient/"  id="TheClientForm" name="TheClientForm" style="margin:10px 25px 10px 5px;">
+			<form method="post"  action="/company/quickaddclient/"  id="TheClientForm" name="TheClientForm" style="margin:10px 25px 10px 5px;">
 			<input type="hidden" name="save_to" value="ClientID.data">
 			<input type="hidden" value="<?php echo __('Save') ?>" id="ButOrValP">
 			<table border="0" class="zebra" align="center" width="500">

@@ -146,7 +146,6 @@ echo '<h3>', $this -> pageTitle, '</h3>';
       		echo '</td>';
 			echo '</tr>';
 			$LineNum++;
-print_r($ThisDetail);
 
 			$Total = $Total + $ThisDetail;
 		}

@@ -10,23 +10,23 @@ $session = $this->request->session();
  <div align="center">
  	<?php
 		echo '<h3>',$this->pageTitle,'</h3>';
-	 	include 'invoice.ctp';
+	 	require 'invoice.ctp';
 		if($ThisInvoice['Invoices']['StatusID'] < 3){
 	?>
-	<form name="TheForm" id="TheForm" method="post" action="<?php echo $session->read('Company.CurrentURL'),'saveinvoice/'?>">
-	<input type="hidden" value="<?php echo base64_encode($ThisInvoice['Invoices']['InvoiceID']) ?>" name="InvoiceID" id="InvoiceID">
+	<form name="TheForm" id="TheForm" method="post" action="<?php echo '/company/saveinvoice/'?>">
+	<input type="hidden" value="<?php echo base64_encode($ThisInvoice['InvoiceID']) ?>" name="InvoiceID" id="InvoiceID">
 	<input type="hidden" name="StatusID" value="5">
-	<input type="hidden" name="CurrentNote" value="<?php  echo base64_encode($ThisInvoice['Invoices']['Note']) ?>">
+	<input type="hidden" name="CurrentNote" value="<?php  echo base64_encode($ThisInvoice['Note']) ?>">
   		<table border="0" align="center" width="720" class="main">
 			  <tr>
 			    <td>
 			    	<label for="Note">*<?php echo __('Note') ?>:</label>
 
-					<blockquote><em><?php echo htmlspecialchars_decode($ThisInvoice['Invoices']['Note']) ?></em><br>
+					<blockquote><em><?php echo htmlspecialchars_decode($ThisInvoice['Note']) ?></em><br>
 						<textarea tabindex="16" wrap="soft" cols="75" rows="3" id="Note" name="Note"></textarea></blockquote>
 					</td>
 			  </tr>
-			<?php $ShowReq = "yes"; include 'notes.ctp'; ?>
+			<?php $ShowReq = "yes"; require 'notes.ctp'; ?>
 		    <th align="center" colspan="2">
 		      <input tabindex="23" name="Continue" type="submit" id="Continue" value="<?php echo __('VoidInvoice') ?>">&nbsp;
      			 <?php echo __('CopyClient') ?>:<input type="checkbox" name="CopyClient" id="CopyClient" checked="checked" value="1" onclick="if(this.checked==false){return confirm('<?php echo __('DoNotCopyClient')?>');}"><br>&nbsp;

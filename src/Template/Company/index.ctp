@@ -25,7 +25,7 @@ echo $this->Html->script($TheJs);
 				}
 			}
 			echo '<li><a href="#tabs-search">',__('Search'),'</a></li>';
-			echo '<li style="float:right;" class="ui-corner-top ui-state-hover"><a style="color:#0B4284;font-weight:bold" onclick="window.location.href=\'', $session -> read('Company.CurrentCompanyURL'), 'newinvoice/\'">', __('AddNewInvoice'), '</a></li>';
+			echo '<li style="float:right;" class="ui-corner-top ui-state-hover"><a style="color:#0B4284;font-weight:bold" onclick="window.location.href=\'/company/newinvoice/\'">', __('AddNewInvoice'), '</a></li>';
 			echo '</ul>';
 			include 'tabscontent.ctp';
 			echo '</div>';

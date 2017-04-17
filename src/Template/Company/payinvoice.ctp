@@ -1,15 +1,16 @@
-<?php 
+<?php
+$session = $this->request->session(); 
 	$ThisInvoice = current($InvoiceQ);
 	echo $this->Html-> css("nyroModal","stylesheet", array(), false);
 	$this->pageTitle= __('Paying', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['Invoices']['InvoiceNumber'];
-	echo $this->Html->script("jquery/validate", false);	
+	echo $this->Html->script("jquery/validate", false);
 //localized validation code
 	$TheJs = $session->read('LocaleCode').'/payinvoice';
 	echo $this->Html->script($TheJs, false);
  ?>
  <div align="center">
- 	<?php 
-		echo '<h3>',$this->pageTitle,'</h3>';	
+ 	<?php
+		echo '<h3>',$this->pageTitle,'</h3>';
 	 	include 'invoice.ctp';
 		if($ThisInvoice['Invoices']['StatusID'] < 3){
 	?>
@@ -27,7 +28,7 @@
 			  <tr>
 			    <td>
 			    	<label for="Note">*<?php echo __('Note') ?>:</label>
-					
+
 					<blockquote><em><?php echo html_entity_decode(str_replace("\\r\\n", "<br>", $ThisInvoice['Invoices']['Note'])) ?></em><br>
 						<textarea tabindex="16" wrap="soft" cols="75" rows="3" id="Note" name="Note"></textarea></blockquote>
 					</td>

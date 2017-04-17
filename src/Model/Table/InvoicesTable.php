@@ -154,7 +154,7 @@ class InvoicesTable extends Table
 
 		public function AddInvoice(){
 			$TheSql =" INSERT INTO Invoices(CompanyID, StatusID, ClientID, InvoiceNumber, LocaleCode, InvoiceDate, CurrencyID, Note, EmailSubject,EnteredBy) ";
-			$TheSql.=" VALUES (".$_SESSION['Company']['CurrentCompanyID'].",";
+			$TheSql.=" VALUES (".$_SESSION['CurrentCompanyID'].",";
 			$TheSql.="1,";
 			$TheSql.=$_POST['ClientID'].",";
 			$TheSql.="'".substr(trim($_POST['InvoiceNumber']),0,25)."',";

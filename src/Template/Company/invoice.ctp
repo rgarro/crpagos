@@ -37,41 +37,41 @@ $session = $this->request->session();
 						<?php
 						echo '<b>', __('InvoiceDate'), ':</b> ';
 						if($session->read('LocaleCode') == 'spa_cr'){
-							echo $fecha->get_date_spanish(strtotime($ThisInvoice['Invoices']['InvoiceDate']), true);
+							echo $fecha->get_date_spanish(strtotime($ThisInvoice['InvoiceDate']), true);
 						}else{
-							echo date('l, F j Y', strtotime($ThisInvoice['Invoices']['InvoiceDate']));
+							echo date('l, F j Y', strtotime($ThisInvoice['InvoiceDate']));
 						}
-						echo '<br><b>',__('InvoiceNumber'), '</b>: ', $ThisInvoice['Invoices']['InvoiceNumber'];
+						echo '<br><b>',__('InvoiceNumber'), '</b>: ', $ThisInvoice['InvoiceNumber'];
 						if($session->check('TransactionID')){
 							echo '<br><b>',__('TransactionID'),':</b> ', $session->read('TransactionID');
 						}
 						if($ThisInvoice['Invoices']['StatusID'] == 3){
 							echo '<br><b>', __('PaidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
-								echo $fecha->get_date_spanish(strtotime($ThisInvoice['Invoices']['PaidDate']));
+								echo $fecha->get_date_spanish(strtotime($ThisInvoice['PaidDate']));
 							}else{
-								echo date('l, F j Y', strtotime($ThisInvoice['Invoices']['PaidDate']));
+								echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
 							}
-							echo '<br><b>',__('AuthNumber'), ':</b> ', $ThisInvoice['Invoices']['AuthNumber'];
-							echo '<br><b>',__('TransactionID'),':</b> ', $ThisInvoice['Invoices']['TransactionID'];
+							echo '<br><b>',__('AuthNumber'), ':</b> ', $ThisInvoice['AuthNumber'];
+							echo '<br><b>',__('TransactionID'),':</b> ', $ThisInvoice['TransactionID'];
 							}
-							if($ThisInvoice['Invoices']['StatusID'] == 4){
+							if($ThisInvoice['StatusID'] == 4){
 							echo '<br><b>', __('ManualPaidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
-								echo $fecha->get_date_spanish(strtotime($ThisInvoice['Invoices']['PaidDate']));
+								echo $fecha->get_date_spanish(strtotime($ThisInvoice['PaidDate']));
 							}else{
-								echo date('l, F j Y', strtotime($ThisInvoice['Invoices']['PaidDate']));
+								echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
 							}
-							echo '<br><b>',__('RefNumber'), ':</b> ', $ThisInvoice['Invoices']['AuthNumber'];
+							echo '<br><b>',__('RefNumber'), ':</b> ', $ThisInvoice['AuthNumber'];
 							}
-							if($ThisInvoice['Invoices']['StatusID'] == 5){
+							if($ThisInvoice['StatusID'] == 5){
 							echo '<br><b>', __('VoidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
-								echo $fecha->get_date_spanish(strtotime($ThisInvoice['Invoices']['VoidDate']));
+								echo $fecha->get_date_spanish(strtotime($ThisInvoice['VoidDate']));
 							}else{
-								echo date('l, F j Y', strtotime($ThisInvoice['Invoices']['VoidDate']));
+								echo date('l, F j Y', strtotime($ThisInvoice['VoidDate']));
 							}
-							echo '<br><b>',__('VoidBy'), ':</b> ', $ThisInvoice['Invoices']['AuthNumber'];
+							echo '<br><b>',__('VoidBy'), ':</b> ', $ThisInvoice['AuthNumber'];
 							}
 						?>
 						</span>
@@ -82,8 +82,8 @@ $session = $this->request->session();
   <tr>
 		<td align="left">
 			<span class="black"><?php
-			echo '<b>',__('Client'),':</b> ',$ThisInvoice['Clients']['ClientName'],' ',$ThisInvoice['Clients']['ClientLastName'];
-			echo '<br><b>',__('Email'),':</b> ',$ThisInvoice['Clients']['Email'];
+			echo '<b>',__('Client'),':</b> ',$ThisInvoice['ClientName'],' ',$ThisInvoice['ClientLastName'];
+			echo '<br><b>',__('Email'),':</b> ',$ThisInvoice['Email'];
 			?>
 		</span>
 	</td>
@@ -92,13 +92,13 @@ $session = $this->request->session();
 			if(isset($ShowCedJur)){
 				echo '<tr><td align="center"><table width="90%" class="detail" align="center"><tr><td class="detailc">';
 				echo '<p><b>***',__('ValidationInfo1'),'***<br>***',__('ValidationInfo2'),'***</b></p>';
-				if(strlen(trim($ThisInvoice['Clients']['RazonSocial']) > 0)){
+				if(strlen(trim($ThisInvoice['RazonSocial']) > 0)){
 					$Raz = str_replace('<br>&nbsp;&nbsp;', ' ', __('RazonSocial', true));
-					echo '<b>',$Raz,':</b> <span class="black">',$ThisInvoice['Clients']['RazonSocial'],'</span> ';
+					echo '<b>',$Raz,':</b> <span class="black">',$ThisInvoice['RazonSocial'],'</span> ';
 				}
-				if(strlen(trim($ThisInvoice['Clients']['CedulaJuridica']) > 0)){
+				if(strlen(trim($ThisInvoice['CedulaJuridica']) > 0)){
 					$Ced = str_replace('<br>&nbsp;&nbsp;', ' ', __('CedulaJuridica', true));
-					echo '  <b>',$Ced,':</b> <span class="black">',$ThisInvoice['Clients']['CedulaJuridica'],'</span>';
+					echo '  <b>',$Ced,':</b> <span class="black">',$ThisInvoice['CedulaJuridica'],'</span>';
 				}
 				echo '<br>&nbsp;</td></tr></table></td></tr>';
 			}
@@ -116,12 +116,12 @@ $session = $this->request->session();
 		$Total = 0;
 		foreach($InvoiceDetailQ as $ThisDetail){
 			echo '<tr>';
-			echo '<td class="detailc">',$ThisDetail['InvoiceDetail']['Qty'],'</td>';
-			echo '<td class="detailc">',$ThisDetail['InvoiceDetail']['Description'],'</td>';
-			echo '<td class="detail">',$ThisInvoice['Currencies']['CurrencySymbol'],number_format($ThisDetail['InvoiceDetail']['UnitPrice'], 2),'&nbsp;&nbsp;&nbsp;&nbsp;</td>';
-			echo '<td class="detail">',$ThisInvoice['Currencies']['CurrencySymbol'],number_format($ThisDetail['InvoiceDetail']['Amount'],2),'</td>';
+			echo '<td class="detailc">',$ThisDetail['Qty'],'</td>';
+			echo '<td class="detailc">',$ThisDetail['Description'],'</td>';
+			echo '<td class="detail">',$ThisInvoice['CurrencySymbol'],number_format($ThisDetail['UnitPrice'], 2),'&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+			echo '<td class="detail">',$ThisInvoice['CurrencySymbol'],number_format($ThisDetail['Amount'],2),'</td>';
         echo '</tr>';
-		$Total = $Total + $ThisDetail['InvoiceDetail']['Amount'];
+		$Total = $Total + $ThisDetail['Amount'];
 		}?>
 			</table>
 			</td>
@@ -131,16 +131,16 @@ $session = $this->request->session();
 			<table class="detail" align="right">
         <tr>
 					<td class="total" width="150px" align="right"><b><?php echo __('Total') ?>:</b></td>
-					<td class="detail" width="150px" align="right"><?php echo $ThisInvoice['Currencies']['CurrencySymbol'],number_format($Total, 2) ?>&nbsp;</td>
+					<td class="detail" width="150px" align="right"><?php echo $ThisInvoice['CurrencySymbol'],number_format($Total, 2) ?>&nbsp;</td>
 			  </tr>
 			</table>		</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
   </tr>
-  <?php if(strlen(trim($ThisInvoice['Invoices']['Note'])) > 0){ ?>
+  <?php if(strlen(trim($ThisInvoice['Note'])) > 0){ ?>
 	<tr>
-    <td><?php echo '<b>',__('Note'),':</b><br><div class="commenttext"><em>',html_entity_decode(str_replace("\\r\\n", "<br>", $ThisInvoice['Invoices']['Note'])),'</em></div>'  ?></td>
+    <td><?php echo '<b>',__('Note'),':</b><br><div class="commenttext"><em>',html_entity_decode(str_replace("\\r\\n", "<br>", $ThisInvoice['Note'])),'</em></div>'  ?></td>
   </tr>
 	<?php }?>
 	<tr>
