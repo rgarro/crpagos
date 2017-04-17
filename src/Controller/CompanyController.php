@@ -4,7 +4,7 @@ namespace App\Controller;
 use Cake\Core\Configure;
 use App\Controller\AppController;
 use Cake\Mailer\Email;
-//use Cake\I18n\I18n;
+use Cake\Core\App;
 use App\Lib\L10n;
 
 /**
@@ -327,13 +327,14 @@ $session = $this->request->session();
 			$this -> Invoices -> AddInvoiceLog($InvoiceID, $ActionID, $Comment);
 			//Email Goes Here
 			$Subject = $InvoiceQ['EmailSubject'] . '. ' . __('InvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'];
-			$TheTemplate = "invoice";
+			$TheTemplate = "invoice_html";
 			$this -> Set('ThisInvoice', $InvoiceQ);
 			$this -> Set('InvoiceDetailQ', $InvoiceDetailQ);
 			$this -> Set('TheCode', rawurlencode($this -> Crypter -> enCrypt($InvoiceID)));
 			//Force Client Copy
 			$_POST['CopyClient'] = 1;
-      require App::path('Template') . '/Company/mail.ctp';
+
+      require  getcwd().'/src/Template/Company/mail.ctp';
 			$SentTo[] = $InvoiceQ['ClientName'] . ' ' . $InvoiceQ['ClientLastName'] . '(' . $InvoiceQ['Email'] . ') ' . __('InvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('Amount', true) . ':' . $InvoiceQ['CurrencySymbol'] . number_format($InvoiceQ['TheTotal'], 2);
 		}
 		$this -> Set('SentTo', $SentTo);

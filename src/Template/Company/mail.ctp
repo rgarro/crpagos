@@ -6,10 +6,11 @@ $session = $this->request->session();
 //$EmailSubject .=" # ".date("F j, Y, g:i a");
 $Email = new Email('default');
 $Email->setCharset("iso-8859-1");
+
 if(isset($_POST['CopyClient'])){
-	$Email = html_entity_decode(htmlspecialchars_decode($InvoiceQ['Email']));
+	$Emailb = html_entity_decode(htmlspecialchars_decode($InvoiceQ['Email']));
 	$ClientName = html_entity_decode(htmlspecialchars_decode($InvoiceQ['ClientName'].' '.$InvoiceQ['ClientLastName']));
-	$Email->to(array($Email => $ClientName));
+	$Email->to(array($Emailb => $ClientName));
 	$Email->cc(array($session->read('Company.CurrentEmail')=>$session->read('Company.CurrentName')));
 }else{
 	$Email->to(array($session->read('Company.CurrentEmail')=>$session->read('Company.CurrentName')));

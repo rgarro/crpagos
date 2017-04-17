@@ -1,4 +1,5 @@
 <?php
+$session = $this->request->session();
 	if(isset($_SERVER['HTTPS'])){
 		$Protocol = "https://";
 	}else{
@@ -7,9 +8,9 @@
 	$FirstURI = $Protocol.$_SERVER['SERVER_NAME'].$session->read('Company.CurrentURL').__('CodeLink', true).'/';
 	$Code = '?'.__('InvoiceCode', true).'='.rawurlencode($TheCode);
 	$FullURI = $FirstURI.$Code;
-	
-	include VIEWS.'company'.DS.'invoice.ctp';
-?>	
+
+	require getcwd().'/src/Template/Company'.DS.'invoice.ctp';
+?>
 <p>&nbsp;</p><table width="720" border="0" align="center">
   <tr>
     <td colspan="2" bgcolor="#CCD6D8" align="center"><?php echo __('PayInstructions1') ?></td>
@@ -21,18 +22,18 @@
 		echo '<a href="',$FullURI,'" target="_blank">',__('Pay'),'</a>';
 		echo '</div>';
 		?></td>
-    <td width="50%" valign="top"><?php 
+    <td width="50%" valign="top"><?php
 		echo '<p>',__('PayInstructions2'),'<ol>';
 		echo '<li>',__('PayInstructions2a'), ':<br> ', $TheCode,' </li>' ;
 		echo '<li>',__('PayInstructions2b'),'<br><a href="',$FirstURI,'" target="_blank">',$FirstURI,'</a></li>';
 		echo '<li>',__('PayInstructions2c'),'</li>';
 	echo '</ol></p>';
-	
+
     ?></td>
   </tr>
   <tr>
     <td colspan="2" align="center" bgcolor="#CCD6D8">
-    	<?php 
+    	<?php
 		echo '<p>',__('PayInstructions4'),'</p>';
 	?></td>
   </tr>

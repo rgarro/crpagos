@@ -3,7 +3,7 @@ namespace App\Controller\Component;
 
 use Cake\Controller\Component;
 use Cake\Controller\ComponentRegistry;
-
+use Cake\Core\Configure;
 /**
  * Crypter component
  */
@@ -23,7 +23,8 @@ public $name = "Crypter";
             // Create and encryption vector based on the $td size and random
             $iv = mcrypt_create_iv(mcrypt_enc_get_iv_size($td), MCRYPT_RAND);
             // Initialize the module using the resource, my key and the string vector
-            mcrypt_generic_init($td, Configure::read('Security.salt'), $iv);
+            //mcrypt_generic_init($td, Configure::read('Security.salt'), $iv);
+            mcrypt_generic_init($td, '5@lt^CrP@605.(0m=', $iv);
             // Encrypt the data using the $td resource
             $encrypted_data = mcrypt_generic($td, $data);
             // Encode in base64 for DB storage
@@ -49,7 +50,7 @@ public $name = "Crypter";
             $data = (string) base64_decode(trim($data));
             $td = mcrypt_module_open('cast-256', '', 'ecb', '');
             $iv = mcrypt_create_iv(mcrypt_enc_get_iv_size($td), MCRYPT_RAND);
-            mcrypt_generic_init($td, Configure::read('Security.salt'), $iv);
+            mcrypt_generic_init($td, '5@lt^CrP@605.(0m=', $iv);
             $data = (string) trim(mdecrypt_generic($td, $data));
             // Make sure the encryption modules get un-loaded
             if (!mcrypt_generic_deinit($td) || !mcrypt_module_close($td)) {
