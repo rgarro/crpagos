@@ -129,7 +129,7 @@ class PayInvoiceController extends AppController
 					$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmPaid', true);
 					$_POST['CopyClient'] = 1;
 					$TheTemplate = "invoicepaid";
-					include App::path('Template') . '/Company/mail.ctp';
+					require getcwd(). '/src/Template/Company/mail.ctp';
 					$this -> redirect($session -> read('Company.PayURL'), '301 Moved Permanently');
 					exit ;
 				} else {

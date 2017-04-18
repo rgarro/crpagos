@@ -1,1 +1,2 @@
-<?php include VIEWS.'common'.DS.'email_welcome_text.php' ?>
+<?php
+require VIEWS.'common'.DS.'email_welcome_text.php'; 

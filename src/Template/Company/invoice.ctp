@@ -1,5 +1,6 @@
 <?php
 $session = $this->request->session();
+
 	if(!isset($Protocol)){
 		if(isset($_SERVER['HTTPS'])){
 			$Protocol = "https://";
@@ -7,15 +8,14 @@ $session = $this->request->session();
 			$Protocol = "http://";
 		}
 	}
-?>
-
-<?php if($ThisInvoice['StatusID'] == 3){
+if(isset($ThisInvoice['StatusID'])){
+	if($ThisInvoice['StatusID'] == 3){
 		echo '<h3><b>***',__('InvoicePaid'),'***</b></h3>';
 	}
-?>
-<?php if($ThisInvoice['StatusID'] == 4){
+	if($ThisInvoice['StatusID'] == 4){
 		echo '<h2><b>***',__('InvoicePaidManually'),'***</b></h2>';
 	}
+}
 ?>
 <table align="center" class="main" style="background-color:<?php echo $session->read('Company.CurrentBgColor') ?>">
 	<tr>

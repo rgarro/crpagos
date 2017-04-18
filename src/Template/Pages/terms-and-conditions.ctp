@@ -7,8 +7,9 @@ $session = $this->request->session();
 	if($session->check('Company.CurrentCompanyID')){
 		Configure::write('debug', 0);
 		$this->layout = "terms";
-		include VIEWS.'terms'.DS.$session->read('Company.CurrentCompanyID').'_eng_us.ctp';
+		require getcwd().'/src/Template/Terms'.DS.$session->read('Company.CurrentCompanyID').'_eng_us.ctp';
 	}else{
-		include VIEWS.'terms'.DS.'default_eng_us.ctp';
-	}?>
+		require getcwd().'/src/Template/Terms'.DS.'default_eng_us.ctp';
+	}
+	?>
 </div>

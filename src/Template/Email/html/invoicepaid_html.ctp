@@ -1,7 +1,2 @@
-
-<?php 
-	include VIEWS.'company'.DS.'invoice.ctp';
-?>
-
-
-
+<?php
+	require getcwd().'/src/Template/Company'.DS.'invoice.ctp';

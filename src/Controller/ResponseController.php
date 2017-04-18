@@ -120,7 +120,7 @@ class ResponseController extends AppController {
 			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['Invoices']['InvoiceNumber'] . ' ' . __('ConfirmPaid', true);
 			$_POST['CopyClient'] = 1;
 			$TheTemplate = "invoicepaid";
-			include VIEWS . 'company' . DS . 'mail.ctp';
+			require getcwd() . '/src/Template/Company' . DS . 'mail.ctp';
 		} else {
 			//Save The Log
 			$Comment = __('VPOSReply', true) . ' Result ' . $VposResponse['authorizationResult'] . ' Message ' . $VposResponse['errorMessage'];

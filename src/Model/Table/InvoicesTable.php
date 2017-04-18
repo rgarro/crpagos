@@ -193,7 +193,7 @@ class InvoicesTable extends Table
 			$TheSql.="'".$Comments."',";
 			$TheSql.="'".$_SESSION['User']['FullName']."',";
 			$TheSql.="'".$_SERVER['REMOTE_ADDR']."'";
-			$TheSql.=")";
+			$TheSql.=")";      
       $res = $this->connection()->execute($TheSql);
       return $res->lastInsertId();
 		}
@@ -247,7 +247,6 @@ class InvoicesTable extends Table
 			$TheSql.=" ModifiedBy ='".trim($_SESSION['User']['FullName'])."'";
 			$TheSql.=" WHERE InvoiceID =".$InvoiceID;
 			$TheSql.=" AND CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
-
       $res = $this->connection()->execute($TheSql);
       //return $res->lastInsertId();
       return $InvoiceID;

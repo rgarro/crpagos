@@ -1,1 +1,2 @@
-<?php include VIEWS.'common'.DS.'email_welcome_html.php' ?>
+<?php
+include getcwd().'common'.DS.'email_welcome_html.php';

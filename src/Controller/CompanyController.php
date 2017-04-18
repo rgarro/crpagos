@@ -295,11 +295,12 @@ $session = $this->request->session();
 			//require VIEWS . 'company' . DS . 'mail.ctp';
       require getcwd() . '/src/Template/Company' . DS . 'mail.ctp';
 		}
+
 		//Before redirect to assure it'll get set
 		$this->Flash->success($Flash);
 		if (isset($Redirect)) {
 			$this -> redirect('/company/viewinvoice/' . base64_encode($InvoiceID) . '/');
-			exit;
+	
 		}
 		//Query the DB	to reflect new changes
 		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));

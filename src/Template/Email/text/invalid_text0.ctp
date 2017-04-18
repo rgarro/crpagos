@@ -1,3 +1,2 @@
 <?php
-	include VIEWS.'response'.DS.'email'.DS.'invalid_text.ctp';
-?>
+	require getcwd().'/src/Template/Response'.DS.'email'.DS.'invalid_text.ctp';
