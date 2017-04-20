@@ -85,7 +85,7 @@ $cakeDescription = 'crpagos cakephp3 version';
          <span class="icon-bar"></span>
        </button>
        <a class="navbar-brand" href="/">
-<img src="/img/logo.gif" width="133" alt="CRPagos.com Facil y Seguro" border="0"/>
+<img src="/img/NICApagos.gif" width="133" alt="NicaPagos.com Facil y Seguro" border="0"/>
 			 </a>
      </div>
 
