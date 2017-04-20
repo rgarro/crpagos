@@ -37,7 +37,8 @@ if(isset($ThisInvoice['StatusID'])){
 						<?php
 						echo '<b>', __('InvoiceDate'), ':</b> ';
 						if($session->read('LocaleCode') == 'spa_cr'){
-							echo strtotime($ThisInvoice['InvoiceDate']);
+							//echo strtotime($ThisInvoice['InvoiceDate']);
+							echo date('l, F j Y', strtotime($ThisInvoice['InvoiceDate']));
 						}else{
 							echo date('l, F j Y', strtotime($ThisInvoice['InvoiceDate']));
 						}
@@ -48,7 +49,8 @@ if(isset($ThisInvoice['StatusID'])){
 						if($ThisInvoice['StatusID'] == 3){
 							echo '<br><b>', __('PaidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
-								echo strtotime($ThisInvoice['PaidDate']);
+								//echo strtotime($ThisInvoice['PaidDate']);
+								echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
 							}else{
 								echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
 							}
@@ -58,7 +60,8 @@ if(isset($ThisInvoice['StatusID'])){
 							if($ThisInvoice['StatusID'] == 4){
 							echo '<br><b>', __('ManualPaidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
-								echo strtotime($ThisInvoice['PaidDate']);
+								//echo strtotime($ThisInvoice['PaidDate']);
+								echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
 							}else{
 								echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
 							}
@@ -67,7 +70,8 @@ if(isset($ThisInvoice['StatusID'])){
 							if($ThisInvoice['StatusID'] == 5){
 							echo '<br><b>', __('VoidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
-								echo strtotime($ThisInvoice['VoidDate']);
+								//echo strtotime($ThisInvoice['VoidDate']);
+								echo date('l, F j Y', strtotime($ThisInvoice['VoidDate']));
 							}else{
 								echo date('l, F j Y', strtotime($ThisInvoice['VoidDate']));
 							}

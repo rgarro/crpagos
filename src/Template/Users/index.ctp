@@ -20,9 +20,9 @@ $session = $this->request->session();
 		echo '<tr>';
 		echo '<td align="center" class="left">';
 		if($CurrentUser['UserStatus'] == 1){
-			__('Active');
+			echo __('Active');
 		}else{
-			__('InActive');
+			echo __('InActive');
 		}
 		echo '</td>';
 		echo '<td align="center">',__($CurrentUser['AccessLevel']),'</td>';

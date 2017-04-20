@@ -19,7 +19,7 @@ if(isset($_POST['CedulaJuridica'])){
 echo 'Número de Cédula Jurídica: '.$_POST['CedulaJuridica']."\n";
 }
 if(isset($_POST['BusArea'])){
-echo 'Área negocio: '.$_POST['BusArea']."\n";
+echo 'Área Compañía: '.$_POST['BusArea']."\n";
 }
 echo 'Teléfono 1: '.$_POST['Tel1']."\n";
 if(isset($_POST['Tel2'])){

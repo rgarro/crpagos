@@ -43,5 +43,3 @@ $Email->replyTo(array("info@crpagos.com" => "InfoCRPagos"));
 $Email->subject($Subject);
 
 $Email->send();
-
-?>

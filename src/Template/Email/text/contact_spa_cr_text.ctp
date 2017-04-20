@@ -19,7 +19,7 @@ if(isset($_POST['CedulaJuridica'])){
 echo 'Número de Cédula Jurídica: '.Sanitize::clean($_POST['CedulaJuridica'])."\n";
 }
 if(isset($_POST['BusArea'])){
-echo 'Área negocio: '.Sanitize::clean($_POST['BusArea'])."\n";
+echo 'Área Compañía: '.Sanitize::clean($_POST['BusArea'])."\n";
 }
 echo 'Teléfono 1: '.Sanitize::clean($_POST['Tel1'])."\n";
 if(isset($_POST['Tel2'])){

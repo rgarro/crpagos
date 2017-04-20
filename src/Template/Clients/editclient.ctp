@@ -20,7 +20,7 @@ $session = $this->request->session();
 <h3><?php echo $this->pageTitle ?></h3>
 <div id="ClientEditForm">
 	<ul>
-		<li><a href="#Bus">Negocios</a></li>
+		<li><a href="#Bus">Compañías</a></li>
 		<li><a href="#Per">Personas</a></li>
 	</ul>
 	<div id="Bus">

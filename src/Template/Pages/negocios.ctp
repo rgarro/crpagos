@@ -1,6 +1,6 @@
 <?php
 $session = $this->request->session();
-	$this->pageTitle='Afiliaci&oacute;n de Negocios';
+	$this->pageTitle='Afiliaci&oacute;n de Compañías';
 	//$html->meta('keywords', '', array(), false);
 	//$html->meta('description', '', array(), false);
 	//$javascript->link("jquery/validate", false);
@@ -11,7 +11,7 @@ $session = $this->request->session();
 <script src="/js/jquery/validate.js"></script>
 <script src="<?php echo $TheJs; ?>"></script>
 <div class="contenttxt">
-<h3>Negocios</h3>
+<h3>Compañías</h3>
 Si requiere recibir pagos, como reservaciones, servicios a clientes internacionales, o venta de productos sin necesidad de contar con 	todo un sitio de comercio electr&oacute;nico, <b>CR Pagos</b> le ofrece la soluci&oacute;n que espera.
 <p>Con el fin de que su Empresa obtenga el mayor beneficio de <b>CR Pagos</b>, ofrecemos el servicio de desarrollo de funcionalidades, hechas a la medida de sus necesidades.</p>
 <p>Nuestro servicio se ofrece &uacute;nicamente a empresas radicadas en Costa Rica.</p>
@@ -50,7 +50,7 @@ Para solicitar informaci&oacute;n, por favor complete el siguiente formulario:
         <td><input name="CedJur" type="text" id="CedJur" size="40" maxlength="50" /></td>
       </tr>
       <tr>
-        <td><label for="BusArea">&Aacute;rea negocio</label></td>
+        <td><label for="BusArea">&Aacute;rea Compañía</label></td>
         <td><input name="BusArea" type="text" id="BusArea" size="40" maxlength="200" /></td>
       </tr>
       <tr>
