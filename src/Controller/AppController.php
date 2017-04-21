@@ -121,11 +121,11 @@ var $L10n;
     			setlocale(LC_ALL, 'en_US');
     		}
 
-        /*if($session->read('LocaleCode') == 'spa_cr'){
+        if($session->read('LocaleCode') == 'spa_cr'){
           I18n::locale('es_cr');
         }else{
           I18n::locale('en_us');
-        }*/
+        }
 
 
 
