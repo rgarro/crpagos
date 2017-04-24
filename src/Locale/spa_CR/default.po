@@ -10,230 +10,227 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Basepath: .\n"
-"Language: en\n"
+"Language: en_US\n"
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: D:\\Webs\\CRPagos\\application\\app\\locale\n"
 
 msgid "EmailOrLogin"
-msgstr "Correo Electr&oacute;nico"
+msgstr "E-mail"
 
 msgid "Password"
-msgstr "Contrase&ntilde;a"
+msgstr "Password"
 
 msgid "LogIn"
-msgstr "Ingresar"
+msgstr "Login"
 
 msgid "ForgotPass"
-msgstr "&iquest;Olvid&oacute; su clave?"
+msgstr "Forgot your password?"
 
 msgid "RemindPass"
-msgstr "Recordar Contrase&ntilde;a"
+msgstr "Password Reminder"
 
 msgid "RemidPassInstr"
-msgstr "Ingrese el correo electr&oacute;nico con que se registr&oacute;"
+msgstr "Please enter the E-mail address used for registration"
 
 msgid "SendPass"
-msgstr "Enviar Contrase&ntilde;a"
+msgstr "Send password"
 
 msgid "PassSent"
-msgstr "La informaci&oacute;n fue enviada!<br>Por favor, revise su correo."
+msgstr "The password was sent!<br>Please check your E-mail"
 
 msgid "NoPassSent"
-msgstr ""
-"Lo sentimos mucho, la informaci&oacute;n <br>no est&aacute; en nuestros "
-"registros."
+msgstr "We are sorry, the information entered<br>is not in our records"
 
 msgid "Welcome"
-msgstr "Bienvenido (a)"
+msgstr "Welcome"
 
 msgid "ErrorLogin"
-msgstr "Correo o Contrase&ntilde;a incorrectas, por favor revise"
+msgstr "E-mail address or password is incorrect, please check"
 
 msgid "Email"
-msgstr "Correo Electr&oacute;nico"
+msgstr "E-mail"
 
 msgid "PleaseSelect"
-msgstr "Por favor seleccione"
+msgstr "Please select"
 
 msgid "MultiCompanyUser"
-msgstr "Cambio de Compa&ntilde;&iacute;as"
+msgstr "Change company"
 
 msgid "PleaseSelectCompany"
-msgstr "Seleccione Compa&ntilde;ia"
+msgstr "Please select company"
 
 msgid "Search"
-msgstr "Buscar"
+msgstr "Search"
 
 msgid "Status"
-msgstr "Estatus"
+msgstr "Status"
 
 msgid "Pending"
-msgstr "Pendiente"
+msgstr "Pending"
 
 msgid "Pendingpl"
-msgstr "Pendientes"
+msgstr "Pending"
 
 msgid "Sent"
-msgstr "Enviada"
+msgstr "Sent"
 
 msgid "Sentpl"
-msgstr "Enviadas"
+msgstr "Sent"
 
 msgid "Paid"
-msgstr "Pagada"
+msgstr "Paid"
 
 msgid "Paidpl"
-msgstr "Pagadas"
+msgstr "Paid"
 
 msgid "Void"
-msgstr "Anulada"
+msgstr "Void"
 
 msgid "Voidpl"
-msgstr "Anuladas"
+msgstr "Void"
 
 msgid "PaidManually"
-msgstr "Pagada Manualmente"
+msgstr "Paid Manually"
 
 msgid "PaidManuallypl"
-msgstr "Pago Manual"
+msgstr "Paid Manually"
 
 msgid "Voiding"
-msgstr "Anular"
+msgstr "Voideing"
 
 msgid "VoidInvoice"
-msgstr "Anular Solicitud de Pago"
+msgstr "Void Request"
 
 msgid "Invoices"
-msgstr "Solicitudes de Pago"
+msgstr "Payment Request"
 
 msgid "InvoicesFor"
-msgstr "Solicitudes de Pago de "
+msgstr "Payment Request for"
 
 msgid "EditInvoice"
-msgstr "Editar"
+msgstr "Edit"
 
 msgid "SendMail"
-msgstr "Enviar Solicitud de Pago"
+msgstr "Send Request"
 
 msgid "ResendMail"
-msgstr "Re-Enviar Solicitud de Pago"
+msgstr "Re-send Request"
 
 msgid "ResendMailConfirm"
-msgstr "&iquest;Enviar las Solicitudes de Pago seleccionadas?"
+msgstr "Send Payment Request to the selected invoices?"
 
 msgid "SendMailConfirm"
-msgstr "&iquest; Esta seguro que desea enviar la Solicitud de Pago a"
+msgstr "Are you sure you want to send the Payment Request to"
 
 msgid "SendInstructions"
 msgstr ""
-"Previo al env&iacute;o, por favor revise y verifique la informaci&oacute;n."
-"<br>Despu&eacute;s de este paso, la Solicitud de Pago ya no se podr&aacute; "
-"modificar m&aacute;s."
+"Prior to send the email, please review and confirm the information.<br>You "
+"will not be able to modify the Invoice afterwards."
 
 msgid "AddNewInvoice"
-msgstr "Agregar nueva Solicitud de Pago"
+msgstr "Add new Payment Request"
 
 msgid "AddNewInvoiceFor"
-msgstr "Agregar nueva Solicitud de Pago para "
+msgstr "Add new Payment Request for "
 
 msgid "Language"
-msgstr "Idioma"
+msgstr "Language"
 
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Currency"
 
 msgid "TheInvoiceNumber"
-msgstr "La Solicitud de Pago N&uacute;mero"
+msgstr "The Invoice Number"
 
 msgid "InvoiceNumber"
-msgstr "Solicitud N&uacute;mero"
+msgstr "Invoice Number"
 
 msgid "InvoiceDate"
-msgstr "Fecha de Solicitud"
+msgstr "Invoice Date"
 
 msgid "Client"
-msgstr "Cliente"
+msgstr "Client"
 
 msgid "EmailSubject"
-msgstr "Asunto en Correo Electr&oacute;nico"
+msgstr "E-mail subject"
 
 msgid "Note"
-msgstr "Nota para el cliente"
+msgstr "Note for the client"
 
 msgid "Qty"
-msgstr "Cant."
+msgstr "Qty."
 
 msgid "Description"
-msgstr "Descripci&oacute;n"
+msgstr "Description"
 
 msgid "UnitPrice"
-msgstr "Precio Unitario"
+msgstr "Unit Price"
 
 msgid "Amount"
-msgstr "Monto"
+msgstr "Amount"
 
 msgid "Total"
 msgstr "Total"
 
 msgid "AddRow"
-msgstr "Agregar L&iacute;nea"
+msgstr "Add row"
 
 msgid "Continue"
-msgstr "Continuar"
+msgstr "Continue"
 
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Cancel"
 
 msgid "InvoiceRequestFrom"
-msgstr "Solicitud de Pago"
+msgstr "Payment Request"
 
 msgid "EditInvoiceFor"
-msgstr "Editar una Solicitud de Pago para "
+msgstr "Edit a Payment Request for "
 
 msgid "SendEmailTo"
-msgstr "Enviar Solicitud de Pago a "
+msgstr "Send Payment Request to"
 
 msgid "AddInvoce"
-msgstr "Solicitud de Pago ingresada"
+msgstr "Payment Request added"
 
 msgid "UpdateInvoice"
-msgstr "Solicitud de Pago actualizada"
+msgstr "Payment Request updated"
 
 msgid "SentMail"
-msgstr "Solicitud de Pago enviada por 1<sup>era</sup> vez"
+msgstr "Payment Request sent for the first time"
 
 msgid "ReSendMail"
-msgstr "Solicitud de Pago reenviada "
+msgstr "Payment Request Resended "
 
 msgid "Comments"
-msgstr "Comentarios"
+msgstr "Commments"
 
 msgid "DisplayedInvoice"
-msgstr "Solicitud de Pago desplegada en Web"
+msgstr "Payment Request displayed on the web"
 
 msgid "AddNewComment"
-msgstr "Agregar Comentario Interno"
+msgstr "Add company comment"
 
 msgid "ShowComments"
-msgstr "Ver Comentarios"
+msgstr "Show comments"
 
 msgid "HideComments"
-msgstr "Esconder Comentarios"
+msgstr "Hide Comments"
 
 msgid "CompanyName"
-msgstr "Nombre de la Compa&ntilde;&iacute;a"
+msgstr "Company Name"
 
 msgid "ClientName"
-msgstr "Nombre"
+msgstr "Name"
 
 msgid "ClientLastName"
-msgstr "Apellido"
+msgstr "LastName"
 
 msgid "Cedula"
-msgstr "C&eacute;dula"
+msgstr "ID"
 
 msgid "ContactName"
-msgstr "Contacto"
+msgstr "Contact"
 
 msgid "CedulaJuridica"
 msgstr "C&eacute;dula Jur&iacute;dica"
@@ -242,503 +239,489 @@ msgid "RazonSocial"
 msgstr "Raz&oacute;n Social"
 
 msgid "Phone"
-msgstr "Tel&eacute;fono"
+msgstr "Phone"
 
 msgid "SaveClient"
-msgstr "Salvar Cliente"
+msgstr "Save Client"
 
 msgid "SaveCompany"
-msgstr "Salvar Compa&ntilde;&iacute;a"
+msgstr "Save Company"
 
 msgid "DeleteCompany"
-msgstr "&iquest;Borrar Compa&ntilde;&iacute;a?"
+msgstr "Delete Company?"
 
 msgid "Save"
-msgstr "Salvar"
+msgstr "Save"
 
 msgid "Close"
-msgstr "Cerrar"
+msgstr "Close"
 
 msgid "Pay"
-msgstr "Pagar"
+msgstr "Pay"
 
 msgid "PayLink"
-msgstr "Pagar"
+msgstr "Pay"
 
 msgid "PayUrl"
-msgstr "pagar"
+msgstr "pay"
 
 msgid "Paying"
-msgstr "Pagando"
+msgstr "Payimg"
 
 msgid "VoidLink"
-msgstr "Anular"
+msgstr "Void"
 
 msgid "ViewLink"
-msgstr "Ver"
+msgstr "View"
 
 msgid "PayThisInvoice"
-msgstr "Pagar esta Solicitud"
+msgstr "Pay this Payment Request"
 
 msgid "InvoicePaidManually"
-msgstr "Esta Solicitud fue Pagada Manualmente"
+msgstr "This invoice was paid manually"
 
 msgid "ValidationInfo1"
 msgstr ""
-"La siguiente informaci&oacute;n se muestra como una medida de seguridad y "
-"validaci&oacute;n."
+"The following information is shown as a secuity and validation feature."
 
 msgid "ValidationInfo2"
 msgstr ""
-"Verifique que la informaci&oacute;n sea correcta y la misma que Ud nos "
-"suministr&oacute;."
+"Please verify that the information is accurate and the same information "
+"provided by you."
 
 msgid "Logout"
-msgstr "Salir"
+msgstr "Logout"
 
 msgid "LogoutConfirm"
-msgstr "&iquest;Salir, esta seguro?"
+msgstr "Logout, Are you sure?"
 
 msgid "BatchResend"
-msgstr "Enviar desde el Listado de Solicitudes de Pago"
+msgstr "Sent from the Payment Request list."
 
 msgid "Back"
-msgstr "Regresar"
+msgstr "Back"
 
 msgid "BackToList"
-msgstr "Regresar a la Lista de Solicitudes de Pago"
+msgstr "Back to the Payment Request list"
 
 msgid "BackConfirm"
 msgstr ""
-"&iquest;Regresar a la Lista de Solicitudes de Pago? Cualquier dato no "
-"salvado se va a perder."
+"Return to the list? Any information entered that was not saved will be lost."
 
 msgid "PayInstructions1"
 msgstr ""
-"Para pagar esta solicitud de una forma f&aacute;cil y segura, Ud puede "
-"hacerlo de dos formas."
+"To pay this Payment Request in an easy and secure way, you can make it in "
+"two different ways."
 
 msgid "PayInstructions2"
 msgstr ""
-"<h3 align=\"center\">Ingreso Manual</h3> Para procesar en forma manual el "
-"pago de la solicitud de pago."
+"<h3 align=\"center\">Manual Processing</h3> To process your invoce manually:"
 
 msgid "PayInstructions2a"
-msgstr "Copie el siguiente c&oacute;digo"
+msgstr "Copy the following code:"
 
 msgid "PayInstructions2b"
-msgstr "Abra su navegador y dir&iacute;jase a"
+msgstr "Open your browser on go to:"
 
 msgid "PayInstructions2c"
-msgstr "Pegue el c&oacute;digo en la casilla indicada."
+msgstr "Paste the code on the form."
 
 msgid "PayInstructions3"
-msgstr "Revise su informaci&oacute;n y presione el bot&oacute;n de Pagar."
+msgstr "Carefully review the information and click on the Pay button."
 
 msgid "PayInstructions4"
 msgstr ""
-"Ud ser&aacute; llevado(a) una pantalla de proceso para completar su pago con "
-"toda tranquilidad y seguridad."
+" you'll be taken to a secure processing screen so you can complete your "
+"payment in an easy and safe way."
 
 msgid "PayInstructions5"
-msgstr "Ingrese el C&oacute;digo de Solicitud que recibi&oacute; en su correo"
+msgstr "Insert the Payment Request code received by E-mail."
 
 msgid "JustClickHere"
-msgstr "Simplemente haga clic aqu&iacute;"
+msgstr "Just click here"
 
 msgid "VerifyLock"
 msgstr ""
-"<b>Siempre</b> verifique que se encuentra en nuestro sitio seguro. La "
-"direcci&oacute;n de nuestra  p&aacute;gina debe de empezar con <b>&ldquo;"
-"https://&rdquo;</b> seguida inmediatamente por nuestro nombre <b>&ldquo;"
-"CRPagos.com&rdquo;</b>. Adem&aacute;s debe aparecer un  &ldquo;"
-"candadito&rdquo; en la barra de navegaci&oacute;n o en la parte inferior de "
-"la pantalla, y al cual, al hacerle &ldquo;doble-click&rdquo, le "
-"desplegar&aacute; nuestra  infomaci&oacute;n y otros detalles de seguridad. "
+"<b>Always</b>check that you are on our secure website. The address of our "
+"website must start with<b> &ldquo;https://&rdquo;</b> followed inmediatly by "
+"our name <b>&ldquo;CRPagos.com&rdquo;</b>. Additionaly a small  &ldquo;"
+"lock&rdquo will display either on the address bar or the bottom of the "
+"screen, and when &ldquo;double-clicked&rdquo it will show our security "
+"information. "
 
 msgid "Thanks"
-msgstr ""
-"Muchas Gracias. Para cualquier consulta o comentario, no dude en "
-"contactarnos. "
-
-msgid "ThankYou"
-msgstr "T&iexcl;Gracias!"
+msgstr "Thank you ! Please contact us with your questions or comments. "
 
 msgid "WhenPressed"
-msgstr "Al presionar el bot&oacute;n de "
+msgstr "When clicking on the button"
 
 msgid "AuthNumber"
-msgstr "N&uacute;mero de autorizaci&oacute;n"
+msgstr "Authorization number"
 
 msgid "PaidFrom"
-msgstr "Pagado desde"
+msgstr "Paid from"
 
 msgid "PaidDate"
-msgstr "Fecha de Pago"
+msgstr "Payment date"
 
 msgid "InvoicePaid"
-msgstr "Muchas Gracias!. Esta Solicitud fu&eacute; pagada."
+msgstr "Thank you!. Payment Request was paid."
 
 msgid "MailSent"
-msgstr "Correos enviados satisfactoriamente!"
+msgstr "E-mail sent!"
 
 msgid "OneMailSent"
-msgstr "El Correo fu&eacute; enviado satisfactoriamente!"
+msgstr "The Email was sent successfully!"
 
 msgid "ViewInvoice"
-msgstr "Ver Solicitud de Pago"
+msgstr "View Payment Request"
 
 msgid "ConfirmPaid"
-msgstr "Ha sido pagada"
+msgstr "Payment Confirmation"
 
 msgid "PayConfirm"
-msgstr "&iquest;Esta seguro que desea Pagar Manualmente esta solicitud?"
+msgstr "Pay this Invoice Manually?"
 
-msgid "VoidedInvoice"
-msgstr "La Solicitud de Pago fue Anulada"
+msgid "VoidededInvoice"
+msgstr "Payment Request voided"
 
 msgid "VoidedInvoiceFlash"
-msgstr "La Solicitud de Pago fue Anulada "
+msgstr "Payment Request voided."
 
 msgid "PaidManuallyFlash"
-msgstr "La Solicitud de Pago fue Pagada Manualmente"
+msgstr "The inovoice was paid manually"
 
 msgid "ManualPaidDate"
-msgstr "Fecha de Pago Manual"
+msgstr "Manual Payment date"
 
 msgid "RefNumber"
-msgstr "N&uacute;mero de Referencia para este Pago Manual"
+msgstr "Reference number for this manual payment"
 
 msgid "ConfirmManualPaid"
-msgstr "Ha sido pagada por otro medio"
+msgstr "Has been paid via other method."
 
 msgid "VoidDate"
-msgstr "Fecha de Anulaci&oacute;n"
+msgstr "Voided date"
 
 msgid "VoidBy"
-msgstr "Anulada por"
+msgstr "Voided by"
 
 msgid "ConfirmVoid"
-msgstr "fue Anulada. Por favor hacer caso omiso de la misma."
+msgstr " was Voided. Please disregrad."
 
 msgid "VoidConfirm"
-msgstr "&iquest;Esta seguro que desea Anular esta solicitud?"
+msgstr "Void this thin invoice, Are you sure?"
 
 msgid "Clients"
-msgstr "Clientes"
+msgstr "Clients"
 
 msgid "ClientsOf"
-msgstr "Clientes de "
+msgstr "Clients of "
 
 msgid "AddNewClient"
-msgstr "Agregar Cliente Nuevo"
+msgstr "Add new client"
 
 msgid "ClientSaved"
-msgstr "El Cliente fue salvado satisfactoriamente"
+msgstr "Client information saved."
 
 msgid "CompanySaved"
-msgstr "La Compa&ntilde;&iacute;a fu&eacute; salvada satisfactoriamente"
+msgstr "Company information saved."
 
 msgid "BackToClientList"
-msgstr "Regresar a la Lista de Clientes"
+msgstr "Back to the clients list."
 
 msgid "EditClient"
-msgstr "Editar Cliente"
+msgstr "Edit Client"
 
 msgid "DeleteClient"
-msgstr "&iquest;Borrar Cliente?"
+msgstr "Delete client?"
 
 msgid "DeleteClientConfirm"
-msgstr "&iquest;Esta seguro que desea borrar este Cliente?"
+msgstr "Are you sure you want to delete this client?"
 
 msgid "NoClientsFound"
-msgstr "No se encontraron Clientes"
+msgstr "Clients not found"
 
 msgid "Users"
-msgstr "Usuarios"
+msgstr "Users"
 
 msgid "UsersOf"
-msgstr "Usuarios de "
+msgstr "Users of"
 
 msgid "AddNewUser"
-msgstr "Agregar Usuario Nuevo"
+msgstr "Add new user"
 
 msgid "UserSaved"
-msgstr "El Usuario fue salvado satisfactoriamente"
+msgstr "User was saved"
 
 msgid "BackToUserList"
-msgstr "Regresar a la Lista de Usuarios"
+msgstr "Back to user list"
 
 msgid "EditUser"
-msgstr "Editar Usuario"
+msgstr "Edit User"
 
 msgid "NoUsersFound"
-msgstr "No se encontraron Usuarios"
+msgstr "No Users were found"
 
 msgid "DeleteUser"
-msgstr "iquest;Borrar Usuario?"
+msgstr "Delete User?"
 
 msgid "DeleteUserConfirm"
-msgstr "iquest;Esta seguro que desea borrar este Usuario?"
+msgstr "Are you sure you want to delete this user?"
 
 msgid "AccessLevel"
-msgstr "Nivel de Acceso"
+msgstr "Access level"
 
 msgid "FirstName"
-msgstr "Primer nombre"
+msgstr "First Name"
 
 msgid "LastName"
-msgstr "Apellidos"
+msgstr "Last name"
 
 msgid "MyAccount"
-msgstr "Mi Cuenta"
+msgstr "My Account"
 
 msgid "BackToMyAccount"
-msgstr "Regresar a la Lista Principal"
+msgstr "Return to the main list"
 
 msgid "PasswordChange"
-msgstr "Cambio de Contrase&ntilde;a"
+msgstr "Password change"
 
 msgid "NewPassword"
-msgstr "Nueva Contrase&ntilde;a"
+msgstr "New password"
 
 msgid "ReTypePassword"
-msgstr "Re-escriba su nueva Contrase&ntilde;a"
+msgstr "Re-enter your new password "
 
 msgid "SettingsSaved"
-msgstr "Sus cambios fueron Salvados satisfactoriamente"
+msgstr "Changes saved"
 
 msgid "ToKeepCurrent"
-msgstr ""
-"Deje estos espacios en blanco para mantener su Contrase&ntilde;a actual"
+msgstr "Leave this spaces in blank to keep your current password"
 
 msgid "Active"
-msgstr "Activo"
+msgstr "Active"
 
 msgid "InActive"
-msgstr "Inactivo"
+msgstr "Inactive"
 
 msgid "SuperAdmin"
-msgstr "Super Administrador"
+msgstr "Super Administrator"
 
 msgid "Admin"
-msgstr "Administrador"
+msgstr "Administrator"
 
 msgid "User"
-msgstr "Usuario"
+msgstr "User"
 
 msgid "Editing"
-msgstr "Editar a "
+msgstr "Editing"
 
 msgid "AboutUs"
-msgstr "Acerca de..."
+msgstr "About Us ..."
 
 msgid "Personal"
-msgstr "Personas"
+msgstr "Personal"
 
 msgid "Bussiness"
-msgstr "Negocios"
-
-msgid "ContactUsLink"
-msgstr "contactenos"
+msgstr "Bussiness"
 
 msgid "ContactUs"
-msgstr "Cont&aacute;ctenos"
+msgstr "Contact Us"
+
+msgid "ContactUsLink"
+msgstr "contact-us"
 
 msgid "Terms"
-msgstr "T&eacute;rminos y Condiciones"
+msgstr "Terms and Conditions"
 
 msgid "NoneFound"
 msgstr ""
-"Lo sentimos mucho, pero el C&oacute;digo de Solicitud no es v&aacute;lido."
-"<br>Por favor contacte a la empresa emisora"
+"We are sorry but the Payment Request code is not valid.<br>Please contact "
+"the sender."
 
 msgid "UpdatedFlash"
-msgstr "La Solicitud de Pago fue actualizada satisfactoriamente"
+msgstr "The Invoice was Updated successfully"
 
 msgid "MyCompany"
-msgstr "Mi Compa&ntilde;&iacute;a"
+msgstr "My Company"
 
 msgid "AddingNewClient"
-msgstr "Agregar Cliente Nuevo para "
+msgstr "Adding New Client"
 
 msgid "BackClientsConfirm"
-msgstr ""
-"&iquest;Regresar a la Lista de Clientes? Cualquier dato no salvado se va a "
-"perder."
+msgstr "Back to Client&rsquo;s List?, Any Unsaved Changes will be lost."
 
 msgid "CompanyDeleted"
-msgstr "La Compa&ntilde;&iacute;a fue borrada."
+msgstr "The Company was deleted."
 
 msgid "ClientDeleted"
-msgstr "El Cliente fue borrado."
+msgstr "The Client was deleted."
 
 msgid "CompanyInfo"
-msgstr "Informaci&oacute;n de la compa&ntilde;&iacute;a"
+msgstr "Company Info"
 
 msgid "Home1"
-msgstr "Gesti&oacute;n de Cobro en l&iacute;nea"
+msgstr "On-line Collection Management"
 
 msgid "Home2"
-msgstr "F&aacute;cil y Seguro"
+msgstr "Easy and Safe"
 
 msgid "Home3"
-msgstr "&iexcl;Solicite informaci&oacute;n hoy mismo!"
+msgstr "Request information today!"
 
 msgid "TheSolution"
-msgstr ""
-"&iexcl;La soluci&oacute;n que ha estado esperando al alcance de sus manos!"
+msgstr "The Solution you have been waiting for!"
 
 msgid "BusinessForm"
-msgstr "Formulario de Negocios"
+msgstr "Business form"
 
 msgid "PersonalForm"
-msgstr "Formulario Personal"
+msgstr "Personal form"
 
 msgid "ContactUsForm"
-msgstr "Formulario de contactenos"
+msgstr "Contact us form"
 
 msgid "UndrestoodTS"
-msgstr ""
-"Acepto los T&eacute;rminos y Condiciones (haga clic aqu&iacute; para leerlos)"
+msgstr "I Accept the Terms and Conditions (Click here to read)"
 
 msgid "MustAccept"
-msgstr "&iexcl;Ud debe aceptar los T&eacute;rminos y Condiciones!"
+msgstr "You Must Accept the Terms and Conditions!"
 
 msgid "CopyRights"
-msgstr "Todos los Derechos Reservados &copy; CR Pagos.com - Costa Rica,"
+msgstr "All Rights Reserved &copy; CR Pagos.com - Costa Rica,"
 
 msgid "ErrorProcessingCard"
 msgstr ""
-"Lo sentimos mucho hubo un error procesando su tarjeta de cr&eacute;dito, por "
-"favor intente de nuevo"
+"We're sorry there was an error processing your credit card, please try again"
 
 msgid "VPOSReply"
-msgstr "Respuesta del Procesador"
+msgstr "Processor Reply"
 
 msgid "InvoiceDisplayed"
-msgstr "Solicitud de Pago desplegada en el sitio"
+msgstr "Invoice Displayed on Web"
 
 msgid "InvalidInvoiceNum"
-msgstr "N&uacute;mero de solicitud incorrecto, por favor trate de nuevo"
+msgstr "Invalid Invoice Number, please try again"
 
 msgid "NoSessionFound"
-msgstr "La sessi&oacute;n ha expirado, por favor trate de nuevo"
+msgstr "Your Session has expired, please try again"
 
 msgid "PostHasNoResponse"
-msgstr "Error en procesamiento de tarjetas, por favor trate de nuevo"
+msgstr "Error on Credit Card Processor, please try again"
 
 msgid "TransactionID"
-msgstr "N&uacute;mero de Orden"
+msgstr "Order Number"
 
 msgid "NoJavaScript"
 msgstr ""
-"Este sitio requiere soporte de JavaScript,<br>si su navegador lo tiene, es "
-"posible que est&eacute; deshabilitado,<br>por favor, habil&iacute;telo y re-"
-"cargue la p&aacute;gina."
+"This site requires JavaScript support,<br>if your browser does, it is "
+"possible that you have it disabled,<br>please, enable it and try again "
+"refresing the page."
 
 msgid "NoCookies"
 msgstr ""
-"Este sitio requiere soporte de Cookies,<br>si su navegador lo tiene, es "
-"posible que est&eacute; deshabilitado,<br>por favor, habil&iacute;telo e "
-"intente nuevamente."
+"This site requires Cookie support,<br>if your browser does, it is possible "
+"that you have it disabled,<br>please, enable it and try again."
 
 msgid "CodeLink"
-msgstr "codigo-de-solicitud"
+msgstr "invoice-code"
 
 msgid "BadError"
 msgstr ""
-"&iexcl;Mil disculpas!<br>Hubo un error con la respuesta del Procesador de la "
-"tarjeta, por su seguridad,<br>hemos notificado a nuestras oficinas y la "
-"Solicitud de Pago se marc&oacute; &ldquo;Para Revisi&oacute;n&rdquo;.<br>Si "
-"necesita m&aacute;s informaci&oacute;n, favor comunicarse con nuestras "
-"oficinas.<br>&nbsp;"
+"Our Apologies!<br>There was an error with the Credit Card's Processor's "
+"response, for your safety,<br>we've notified our offices, and the invoice "
+"has been marked as &ldquo;To Review&rdquo;.<br>If you would like more "
+"information, please contact us.<br>&nbsp;"
 
 msgid "LearnMore"
-msgstr "Conozca M&aacute;s"
+msgstr "Learn More"
 
 msgid "DeleteSelected"
-msgstr "Borrar Solicitud de Pago Seleccionadas"
+msgstr "Delete Selected"
 
 msgid "InvoiceDeleted"
-msgstr "La Solicitud de Pago fu&eacute; borrada"
+msgstr "La factura fu&eacute; borrada"
 
 msgid "InvoicesDeleted"
-msgstr "Solicitudes fueron borradas"
+msgstr "facturas fueron borradas"
 
 msgid "ManualPay"
-msgstr "Pago Manual"
+msgstr "Manual Pay"
 
 msgid "CopyClient"
-msgstr "&iquest;Copiar Cliente?"
+msgstr "Copy Client?"
 
 msgid "DoNotCopyClient"
 msgstr ""
-"&iexcl;IMPORTANTE: Si UD no notifica al cliente, &eacute;l o ella puede "
-"tratar de pagar la Solicitud de Pago anterior!"
+"IMPORTANT: If you do noy copy the client, he / she may try to pay the "
+"invoice sent on the previous e-mail."
 
 msgid "CreditCardInfo"
-msgstr "Informaci&oacute;n de tarjeta de cr&eacute;dito"
+msgstr "Credit Card Info"
 
 msgid "CardHolderName"
-msgstr "Tarjetahabiente"
+msgstr "Card Holder Name"
 
 msgid "CCNumber"
-msgstr "N&uacute;mero de Tarjeta"
+msgstr "Card Number"
 
 msgid "ExpireDate"
-msgstr "Fecha de Expiraci&oacute;n"
+msgstr "Expire Date"
 
 msgid "CCComments"
-msgstr "Comentarios"
+msgstr "Order Comments, Shipping Instructions, etc"
+
+msgid "PayNow"
+msgstr "Pay Now"
 
 msgid "InvalidCCCard"
-msgstr "El Numero de Tarjeta es inv&aacute;lido"
+msgstr "Card Number seems invalid, please check"
 
 msgid "Month"
-msgstr "Mes"
+msgstr "Month"
 
 msgid "Year"
-msgstr "A&ntilde;o"
+msgstr "Year"
 
 msgid "PleaseWait"
-msgstr "Espere..."
+msgstr "Wait..."
 
 msgid "ContactingBank"
-msgstr "Procesando su pago"
+msgstr "Processing Your Payment"
 
 msgid "DefaultLanguage"
-msgstr "Lenguaje por defecto"
+msgstr "Default Language"
 
 msgid "DeleteLine"
-msgstr "Borrar<br>L&iacute;nea"
+msgstr "Delete<br>Line"
 
 msgid "DeleteLineConfirm"
-msgstr "&iquest;Esta seguro que desea borrar esta l&iacute;nea?"
+msgstr "Are you sure you want to delete this line?"
 
 msgid "ClientsName"
-msgstr "Primer Nombre del Cliente"
+msgstr "Client's First Name"
 
 msgid "Or"
-msgstr "O"
+msgstr "Or"
 
 msgid "Found"
-msgstr "Se encontraron"
+msgstr "Found"
 
 msgid "Records"
-msgstr "registros"
+msgstr "records"
 
 msgid "NoRecordsFound"
-msgstr "No se encontraron registros"
+msgstr "No records found"
 
 msgid "NothingToSearch"
-msgstr "Nada para buscar"
+msgstr "Nothing to search"
 
 msgid "Found1Record"
-msgstr "Se encontr&oacute; 1 registro"
+msgstr "Found 1 record"
 
 msgid "Sort"
-msgstr "Ordenar"
+msgstr "Sort"
 
 msgid "DefaultNote"
-msgstr "Nota para el Cliente por defecto"
+msgstr "Default Note"

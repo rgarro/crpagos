@@ -86,8 +86,6 @@ var $L10n;
     			session_name('CRPagos');
     			$this -> loadModel('Locales');
     			$Langs = $this -> Locales -> index();
-//print_r($LangQ);
-//exit;
 
     			$session -> write('Languages', $Langs);
     			$session -> write('ValidLangCodes', array());
@@ -101,30 +99,29 @@ var $L10n;
     		}
     		if (isset($_GET['Lang'])) {
     			$lang = $_GET['Lang'];
-    			if ($lang != $session -> read('LocaleCode')) {
-    				if (in_array($lang, $session -> read('ValidLangCodes'))) {
-    					$session -> write('LocaleCode', $lang);
-    				} else {
-    					$lang = $session -> read('DefaultLang');
-    				}
-    				$this -> Cookie -> write('lang', $lang, null, '+350 day');
-
-    				$session -> write('LocaleCode', $lang);
-    			}
+    			$this -> Cookie -> write('lang', $lang, null, '+350 day');
+          $session -> write('LocaleCode', $lang);
+          if($_GET['Lang'] == "eng_us"){
+            I18n::locale('en_US');
+          }
+          if($_GET['Lang'] == "spa_cr"){
+            I18n::locale('es_CR');
+          }
     		}
     		//L10n
-    	$this -> L10n = new L10n();
+    	/*$this -> L10n = new L10n();
     		$this -> L10n -> get($session -> read('LocaleCode'));
     		if($session->read('LocaleCode') == 'spa_cr'){
-    			setlocale(LC_ALL, 'es_CR');
+    			setlocale(LC_ALL, 'spa_cr');
     		}else{
-    			setlocale(LC_ALL, 'en_US');
-    		}
-
+    			setlocale(LC_ALL, 'en_us');
+    		}*/
+//echo $session->read('LocaleCode');
+//exit;
+//I18n::locale($session->read('LocaleCode'));
+I18n::locale('en_US');
         if($session->read('LocaleCode') == 'spa_cr'){
-          I18n::locale('es_cr');
-        }else{
-          I18n::locale('en_us');
+          I18n::locale('es_CR');
         }
 
 
@@ -146,7 +143,7 @@ var $L10n;
     		}
 
     		//Avoid unauthorizeed access to user's
-    		if ($session -> read('User.AccessLevel') > 1 && $this -> viewPath == 'users') {
+    		if ($session -> read('User.AccessLevel') > 1 && $this->request->here() == 'users') {
     			//Redirect to company's Pay
     			$this -> redirect($session -> read('Company.PayURL'));
     			exit ;

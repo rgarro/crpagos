@@ -28,8 +28,8 @@ class ResponseController extends AppController {
 		if (in_array($session -> read('Company.CurrentCompanyID'), $DemoMode) && isset($_POST['XMLREQ'])) {
 			$VposResponse = array('authorizationResult' => '00', 'errorMessage' => 'Demo Ok', 'authorizationCode' => 'Demo Result');
 			$lang = $session -> read('LocaleCode');
-			$this -> L10n -> get($lang);
-      //I18n::locale($lang);
+			//$this -> L10n -> get($lang);
+      I18n::locale($lang);
 			Configure::write('Config.language', $lang);
 			$this -> setAction('ResponseOK', $VposResponse);
 		}
@@ -79,8 +79,8 @@ class ResponseController extends AppController {
 				if ($CurrentInvoice) {
 					//Set the other Localized Values
 					$lang = $CurrentInvoice['LocaleCode'];
-          //I18n::locale($lang);
-					$this -> L10n -> get($lang);
+          I18n::locale($lang);
+					//$this -> L10n -> get($lang);
 					Configure::write('Config.language', $lang);
 					$session -> write('LocaleCode', $lang);
 					$this -> Cookie -> write('lang', $lang, null, '+350 day');
@@ -169,8 +169,8 @@ class ResponseController extends AppController {
 
 		//Update The Response
 		$lang = $this -> Cookie -> read('lang');
-      //I18n::locale($lang);
-		$this -> L10n -> get($lang);
+      I18n::locale($lang);
+		//$this -> L10n -> get($lang);
 		Configure::write('Config.language', $lang);
 		$session -> write('LocaleCode', $lang);
 

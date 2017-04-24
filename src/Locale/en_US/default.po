@@ -518,7 +518,7 @@ msgid "Editing"
 msgstr "Editing"
 
 msgid "AboutUs"
-msgstr "About Us ..."
+msgstr "About Us "
 
 msgid "Personal"
 msgstr "Personal"

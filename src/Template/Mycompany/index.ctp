@@ -23,7 +23,7 @@ $session = $this->request->session();
 			<td><label for="LocaleCode">*<?php echo __('DefaultLanguage') ?>:</label></td>
 			<td><select name="LocaleCode" id="LocaleCode" tabindex="2">
 						<?php foreach($LocalesQ as $ThisLocale){
-							if($ThisLocale['Locales']['LocaleCode'] == Configure::read('Config.language')){$Sel = " Selected ";}else{$Sel = "";}
+							if($ThisLocale['LocaleCode'] == Configure::read('Config.language')){$Sel = " Selected ";}else{$Sel = "";}
 							echo  '<option value="',$ThisLocale['LocaleCode'],'"',$Sel,'>',$ThisLocale['Locale'],'</option>',"\n";
 							}?>
 					</select>
