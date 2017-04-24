@@ -103,7 +103,7 @@ $cakeDescription = 'crpagos cakephp3 version';
 
 
 		 <?php if($this->request->here() != $session->read('Company.PayURL')){?>
-		 <ul class="nav nav-pills" style="margin-top:1%;">
+		 <ul class="nav navbar-nav nav-pills" style="margin-top:1%;">
 		 <?php
 		 if ($session -> check('User.UserID')) {
 		 echo $this -> element('menu');

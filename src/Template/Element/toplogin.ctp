@@ -4,8 +4,8 @@ $session = $this->request->session();
 <form class="navbar-form navbar-right" method="post" action="/login/">
 <div class="loginround">
 	<div class="loginleft">
-		<input class="topinput" type="text" size="15" name="Login" value="<?php echo __('Email')?>" placeholder="Email">
-		<input class="topinput" type="password" size="15" name="Password" value=""  placeholder="Password"><br>
+		<input class="topinput" type="email" size="15" name="Login" value="" placeholder="Email" required="required">
+		<input class="topinput" type="password" size="15" name="Password" value=""  placeholder="Password" required="required"><br>
 
 	</div>
 	<div class="loginright"><?php
