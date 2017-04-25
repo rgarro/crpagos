@@ -119,25 +119,26 @@ $cakeDescription = 'crpagos cakephp3 version';
 
 				<div class="row" style="min-height:50%;">
           <?= $this->Flash->render() ?>
-					<?php
-					/*if ($session -> flash() != "") {
-						echo $session -> flash();
-					}*/
-					if($this->request->here() == $session->read('Company.CurrentURL')){
-						echo '<div style="float:right">';
-						//include VIEWS.'elements'.DS.'companyselect.ctp' ;
-						 echo $this -> element('companyselect');
-						echo '</div>';
-					}
-					//echo $content_for_layout;
-						?><div class="col-md-12" style="margin-top:8%;">
+					<div class="col-md-12" style="margin-top:8%;">
+							<?php
+							//if($this->request->here() == $session->read('Company.CurrentURL')){
+							if($this->request->here() == "/company"){
+								echo '<div style="float:right">';
+								require getcwd().'/src/Template/Element'.DS.'companyselect.ctp' ;
+								 //echo $this -> element('companyselect');
+								echo '</div>';
+							}
+							?>
               <?= $this->fetch('content') ?>
 						</div>
 				</div>
 			</div>
 			<div class="container-fluid line"></div>
 			<div class="container-fluid bottom">
-			<?php if($this->request->here() != $session->read('Company.PayURL')){?>
+			<?php
+			//if($this->request->here() != $session->read('Company.PayURL')){
+if($this->request->here() == "/company"){
+				?>
 			<?php
 				if ($this->request->here() == '/') {
 					echo $this->element('bottomhome');

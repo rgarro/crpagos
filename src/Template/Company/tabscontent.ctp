@@ -103,6 +103,6 @@ $session = $this->request->session();
 	}
 
 	echo '<div id="tabs-search">';
-	include 'search.ctp';
+	require 'search.ctp';
 	echo '</div>';
 ?>

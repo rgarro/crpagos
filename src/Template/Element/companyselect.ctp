@@ -11,4 +11,3 @@ $session = $this->request->session();
 		echo '</select>',"\n";
 		echo '</form>',"\n";
 	}
-?>

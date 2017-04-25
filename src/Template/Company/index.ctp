@@ -11,7 +11,7 @@ echo $this->Html->script("tabs2");
 $TheJs = $session -> read('LocaleCode') . '/checkradios';
 echo $this->Html->script($TheJs);
 ?>
-	<h3><?php echo $this->pageTitle ?></h3>
+	<h4 style="text-align:center;"><?php echo $this->pageTitle ?></h4>
   <?php
 
 		if (count($InvoicesQ) > 0) {
@@ -27,7 +27,7 @@ echo $this->Html->script($TheJs);
 			echo '<li><a href="#tabs-search">',__('Search'),'</a></li>';
 			echo '<li style="float:right;" class="ui-corner-top ui-state-hover"><a style="color:#0B4284;font-weight:bold" onclick="window.location.href=\'/company/newinvoice/\'">', __('AddNewInvoice'), '</a></li>';
 			echo '</ul>';
-			include 'tabscontent.ctp';
+			require 'tabscontent.ctp';
 			echo '</div>';
 		} else {
 			echo '<div id="tabs" style="width:95%">';
@@ -36,4 +36,3 @@ echo $this->Html->script($TheJs);
 			echo '</ul>';
 			echo '</div>';
 		}
-	?>
