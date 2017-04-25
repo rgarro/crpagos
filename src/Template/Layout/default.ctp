@@ -124,6 +124,7 @@ $cakeDescription = 'crpagos cakephp3 version';
 							//if($this->request->here() == $session->read('Company.CurrentURL')){
 							if($this->request->here() == "/company"){
 								echo '<div style="float:right">';
+echo getcwd();								
 								require getcwd().'/src/Template/Element'.DS.'companyselect.ctp' ;
 								 //echo $this -> element('companyselect');
 								echo '</div>';
