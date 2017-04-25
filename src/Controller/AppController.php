@@ -108,20 +108,12 @@ var $L10n;
             I18n::locale('es_CR');
           }
     		}
-    		//L10n
-    	/*$this -> L10n = new L10n();
-    		$this -> L10n -> get($session -> read('LocaleCode'));
-    		if($session->read('LocaleCode') == 'spa_cr'){
-    			setlocale(LC_ALL, 'spa_cr');
-    		}else{
-    			setlocale(LC_ALL, 'en_us');
-    		}*/
-//echo $session->read('LocaleCode');
-//exit;
-//I18n::locale($session->read('LocaleCode'));
+    		
 I18n::locale('en_US');
+$session -> write('LocaleCodeb', 'en_US');
         if($session->read('LocaleCode') == 'spa_cr'){
           I18n::locale('es_CR');
+          $session -> write('LocaleCodeb', 'es_CR');
         }
 
 

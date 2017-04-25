@@ -36,7 +36,7 @@ class MycompanyController extends AppController
   function saveme() {
     $session = $this->request->session();
 		if ($_FILES['Logo']['error'] == 0) {
-			$ImgDir = WWW_ROOT . 'img' . $session -> read('Company.CurrentURL');
+			$ImgDir = getcwd() . '/webroot/img' . $session -> read('Company.CurrentURL');
 			$DeleteLogo = $ImgDir . $session -> read('Company.CurrentLogo');
 			@unlink($DeleteLogo);
 			$FileHandler = new FileHandler();
@@ -55,8 +55,8 @@ class MycompanyController extends AppController
 		$session -> write('Company.CurrentEmail', $_POST['Email']);
 		if ($session -> read('LocaleCode') != $_POST['LocaleCode']) {
 			$session -> write('LocaleCode', $_POST['LocaleCode']);
-			$this -> L10n = new L10n();
-			$this -> L10n -> get($session -> read('LocaleCode'));
+			//$this -> L10n = new L10n();
+			//$this -> L10n -> get($session -> read('LocaleCode'));
 			Configure::write('Config.language', $session -> read('LocaleCode'));
 		}
 		//refresh companies

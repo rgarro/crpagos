@@ -22,7 +22,7 @@ class PayInvoiceController extends AppController
       $this->loadHelper('Paginator');
       $this->loadComponent('Cardinal');
       $this->loadComponent('Paycom');
-      $this->L10n = new L10n();
+      //$this->L10n = new L10n();
   }
 
   function index() {
@@ -166,7 +166,7 @@ class PayInvoiceController extends AppController
 
 		//Update The Response
 		$lang = $this -> Cookie -> read('lang');
-		$this -> L10n -> get($lang);
+		//$this -> L10n -> get($lang);
 		Configure::write('Config.language', $lang);
 		$session -> write('LocaleCode', $lang);
 

@@ -34,7 +34,7 @@ var $L10n;
 
       //$this->loadModel('L10n');
       $this->loadModel('Users');
-      $this->L10n = new L10n();
+      //$this->L10n = new L10n();
   }
 
   //el regimen se acabo ....
@@ -168,7 +168,7 @@ var $L10n;
 		//Use Selected Language IF Any
 		if (!isset($_GET['Lang'])) {
 			$lang = $this -> viewVars['InvoiceQ'][0]['LocaleCode'];
-			$this -> L10n -> get($lang);
+			//$this -> L10n -> get($lang);
 			Configure::write('Config.language', $lang);
 		}
     $ivq = $this -> Invoices -> GetInvoiceDetail($InvoiceID);

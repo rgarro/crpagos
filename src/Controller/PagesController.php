@@ -63,7 +63,7 @@ class PagesController extends AppController
         $CurrentCompany = current($InvoiceQ);
 //Get The company info from Invoice
         $lang = $CurrentCompany['Invoices']['LocaleCode'];
-        $this->L10n->get($lang);
+        //$this->L10n->get($lang);
         Configure::write('Config.language', $lang);
         $session->write('LocaleCode', $lang);
         $this->Cookie->write('lang', $lang, null, '+350 day');
