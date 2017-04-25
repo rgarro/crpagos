@@ -7,10 +7,9 @@ if (!isset($params['escape']) || $params['escape'] !== false) {
     $message = h($message);
 }
 ?>
-<!-- <div class="<?= h($class) ?>" onclick="this.classList.add('hidden');"><?= $message ?></div> -->
 <script>
 new Noty({
-    text: '<?= $message ?>',
+    text: '<?= html_entity_decode($message) ?>',
     type:'alert',
     timeout:4000,
       layout:'top',

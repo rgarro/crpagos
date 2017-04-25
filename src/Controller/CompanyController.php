@@ -85,8 +85,8 @@ var $L10n;
 					$session -> write('Company.CurrentReplyTo', $CurrentCompany['ReplyTo']);
 					$session -> write('Company.CurrentExtraCC', $CurrentCompany['ExtraCC']);
 					$session -> write('Company.CurrentName', html_entity_decode($CurrentCompany['CompanyName'], ENT_NOQUOTES, 'iso-8859-1'));
-					$session -> write('Company.CurrentInfo', html_entity_decode(nl2br($CurrentCompany['CompanyInfo']), ENT_NOQUOTES, 'iso-8859-1'));
-					$session -> write('Company.CurrentDefaultNote', html_entity_decode(nl2br($CurrentCompany['DefaultNote']), ENT_NOQUOTES, 'iso-8859-1'));
+					$session -> write('Company.CurrentInfo', html_entity_decode($CurrentCompany['CompanyInfo'], ENT_NOQUOTES, 'iso-8859-1'));
+					$session -> write('Company.CurrentDefaultNote', html_entity_decode($CurrentCompany['DefaultNote'], ENT_NOQUOTES, 'iso-8859-1'));
 					$AccessOK = "yes";
 					break;
 				}
@@ -300,7 +300,7 @@ $session = $this->request->session();
 		$this->Flash->success($Flash);
 		if (isset($Redirect)) {
 			$this -> redirect('/company/viewinvoice/' . base64_encode($InvoiceID) . '/');
-	
+
 		}
 		//Query the DB	to reflect new changes
 		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));

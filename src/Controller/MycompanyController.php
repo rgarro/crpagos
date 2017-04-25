@@ -49,7 +49,7 @@ class MycompanyController extends AppController
 			$session -> write('Company.CurrentLogo', $_FILES['Logo']['name']);
 		}
 		$this -> Companies -> SaveMyCompanySettings();
-		$session -> write('Company.CurrentInfo', html_entity_decode(nl2br(trim($_POST['CompanyInfo']))));
+		$session -> write('Company.CurrentInfo', html_entity_decode(trim($_POST['CompanyInfo'])));
 		$session -> write('Company.CurrentName', html_entity_decode(trim($_POST['CompanyName'])));
 		$session -> write('Company.CurrentDefaultNote', html_entity_decode(trim($_POST['DefaultNote'])));
 		$session -> write('Company.CurrentEmail', $_POST['Email']);

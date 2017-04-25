@@ -46,8 +46,8 @@ class LoginController extends AppController
           $session -> write('Company.CurrentBgColor', $CurrentCompany['BgColor']);
           $session -> write('Company.CurrentBgImage', $CurrentCompany['BgImage']);
           $session -> write('Company.CurrentName', html_entity_decode($CurrentCompany['CompanyName'], ENT_NOQUOTES, 'iso-8859-1'));
-          $session -> write('Company.CurrentInfo', html_entity_decode(nl2br($CurrentCompany['CompanyInfo']), ENT_NOQUOTES, 'iso-8859-1'));
-          $session -> write('Company.CurrentDefaultNote', html_entity_decode(nl2br($CurrentCompany['DefaultNote']), ENT_NOQUOTES, 'iso-8859-1'));
+          $session -> write('Company.CurrentInfo', html_entity_decode($CurrentCompany['CompanyInfo'], ENT_NOQUOTES, 'iso-8859-1'));
+          $session -> write('Company.CurrentDefaultNote', html_entity_decode($CurrentCompany['DefaultNote'], ENT_NOQUOTES, 'iso-8859-1'));
           $session -> write('Company.CurrentReplyTo', $CurrentCompany['ReplyTo']);
           $session -> write('Company.CurrentExtraCC', $CurrentCompany['ExtraCC']);
           //Keep companies on a Variable for future use

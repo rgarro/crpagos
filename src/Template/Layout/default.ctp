@@ -27,8 +27,7 @@ $cakeDescription = 'crpagos cakephp3 version';
   		header("Cache-Control: no-cache, must-revalidate");
   		header("Expires: Mon, 01 Jan 1990 00:00:01 GMT");
   	?>
-  <meta http-equiv="Pragma" content="no-cache" >
-  	<meta http-equiv="Expires" content="Mon, 01 Jan 1990 00:00:01 GMT" >
+		<meta http-equiv="refresh" content="<?php echo ini_get('session.gc_maxlifetime');?>,url=http://nicapagos.com">
   	<meta name="robots" content="no index,no follow">
   	<meta name="robots" content="all">
     <? //$this->Html->charset() ?>

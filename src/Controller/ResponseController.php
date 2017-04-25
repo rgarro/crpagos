@@ -50,7 +50,7 @@ class ResponseController extends AppController {
 				$session -> write('Company.CurrentBgColor', $CurrentCompany['BgColor']);
 				$session -> write('Company.CurrentBgImage', $CurrentCompany['BgImage']);
 				$session -> write('Company.CurrentName', html_entity_decode($CurrentCompany['CompanyName'], ENT_NOQUOTES, 'iso-8859-1'));
-				$session -> write('Company.CurrentInfo', html_entity_decode(nl2br($CurrentCompany['CompanyInfo']), ENT_NOQUOTES, 'iso-8859-1'));
+				$session -> write('Company.CurrentInfo', html_entity_decode($CurrentCompany['CompanyInfo'], ENT_NOQUOTES, 'iso-8859-1'));
 				$session -> write('Company.AcquirerID', $CurrentCompany['AcquirerID']);
 				$session -> write('Company.CommerceID', $CurrentCompany['CommerceID']);
 				$session -> write('Company.MallID', $CurrentCompany['MallID']);

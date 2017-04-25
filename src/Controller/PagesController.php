@@ -78,7 +78,7 @@ class PagesController extends AppController
         $session->write('Company.CurrentBgColor', $CurrentCompany['Companies']['BgColor'] );
         $session->write('Company.CurrentBgImage', $CurrentCompany['Companies']['BgImage'] );
         $session->write('Company.CurrentName', html_entity_decode($CurrentCompany['Companies']['CompanyName'],ENT_NOQUOTES,'iso-8859-1'));
-        $session->write('Company.CurrentInfo', html_entity_decode(nl2br($CurrentCompany['Companies']['CompanyInfo']),ENT_NOQUOTES,'iso-8859-1'));
+        $session->write('Company.CurrentInfo', html_entity_decode($CurrentCompany['Companies']['CompanyInfo'],ENT_NOQUOTES,'iso-8859-1'));
         $session->write('Company.PayURL',$CurrentCompany['Companies']['CompanyUrl'].strtolower(__('PayUrl', true)).'/');
         $Comment = __('InvoiceDisplayed', true).' '.$_SERVER['REMOTE_ADDR'];
 //BNCR Stuff
