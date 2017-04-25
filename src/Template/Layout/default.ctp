@@ -1,4 +1,5 @@
 <?php
+use Cake\Core\App;
 /**
  * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
@@ -124,8 +125,8 @@ $cakeDescription = 'crpagos cakephp3 version';
 							//if($this->request->here() == $session->read('Company.CurrentURL')){
 							if($this->request->here() == "/company"){
 								echo '<div style="float:right">';
-echo getcwd();								
-								require getcwd().'/src/Template/Element'.DS.'companyselect.ctp' ;
+
+								require current(App::path("Template")).'Element'.DS.'companyselect.ctp' ;
 								 //echo $this -> element('companyselect');
 								echo '</div>';
 							}
