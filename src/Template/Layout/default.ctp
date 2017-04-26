@@ -44,7 +44,7 @@ $cakeDescription = 'crpagos cakephp3 version';
 
 	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="/css/crpagos.css" />
-	<script type="text/javascript" src="/js/jquery/jquery.js"></script>
+	<script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
 	<link rel="stylesheet" href="/css/normalize.min.css">
 
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -57,14 +57,14 @@ $cakeDescription = 'crpagos cakephp3 version';
 	<?php
 		//echo $scripts_for_layout . "\n";
 	?>
-	<script language="javascript" src="/js/jquery/jquery.corner.js"></script>
+	<!-- <script language="javascript" src="/js/jquery/jquery.corner.js"></script> -->
 	<script language="JavaScript" type="text/javascript">
-		$(document).ready(function() {
+		/*$(document).ready(function() {
 			$(".mainwrap").corner("top");
 			$(".bottom").corner("bottom");
 			$(".loginround").corner()
 			$(".content").corner();
-		});
+		});*/
 	</script>
 	</head>
 	<body>
