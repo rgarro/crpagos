@@ -285,7 +285,7 @@ $session = $this->request->session();
 			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
 			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmManualPaid', true);
 			$TheTemplate = "invoicepaid_html";
-			require getcwd() . '/src/Template/Company' . DS . 'mail.ctp';
+			require current(App::path("Template")). '/Company' . DS . 'mail.ctp';
 		}
 		if ($ActionID == 9) {
 			$InvoiceQ = current($this -> Invoices -> index($InvoiceID));
@@ -293,7 +293,7 @@ $session = $this->request->session();
 			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmVoid', true);
 			$TheTemplate = "invoicepaid_html";
 			//require VIEWS . 'company' . DS . 'mail.ctp';
-      require getcwd() . '/src/Template/Company' . DS . 'mail.ctp';
+      require current(App::path("Template")).'/Company' . DS . 'mail.ctp';
 		}
 
 		//Before redirect to assure it'll get set
@@ -337,7 +337,7 @@ $session = $this->request->session();
 			//Force Client Copy
 			$_POST['CopyClient'] = 1;
 
-      require  getcwd().'/src/Template/Company/mail.ctp';
+      require  current(App::path("Template")).'/Company/mail.ctp';
 			$SentTo[] = $InvoiceQ['ClientName'] . ' ' . $InvoiceQ['ClientLastName'] . '(' . $InvoiceQ['Email'] . ') ' . __('InvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('Amount', true) . ':' . $InvoiceQ['CurrencySymbol'] . number_format($InvoiceQ['TheTotal'], 2);
 		}
 		$this -> Set('SentTo', $SentTo);

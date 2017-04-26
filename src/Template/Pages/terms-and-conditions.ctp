@@ -1,3 +1,6 @@
+<?php
+use Cake\Core\App;
+?>
 <div class="contenttxt">
 <?php
 $session = $this->request->session();
@@ -7,9 +10,9 @@ $session = $this->request->session();
 	if($session->check('Company.CurrentCompanyID')){
 		Configure::write('debug', 0);
 		$this->layout = "terms";
-		require getcwd().'/src/Template/Terms'.DS.$session->read('Company.CurrentCompanyID').'_eng_us.ctp';
+		require current(App::path("Template")).'/Terms'.DS.$session->read('Company.CurrentCompanyID').'_eng_us.ctp';
 	}else{
-		require getcwd().'/src/Template/Terms'.DS.'default_eng_us.ctp';
+		require current(App::path("Template")).'/Terms'.DS.'default_eng_us.ctp';
 	}
 	?>
 </div>

@@ -1,2 +1,3 @@
 <?php
-	require getcwd().'/src/Template/Response'.DS.'email'.DS.'invalid_text.ctp';
+use Cake\Core\App;
+	require current(App::path("Template")).'/Response'.DS.'email'.DS.'invalid_text.ctp';

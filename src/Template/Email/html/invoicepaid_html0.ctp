@@ -1,2 +1,3 @@
-<?php 
-	require getcwd().'/src/Template/Company'.DS.'invoice.ctp';
+<?php
+use Cake\Core\App;
+	require current(App::path("Template")).'/Company'.DS.'invoice.ctp';

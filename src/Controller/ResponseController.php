@@ -5,6 +5,7 @@ use Cake\Core\Configure;
 use App\Controller\AppController;
 use Cake\Mailer\Email;
 use Cake\I18n\I18n;
+use Cake\Core\App;
 /**
  * Response Controller
  *
@@ -120,7 +121,7 @@ class ResponseController extends AppController {
 			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['Invoices']['InvoiceNumber'] . ' ' . __('ConfirmPaid', true);
 			$_POST['CopyClient'] = 1;
 			$TheTemplate = "invoicepaid";
-			require getcwd() . '/src/Template/Company' . DS . 'mail.ctp';
+			require current(App::path("Template")). '/Company' . DS . 'mail.ctp';
 		} else {
 			//Save The Log
 			$Comment = __('VPOSReply', true) . ' Result ' . $VposResponse['authorizationResult'] . ' Message ' . $VposResponse['errorMessage'];

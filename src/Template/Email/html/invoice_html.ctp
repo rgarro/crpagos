@@ -1,4 +1,6 @@
 <?php
+use Cake\Core\App;
+
 $session = $this->request->session();
 	if(isset($_SERVER['HTTPS'])){
 		$Protocol = "https://";
@@ -9,7 +11,7 @@ $session = $this->request->session();
 	$Code = '?'.__('InvoiceCode', true).'='.rawurlencode($TheCode);
 	$FullURI = $FirstURI.$Code;
 
-	require getcwd().'/src/Template/Company'.DS.'invoice.ctp';
+	require current(App::path("Template")).'/Company'.DS.'invoice.ctp';
 ?>
 <p>&nbsp;</p><table width="720" border="0" align="center">
   <tr>

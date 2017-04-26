@@ -7,6 +7,7 @@ use App\Controller\Component\ImageToolboxComponent;
 use App\Controller\Component\Image_Toolbox;
 use App\Lib\L10n;
 use Cake\Core\Configure;
+use Cake\Core\App;
 /**
  * Mycompany Controller
  *
@@ -36,7 +37,7 @@ class MycompanyController extends AppController
   function saveme() {
     $session = $this->request->session();
 		if ($_FILES['Logo']['error'] == 0) {
-			$ImgDir = getcwd() . '/webroot/img' . $session -> read('Company.CurrentURL');
+			$ImgDir = $this->request->webroot . '/img' . $session -> read('Company.CurrentURL');
 			$DeleteLogo = $ImgDir . $session -> read('Company.CurrentLogo');
 			@unlink($DeleteLogo);
 			$FileHandler = new FileHandler();

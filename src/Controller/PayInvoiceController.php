@@ -1,6 +1,6 @@
 <?php
 namespace App\Controller;
-
+use Cake\Core\App;
 use App\Controller\AppController;
 use App\Lib\L10n;
 use Cake\Mailer\Email;
@@ -129,7 +129,7 @@ class PayInvoiceController extends AppController
 					$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmPaid', true);
 					$_POST['CopyClient'] = 1;
 					$TheTemplate = "invoicepaid";
-					require getcwd(). '/src/Template/Company/mail.ctp';
+					require current(App::path("Template")). '/Company/mail.ctp';
 					$this -> redirect($session -> read('Company.PayURL'), '301 Moved Permanently');
 					exit ;
 				} else {
