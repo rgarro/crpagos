@@ -57,14 +57,14 @@ $cakeDescription = 'crpagos cakephp3 version';
 	<?php
 		//echo $scripts_for_layout . "\n";
 	?>
-	<!-- <script language="javascript" src="/js/jquery/jquery.corner.js"></script> -->
+ <script language="javascript" src="/js/jquery/jquery.corner.js"></script>
 	<script language="JavaScript" type="text/javascript">
-		/*$(document).ready(function() {
+		$(document).ready(function() {
 			$(".mainwrap").corner("top");
 			$(".bottom").corner("bottom");
 			$(".loginround").corner()
 			$(".content").corner();
-		});*/
+		});
 	</script>
 	</head>
 	<body>
@@ -139,7 +139,7 @@ $cakeDescription = 'crpagos cakephp3 version';
 			<div class="container-fluid bottom">
 			<?php
 			//if($this->request->here() != $session->read('Company.PayURL')){
-if($this->request->here() == "/company"){
+if($this->request->here() != "/company"){
 				?>
 			<?php
 				if ($this->request->here() == '/') {
