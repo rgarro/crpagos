@@ -45,6 +45,7 @@ $cakeDescription = 'crpagos cakephp3 version';
 	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="/css/crpagos.css" />
 	<script type="text/javascript" src="/js/jquery-1.9.1.js"></script>
+	<script src="/js/jquery.browser.min.js"></script>
 	<link rel="stylesheet" href="/css/normalize.min.css">
 
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
