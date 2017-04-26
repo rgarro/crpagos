@@ -144,7 +144,7 @@ if($this->request->here() != "/company"){
 				?>
 			<?php
 				if ($this->request->here() == '/') {
-					echo $this->element('bottomhome');
+					//echo $this->element('bottomhome');
 				}
 				echo $this ->element('bottommenu');
 			?>
