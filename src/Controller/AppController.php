@@ -71,8 +71,9 @@ var $L10n;
           $session -> delete('Company.CurrentReplyTo');
           $session -> delete('Company.CurrentExtraCC');
           $session -> delete('Companies');
-    			$session -> destroy();
-          $session -> renew();
+    			//$session -> destroy();
+          //$session -> renew();
+          //session_start();
           session_reset();
           session_destroy();
           header("Location: /");
@@ -108,7 +109,7 @@ var $L10n;
             I18n::locale('es_CR');
           }
     		}
-    		
+
 I18n::locale('en_US');
 $session -> write('LocaleCodeb', 'en_US');
         if($session->read('LocaleCode') == 'spa_cr'){

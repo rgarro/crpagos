@@ -5,7 +5,7 @@ $session = $this->request->session();
 		echo '<option style="font-size:10px;"  value="">',__('PleaseSelectCompany'),'</option>',"\n";
 		foreach($session->read('Companies') as $AvailCompanies){
 			if($session->read('Company.CurrentURL') != $AvailCompanies['CompanyUrl']){
-				echo '<option style="font-size:10px;" value="',$AvailCompanies['CompanyUrl'],'">',$AvailCompanies['CompanyName'],'</option>',"\n";
+				echo '<option style="font-size:10px;" value="',$AvailCompanies['CompanyID'],'">',$AvailCompanies['CompanyName'],'</option>',"\n";
 			}
 		}
 		echo '</select>',"\n";
@@ -14,7 +14,7 @@ $session = $this->request->session();
 	?>
 	<script>
 	function companyChange(company){
-console.log(company);
-//window.location.href=this.options[this.selectedIndex].value
+		//window.location.href= "/company/indexb?currentCo=" + company.substr(1,company.length - 2);
+		window.location.href= "/company/indexb?currentCo=" + company;
 	}
 	</script>

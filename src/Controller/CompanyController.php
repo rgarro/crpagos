@@ -88,42 +88,13 @@ var $L10n;
 					$session -> write('Company.CurrentInfo', html_entity_decode($CurrentCompany['CompanyInfo'], ENT_NOQUOTES, 'iso-8859-1'));
 					$session -> write('Company.CurrentDefaultNote', html_entity_decode($CurrentCompany['DefaultNote'], ENT_NOQUOTES, 'iso-8859-1'));
 					$AccessOK = "yes";
-					break;
+					//break;
 				}
 			}
+      $this -> redirect("/company");
+      //exit()
+		}
 
-			//If No Access, redirect to last used
-			if (!isset($AccessOK)) {
-        //echo "herebbbb";
-//echo $session -> read('Company.CurrentURL');
-				//$this -> redirect($session -> read('Company.CurrentURL'));
-				//exit();
-			}
-		}
-		//If user is Admin, get the user's data
-		if ($session -> read('Users.AccessLevel') == 0) {
-			$this -> Set('UsersQ', $this -> Users -> GetUsers());
-		}
-		$this -> Set('ClientsQ', $this -> Clients -> index());
-		if(isset($_GET['Sort'])){
-			if($_GET['Sort'] == 'asc'){
-				$TheSort = 'asc';
-			}else{
-				$TheSort = 'desc';
-			}
-		}else{
-			$TheSort = 'desc';
-		}
-		if($TheSort == "desc" ){
-			$this->Set('SortImage', 'desc.jpg');
-			$this->Set('TheSort', 'desc');
-			$this->Set('OtherSort','asc');
-		}else{
-			$this->Set('SortImage', 'asc.jpg');
-			$this->Set('TheSort', 'asc');
-			$this->Set('OtherSort','desc');
-		}
-		$this -> Set('InvoicesQ', $this -> Invoices -> index(null,null,null, $TheSort));
 	}
 
 	//Set The New Invoice Form
