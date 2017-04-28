@@ -79,9 +79,11 @@ var $L10n;
 					//If Access OK, set the variables
 					$session -> write('Company.CurrentSubject', $CurrentCompany['EmailSubject']);
 					$session -> write('Company.CurrentLogo', $CurrentCompany['Logo']);
-					$session -> write('Company.CurrentURL', $CurrentCompany['CompanyUrl']);
-					$session -> write('Company.CurrentCompanyURL', $CurrentCompany['CompanyUrl']);
-					$session -> write('Company.CurrentEmail', $CurrentCompany['Email']);
+					//$session -> write('Company.CurrentURL', $CurrentCompany['CompanyUrl']);
+					//$session -> write('Company.CurrentCompanyURL', $CurrentCompany['CompanyUrl']);
+          $session -> write('Company.CurrentURL', "/company/");
+					$session -> write('Company.CurrentCompanyURL', "/company/");
+          $session -> write('Company.CurrentEmail', $CurrentCompany['Email']);
 					$session -> write('Company.CurrentReplyTo', $CurrentCompany['ReplyTo']);
 					$session -> write('Company.CurrentExtraCC', $CurrentCompany['ExtraCC']);
 					$session -> write('Company.CurrentName', html_entity_decode($CurrentCompany['CompanyName'], ENT_NOQUOTES, 'iso-8859-1'));
