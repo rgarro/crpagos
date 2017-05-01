@@ -19,7 +19,8 @@ class ClientsController extends AppController
       $this->loadModel('Clients');
   }
 
-  public function index(){    
+  public function index(){
+  
 		$this->set('ClientsQ', $this->Clients->index());
 	}
 
