@@ -9,7 +9,7 @@ use Cake\Core\App;
  */
 class VposComponent extends Component
 {
-
+/*
   var $name="Vpos";
   var $useTable=false;
   function initialize($InvoiceID = 0, $Amount = 100, $TransactionID = null, $VposCurCode = 188, $VposLocaleCode = 'SP', $ClientName='', $ClientLastName = '', $ClientEmail = '', $ClientPhone = ''){
@@ -85,5 +85,5 @@ file_get_contents(current(App::path("Lib")).'/keys'.DS.$_SESSION['Company']['Cur
         return false;
       }
      }
-  }
+  }*/
 }
