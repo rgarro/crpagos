@@ -11,8 +11,8 @@
 <meta http-equiv="refresh" content="<?php echo ini_get('session.gc_maxlifetime');?>,url=http://nicapagos.com">
 <title>NicaPagos</title>
 <script src="/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-<link rel="stylesheet" href="/css/main.css">
-<link rel="stylesheet" type="text/css" href="/css/crpagos.css" />
+<link rel="stylesheet" href="/css/mainb.css">
+
     <!-- Bootstrap Core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- MetisMenu CSS -->
