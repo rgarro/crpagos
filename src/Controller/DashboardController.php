@@ -9,7 +9,16 @@ class DashboardController extends AppController
 
     public function index()
     {
-      $this->viewBuilder()->setLayout('admin');
+      if(isset($_GET['is_ajax'])){
+        $this->viewBuilder()->setLayout('ajax');
+      }else{
+        $this->viewBuilder()->setLayout('admin');
+      }
+    }
+
+    public function company()
+    {
+      $this->viewBuilder()->setLayout('ajax');
     }
 
 }
