@@ -78,7 +78,7 @@
           <div class="container-fluid">
             <div class="row">
               <?= $this->Flash->render() ?>
-              <div id="content" class="col-md-12">
+              <div id="content" class="col-md-12" style="padding-top:1%;"> 
                 <?= $this->fetch('content') ?>
               </div>
             </div>

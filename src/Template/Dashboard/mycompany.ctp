@@ -1,6 +1,6 @@
 <div class="panel panel-default">
                         <div class="panel-heading">
-                        <i class="fa fa-file-o fa-fw"></i>  <?= __('Invoices') ?>
+                            My Company
                         </div>
                         <div class="panel-body">
                         soon

@@ -5,8 +5,9 @@ $UrlLocation = explode("/", $this->request->here());
 	if(count($UrlLocation)< 4 || $UrlLocation[2] == 'search' || $UrlLocation[2] == 'terms') {
 		//if($this->request->here()==$session->read('Company.CurrentURL')){$TheClass="sel";}else{$TheClass="";}
 		//echo '<li class="menuitem',$TheClass,'"><a class="menuitemlink',$TheClass,'" href="',$session->read('Company.CurrentURL'),'">',__('Invoices'),'</a></li>';
-echo '<li class="menuitem',$TheClass,'"><a class="menuitemlink',$TheClass,'" href="/company">',__('Invoices'),'</a></li>';		
+echo '<li class="menuitem',$TheClass,'"><a class="menuitemlink',$TheClass,'" href="/company">',__('Invoices'),'</a></li>';
 		//if($this->request->here() == '/clients/'){$TheClass="sel";}else{$TheClass="";}
+		echo '<li class="menuitem',$TheClass,'"><a class="menuitemlink',$TheClass,'" href="/dashboard">',__('Dashboard'),'</a></li>';
 		echo '<li class="menuitem',$TheClass,'"><a class="menuitemlink',$TheClass,'" href="/clients/">',__('Clients'),'</a></li>';
 		if($session->read('User.AccessLevelID') <= 1){
 			//if($this->request->here() == '/users/'){$TheClass="sel";}else{$TheClass="";}

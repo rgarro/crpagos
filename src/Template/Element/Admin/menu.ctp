@@ -5,20 +5,20 @@
               <a href="#/Dashboard/"><i class="fa fa-dashboard fa-fw"></i> <?= __('Dashboard') ?></a>
           </li>
             <li>
-                <a href="#/Company/"><i class="fa fa-dashboard fa-fw"></i> <?= __('Invoices') ?></a>
+                <a href="#/Company/"><i class="fa fa-file-o fa-fw"></i> <?= __('Invoices') ?></a>
             </li>
 
             <li>
-                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Clientes</a>
+                <a href="#/Clients/"><i class="fa fa-child fa-fw"></i> <?= __('Clients') ?></a>
             </li>
             <li>
-                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Usuarios</a>
+                <a href="#/Users/"><i class="fa fa-users fa-fw"></i> <?= __('Users') ?></a>
             </li>
             <li>
-                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Mi Compania</a>
+                <a href="#/MyCompany/"><i class="fa fa-building fa-fw"></i> <?= __('MyCompany') ?></a>
             </li>
             <li>
-                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Terminos</a>
+                <a href="#/Terms/"><i class="fa fa-book fa-fw"></i> <?= __('Terms') ?></a>
             </li>
 
         </ul>

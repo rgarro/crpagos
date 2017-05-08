@@ -43,5 +43,21 @@ $(document).ready(function(){
     	loadStage("/dashboard/company");
     });
 
+    router.add('#/Clients/',function(){
+    	loadStage("/dashboard/clients");
+    });
+
+    router.add('#/Users/',function(){
+    	loadStage("/dashboard/users");
+    });
+
+    router.add('#/MyCompany/',function(){
+      loadStage("/dashboard/mycompany");
+    });
+
+    router.add('#/Terms/',function(){
+    	loadStage("/dashboard/terms");
+    });
+
     router.drive();
 });

@@ -21,4 +21,24 @@ class DashboardController extends AppController
       $this->viewBuilder()->setLayout('ajax');
     }
 
+    public function clients()
+    {
+      $this->viewBuilder()->setLayout('ajax');
+    }
+
+    public function users()
+    {
+      $this->viewBuilder()->setLayout('ajax');
+    }
+
+    public function mycompany()
+    {
+      $this->viewBuilder()->setLayout('ajax');
+    }
+
+    public function terms()
+    {
+      $this->viewBuilder()->setLayout('ajax');
+    }
+
 }
