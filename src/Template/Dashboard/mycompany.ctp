@@ -1,6 +1,6 @@
 <div class="panel panel-default">
                         <div class="panel-heading">
-                            My Company
+                          <i class="fa fa-building fa-fw"></i> <?= __('MyCompany') ?>
                         </div>
                         <div class="panel-body">
                         soon

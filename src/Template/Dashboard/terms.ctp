@@ -1,6 +1,6 @@
 <div class="panel panel-default">
                         <div class="panel-heading">
-                            Terms
+                            <i class="fa fa-book fa-fw"></i> <?= __('Terms') ?>
                         </div>
                         <div class="panel-body">
                         soon
