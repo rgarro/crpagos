@@ -47,6 +47,7 @@
   <script src="/js/soundjs-0.6.2.min.js"></script>
 <script src="/js/jquery.route32.js"></script>
 <script src="/js/crcontactos_manager.js"></script>
+<script src="/js/clientes.js"></script>
 <script src="/js/custom.js"></script>
 </head>
 
@@ -78,7 +79,7 @@
           <div class="container-fluid">
             <div class="row">
               <?= $this->Flash->render() ?>
-              <div id="content" class="col-md-12" style="padding-top:1%;"> 
+              <div id="content" class="col-md-12" style="padding-top:1%;">
                 <?= $this->fetch('content') ?>
               </div>
             </div>
