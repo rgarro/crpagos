@@ -33,8 +33,10 @@ class InvoicesTable extends Table
         $this->setTable('Invoices');
         $this->setDisplayField('InvoiceID');
         $this->setPrimaryKey('InvoiceID');
-        $this->belongsTo('Companies', ['className' => 'Companies']);
-        $this->belongsTo('Clients', ['className' => 'Clients']);
+        $this->belongsTo('Companies', ['className' => 'Companies','foreignKey'=>"CompanyID"]);
+        $this->belongsTo('Clients', ['className' => 'Clients','foreignKey'=>"ClientID","propertyName"=>"Client"]);
+        $this->belongsTo('Currencies', ['className' => 'Currencies','foreignKey'=>"CurrencyID","propertyName"=>"Currency"]);
+        $this->hasOne('InvoiceDetail', ['className' => 'InvoiceDetail','foreignKey'=>"InvoiceID","propertyName"=>"Detail"]);
     }
 
     /**
@@ -127,7 +129,7 @@ class InvoicesTable extends Table
     }
 
     public function allByCompanyIDAndStatusID($company_id,$status_id){
-      $invoices = $this->find('all',["conditions"=>["Invoices.CompanyID"=>$company_id,"Invoices.StatusID"=>$status_id]]);
+      $invoices = $this->find('all',["conditions"=>["Invoices.CompanyID"=>$company_id,"Invoices.StatusID"=>$status_id],"contain"=>["Clients","InvoiceDetail","Currencies"]]);
       $invoices->hydrate(false);
       return $invoices->all();
     }

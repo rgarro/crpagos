@@ -30,7 +30,7 @@ class CurrenciesTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('currencies');
+        $this->setTable('Currencies');
         $this->setDisplayField('CurrencyID');
         $this->setPrimaryKey('CurrencyID');
     }

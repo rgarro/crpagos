@@ -22,6 +22,7 @@ switch ($status_id) {
            <th><i class="fa fa-calendar"></i> <?= __('InvoiceDate') ?></th>
            <th><i class="fa fa-barcode"></i> <?= __('InvoiceNumber') ?></th>
            <th><i class="fa fa-child"></i> <?= __('Client') ?></th>
+           <th><i class="fa fa-dollar"></i> <?= __('Currency') ?></th>
            <th><i class="fa fa-money"></i> <?= __('Amount') ?></th>
            <th><i class="fa fa-search-plus"></i> <?= __('Description') ?></th>
            <th><i class="fa fa-gears"></i> </th>
@@ -33,10 +34,16 @@ foreach ($invoices as $c) {
 ?>
      <tr class="">
          <td><?= $c['InvoiceDate'] ?></td>
-         <td> </td>
-         <td> </td>
-         <td> </td>
-         <td> </td>
+         <td><?= $c['InvoiceNumber'] ?> </td>
+         <td>
+           <a href="mailto:<?= $c['Client']['Email']?>"><?= $c['Client']['ClientName']?> <?= $c['Client']['ClientLastName']?></a></td>
+           <td>
+           <?= $c['Currency']['CurrencyName']?>
+            </td>
+         <td>
+           <?= $c['Currency']['CurrencySymbol']?> <?= $c['Detail']['Amount']?>
+          </td>
+         <td><?= $c['Detail']['Description']?> </td>
          <td>
            <button invoice_id="" class="btn btn-xs btn-outline btn-default edit-invoice-btn"><i class="fa fa-pencil"></i> <?= __('EditInvoice') ?></button>
          </td>

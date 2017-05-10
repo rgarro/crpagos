@@ -2,6 +2,7 @@ var company = (function(){
   function company(){
     this.listUrl = "/acompany/index";
     this.pendingInvoicesListContainer = "#pendingInvoicesListContainer";
+    this.sentInvoicesListContainer = "#sentInvoicesListContainer";
     this.listContainer = "";
   }
 
@@ -11,6 +12,12 @@ var company = (function(){
     this.loadInvoicesByCompanyAndStatus(company_id,status_id);
   }
 
+
+company.prototype.loadSentInvoicesList = function(company_id){
+  var status_id = 2;//1 Pending 2Sent 3Paid 4PaidManually 5Void 6Deleted
+  this.listContainer = this.sentInvoicesListContainer;
+  this.loadInvoicesByCompanyAndStatus(company_id,status_id);
+}
 
 company.prototype.loadInvoicesByCompanyAndStatus = function(company_id,status_id){
   $.ajax({
@@ -22,6 +29,7 @@ company.prototype.loadInvoicesByCompanyAndStatus = function(company_id,status_id
     type:"GET",
     success:(function(data){
       CRContactos_Manager.check_errors(data);
+console.log(this.listContainer);      
       $(this.listContainer).html(data);
 
     }).bind(this)
