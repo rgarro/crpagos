@@ -2,26 +2,24 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\I18n\I18n;
 
-/**
- * Currencies Controller
- *
- * @property \App\Model\Table\CurrenciesTable $Currencies
- */
 class AclientsController extends AppController
 {
 
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
+  public function initialize(){
+      parent::initialize();
+      $session = $this->request->session();
+      I18n::locale($session->read('LocaleCodeb'));
+      $this->loadModel('Clients');
+  }
+
+
     public function index()
     {
-      //  $currencies = $this->paginate($this->Currencies);
-
-        //$this->set(compact('currencies'));
-        //$this->set('_serialize', ['currencies']);
+      $this->Clients->hydrate(false);
+      $clients = $this->Clients->find('all',["conditions"=>["Clients.CompanyID"=>$_GET['company_id']]]);
+      $this->set('clients',$clients);
     }
 
 

@@ -1,30 +1,31 @@
 <?php
 $session = $this->request->session();
 $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
-
 ?>
-<div class="panel panel-default">
+<div class="panel panel-primary">
                         <div class="panel-heading">
-                          <i class="fa fa-child fa-fw"></i> <?= __('ClientsOf').' '.$session->read('Company.CurrentName')
+                          <i class="fa fa-child fa-fw"></i> <?= __('ClientsOf').' '.$session->read('Company.CurrentName') ?>
                         </div>
                         <div class="panel-body">
                               <!-- Nav tabs -->
                               <ul class="nav nav-tabs">
-                                  <li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Home</a>
+                                  <li class="active"><a href="#list" data-toggle="tab" aria-expanded="true"><i class="fa fa-th-list fa-fw"></i> <?= __('List') ?></a>
                                   </li>
-                                  <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false">Profile</a>
+                                  <li class=""><a href="#addnew" data-toggle="tab" aria-expanded="false"><i class="fa fa-plus-square fa-fw"></i> <?= __('AddNewClient') ?></a>
                                   </li>
                               </ul>
 
                               <!-- Tab panes -->
                               <div class="tab-content">
-                                  <div class="tab-pane fade active in" id="home">
+                                  <div class="tab-pane fade active in" id="list">
                                       <h4>List</h4>
-                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div id="clientsListContainer">
+
+</div>
                                   </div>
-                                  <div class="tab-pane fade" id="profile">
+                                  <div class="tab-pane fade" id="addnew">
                                       <h4>New</h4>
-                                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
                                   </div>
                               </div>
                           </div>
@@ -33,6 +34,6 @@ $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
 <script>
 $(document).ready(function(){
   var cliente = new clientes();
-  cliente.loadList();
+  cliente.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
 });
 </script>
