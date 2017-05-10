@@ -11,6 +11,12 @@ switch ($status_id) {
     case 3:
       $status_name = "Paid";
         break;
+    case 4:
+      $status_name = "PaidManually";
+    break;
+    case 5:
+      $status_name = "Void";
+    break;
   default:
     # code...
     break;
