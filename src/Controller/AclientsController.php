@@ -17,6 +17,7 @@ class AclientsController extends AppController
 
     public function index()
     {
+      $this->viewBuilder()->setLayout('ajax');
       $clients = $this->Clients->find('all',["conditions"=>["Clients.CompanyID"=>$_GET['company_id']]]);
       $clients->hydrate(false);
       $this->set('clients',$clients->all());
