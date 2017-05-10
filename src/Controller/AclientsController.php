@@ -17,10 +17,13 @@ class AclientsController extends AppController
 
     public function index()
     {
-      $this->viewBuilder()->setLayout('ajax');
-      $clients = $this->Clients->find('all',["conditions"=>["Clients.CompanyID"=>$_GET['company_id']]]);
-      $clients->hydrate(false);
-      $this->set('clients',$clients->all());
+      if(isset($_GET['company_id']) && is_numeric($_GET['company_id'])){
+        $this->viewBuilder()->setLayout('ajax');
+        $clients = $this->Clients->allByCompanyID($_GET['company_id']);
+        $this->set('clients',$clients);
+      }else{
+        throw new Exception("Must GET a numeric company_id.");
+      }
     }
 
 

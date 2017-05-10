@@ -18,13 +18,13 @@ $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
                               <!-- Tab panes -->
                               <div class="tab-content">
                                   <div class="tab-pane fade active in" id="list">
-                                      <h4>List</h4>
+                                      <h4><?= __('List') ?></h4>
 <div id="clientsListContainer">
 
 </div>
                                   </div>
                                   <div class="tab-pane fade" id="addnew">
-                                      <h4>New</h4>
+                                      <h4><?= __('New') ?></h4>
 
                                   </div>
                               </div>
@@ -35,5 +35,11 @@ $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
 $(document).ready(function(){
   var cliente = new clientes();
   cliente.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
+
+  $(document).on("click",".edit-client-btn",function(){
+    var client_id = $(this).attr("client_id");
+//console.log(client_id);    
+  });
+
 });
 </script>

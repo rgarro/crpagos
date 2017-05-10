@@ -93,6 +93,12 @@ class ClientsTable extends Table
         return $validator;
     }
 
+    public function allByCompanyID($company_id){
+      $clients = $this->find('all',["conditions"=>["Clients.CompanyID"=>$company_id]]);
+      $clients->hydrate(false);
+      return $clients->all();
+    }
+
     public function index($ClientID = null){
       $TheSql = " SELECT * ";
       $TheSql.= " FROM Clients ";
