@@ -18,7 +18,8 @@ $session = $this->request->session();
                               <div class="tab-content">
                                   <div class="tab-pane fade active in" id="list">
                                       <h4>List</h4>
-
+<div id="usersListContainer">
+</div>
                                   </div>
                                   <div class="tab-pane fade" id="addnew">
                                       <h4>New</h4>
@@ -30,7 +31,7 @@ $session = $this->request->session();
                     </div>
 <script>
     $(document).ready(function(){
-  //var cliente = new clientes();
-  //cliente.loadList();
+  var userf = new users();
+  userf.loadList();
 });
 </script>
