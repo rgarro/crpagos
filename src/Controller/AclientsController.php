@@ -17,9 +17,9 @@ class AclientsController extends AppController
 
     public function index()
     {
-      $this->Clients->hydrate(false);
       $clients = $this->Clients->find('all',["conditions"=>["Clients.CompanyID"=>$_GET['company_id']]]);
-      $this->set('clients',$clients);
+      $clients->hydrate(false);
+      $this->set('clients',$clients->all());
     }
 
 
