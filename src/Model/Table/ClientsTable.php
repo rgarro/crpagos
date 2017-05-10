@@ -30,7 +30,7 @@ class ClientsTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('clients');
+        $this->setTable('Clients');
         $this->setDisplayField('ClientID');
         $this->setPrimaryKey('ClientID');
         $this->belongsTo('Companies', ['className' => 'Companies']);
