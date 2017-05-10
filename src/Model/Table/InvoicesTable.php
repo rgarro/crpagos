@@ -30,7 +30,7 @@ class InvoicesTable extends Table
     {
         parent::initialize($config);
 
-        $this->setTable('invoices');
+        $this->setTable('Invoices');
         $this->setDisplayField('InvoiceID');
         $this->setPrimaryKey('InvoiceID');
         $this->belongsTo('Companies', ['className' => 'Companies']);
@@ -126,6 +126,12 @@ class InvoicesTable extends Table
         return $validator;
     }
 
+    public function allByCompanyIDAndStatusID($company_id,$status_id){
+      $invoices = $this->find('all',["conditions"=>["Invoices.CompanyID"=>$company_id,"Invoices.StatusID"=>$status_id]]);
+      $invoices->hydrate(false);
+      return $invoices->all();
+    }
+
     public function index($InvoiceID = null, $StatusID = null, $TheQuery = null, $TheSort = 'ASC'){
 			$TheSql =" SELECT  Invoices.*, Clients.*, Status.*, Currencies.*, sum(Amount) as TheTotal, max(Description) as ShortDesc, Locales.VPOSLangCode";
 			$TheSql.=" FROM Invoices ";
@@ -193,7 +199,7 @@ class InvoicesTable extends Table
 			$TheSql.="'".$Comments."',";
 			$TheSql.="'".$_SESSION['User']['FullName']."',";
 			$TheSql.="'".$_SERVER['REMOTE_ADDR']."'";
-			$TheSql.=")";      
+			$TheSql.=")";
       $res = $this->connection()->execute($TheSql);
       return $res->lastInsertId();
 		}

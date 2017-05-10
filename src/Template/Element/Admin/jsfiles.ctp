@@ -26,4 +26,5 @@
 <script src="/js/jquery.route32.js"></script>
 <script src="/js/crcontactos_manager.js"></script>
 <script src="/js/clientes.js"></script>
+<script src="/js/company.js"></script>
 <script src="/js/custom.js"></script>
