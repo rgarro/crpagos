@@ -9,7 +9,7 @@ $this->pageTitle= __('UsersOf', true).' '.$session->read('Company.CurrentName');
                         <div class="panel-body">
                               <!-- Nav tabs -->
                               <ul class="nav nav-tabs">
-                                  <li class="active"><a href="#list" data-toggle="tab" aria-expanded="true"><i class="fa fa-th-list fa-fw"></i> <?= __('List') ?></a>
+                                  <li class="active"><a href="#list" data-toggle="tab" aria-expanded="true"><i class="fa fa-th-list fa-fw"></i> <?= $this->pageTitle ?></a>
                                   </li>
                                   <li class=""><a href="#addnew" data-toggle="tab" aria-expanded="false"><?= __('AddNewUser') ?></a>
                                   </li>
