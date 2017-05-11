@@ -1,4 +1,10 @@
+<?php
+$session = $this->request->session();
+?>
 <ul class="nav navbar-top-links navbar-right">
+  <li>
+    <?php echo $this->element('Admin/companyswitch'); ?>
+  </li>
     <!-- /.dropdown -->
     <li>
         <a href="/clients" >
@@ -13,7 +19,7 @@
     <!-- /.dropdown -->
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+            <i class="fa fa-user fa-fw"></i> <?= $session->read('User.FullName')?> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>

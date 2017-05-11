@@ -10,6 +10,7 @@ class DashboardController extends AppController
   public function initialize(){
       parent::initialize();
       $session = $this->request->session();
+      $this->loadComponent('RequestHandler');
       I18n::locale($session->read('LocaleCodeb'));
   }
 
@@ -20,6 +21,39 @@ class DashboardController extends AppController
       }else{
         $this->viewBuilder()->setLayout('admin');
       }
+    }
+
+    public function changecompany(){
+      $session = $this->request->session();
+      //$data = array("is_success"=>1,"flash"=>'Cliente Actualizado.');
+      //$this->set('data',array("is_success"=>0,'invalid_form'=>1,"error_list"=>$errors));
+      if(isset($_GET['company_id'])){
+        $ThisCompany = $_GET['company_id'];
+      }
+  		//Check if we're swtiching companies
+  		if ($session -> read('Company.CurrentCompanyID') != $ThisCompany) {
+  			$session -> write('Company.CurrentCompanyID', $ThisCompany);
+  			foreach ($session->read('Companies') as $CurrentCompany) {
+  				if ($CurrentCompany['CompanyID'] == $ThisCompany) {
+  					//If Access OK, set the variables
+  					$session -> write('Company.CurrentSubject', $CurrentCompany['EmailSubject']);
+  					$session -> write('Company.CurrentLogo', $CurrentCompany['Logo']);
+  					//$session -> write('Company.CurrentURL', $CurrentCompany['CompanyUrl']);
+  					//$session -> write('Company.CurrentCompanyURL', $CurrentCompany['CompanyUrl']);
+            $session -> write('Company.CurrentURL', "/company/");
+  					$session -> write('Company.CurrentCompanyURL', "/company/");
+            $session -> write('Company.CurrentEmail', $CurrentCompany['Email']);
+  					$session -> write('Company.CurrentReplyTo', $CurrentCompany['ReplyTo']);
+  					$session -> write('Company.CurrentExtraCC', $CurrentCompany['ExtraCC']);
+  					$session -> write('Company.CurrentName', html_entity_decode($CurrentCompany['CompanyName'], ENT_NOQUOTES, 'iso-8859-1'));
+  					$session -> write('Company.CurrentInfo', html_entity_decode($CurrentCompany['CompanyInfo'], ENT_NOQUOTES, 'iso-8859-1'));
+  					$session -> write('Company.CurrentDefaultNote', html_entity_decode($CurrentCompany['DefaultNote'], ENT_NOQUOTES, 'iso-8859-1'));
+  					$AccessOK = "yes";
+  					//break;
+  				}
+  			}
+  		}
+      $this->set('__serialize',["is_success"=>1,"flash"=>__('PleaseSelectCompany').' '.$session->read('Company.CurrentName')]);
     }
 
     public function changelang(){

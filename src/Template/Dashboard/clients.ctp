@@ -39,6 +39,11 @@ $(document).ready(function(){
   $(document).on("click",".edit-client-btn",function(){
     var client_id = $(this).attr("client_id");
 //console.log(client_id);
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  var s = createjs.Sound.play(tingSnd);
+  s.volume = 0.05;
+
+});
   });
 
 });
