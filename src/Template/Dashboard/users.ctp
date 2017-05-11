@@ -1,9 +1,10 @@
 <?php
 $session = $this->request->session();
+$this->pageTitle= __('UsersOf', true).' '.$session->read('Company.CurrentName');
 ?>
 <div class="panel panel-primary">
                         <div class="panel-heading">
-                          <i class="fa fa-users fa-fw"></i> <?= __('Users') ?>
+                          <i class="fa fa-users fa-fw"></i> <?= $this->pageTitle ?>
                         </div>
                         <div class="panel-body">
                               <!-- Nav tabs -->
@@ -17,7 +18,6 @@ $session = $this->request->session();
                               <!-- Tab panes -->
                               <div class="tab-content">
                                   <div class="tab-pane fade active in" id="list">
-                                      <h4>List</h4>
 <div id="usersListContainer">
 </div>
                                   </div>

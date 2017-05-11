@@ -1,9 +1,10 @@
 <?php
 $session = $this->request->session();
+$this->pageTitle= __('Invoices').' '.$session->read('Company.CurrentName');
 ?>
 <div class="panel panel-primary">
                         <div class="panel-heading">
-<i class="fa fa-file-o fa-fw"></i>  <?= __('Invoices') ?>
+<i class="fa fa-file-o fa-fw"></i>  <?= $this->pageTitle ?>
                         </div>
                         <div class="panel-body">
                               <!-- Nav tabs -->

@@ -20,8 +20,8 @@ class AusersController extends AppController
     {
       if(isset($_GET['company_id']) && is_numeric($_GET['company_id'])){
         $this->viewBuilder()->setLayout('ajax');
-        $user = $this->Users->allByCompanyID($_GET['company_id']);
-        $this->set('users',$user);
+        $users = $this->Users->allByCompanyID($_GET['company_id']);
+        $this->set('users',$users);
       }else{
         throw new Exception("Must GET a numeric company_id.");
       }

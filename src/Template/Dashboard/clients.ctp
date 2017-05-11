@@ -9,7 +9,7 @@ $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
                         <div class="panel-body">
                               <!-- Nav tabs -->
                               <ul class="nav nav-tabs">
-                                  <li class="active"><a href="#list" data-toggle="tab" aria-expanded="true"><i class="fa fa-th-list fa-fw"></i> <?= __('List') ?></a>
+                                  <li class="active"><a href="#list" data-toggle="tab" aria-expanded="true"><i class="fa fa-th-list fa-fw"></i> <?= $this->pageTitle ?></a>
                                   </li>
                                   <li class=""><a href="#addnew" data-toggle="tab" aria-expanded="false"><i class="fa fa-plus-square fa-fw"></i> <?= __('AddNewClient') ?></a>
                                   </li>
@@ -18,7 +18,7 @@ $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
                               <!-- Tab panes -->
                               <div class="tab-content">
                                   <div class="tab-pane fade active in" id="list">
-                                      <h4><?= __('List') ?></h4>
+
 <div id="clientsListContainer">
 
 </div>
@@ -38,7 +38,7 @@ $(document).ready(function(){
 
   $(document).on("click",".edit-client-btn",function(){
     var client_id = $(this).attr("client_id");
-//console.log(client_id);    
+//console.log(client_id);
   });
 
 });
