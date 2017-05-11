@@ -32,6 +32,6 @@ $session = $this->request->session();
 <script>
     $(document).ready(function(){
   var userf = new users();
-  userf.loadList();
+  userf.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
 });
 </script>

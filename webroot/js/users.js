@@ -1,5 +1,5 @@
 var users = (function(){
-  function clientes(){
+  function users(){
     this.listUrl = "/ausers/index";
     this.listContainer = "#usersListContainer";
   }
