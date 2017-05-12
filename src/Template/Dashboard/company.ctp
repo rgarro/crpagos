@@ -12,9 +12,9 @@ $this->pageTitle= __('Invoices').' '.$session->read('Company.CurrentName');
             <li class="active"><a href="#pendinglist" ilist="Pending" data-toggle="tab" aria-expanded="true"><i class="fa fa-clock-o fa-fw"></i> <?= __('Pending') ?></a>
             </li>
             <li><a href="#sentlist" ilist="Sent" data-toggle="tab" aria-expanded="true"><i class="fa fa-truck fa-fw"></i> <?= __('Sent') ?></a></li>
-              <li><a href="#paidlist" ilist="Paid" data-toggle="tab" aria-expanded="true"><i class="fa fa-certificate fa-fw"></i> <?= __('Paid') ?></a></li>
+              <li><a href="#paidlist" ilist="Paid" data-toggle="tab" aria-expanded="true"><i class="fa fa-money fa-fw"></i> <?= __('Paid') ?></a></li>
                 <li><a href="#paidManuallylist" ilist="PaidManually" data-toggle="tab" aria-expanded="true"><i class="fa fa-hand-o-right fa-fw"></i> <?= __('PaidManually') ?></a></li>
-    <li><a href="#voidlist" ilist="Void" data-toggle="tab" aria-expanded="true"><i class="fa fa-calendar-o fa-fw"></i> <?= __('Void') ?></a></li>
+    <li><a href="#voidlist" ilist="Void" data-toggle="tab" aria-expanded="true"><i class="fa fa-fire-extinguisher fa-fw"></i> <?= __('Void') ?></a></li>
             <li class=""><a href="#addnew" data-toggle="tab" aria-expanded="false"><i class="fa fa-plus-square fa-fw"></i> <?= __('AddNewInvoice') ?></a>
             </li>
         </ul>
@@ -34,7 +34,7 @@ $this->pageTitle= __('Invoices').' '.$session->read('Company.CurrentName');
                                       </div>
                                   </div>
                                   <div class="tab-pane fade" id="paidlist">
-                                    <h4>  <i class="fa fa-certificate fa-fw"></i> <?= __('Paid') ?></h4>
+                                    <h4>  <i class="fa fa-money fa-fw"></i> <?= __('Paid') ?></h4>
                                       <div id="paidInvoicesListContainer">
 
                                       </div>
@@ -46,7 +46,7 @@ $this->pageTitle= __('Invoices').' '.$session->read('Company.CurrentName');
                                       </div>
                                   </div>
                                   <div class="tab-pane fade" id="voidlist">
-                                    <h4><i class="fa fa-calendar-o fa-fw"></i> <?= __('Void') ?></a></h4>
+                                    <h4><i class="fa fa-fire-extinguisher fa-fw"></i> <?= __('Void') ?></a></h4>
                                       <div id="voidInvoicesListContainer">
 
                                       </div>

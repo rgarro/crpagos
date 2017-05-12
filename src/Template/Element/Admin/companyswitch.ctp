@@ -39,6 +39,7 @@ function companyChange(company){
                 close: 'animated bounceOutLeft', // Animate.css class names
             }
         }).show();
+        loadStage("/dashboard/index?is_ajax=1");
         window.location.href = "#/Dashboard/";
       }
     }

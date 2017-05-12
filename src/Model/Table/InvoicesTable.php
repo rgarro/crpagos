@@ -135,6 +135,11 @@ class InvoicesTable extends Table
       return $invoices->all();
     }
 
+    public function countByCompanyIDAndStatusID($company_id,$status_id){
+      $invoices = $this->find('all',["conditions"=>["Invoices.StatusID"=>$status_id,"Invoices.CompanyID"=>$company_id]]);
+      return $invoices->count();
+    }
+
     public function index($InvoiceID = null, $StatusID = null, $TheQuery = null, $TheSort = 'ASC'){
 			$TheSql =" SELECT  Invoices.*, Clients.*, Status.*, Currencies.*, sum(Amount) as TheTotal, max(Description) as ShortDesc, Locales.VPOSLangCode";
 			$TheSql.=" FROM Invoices ";

@@ -12,15 +12,21 @@ class DashboardController extends AppController
       $session = $this->request->session();
       $this->loadComponent('RequestHandler');
       I18n::locale($session->read('LocaleCodeb'));
+      $this->loadModel("Invoices");
   }
 
     public function index()
     {
+      $session = $this->request->session();
       if(isset($_GET['is_ajax'])){
         $this->viewBuilder()->setLayout('ajax');
       }else{
         $this->viewBuilder()->setLayout('admin');
       }
+      $this->set("pending_invoices",$this->Invoices->countByCompanyIDAndStatusID($session->read('Company.CurrentCompanyID'),1));
+      $this->set("sent_invoices",$this->Invoices->countByCompanyIDAndStatusID($session->read('Company.CurrentCompanyID'),2));
+      $this->set("paid_invoices",$this->Invoices->countByCompanyIDAndStatusID($session->read('Company.CurrentCompanyID'),3));
+      $this->set("void_invoices",$this->Invoices->countByCompanyIDAndStatusID($session->read('Company.CurrentCompanyID'),5));
     }
 
     public function changecompany(){
