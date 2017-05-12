@@ -135,6 +135,13 @@ class CompaniesTable extends Table
         return $validator;
     }
 
+
+    public function findCompanyByCompanyID($company_id){
+      $companies = $this->find('all',["conditions"=>["Companies.CompanyID"=>$company_id]]);
+      $companies->hydrate(false);
+      return $companies->first();
+    }
+
     public function index($CommerceID = 0){
 			$TheSql=" SELECT * ";
 			$TheSql.=" FROM Companies ";

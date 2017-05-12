@@ -13,6 +13,7 @@ class DashboardController extends AppController
       $this->loadComponent('RequestHandler');
       I18n::locale($session->read('LocaleCodeb'));
       $this->loadModel("Invoices");
+      $this->loadModel("Companies");
   }
 
     public function index()
@@ -101,6 +102,8 @@ class DashboardController extends AppController
     public function mycompany()
     {
       $this->viewBuilder()->setLayout('ajax');
+      $session = $this->request->session();
+      $this->set("company",$this->Companies->findCompanyByCompanyID($session->read('Company.CurrentCompanyID')));
     }
 
     public function terms()
