@@ -13,6 +13,8 @@ class AcompanyController extends AppController
       I18n::locale($session->read('LocaleCodeb'));
       $this->loadModel('Clients');
       $this->loadModel("Invoices");
+      $this->loadModel('Companies');
+      $this->loadComponent('RequestHandler');
   }
 
 
@@ -28,5 +30,23 @@ class AcompanyController extends AppController
       }
     }
 
+
+    public function save(){
+        $session = $this->request->session();
+        $company = $this->Companies->get($_GET['CompanyID'],['contain' => []]);
+        $cia = $this->Companies->patchEntity($company,$_GET);
+        if ($this->Companies->save($cia)) {
+            $flash = __('The Company has been saved.');
+            $success = 1;
+            $invalid_form = 0;
+            $errors = [];
+        }else{
+          $success = 0;
+          $flash = __('The Company could not be saved. Please, try again.');
+          $invalid_form = 1;
+          $errors = $cia->errors();
+        }
+        $this->set('__serialize',["is_success"=>1,"flash"=>$flash,"invalid_form"=>$invalid_form,"error_list"=>$errors]);
+    }
 
 }

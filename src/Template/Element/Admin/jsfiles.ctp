@@ -23,6 +23,7 @@
 <link href="/css/noty.css" rel="stylesheet"></script>
 <script src="/js/noty.min.js"></script>
 <script src="/js/soundjs-0.6.2.min.js"></script>
+<script src="/js/jquery.serialize-hash.js"></script>
 <script src="/js/jquery.route32.js"></script>
 <script src="/js/crcontactos_manager.js"></script>
 <script src="/js/clientes.js"></script>

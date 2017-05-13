@@ -11,7 +11,17 @@ var CRContactos_Manager = {
 					errorsl = errors[key];
 					for(var i=0;i<errorsl.length;i++){
 						var errmsg = key + ": "+errorsl[i];
-						var n = noty({text: errmsg,layout:'bottomLeft',type:'error'});
+						//var n = noty({text: errmsg,layout:'bottomLeft',type:'error'});
+						new Noty({
+							 text: errmsg,
+							 type:'error',
+							 timeout:4000,
+								 layout:'top',
+							 animation: {
+									 open: 'animated bounceInLeft', // Animate.css class names
+									 close: 'animated bounceOutLeft', // Animate.css class names
+							 }
+					 }).show();
 					}
 				}
 			},
