@@ -33,7 +33,11 @@ class AcompanyController extends AppController
 
     public function save(){
         $session = $this->request->session();
-        $company = $this->Companies->get($_GET['CompanyID'],['contain' => []]);
+        if(isset($_GET['CompanyID']) && is_numeric($_GET['CompanyID'])){
+          $company = $this->Companies->get($_GET['CompanyID'],['contain' => []]);
+        }else{
+          $company = $this->Companies->newEntity();
+        }
         $cia = $this->Companies->patchEntity($company,$_GET);
         if ($this->Companies->save($cia)) {
             $flash = __('The Company has been saved.');
