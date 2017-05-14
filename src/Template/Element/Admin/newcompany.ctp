@@ -59,7 +59,6 @@ $(document).ready(function(){
 	    dataType:"json",
 	    success:function(dat){
 	      var data = dat.__serialize;
-console.log(data);
 	      CRContactos_Manager.check_errors(data);
 	      if(data.is_success == 1){
 	        new Noty({

@@ -12,6 +12,7 @@ class AclientsController extends AppController
       $session = $this->request->session();
       I18n::locale($session->read('LocaleCodeb'));
       $this->loadModel('Clients');
+      $this->loadComponent('RequestHandler');
   }
 
 
