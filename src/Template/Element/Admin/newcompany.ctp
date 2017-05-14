@@ -2,6 +2,7 @@
 $session = $this->request->session();
 ?>
 <form class="form-horizontal" method="post" id="myNewCompanyForm" name="TheNewForm" enctype="multipart/form-data">
+<input type="hidden" name="Processor" value="BNCR"/>
 	<div class="form-group">
     <label for="LocaleCode" class="col-sm-2 control-label"><?php echo __('DefaultLanguage') ?></label>
     <div class="col-sm-10">
@@ -30,7 +31,7 @@ $session = $this->request->session();
     </div>
 	</div>
 	<div class="form-group">
-    <label for="CompanyInfo" class="col-sm-2 control-label"></label>
+    <label for="CompanyInfo" class="col-sm-2 control-label"><?php echo __('CompanyInfo') ?></label>
     <div class="col-sm-10">
 				<textarea name="CompanyInfo" wrap="soft" class="form-control" rows="3" required="required"></textarea>
     </div>
@@ -58,6 +59,7 @@ $(document).ready(function(){
 	    dataType:"json",
 	    success:function(dat){
 	      var data = dat.__serialize;
+console.log(data);
 	      CRContactos_Manager.check_errors(data);
 	      if(data.is_success == 1){
 	        new Noty({

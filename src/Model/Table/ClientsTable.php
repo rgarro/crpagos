@@ -94,7 +94,7 @@ class ClientsTable extends Table
     }
 
     public function allByCompanyID($company_id){
-      $clients = $this->find('all',["conditions"=>["Clients.CompanyID"=>$company_id]]);
+      $clients = $this->find('all',["conditions"=>["Clients.CompanyID"=>$company_id,"Clients.ClientStatus"=>1]]);
       $clients->hydrate(false);
       return $clients->all();
     }
