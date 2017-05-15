@@ -2,6 +2,7 @@
 $session = $this->request->session();
 ?>
 <form class="form-horizontal" method="post" id="myNewClientForm" name="TheNewForm" enctype="multipart/form-data">
+  <input type="hidden" name="CompanyID" value="<?= $session->read('Company.CurrentCompanyID')?>">
 <input type="hidden" name="Processor" value="BNCR"/>
 	<div class="form-group">
     <label for="LocaleCode" class="col-sm-2 control-label"><?php echo __('DefaultLanguage') ?></label>
@@ -37,8 +38,10 @@ $session = $this->request->session();
     </div>
 	</div>
 	<div class="form-group">
-      <label for="Phone"><?php echo __('Phone') ?></label>
-      <div class="form-control"><input type="text" name="Phone" tabindex="12" size="30" maxlength="20" value="<?php echo $CurrentClient['Phone'] ?>"></div>
+      <label class="col-sm-2 control-label" for="Phone"><?php echo __('Phone') ?></label>
+      <div class="col-sm-10">
+      <input type="text" class="form-control" name="Phone" tabindex="12" size="30" maxlength="20" value="">
+    </div>
 	</div>
 	<div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
@@ -51,17 +54,18 @@ $(document).ready(function(){
 	$("#myNewClientForm").on("submit",function(){
 		var cia_datos = $("#myNewClientForm").serializeHash();
 		$.ajax({
-	    url:"/Aclient/save",
+	    url:"/Aclients/save",
 	    data:cia_datos,
 	    type:"GET",
 	    dataType:"json",
 	    success:function(dat){
 	      var data = dat.__serialize;
+console.log(data);
 	      CRContactos_Manager.check_errors(data);
 	      if(data.is_success == 1){
 	        new Noty({
 	            text: data.flash,
-	            type:'alert',
+	            type:'success',
 	            timeout:4000,
 	              layout:'top',
 	            animation: {

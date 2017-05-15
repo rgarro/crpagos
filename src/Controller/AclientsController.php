@@ -27,5 +27,26 @@ class AclientsController extends AppController
       }
     }
 
+    public function save(){
+        $session = $this->request->session();
+        if(isset($_GET['ClientID']) && is_numeric($_GET['ClientID'])){
+          $client = $this->Clients->get($_GET['ClientID'],['contain' => []]);
+        }else{
+          $client = $this->Clients->newEntity();
+        }
+        $cli = $this->Clients->patchEntity($client,$_GET);
+        if ($this->Clients->save($cli)) {
+            $flash = __('The Client has been saved.');
+            $success = 1;
+            $invalid_form = 0;
+            $errors = [];
+        }else{
+          $success = 0;
+          $flash = __('The Client could not be saved. Please, try again.');
+          $invalid_form = 1;
+          $errors = $cli->errors();
+        }
+        $this->set('__serialize',["is_success"=>1,"flash"=>$flash,"invalid_form"=>$invalid_form,"error_list"=>$errors]);
+    }
 
 }
