@@ -59,6 +59,26 @@ $this->pageTitle= __('Invoices').' '.$session->read('Company.CurrentName');
                           </div>
                         <!-- /.panel-body -->
                     </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="invoiceEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-money"></i><?php echo __("Invoice")?></h4>
+                                </div>
+                                <div class="modal-body invoice-edit-form-spot">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                    <!-- /.modal -->
 <script>
     $(document).ready(function(){
   var cia = new company();
@@ -85,5 +105,12 @@ $this->pageTitle= __('Invoices').' '.$session->read('Company.CurrentName');
     break;
   }
 });
+
+$(document).on("click",".edit-invoice-btn",function(){
+  var user_id = $(this).attr("user_id");
+  $("#invoiceEditModal").modal("show");
+//console.log(client_id);
+});
+
 });
 </script>

@@ -37,6 +37,27 @@ $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
 </div>
 <!-- /.panel-body -->
 </div>
+<!-- Modal -->
+<div class="modal fade" id="clientEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-edit"></i><?php echo __("EditClient")?></h4>
+            </div>
+            <div class="modal-body client-edit-form-spot">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- end edition modal -->
 <script>
 $(document).ready(function(){
   var cliente = new clientes();
@@ -44,12 +65,13 @@ $(document).ready(function(){
 
   $(document).on("click",".edit-client-btn",function(){
     var client_id = $(this).attr("client_id");
+    $("#clientEditModal").modal("show");
 //console.log(client_id);
-$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-  var s = createjs.Sound.play(tingSnd);
-  s.volume = 0.05;
+  });
 
-});
+  $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    var s = createjs.Sound.play(tingSnd);
+    s.volume = 0.05;
   });
 
 });

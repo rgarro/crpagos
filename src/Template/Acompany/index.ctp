@@ -51,7 +51,7 @@ foreach ($invoices as $c) {
           </td>
          <td><?= $c['Detail']['Description']?> </td>
          <td>
-           <button invoice_id="" class="btn btn-xs btn-outline btn-default edit-invoice-btn"><i class="fa fa-pencil"></i> <?= __('EditInvoice') ?></button>
+           <button invoice_id="<?= $c['InvoiceID'] ?>" action="edit" class="btn btn-xs btn-outline btn-default edit-invoice-btn"><i class="fa fa-pencil"></i> <?= __('EditInvoice') ?></button>
          </td>
 
      </tr>
