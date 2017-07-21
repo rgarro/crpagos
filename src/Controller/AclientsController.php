@@ -27,6 +27,19 @@ class AclientsController extends AppController
       }
     }
 
+
+    public function editview()
+    {
+      if(isset($_GET['client_id']) && is_numeric($_GET['client_id'])){
+        $this->viewBuilder()->setLayout('ajax');
+        $client = $this->Clients->find('all',["conditions"=>["Clients.ClientID"=>$_GET['client_id'],"Clients.ClientStatus"=>1]]);
+        $client->hydrate(false);
+        $this->set('client',$client->first());
+      }else{
+        throw new Exception("Must GET a numeric client_id.");
+      }
+    }
+
     public function save(){
         $session = $this->request->session();
         if(isset($_GET['ClientID']) && is_numeric($_GET['ClientID'])){

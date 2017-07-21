@@ -2,6 +2,8 @@ var clientes = (function(){
   function clientes(){
     this.listUrl = "/aclients/index";
     this.listContainer = "#clientsListContainer";
+    this.editUrl = "/aclients/editview";
+    this.editContainer = ".client-edit-form-spot";
   }
 
   clientes.prototype.loadList = function(company_id){

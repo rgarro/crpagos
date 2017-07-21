@@ -1,7 +1,8 @@
 <?php
 $session = $this->request->session();
+print_r($client);
 ?>
-<form class="form-horizontal" method="post" id="myNewClientForm" name="TheNewForm" enctype="multipart/form-data">
+<form class="form-horizontal" method="post" id="myEditClientForm" name="TheNewForm" enctype="multipart/form-data">
   <input type="hidden" name="CompanyID" value="<?= $session->read('Company.CurrentCompanyID')?>">
 <input type="hidden" name="Processor" value="BNCR"/>
 	<div class="form-group">
@@ -51,8 +52,8 @@ $session = $this->request->session();
 </form>
 <script>
 $(document).ready(function(){
-	$("#myNewClientForm").on("submit",function(){
-		var cia_datos = $("#myNewClientForm").serializeHash();
+	$("#myEditClientForm").on("submit",function(){
+		var cia_datos = $("#myEditClientForm").serializeHash();
 		$.ajax({
 	    url:"/Aclients/save",
 	    data:cia_datos,

@@ -65,9 +65,20 @@ $(document).ready(function(){
 
   $(document).on("click",".edit-client-btn",function(){
     var client_id = $(this).attr("client_id");
-    $("#clientEditModal").modal("show");
-//console.log(client_id);
+    $.ajax({
+      url:cliente.editUrl,
+      data:{
+        client_id:client_id
+      },
+      type:"GET",
+      success:function(data){
+        CRContactos_Manager.check_errors(data);
+        $(cliente.editContainer).html(data);
+        $("#clientEditModal").modal("show");
+      }
+    });
   });
+
 
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var s = createjs.Sound.play(tingSnd);
