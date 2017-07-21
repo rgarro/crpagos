@@ -14,6 +14,8 @@ class DashboardController extends AppController
       I18n::locale($session->read('LocaleCodeb'));
       $this->loadModel("Invoices");
       $this->loadModel("Companies");
+      $this->loadModel("Terms");
+      $this->loadModel("Locales");
   }
 
     public function index()
@@ -106,9 +108,43 @@ class DashboardController extends AppController
       $this->set("company",$this->Companies->findCompanyByCompanyID($session->read('Company.CurrentCompanyID')));
     }
 
+    public function saveterms(){
+      $session = $this->request->session();
+      $this->viewBuilder()->setLayout('ajax');
+			foreach ($_GET['Locales'] as $ThisLocale) {
+				$FieldName = $ThisLocale.'_New';
+				if(isset($_GET[$FieldName])){
+					$Content = $_GET[$FieldName];
+					$this -> Terms -> AddNew($ThisLocale, $Content);
+				}else{
+					$FieldName = $ThisLocale.'_Content';
+					$Content = $_GET[$FieldName];
+					$this -> Terms -> Update($ThisLocale, $Content);
+				}
+			}
+  		$this->set('__serialize',["is_success"=>1,"flash"=>__('TermsUpdated').' '.$session->read('Company.CurrentName')]);
+    }
+
     public function terms()
     {
+      $session = $this->request->session();
       $this->viewBuilder()->setLayout('ajax');
+      $TheTerms = array();
+  		$TermsQ = $this -> Terms -> index(false);
+  		$LocalesQ = $this -> Locales -> index();
+  		if (count($TermsQ) > 0) {
+  			foreach ($TermsQ as $ThisTerm) {
+  				$TheTerms[$ThisTerm['LocaleCode']] = $ThisTerm['Content'];
+  			}
+  		} else {
+  			foreach ($LocalesQ as $ThisTerm) {
+  				$TheTerms[$ThisTerm['LocaleCode']] = null;
+  			}
+  		}
+
+  		$this -> Set('GetMyCompanyQ', $this -> Companies -> GetSites($session -> read('Company.CurrentCompanyID')));
+  		$this -> Set('TermsQ', $TheTerms);
+  		$this -> Set('LocalesQ', $LocalesQ);
     }
 
 }

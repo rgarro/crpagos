@@ -30,3 +30,4 @@
 <script src="/js/company.js"></script>
 <script src="/js/users.js"></script>
 <script src="/js/custom.js"></script>
+<script src="/js/jquery/jquery.tinymce.js"></script>
