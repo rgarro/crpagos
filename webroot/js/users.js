@@ -2,6 +2,8 @@ var users = (function(){
   function users(){
     this.listUrl = "/ausers/index";
     this.listContainer = "#usersListContainer";
+    this.editviewUrl = "/ausers/editview";
+    this.editviewContainer = ".user-edit-form-spot";
   }
 
   users.prototype.loadList = function(company_id){

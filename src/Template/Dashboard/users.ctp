@@ -22,8 +22,35 @@ $this->pageTitle= __('UsersOf', true).' '.$session->read('Company.CurrentName');
 </div>
                                   </div>
                                   <div class="tab-pane fade" id="addnew">
-                                      <h4>New</h4>
-
+                                      <h4>New User</h4>
+<!-- begin user form -->
+<form class="form-horizontal" method="post" id="myEditClientForm" name="TheNewForm" enctype="multipart/form-data">
+  <div class="form-group">
+    <label for="ClientName" class="col-sm-2 control-label"><?php echo __('Name') ?></label>
+    <div class="col-sm-10">
+        <input name="FirstName" type="text" class="form-control" value="" placeholder="FirstName" required="required">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="LastName" class="col-sm-2 control-label"><?php echo __('LastName') ?></label>
+    <div class="col-sm-10">
+        <input name="LastName" type="text" class="form-control" value="" placeholder="LastName" required="required">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="Email" class="col-sm-2 control-label"><?php echo __('Email') ?></label>
+    <div class="col-sm-10">
+        <input name="Email" type="text" class="form-control" value="" placeholder="Email" required="required">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="Password" class="col-sm-2 control-label"><?php echo __('Password') ?></label>
+    <div class="col-sm-10">
+        <input name="Password" type="text" class="form-control" value="" placeholder="Password" required="required">
+    </div>
+  </div>
+</form>
+<!-- end user form -->
                                   </div>
                               </div>
                           </div>
@@ -56,8 +83,18 @@ $this->pageTitle= __('UsersOf', true).' '.$session->read('Company.CurrentName');
 
   $(document).on("click",".edit-user-btn",function(){
     var user_id = $(this).attr("user_id");
-    $("#userEditModal").modal("show");
-//console.log(client_id);
+    $.ajax({
+      url:userf.editviewUrl,
+      data:{
+        user_id:user_id
+      },
+      type:"GET",
+      success:(function(data){
+        CRContactos_Manager.check_errors(data);
+        $(userf.editviewContainer).html(data);
+        $("#userEditModal").modal("show");
+      }).bind(this)
+    });
   });
 
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {

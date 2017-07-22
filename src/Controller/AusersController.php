@@ -27,5 +27,16 @@ class AusersController extends AppController
       }
     }
 
+    public function editview(){
+      if(isset($_GET['user_id']) && is_numeric($_GET['user_id'])){
+        $this->viewBuilder()->setLayout('ajax');
+        $session = $this->request->session();
+        $user = $this->Users->find('all',["conditions"=>["Users.UserID"=>$_GET['user_id']]]);
+        $user->hydrate(false);
+        $this->set('user',$user->first());
+      }else{
+        throw new Exception("Must GET a numeric user_id.");
+      }
+    }
 
 }
