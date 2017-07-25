@@ -24,7 +24,8 @@ $this->pageTitle= __('UsersOf', true).' '.$session->read('Company.CurrentName');
                                   <div class="tab-pane fade" id="addnew">
                                       <h4>New User</h4>
 <!-- begin user form -->
-<form class="form-horizontal" method="post" id="myEditClientForm" name="TheNewForm" enctype="multipart/form-data">
+<form class="form-horizontal" method="post" id="newUserForm" name="newUserForm" enctype="multipart/form-data">
+  <input type="hidden" name="EnteredBy" value="<?= $_SESSION['User']['FullName']?>"/>
   <div class="form-group">
     <label for="ClientName" class="col-sm-2 control-label"><?php echo __('Name') ?></label>
     <div class="col-sm-10">
@@ -49,6 +50,19 @@ $this->pageTitle= __('UsersOf', true).' '.$session->read('Company.CurrentName');
         <input name="Password" type="text" class="form-control" value="" placeholder="Password" required="required">
     </div>
   </div>
+  <div class="form-group">
+    <label for="Password" class="col-sm-2 control-label"><?php echo __('AccessLevel') ?></label>
+    <div class="col-sm-10">
+        <select name="AccessLevelID" class="form-control">
+<?php
+foreach($alevels as $ac){
+?>
+<option value="<?= $ac['AccessLevelID']?>"><?= $ac['AccessLevel']?></option>
+<?php } ?>
+        </select>
+    </div>
+  </div>
+  <button type="button" class="btn btn-xs btn-outline btn-default">Save</button>
 </form>
 <!-- end user form -->
                                   </div>
@@ -100,6 +114,36 @@ $this->pageTitle= __('UsersOf', true).' '.$session->read('Company.CurrentName');
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
     var s = createjs.Sound.play(tingSnd);
     s.volume = 0.05;
+  });
+
+  $("#newUserForm").on("submit",function(){
+    var user_data = $("#newUserForm").serializeHash();
+    $.ajax({
+      url:"/ausers/save",
+      data:user_data,
+      type:"GET",
+      dataType:"json",
+      success:function(dat){
+        var data = dat.__serialize;
+        CRContactos_Manager.check_errors(data);
+        if(data.is_success == 1){
+          new Noty({
+              text: data.flash,
+              type:'success',
+              timeout:4000,
+                layout:'top',
+              animation: {
+                  open: 'animated bounceInLeft', // Animate.css class names
+                  close: 'animated bounceOutLeft', // Animate.css class names
+              }
+          }).show();
+          var userf = new users();
+          userf.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
+          $("#clientEditModal").modal("hide");
+        }
+      }
+    });
+    return false;
   });
 
 });

@@ -11,6 +11,13 @@ class UsersFixture extends TestFixture
 {
 
     /**
+     * Table name
+     *
+     * @var string
+     */
+    public $table = 'Users';
+
+    /**
      * Fields
      *
      * @var array
@@ -57,9 +64,9 @@ class UsersFixture extends TestFixture
             'UserStatus' => 1,
             'AccessLevelID' => 1,
             'ModifiedBy' => 'Lorem ipsum dolor sit amet',
-            'Entered' => 1491270090,
+            'Entered' => 1500936903,
             'EnteredBy' => 'Lorem ipsum dolor sit amet',
-            'Modified' => '2017-04-04 01:41:30'
+            'Modified' => '2017-07-24 22:55:03'
         ],
     ];
 }

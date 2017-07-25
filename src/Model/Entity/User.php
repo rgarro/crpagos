@@ -17,6 +17,8 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\Time $Entered
  * @property string $EnteredBy
  * @property \Cake\I18n\Time $Modified
+ *
+ * @property \App\Model\Entity\AccessLevel $AccessLevels
  */
 class User extends Entity
 {

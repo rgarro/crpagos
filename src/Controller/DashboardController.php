@@ -16,6 +16,7 @@ class DashboardController extends AppController
       $this->loadModel("Companies");
       $this->loadModel("Terms");
       $this->loadModel("Locales");
+      $this->loadModel("AccessLevels");
   }
 
     public function index()
@@ -99,6 +100,9 @@ class DashboardController extends AppController
     public function users()
     {
       $this->viewBuilder()->setLayout('ajax');
+      $alevels = $this->AccessLevels->find('all');
+      $alevels->hydrate(false);
+      $this->set('alevels',$alevels->all());
     }
 
     public function mycompany()

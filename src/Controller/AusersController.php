@@ -39,4 +39,26 @@ class AusersController extends AppController
       }
     }
 
+    public function save(){
+      $session = $this->request->session();
+      if(isset($_GET['UserID']) && is_numeric($_GET['UserID'])){
+        $user = $this->Users->get($_GET['UserID'],['contain' => []]);
+      }else{
+        $user = $this->Users->newEntity();
+      }
+      $u = $this->Users->patchEntity($user,$_GET);
+      if ($this->Users->save($u)) {
+          $flash = __('The User has been saved.');
+          $success = 1;
+          $invalid_form = 0;
+          $errors = [];
+      }else{
+        $success = 0;
+        $flash = __('The User could not be saved. Please, try again.');
+        $invalid_form = 1;
+        $errors = $u->errors();
+      }
+      $this->set('__serialize',["is_success"=>1,"flash"=>$flash,"invalid_form"=>$invalid_form,"error_list"=>$errors]);
+    }
+
 }
