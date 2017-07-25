@@ -11,13 +11,6 @@ class UsersFixture extends TestFixture
 {
 
     /**
-     * Table name
-     *
-     * @var string
-     */
-    public $table = 'Users';
-
-    /**
      * Fields
      *
      * @var array
@@ -40,6 +33,7 @@ class UsersFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['UserID'], 'length' => []],
+            'Email' => ['type' => 'unique', 'columns' => ['Email'], 'length' => []],
             'Users_AccessLevels_FK' => ['type' => 'foreign', 'columns' => ['AccessLevelID'], 'references' => ['AccessLevels', 'AccessLevelID'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
@@ -64,9 +58,9 @@ class UsersFixture extends TestFixture
             'UserStatus' => 1,
             'AccessLevelID' => 1,
             'ModifiedBy' => 'Lorem ipsum dolor sit amet',
-            'Entered' => 1500936903,
+            'Entered' => 1501018510,
             'EnteredBy' => 'Lorem ipsum dolor sit amet',
-            'Modified' => '2017-07-24 22:55:03'
+            'Modified' => '2017-07-25 21:35:10'
         ],
     ];
 }
