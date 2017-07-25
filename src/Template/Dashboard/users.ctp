@@ -62,7 +62,8 @@ foreach($alevels as $ac){
         </select>
     </div>
   </div>
-  <button type="button" class="btn btn-xs btn-outline btn-default">Save</button>
+  <button type="submit" class="btn btn-outline btn-primary btn-lg"><?php echo __('Save') ?></button>
+  <button type="reset" class="btn btn-outline btn-warning btn-lg"><?php echo __('Reset') ?></button>
 </form>
 <!-- end user form -->
                                   </div>

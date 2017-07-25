@@ -33,6 +33,7 @@ class UsersTable extends Table
         $this->setTable('Users');
         $this->setDisplayField('UserID');
         $this->setPrimaryKey('UserID');
+        $this->belongsTo('AccessLevels', ['className' => 'AccessLevels','foreignKey'=>"AccessLevelID","propertyName"=>"AccessLevels"]);
     }
 
     /**
@@ -99,6 +100,20 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+    public function allByCompanyID($company_id){
+      $sql = "SELECT UserID FROM CompanyUsers WHERE CompanyID = '".$company_id."'";
+      $res = $this->connection()->execute($sql)->fetchAll('assoc');
+      $ids = [];
+      foreach($res as $r){
+        array_push($ids,$r['UserID']);
+      }
+      $user_ids = implode(",", $ids);
+      $users = $this->find('all',["conditions"=>["Users.UserID IN(".$user_ids.")"],"contain"=>["AccessLevels"]]);
+      $users->hydrate(false);
+      return $users->all();
+    }
+
 
     public function index(){
 			$TheLogin = $_POST['Login'];
