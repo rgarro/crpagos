@@ -12,7 +12,7 @@ class AusersController extends AppController
       $session = $this->request->session();
       I18n::locale($session->read('LocaleCodeb'));
       $this->loadModel('Users');
-
+      $this->loadModel("AccessLevels");
   }
 
 
@@ -31,9 +31,12 @@ class AusersController extends AppController
       if(isset($_GET['user_id']) && is_numeric($_GET['user_id'])){
         $this->viewBuilder()->setLayout('ajax');
         $session = $this->request->session();
-        $user = $this->Users->find('all',["conditions"=>["Users.UserID"=>$_GET['user_id']]]);
+        $user = $this->Users->find('all',["conditions"=>["Users.UserID"=>$_GET['user_id']],"contain"=>["AccessLevels"]]);
         $user->hydrate(false);
         $this->set('user',$user->first());
+        $alevels = $this->AccessLevels->find('all');
+        $alevels->hydrate(false);
+        $this->set('alevels',$alevels->all());
       }else{
         throw new Exception("Must GET a numeric user_id.");
       }
@@ -43,13 +46,17 @@ class AusersController extends AppController
       $session = $this->request->session();
       if(isset($_GET['UserID']) && is_numeric($_GET['UserID'])){
         $user = $this->Users->get($_GET['UserID'],['contain' => []]);
+        $is_new = false;
       }else{
         $user = $this->Users->newEntity();
+        $is_new = true;
       }
       $u = $this->Users->patchEntity($user,$_GET);
 
       if ($r = $this->Users->save($u)) {
-          $this->Users->AddUserToCompany($r->UserID);
+          if($is_new){
+              $this->Users->AddUserToCompany($r->UserID);
+          }
           $flash = __('The User has been saved.');
           $success = 1;
           $invalid_form = 0;

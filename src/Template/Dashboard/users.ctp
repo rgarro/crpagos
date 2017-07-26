@@ -22,7 +22,7 @@ $this->pageTitle= __('UsersOf', true).' '.$session->read('Company.CurrentName');
 </div>
                                   </div>
                                   <div class="tab-pane fade" id="addnew">
-                                      <h4>New User</h4>
+                                      <h4><?php echo __('NewUser') ?></h4>
 <!-- begin user form -->
 <form class="form-horizontal" method="post" id="newUserForm" name="newUserForm" enctype="multipart/form-data">
   <input type="hidden" name="EnteredBy" value="<?= $_SESSION['User']['FullName']?>"/>
@@ -138,9 +138,8 @@ foreach($alevels as $ac){
                   close: 'animated bounceOutLeft', // Animate.css class names
               }
           }).show();
-          var userf = new users();
-          userf.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
-console.log("end here ...");
+          //var userf = new users();
+          //userf.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
           $("#newUserForm")[0].reset();
           loadStage("/dashboard/users");
           //$("#clientEditModal").modal("hide");
