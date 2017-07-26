@@ -17,7 +17,7 @@ createjs.Sound.registerSound("/sounds/idg-bloo-intermed-3097_hifi.mp3",resetSnd)
 
 function loadStage(stage_url){
   var s = createjs.Sound.play(changeRouteSnd);
-  s.volume = 0.05;
+  s.volume = 0.03;
 	$("#content").html("<i class='fa fa-truck'></i> <i class='fa fa-spinner fa-pulse'></i> Cargando ...");
 	$.ajax({
 		url:stage_url,

@@ -47,7 +47,9 @@ class AusersController extends AppController
         $user = $this->Users->newEntity();
       }
       $u = $this->Users->patchEntity($user,$_GET);
-      if ($this->Users->save($u)) {
+
+      if ($r = $this->Users->save($u)) {
+          $this->Users->AddUserToCompany($r->UserID);
           $flash = __('The User has been saved.');
           $success = 1;
           $invalid_form = 0;

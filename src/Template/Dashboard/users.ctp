@@ -62,8 +62,8 @@ foreach($alevels as $ac){
         </select>
     </div>
   </div>
-  <button type="submit" class="btn btn-outline btn-primary btn-lg"><?php echo __('Save') ?></button>
-  <button type="reset" class="btn btn-outline btn-warning btn-lg"><?php echo __('Reset') ?></button>
+  <button type="submit" class="btn btn-outline btn-primary"><?php echo __('Save') ?></button>
+  <button type="reset" class="btn btn-outline btn-warning"><?php echo __('Reset') ?></button>
 </form>
 <!-- end user form -->
                                   </div>
@@ -140,7 +140,10 @@ foreach($alevels as $ac){
           }).show();
           var userf = new users();
           userf.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
-          $("#clientEditModal").modal("hide");
+console.log("end here ...");
+          $("#newUserForm")[0].reset();
+          loadStage("/dashboard/users");
+          //$("#clientEditModal").modal("hide");
         }
       }
     });
