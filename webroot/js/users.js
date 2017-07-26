@@ -5,7 +5,7 @@ var users = (function(){
     this.editviewUrl = "/ausers/editview";
     this.editviewContainer = ".user-edit-form-spot";
   }
-//load list 
+
   users.prototype.loadList = function(company_id){
     $.ajax({
       url:this.listUrl,
