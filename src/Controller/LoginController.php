@@ -40,10 +40,10 @@ class LoginController extends AppController
           $session -> write('Company.CurrentSubject', $CurrentCompany['EmailSubject']);
           $session -> write('Company.CurrentLogo', $CurrentCompany['Logo']);
           //$session -> write('Company.CurrentURL', $CurrentCompany['CompanyUrl']);
-          $session -> write('Company.CurrentURL', "/company/");
+          $session -> write('Company.CurrentURL', "/dashboard");
           //$session -> write('Company.CurrentURL',"/company?currentCo=".$CurrentCompany['CompanyID']);
           //$session -> write('Company.CurrentCompanyURL', $CurrentCompany['CompanyUrl']);
-          $session -> write('Company.CurrentCompanyURL', "/company/");
+          $session -> write('Company.CurrentCompanyURL', "/dashboard");
           $session -> write('Company.CurrentEmail', $CurrentCompany['Email']);
           $session -> write('Company.CurrentBgColor', $CurrentCompany['BgColor']);
           $session -> write('Company.CurrentBgImage', $CurrentCompany['BgImage']);
@@ -54,22 +54,17 @@ class LoginController extends AppController
           $session -> write('Company.CurrentExtraCC', $CurrentCompany['ExtraCC']);
           //Keep companies on a Variable for future use
           $session -> write('Companies', $CheckCompanyQ);
-          //Redirect to company's URL
-//echo $CheckCompanyQ[0]['CompanyUrl'];
-//exit;
+
           //$this -> redirect($CheckCompanyQ[0]['CompanyUrl']);
-          $this -> redirect("/company");
+          $this -> redirect("/dashboard");
         } else {
-          //No Company, give the login error
-          //$session -> setFlash(__('ErrorLogin', true));
           $this->Flash->error(__('ErrorLogin'));
-          $this -> redirect('/login/');
+          $this -> redirect('/');
         }
         //not in, set flash, and try again
       } else {
-        //$session -> setFlash(__('ErrorLogin', true));
         $this->Flash->error(__('ErrorLogin'));
-        $this -> redirect('/login/');
+        $this -> redirect('/');
       }
     }
   }

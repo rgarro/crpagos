@@ -34,6 +34,11 @@ class PagesController extends AppController
       $this->loadComponent('Crypter');
   }
 
+  public function login(){
+    $session = $this->request->session();
+    $this->viewBuilder()->setLayout('login');
+  }
+
   public function  index(){
     $session = $this->request->session();
     $this->pageTitle=__('Welcome', true);
