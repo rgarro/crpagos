@@ -107,9 +107,20 @@ $this->pageTitle= __('Invoices').' '.$session->read('Company.CurrentName');
 });
 
 $(document).on("click",".edit-invoice-btn",function(){
-  var user_id = $(this).attr("user_id");
-  $("#invoiceEditModal").modal("show");
-//console.log(client_id);
+  $(".invoice-edit-form-spot").html(" ");
+  var invoice_id = $(this).attr('invoice_id');
+  $.ajax({
+    url:"/acompany/editinvoice",
+    data:{
+      invoice_id:invoice_id
+    },
+    type:"GET",
+    success:function(data){
+      CRContactos_Manager.check_errors(data);
+      $(".invoice-edit-form-spot").html(data);
+      $("#invoiceEditModal").modal("show");
+    }
+  });
 });
 
 });

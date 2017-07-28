@@ -37,6 +37,23 @@ class AcompanyController extends AppController
       }
     }
 
+    public function editinvoice(){
+      $this->viewBuilder()->setLayout('ajax');
+      $session = $this->request->session();
+      $InvoiceID = $_GET['invoice_id'];
+  		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
+  		
+  		$this -> Set('LocalesQ', $this -> Locales -> index());
+  		$this -> Set('ClientsQ', $this -> Clients -> index());
+  		$this -> Set('CurrencyQ', $this -> Currencies -> index());
+  		$this -> Set('StatusQ', $this -> Status -> index());
+  		//Use Selected Language IF Any
+
+      $ivq = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
+  		$this -> Set('InvoiceDetailQ', $ivq);
+  		$this -> Set('InvoiceLogQ', $this -> Invoices -> GetInvoiceLog($InvoiceID));
+    }
+
     public function viewinvoice(){
       $this->viewBuilder()->setLayout('ajax');
       $session = $this->request->session();
