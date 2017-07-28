@@ -15,6 +15,14 @@ class AcompanyController extends AppController
       $this->loadModel("Invoices");
       $this->loadModel('Companies');
       $this->loadComponent('RequestHandler');
+
+      $this->loadModel("Users");
+      $this->loadModel("Currencies");
+      $this->loadModel("Locales");
+      $this->loadModel("Status");
+      $this->loadComponent("Vpos");
+      $this->loadModel("Transactions");
+      $this->loadComponent("Crypter");
   }
 
 
@@ -29,7 +37,6 @@ class AcompanyController extends AppController
         throw new Exception("Must GET a numeric company_id and status_id.");
       }
     }
-
 
     public function save(){
         $session = $this->request->session();
@@ -51,6 +58,89 @@ class AcompanyController extends AppController
           $errors = $cia->errors();
         }
         $this->set('__serialize',["is_success"=>1,"flash"=>$flash,"invalid_form"=>$invalid_form,"error_list"=>$errors]);
+    }
+
+    public function saveinvoice(){
+      $session = $this->request->session();
+      //$this->viewBuilder()->setLayout('ajax');
+      $Flash = __('UpdatedFlash', true);
+  		$ActionID = 0;
+  		if (isset($_POST['InvoiceID'])) {
+  			//Update Invoice
+  			$InvoiceID = base64_decode($_POST['InvoiceID']);
+  			if (isset($_POST['Comment'])) {$TheComment = $_POST['Comment'];
+  			} else {$TheComment = null;
+  			}
+  			if (!isset($_POST['RefNumber'])) {$_POST['RefNumber'] = '';
+  			}
+  			switch($_POST['StatusID'] ) {
+  				//PaidManually
+  				case 4 :
+  					$ActionID = 8;
+  					$Redirect = "Yes";
+  					$Flash = __('PaidManuallyFlash', true);
+  					break;
+  				//Void
+  				case 5 :
+  					$ActionID = 9;
+  					$Redirect = "Yes";
+  					$Flash = __('VoidedInvoiceFlash', true);
+  					break;
+  				//Just Update
+  				default :
+  					$ActionID = 2;
+  					$Flash = __('UpdatedFlash', true);
+  					break;
+  			}
+  			//Update DB
+  			$this -> Invoices -> UpdateInvoice($InvoiceID);
+  			$this -> Invoices -> AddInvoiceLog($InvoiceID, $ActionID, $TheComment);
+  		} else {
+  			//Add New Invoice
+  			$InvoiceID = $this -> Invoices -> AddInvoice();
+  
+  			if (isset($_POST['Comment'])) {$TheComment = $_POST['Comment'];
+  			} else {$TheComment = null;
+  			}
+  			$this -> Invoices -> AddInvoiceLog($InvoiceID, 1, $TheComment);
+  		}
+  		//Save Lines
+  		if (isset($_POST['Qty'])) {
+  			$this -> Invoices -> DeleteInvoiceDetail($InvoiceID);
+  			$i = 0;
+  			foreach ($_POST['Qty'] as $ThisDetailQ) {
+  				$Qty = $ThisDetailQ;
+  				if (is_numeric($Qty)) {
+  					$Description = $_POST['Desc'][$i];
+  					$UnitPrice = $_POST['UnitPrice'][$i];
+  					if (!is_numeric($UnitPrice)) {$UnitPrice = 0;
+  					}
+  					$Amount = $_POST['Amount'][$i];
+  					if (!is_numeric($Amount)) {$Amount = 0;
+  					}
+  					$this -> Invoices -> AddInvoiceDetail($InvoiceID, $Qty, $Description, $UnitPrice, $Amount);
+  				}
+  				$i++;
+  			}
+  		}
+  		//Send Emails if Any Here
+  		if ($ActionID == 8) {
+  			$InvoiceQ = current($this -> Invoices -> index($InvoiceID));
+  			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
+  			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmManualPaid', true);
+  			$TheTemplate = "invoicepaid_html";
+  			require current(App::path("Template")). '/Company' . DS . 'mail.ctp';
+  		}
+  		if ($ActionID == 9) {
+  			$InvoiceQ = current($this -> Invoices -> index($InvoiceID));
+  			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
+  			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmVoid', true);
+  			$TheTemplate = "invoicepaid_html";
+  			//require VIEWS . 'company' . DS . 'mail.ctp';
+        require current(App::path("Template")).'/Company' . DS . 'mail.ctp';
+  		}
+
+      $this->set('__serialize',["is_success"=>1,"flash"=>$Flash]);
     }
 
 }

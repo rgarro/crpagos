@@ -168,8 +168,10 @@ class InvoicesTable extends Table
 
 		public function AddInvoice(){
 			$TheSql =" INSERT INTO Invoices(CompanyID, StatusID, ClientID, InvoiceNumber, LocaleCode, InvoiceDate, CurrencyID, Note, EmailSubject,EnteredBy) ";
-			$TheSql.=" VALUES (".$_SESSION['CurrentCompanyID'].",";
-			$TheSql.="1,";
+      $cid = (isset($_SESSION['CurrentCompanyID'])?$_SESSION['CurrentCompanyID']:$_SESSION['Company']['CurrentCompanyID']);
+      //$TheSql.=" VALUES (".$_SESSION['CurrentCompanyID'].",";
+      $TheSql.=" VALUES (".$cid.",";
+      $TheSql.="1,";
 			$TheSql.=$_POST['ClientID'].",";
 			$TheSql.="'".$_POST['InvoiceNumber']."',";
 			$TheLocale = $_POST['LocaleCode'];

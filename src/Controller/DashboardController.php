@@ -17,6 +17,8 @@ class DashboardController extends AppController
       $this->loadModel("Terms");
       $this->loadModel("Locales");
       $this->loadModel("AccessLevels");
+      $this->loadModel("Clients");
+      $this->loadModel("Currencies");
   }
 
     public function index()
@@ -90,6 +92,11 @@ class DashboardController extends AppController
     public function company()
     {
       $this->viewBuilder()->setLayout('ajax');
+
+      $this -> Set('LocalesQ', $this -> Locales -> index());
+  		$this -> Set('ClientsQ', $this -> Clients -> index());
+  		$this -> Set('CurrencyQ', $this -> Currencies -> index());
+  		$this -> Set('InvoiceLogQ', array());
     }
 
     public function clients()

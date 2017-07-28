@@ -31,3 +31,20 @@
 <script src="/js/users.js"></script>
 <script src="/js/custom.js"></script>
 <script src="/js/jquery/jquery.tinymce.js"></script>
+<?
+$session = $this->request->session();
+echo $this->Html-> css("ui");
+//	echo $this->Html-> css("tabs","stylesheet", array(), false);
+echo $this->Html->script("jquery/jquery.ui");
+echo $this->Html->script("jquery/jquery.form");
+echo $this->Html->script("jquery/jquery.addtolist");
+echo $this->Html->script("jquery/jquery.cookie");
+echo $this->Html->script("jquery/validate");
+
+$TheJs = $session->read('LocaleCode').'/validateinvoice';
+echo $this->Html->script($TheJs);
+$TheJs1 = $session->read('LocaleCode').'/checkclient';
+echo $this->Html->script($TheJs1);
+//localized datepiecker
+$TheUiJs = 'jquery/ui/i18n/ui.datepicker-'.$session->read('LocaleCode');
+echo $this->Html->script($TheUiJs);

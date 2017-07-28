@@ -52,8 +52,8 @@ $this->pageTitle= __('Invoices').' '.$session->read('Company.CurrentName');
                                       </div>
                                   </div>
                                   <div class="tab-pane fade" id="addnew">
-                                      <h4>New</h4>
-
+                                      <h4><i class="fa fa-plus"></i> <?= __('NewInvoice') ?></h4>
+<?php echo $this->element('Admin/newinvoice'); ?>
                                   </div>
                               </div>
                           </div>
