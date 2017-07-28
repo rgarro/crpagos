@@ -15,7 +15,6 @@ class AcompanyController extends AppController
       $this->loadModel("Invoices");
       $this->loadModel('Companies');
       $this->loadComponent('RequestHandler');
-
       $this->loadModel("Users");
       $this->loadModel("Currencies");
       $this->loadModel("Locales");
@@ -36,6 +35,17 @@ class AcompanyController extends AppController
       }else{
         throw new Exception("Must GET a numeric company_id and status_id.");
       }
+    }
+
+    public function viewinvoice(){
+      $this->viewBuilder()->setLayout('ajax');
+      $session = $this->request->session();
+  		$InvoiceID = $_GET['invoice_id'];
+  		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
+  		$this -> Set('InvoiceDetailQ', $this -> Invoices -> GetInvoiceDetail($InvoiceID));
+  		$this -> Set('InvoiceLogQ', $this -> Invoices -> GetInvoiceLog($InvoiceID));
+  		$this -> Set('LocalesQ', $this -> Locales -> index());
+  		$this -> Set('StatusQ', $this -> Status -> index($this -> viewVars['InvoiceQ'][0]['StatusID']));
     }
 
     public function save(){
@@ -98,7 +108,7 @@ class AcompanyController extends AppController
   		} else {
   			//Add New Invoice
   			$InvoiceID = $this -> Invoices -> AddInvoice();
-  
+
   			if (isset($_POST['Comment'])) {$TheComment = $_POST['Comment'];
   			} else {$TheComment = null;
   			}

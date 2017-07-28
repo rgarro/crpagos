@@ -51,7 +51,13 @@ foreach ($invoices as $c) {
           </td>
          <td><?= $c['Detail']['Description']?> </td>
          <td>
+           <?php
+if($status_id == 3 || $status_id == 4){
+           ?>
+           <button invoice_id="<?= $c['InvoiceID'] ?>" class="btn btn-xs btn-outline btn-default view-invoice-btn"> <i class="fa fa-search-plus"></i><?= __('View') ?></button>
+<?php } else { ?>
            <button invoice_id="<?= $c['InvoiceID'] ?>" action="edit" class="btn btn-xs btn-outline btn-default edit-invoice-btn"><i class="fa fa-pencil"></i> <?= __('EditInvoice') ?></button>
+<?php } ?>
          </td>
 
      </tr>
@@ -62,6 +68,23 @@ foreach ($invoices as $c) {
 </table>
 <script>
     $(document).ready(function() {
+
+$('.view-invoice-btn').on('click',function(){
+  var invoice_id = $(this).attr('invoice_id');
+  $.ajax({
+    url:"/acompany/viewinvoice",
+    data:{
+      invoice_id:invoice_id
+    },
+    type:"GET",
+    success:function(data){
+      CRContactos_Manager.check_errors(data);
+      $(".invoice-edit-form-spot").html(data);
+      $("#invoiceEditModal").modal("show");
+    }
+  });
+});
+
         $('#dataTables-<?=$status_name?>-Invoices').DataTable({
             responsive: true
         });
