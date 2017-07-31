@@ -6,25 +6,10 @@ $session = $this->request->session();
 $ThisInvoice = current($InvoiceQ);
 $this -> pageTitle = __('Editing', true) . ' ' . __('InvoiceNumber', true) . ' ' . $ThisInvoice['InvoiceNumber'];
 //echo $this->Html-> css("default/ui.datepicker","stylesheet", array(), false);
-echo $this->Html-> css("ui");
-//$html -> css("tabs", "stylesheet", array(), false);
-echo $this->Html->script("jquery/jquery.form");
-echo $this->Html->script("jquery/jquery.addtolist");
-echo $this->Html->script("jquery/jquery.ui");
-echo $this->Html->script("jquery/validate");
-echo $this->Html->script("jquery/jquery.cookie");
-echo $this->Html->script("invoice");
-//localized validation code
-$TheJs = $session -> read('LocaleCode') . '/validateinvoice';
-echo $this->Html->script($TheJs);
-$TheJs1 = $session -> read('LocaleCode') . '/checkclient';
-echo $this->Html->script($TheJs1);
-//localized datepiecker
-$TheUiJs = 'jquery/ui/i18n/ui.datepicker-' . $session -> read('LocaleCode');
-echo $this->Html->script($TheUiJs);
+
 echo '<h3>', $this -> pageTitle, '</h3>';
 ?>
-<form name="TheForm" id="TheForm" method="post" action="/company/saveinvoice/">
+<form name="TheEditForm" id="TheEditForm" method="post">
 <input type="hidden" value="<?php echo base64_encode($ThisInvoice['InvoiceID']) ?>" name="InvoiceID" id="InvoiceID">
 <table align="center" class="main" border="0">
 	<tr>
@@ -131,7 +116,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 		$Total = 0;
 		$LineNum = 1;
 		foreach ($InvoiceDetailQ as $ThisDetail) {
-			echo '<tr id="Line', $LineNum, '" class="line">';
+			echo '<tr id="Lineb', $LineNum, '" class="lineb">';
 			echo '<td align="center" nowrap="nowrap"> <input name="Qty[]" type="text" id="Qty" size="2" maxlength="2" value="', $ThisDetail['Qty'], '" class="qty"></td>';
 			echo '<td nowrap="nowrap"><input name="Desc[]" type="text" id="Desc" size="50" maxlength="255" value="', $ThisDetail['Description'], '"></td>';
 			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="UnitPrice[]"  type="text" id="UnitPrice" size="9" maxlength="9" class="unitprice" value="', number_format($ThisDetail['UnitPrice'], 2), '"></td>';
@@ -150,12 +135,12 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 			$Total = $Total + $ThisDetail['Amount'];
 		}
 	?>
-      <tr id="LastLine">
+      <tr id="LastLineb">
         <td colspan="4">&nbsp;</td>
        </tr>
       <tr>
         <td align="right">&nbsp;</td>
-        <td align="center"><a href="#" name="AddRow" id="AddRow" tabindex="20"><b>&raquo;<?php echo __('AddRow') ?></b></a></td>
+        <td align="center"><a href="#" name="AddRow" id="AddRowb" tabindex="20"><b>&raquo;<?php echo __('AddRow') ?></b></a></td>
         <td align="right"><label><b><?php echo __('Total') ?>:</b></label></td>
         <td align="center" nowrap="nowrap"><label><span class="currency"><?php echo $ThisInvoice['CurrencySymbol'] ?></span></label><input name="InvoiceTotal" type="text" id="InvoiceTotal" tabindex="-1" size="9" maxlength="12" readonly="readonly" class="total" value="<?php echo number_format($Total, 2) ?>"></td>
         </tr>
@@ -174,4 +159,179 @@ echo '<h3>', $this -> pageTitle, '</h3>';
   </tr>
 </table>
 </form>
-<?php echo $this->element('Admin/quickadd'); ?>
+<?php //echo $this->element('Admin/quickadd'); ?>
+<script>
+$(document).ready(function() {
+
+  $("#TheEditForm").on("submit",function(){
+    var cia_datos = $("#TheEditForm").serializeHash();
+    $.ajax({
+      url:"/acompany/saveinvoice",
+      data:cia_datos,
+      type:"post",
+      dataType:"json",
+      success:function(dat){
+        var data = dat.__serialize;
+        CRContactos_Manager.check_errors(data);
+        if(data.is_success == 1){
+          new Noty({
+              text: data.flash,
+              type:'alert',
+              timeout:4000,
+                layout:'top',
+              animation: {
+                  open: 'animated bounceInLeft', // Animate.css class names
+                  close: 'animated bounceOutLeft', // Animate.css class names
+              }
+          }).show();
+					$(".invoice-edit-form-spot").html(" ");
+		      $("#invoiceEditModal").modal("hide");
+					setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
+          //window.location.href = "#/MyCompany/";
+        }
+      }
+    });
+    return false;
+  });
+
+	var count = $(".lineb").length;
+	$("#AddRowb").click(function() {
+		NewLine = $("#Lineb1").clone(true);
+		TheNewID = "Lineb" + count;
+		NewLine.attr("id", TheNewID);
+		NewLine.insertBefore("#LastLineb");
+		$("#" + TheNewID + " :text").attr("value", "")
+		$(NewLine).find("a").show();
+		$("#" + TheNewID + " #Qty").focus()
+		count++
+		return false;
+	});
+
+	$("#InvoiceDate").datepicker({
+		showOn : "both",
+		defaultDate : +1,
+		buttonImage : '/img/calendar.gif',
+		buttonImageOnly : true,
+		dateFormat : "mm/dd/yy"
+	})
+
+	$("#StatusID").change(function() {
+		if ($("#StatusID").attr("value") == 4) {
+			$("#RefNumber").show();
+		} else {
+			$("#RefNumber").hide();
+		}
+	})
+
+	$("#FormDetail :text").blur(function() {
+		$("tr .line").each(function(i) {
+			if ($(this).attr("id") != '') {
+				TheVar = "#" + this.id + " input:eq(0)";
+				Qty = $(TheVar).attr("value")
+				if ((isNaN(Qty) || Qty.length == 0) || Qty < 1) {
+					$(TheVar).attr("value", "0")
+					Qty = 0
+				}
+				TheVar = "#" + this.id + " input:eq(2)";
+				UnitPrice = $(TheVar).attr("value")
+				if (isNaN(UnitPrice) || UnitPrice.length == 0 || UnitPrice < 0) {
+					$(TheVar).attr("value", "0")
+					UnitPrice = 0
+				}
+				TheUP = parseFloat(UnitPrice).toFixed(2)
+				TheUP = UnitPrice
+				$(TheVar).attr("value", TheUP)
+				Amount = parseInt(Qty) * parseFloat(UnitPrice)
+				Amount = Qty * UnitPrice;
+				if (isNaN(Amount)) {
+					Amount = 0
+				}
+
+				Amount = Amount.toFixed(2)
+				TheVar = "#" + this.id + " input:eq(3)";
+				$(TheVar).attr("value", Amount)
+			}
+		})
+		var Total = 0
+		$(".amount").each(function(i) {
+			Total = (parseFloat(Total) + parseFloat(this.value))
+		})
+		Total = Total.toFixed(2)
+		$("#InvoiceTotal").attr("value", Total)
+	});
+
+	$("#ClientID").addToList({
+		form : '#ClientForm',
+		insertPosition : 'first',
+		dataHandler : function(data) {
+			return {
+				value : data.ClientID,
+				label : data.ClientName
+			}
+		}
+	});
+
+	$('#ClientID').bind('form-open', function() {
+		$('#TheClientForm').clearForm()
+		$('#TheBusForm').clearForm()
+		$('#TheClientForm label.error').remove()
+		$('#TheBusForm label.error').remove()
+		$('#TheClientForm *').removeClass("error")
+		$('#TheBusForm *').removeClass("error")
+		$('#TheClientForm *').removeClass("checked")
+		$('#TheBusForm *').removeClass("checked	")
+		$('#QuickSubmitP').attr("value", $('#ButOrValP').attr("value"))
+		$('#QuickSubmitP').attr("disabled", false)
+		$('#CloseP').attr("disabled", false)
+		$('#QuickSubmitB').attr("value", $('#ButOrValB').attr("value"))
+		$('#QuickSubmitB').attr("disabled", false)
+		$('#CloseB').attr("disabled", false)
+
+	});
+
+	$('#CloseB, #CloseP').click(function() {
+		$('#ClientID').trigger('form-cancel')
+	});
+
+	$('#New').click(function() {
+		$('#ClientID').trigger('form-open');
+	});
+
+	$("#CurrencyID").change(function() {
+		$("#CurrencyID option:selected").each(function() {
+			$(".currency").html(($(this).attr("symbol")))
+		})
+	});
+
+	$(".commentslink").click(function() {
+		if ($(".comments").is(":hidden")) {
+			$(".showcomments").fadeOut("slow")
+			$(".comments").slideDown("slow", function() {
+				$(".hidecomments").fadeIn("slow")
+			});
+
+		} else {
+			$(".hidecomments").fadeOut("slow")
+			$(".comments").slideUp("slow", function() {
+				$(".showcomments").fadeIn("slow");
+			});
+
+		}
+		return false
+	});
+
+	$(".DelLine").click(function(){
+		if(confirm($(this).attr('msg'))){
+			$(this).parent().parent().fadeOut('slow').remove()
+			$("#Qty").focus();
+			var Total = 0
+			$(".amount").each(function(i) {
+				Total = (parseFloat(Total) + parseFloat(this.value))
+			})
+			Total = Total.toFixed(2)
+			$("#InvoiceTotal").attr("value", Total)
+		};
+		return false
+	})
+});
+</script>

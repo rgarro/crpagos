@@ -41,6 +41,7 @@ echo $this->Html->script("jquery/jquery.addtolist");
 echo $this->Html->script("jquery/jquery.cookie");
 echo $this->Html->script("jquery/validate");
 
+
 $TheJs = $session->read('LocaleCode').'/validateinvoice';
 echo $this->Html->script($TheJs);
 $TheJs1 = $session->read('LocaleCode').'/checkclient';
