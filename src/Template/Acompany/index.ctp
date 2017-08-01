@@ -54,8 +54,19 @@ foreach ($invoices as $c) {
            <?php
 if($status_id == 3 || $status_id == 4){
            ?>
-           <button invoice_id="<?= $c['InvoiceID'] ?>" class="btn btn-xs btn-outline btn-default view-invoice-btn"> <i class="fa fa-search-plus"></i><?= __('View') ?></button>
-<?php } else { ?>
+           <button invoice_id="<?= $c['InvoiceID'] ?>" class="btn btn-xs btn-outline btn-default view-invoice-btn"> <i class="fa fa-search-plus"></i> <?= __('View') ?></button>
+<?php
+} elseif ($status_id == 2) {
+?>
+<button invoice_id="<?= $c['InvoiceID'] ?>" class="btn btn-xs btn-outline btn-default view-voidinvoice-btn"> <i class="fa fa-warning"></i> <?= __('Void') ?></button>
+<button invoice_id="<?= $c['InvoiceID'] ?>" class="btn btn-xs btn-outline btn-default view-payinvoice-btn"> <i class="fa fa-money"></i> <?= __('Pay') ?></button>
+<?php
+}elseif ($status_id == 5) {
+?>
+<button invoice_id="<?= $c['InvoiceID'] ?>" class="btn btn-xs btn-outline btn-default view-invoice-btn"> <i class="fa fa-search-plus"></i> <?= __('View') ?></button>
+<?php
+}else {
+  ?>
            <button invoice_id="<?= $c['InvoiceID'] ?>" action="edit" class="btn btn-xs btn-outline btn-default edit-invoice-btn"><i class="fa fa-pencil"></i> <?= __('EditInvoice') ?></button>
 <?php } ?>
          </td>
@@ -68,6 +79,41 @@ if($status_id == 3 || $status_id == 4){
 </table>
 <script>
     $(document).ready(function() {
+
+      $('.view-payinvoice-btn').on('click',function(){
+        $(".invoice-edit-form-spot").html(" ");
+        var invoice_id = $(this).attr('invoice_id');
+        $.ajax({
+          url:"/acompany/viewpayinvoice",
+          data:{
+            invoice_id:invoice_id
+          },
+          type:"GET",
+          success:function(data){
+            CRContactos_Manager.check_errors(data);
+            $(".invoice-edit-form-spot").html(data);
+            $("#invoiceEditModal").modal("show");
+          }
+        });
+      });
+
+
+      $('.view-voidinvoice-btn').on('click',function(){
+        $(".invoice-edit-form-spot").html(" ");
+        var invoice_id = $(this).attr('invoice_id');
+        $.ajax({
+          url:"/acompany/viewvoidinvoice",
+          data:{
+            invoice_id:invoice_id
+          },
+          type:"GET",
+          success:function(data){
+            CRContactos_Manager.check_errors(data);
+            $(".invoice-edit-form-spot").html(data);
+            $("#invoiceEditModal").modal("show");
+          }
+        });
+      });
 
 $('.view-invoice-btn').on('click',function(){
   var invoice_id = $(this).attr('invoice_id');

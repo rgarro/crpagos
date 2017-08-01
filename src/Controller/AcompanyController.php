@@ -3,6 +3,10 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\I18n\I18n;
+use Cake\Core\Configure;
+use Cake\Mailer\Email;
+use Cake\Core\App;
+use App\Lib\L10n;
 
 class AcompanyController extends AppController
 {
@@ -37,12 +41,33 @@ class AcompanyController extends AppController
       }
     }
 
+    public function viewvoidinvoice(){
+      $this->viewBuilder()->setLayout('ajax');
+      $session = $this->request->session();
+      $InvoiceID = $_GET['invoice_id'];
+  		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
+
+  		if ($this -> viewVars['InvoiceQ'][0]['StatusID'] < 2) {
+  			$this -> redirect('/company/viewinvoice/' . base64_encode($InvoiceID) . '/');
+  			exit();
+  		}
+  		$this -> Set('InvoiceDetailQ', $this -> Invoices -> GetInvoiceDetail($InvoiceID));
+  		$this -> Set('InvoiceLogQ', $this -> Invoices -> GetInvoiceLog($InvoiceID));
+  		$this -> Set('LocalesQ', $this -> Locales -> index());
+  		$this -> Set('StatusQ', $this -> Status -> index($this -> viewVars['InvoiceQ'][0]['StatusID']));
+    }
+
+    public function viewpayinvoice(){
+      $this->viewBuilder()->setLayout('ajax');
+      $session = $this->request->session();
+    }
+
     public function editinvoice(){
       $this->viewBuilder()->setLayout('ajax');
       $session = $this->request->session();
       $InvoiceID = $_GET['invoice_id'];
   		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
-  		
+
   		$this -> Set('LocalesQ', $this -> Locales -> index());
   		$this -> Set('ClientsQ', $this -> Clients -> index());
   		$this -> Set('CurrencyQ', $this -> Currencies -> index());
