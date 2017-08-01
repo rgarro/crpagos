@@ -60,6 +60,16 @@ class AcompanyController extends AppController
     public function viewpayinvoice(){
       $this->viewBuilder()->setLayout('ajax');
       $session = $this->request->session();
+      $InvoiceID = $_GET['invoice_id'];
+  		$this -> Set('InvoiceQ', $this -> Invoices -> index($InvoiceID));
+  		/*if ($this -> viewVars['InvoiceQ'][0]['StatusID'] < 2) {
+  			$this -> redirect('/company/viewinvoice/' . base64_encode($InvoiceID) . '/');
+  			exit;
+  		}*/
+  		$this -> Set('InvoiceDetailQ', $this -> Invoices -> GetInvoiceDetail($InvoiceID));
+  		$this -> Set('InvoiceLogQ', $this -> Invoices -> GetInvoiceLog($InvoiceID));
+  		$this -> Set('LocalesQ', $this -> Locales -> index());
+  		$this -> Set('StatusQ', $this -> Status -> index($this -> viewVars['InvoiceQ'][0]['StatusID']));
     }
 
     public function editinvoice(){
