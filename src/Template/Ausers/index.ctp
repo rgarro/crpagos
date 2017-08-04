@@ -17,7 +17,15 @@ $session = $this->request->session();
 foreach ($users as $c) {
 ?>
    <tr class="">
-      <td><?= ($c['UserStatus']? __('Active') : __('InActive')) ?></td>
+      <td>
+<?php
+$label =  ($c['UserStatus']? __('Active') : __('InActive'));
+$value = ($c['UserStatus']? 0 : 1);
+$class = ($c['UserStatus']? "btn-success" : "btn-warning");
+$icon = ($c['UserStatus']? "star" : "star-o");
+?>
+<button user_id="<?= $c['UserID'] ?>" status="<?= $value; ?>" class="btn btn-xs btn-outline <?= $class; ?> change-status-user-btn"><i class="fa fa-<?= $icon;?>"></i> </button> <?= $label; ?>
+</td>
      <td><?= $c['AccessLevels']['AccessLevel'] ?></td>
      <td><?= $c['FirstName'] ?></td>
      <td><?= $c['LastName'] ?></td>
@@ -31,6 +39,41 @@ foreach ($users as $c) {
                              </table>
 <script>
     $(document).ready(function() {
+
+      $('.change-status-user-btn').on("click",function(){
+        if(window.confirm("<?= __('ChangeStatus')?>")){
+          var user_id = $(this).attr("user_id");
+          var status = $(this).attr("status");
+          $.ajax({
+            url:"/ausers/save",
+            data:{
+              UserID:user_id,
+              UserStatus:status
+            },
+            type:"GET",
+            dataType:"json",
+            success:function(dat){
+              var data = dat.__serialize;
+              CRContactos_Manager.check_errors(data);
+              if(data.is_success == 1){
+                new Noty({
+                    text: data.flash,
+                    type:'success',
+                    timeout:4000,
+                      layout:'top',
+                    animation: {
+                        open: 'animated bounceInLeft', // Animate.css class names
+                        close: 'animated bounceOutLeft', // Animate.css class names
+                    }
+                }).show();
+                var userf = new users();
+                userf.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
+              }
+            }
+          });
+        }
+      });
+
         $('#dataTables-Users').DataTable({
             responsive: true
         });

@@ -42,6 +42,10 @@ class AusersController extends AppController
       }
     }
 
+    public function setactive(){
+      
+    }
+
     public function save(){
       $session = $this->request->session();
       if(isset($_GET['UserID']) && is_numeric($_GET['UserID'])){
