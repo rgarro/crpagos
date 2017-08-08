@@ -1,6 +1,10 @@
 <?php
+use Cake\Core\Configure;
+
 $session = $this->request->session();
 $this->pageTitle= __('Invoices').' '.$session->read('Company.CurrentName');
+
+$newFormTitle= __('AddNewInvoiceFor').' '.$session->read('Company.CurrentName');
 ?>
 <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -53,7 +57,10 @@ $this->pageTitle= __('Invoices').' '.$session->read('Company.CurrentName');
                                   </div>
                                   <div class="tab-pane fade" id="addnew">
                                       <h4><i class="fa fa-plus"></i> <?= __('NewInvoice') ?></h4>
-<?php echo $this->element('Admin/newinvoice'); ?>
+<?php
+//require_once(APP."/Template/Acompany/newinvoice.ctp");
+echo $this->element('Admin/newinvoice');
+?>
                                   </div>
                               </div>
                           </div>

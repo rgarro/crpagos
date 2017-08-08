@@ -1,6 +1,7 @@
 <?php
 use Cake\Core\Configure;
 $session = $this->request->session();
+$this->pageTitle= __('AddNewInvoiceFor').' '.$session->read('Company.CurrentName');
 ?>
 <form name="invoiceTheForm" id="invoiceTheForm">
 <table align="center" class="main" border="0">
@@ -8,7 +9,7 @@ $session = $this->request->session();
 			<td>
 			<table width="100%" border="0">
 				<tr>
-          <td> </td>
+					<td><img hspace="10" src="<?php echo '/img',$session->read('Company.CurrentURL'),$session->read('Company.CurrentLogo') ?>" alt=""></td>
 					<td style="text-align:center;"><h3 style="font-size:23pt"><b><?php echo __('InvoiceRequestFrom') ?></b></h3></td>
 				</tr>
 				<tr>
@@ -55,7 +56,7 @@ $session = $this->request->session();
 				<optgroup label="-------------------------------------">
 				<option value="-1"><?php echo __('AddNewClient') ?></option>
 				</optgroup>
-				</select>&nbsp;
+				</select>&nbsp;<input tabindex="7" type="button" name="New" id="New" value="<?php echo __('AddNewClient')?>">
 	</td>
 </tr>
 	<tr>
@@ -92,7 +93,7 @@ $session = $this->request->session();
 			</table>
 			</td>
 </tr>
-<?php echo $this->element('Admin/notes'); ?>
+<?php include 'notes.ctp'; ?>
 	<tr>
 	<th>
 	<input tabindex="21" name="Continue" type="submit" id="Continue" value="<?php echo __('Continue') ?>"><br>&nbsp;
@@ -100,6 +101,12 @@ $session = $this->request->session();
 </tr>
 </table>
 </form>
+<script language="JavaScript">
+	$(document).ready(function(){
+		$("#ClientID").attr("selectedIndex", "0");
+	});
+</script>
+<br>
 <script>
 $(document).ready(function() {
 
