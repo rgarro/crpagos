@@ -13,13 +13,9 @@
                         <div class="form-group">
                             <input class="form-control" placeholder="Password" name="Password" type="password" value="">
                         </div>
-                        <div class="checkbox">
-                            <label>
-                                <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                            </label>
-                        </div>
+
                         <!-- Change this to a button or input when using this as a form -->
-                        <button type="submit" class="btn btn-lg btn-success btn-block">Login</button>
+                        <button type="submit" class="btn btn-lg btn-success btn-block"><i class="fa fa-sign-in"></i></button>
                     </fieldset>
                 </form>
             </div>

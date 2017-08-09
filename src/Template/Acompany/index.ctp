@@ -132,7 +132,31 @@ $('.view-invoice-btn').on('click',function(){
 });
 
         $('#dataTables-<?=$status_name?>-Invoices').DataTable({
-            responsive: true
+            responsive: true,
+            language: {
+              decimal:        "",
+              emptyTable:     "No data available in table",
+              info:           "<?= __('Showing') ?> _START_ <?= __('to') ?> _END_ <?= __('of') ?> _TOTAL_ <?= __('entries') ?>",
+              infoEmpty:      "Showing 0 <?= __('to') ?> 0 <?= __('of') ?> 0 <?= __('entries') ?>",
+              infoFiltered:   "(filtered from _MAX_ total entries)",
+              infoPostFix:    "",
+              thousands:      ",",
+              lengthMenu:     "<?= __('Show') ?> _MENU_ <?= __('entries') ?>",
+              loadingRecords: "Loading...",
+              processing:     "Processing...",
+              search:         "<?= __('Search') ?>:",
+              zeroRecords:    "No matching records found",
+              paginate: {
+                  first:      "<?= __('First') ?>",
+                  last:       "<?= __('Last') ?>",
+                  next:       "<?= __('Next') ?>",
+                  previous:   "<?= __('Previous') ?>"
+              },
+              aria: {
+                  sortAscending:  ": activate to sort column ascending",
+                  sortDescending: ": activate to sort column descending"
+              }
+            }
         });
     });
 </script>

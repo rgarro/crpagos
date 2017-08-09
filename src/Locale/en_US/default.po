@@ -14,6 +14,36 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: D:\\Webs\\CRPagos\\application\\app\\locale\n"
 
+msgid "entries"
+msgstr "entries"
+
+msgid "of"
+msgstr "of"
+
+msgid "to"
+msgstr "to"
+
+msgid "Showing"
+msgstr "Showing"
+
+msgid "Show"
+msgstr "Show"
+
+msgid "Previous"
+msgstr "Previous"
+
+msgid "Next"
+msgstr "Next"
+
+msgid "Last"
+msgstr "Last"
+
+msgid "First"
+msgstr "First"
+
+msgid "AddNewCompany"
+msgstr "Add New Company"
+
 msgid "EmailOrLogin"
 msgstr "E-mail"
 
