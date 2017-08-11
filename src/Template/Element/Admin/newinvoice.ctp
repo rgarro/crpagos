@@ -74,11 +74,11 @@ $session = $this->request->session();
 		<td class="title"><?php echo __('UnitPrice') ?></td>
 		<td class="title"><?php echo __('Amount') ?></td>
 		</tr>
-		<tr id="Line1" class="line">
+		<tr id="Line0" class="line">
 			<td align="center" nowrap="nowrap"><input name="Qty[]" tabindex="17" type="number" id="Qty0" size="2" maxlength="2" value="1" class="qty" required="required"></td>
 			<td nowrap="nowrap"><input name="Desc[]" tabindex="18"  type="text" id="Desc[]" size="50" maxlength="255" value="" required="required"></td>
-			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="UnitPrice[]" tabindex="19"  type="number" id="UnitPrice[]" size="9" maxlength="9" class="unitprice" value=""></td>
-			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="Amount[]" type="number" id="Amount[]" tabindex="-1" value="" size="9" maxlength="9" readonly="readonly" class="amount"></td>
+			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="UnitPrice[]" tabindex="19"  type="number" id="UnitPrice0" size="9" maxlength="9" class="unitprice" value=""></td>
+			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="Amount[]" type="number" id="Amount0" tabindex="-1" value="" size="9" maxlength="9" readonly="readonly" class="amount"></td>
 			</tr>
 	<tr id="LastLine">
 		<td colspan="4">&nbsp;</td>
@@ -134,7 +134,7 @@ $(document).ready(function() {
 
 	var count = $(".line").length;// + 1;
 	$("#AddRow").click(function() {
-		NewLine = $("#Line1").clone(true);
+		NewLine = $("#Line0").clone(true);
 		TheNewID = "Line" + count;
 		NewLine.attr("id", TheNewID);
 		NewLine.insertBefore("#LastLine");
@@ -142,6 +142,8 @@ $(document).ready(function() {
 		$(NewLine).find("a").show();
 		$("#" + TheNewID + " #Qty0").focus();
 $("#" + TheNewID + " #Qty0").attr("id","Qty"+count);
+$("#" + TheNewID + " #Amount0").attr("id","Amount"+count);
+$("#" + TheNewID + " #UnitPrice0").attr("id","UnitPrice"+count);
 		$("#" + TheNewID + " #Qty"+count).focus();
 		count++;
 		return false;
@@ -161,32 +163,32 @@ $("#" + TheNewID + " #Qty0").attr("id","Qty"+count);
 		} else {
 			$("#RefNumber").hide();
 		}
-	})
+	});
 
-	//$("#FormDetail :text").blur(function() {
 	$("#FormDetail :input").blur(function(evt) {
 		var n = 0;
 		$("tr .line").each(function(i) {
 			if ($(this).attr("id") != '') {
-var myqty = $(this).find(".qty");
-console.log(myqty);
+
 				TheVar = "#" + this.id + " input:eq(0)";
-console.log(TheVar);
-				Qty = $(TheVar).attr("value");
-console.log(Qty);
+
+				Qty = $("#Qty"+n).val();
+
 				if ((isNaN(Qty) || Qty.length == 0) || Qty < 1) {
-					$(TheVar).attr("value", "0");
+					$("#Qty"+n).val(0);
 					Qty = 0;
 				}
 				TheVar = "#" + this.id + " input:eq(2)";
-				UnitPrice = $(TheVar).attr("value");
+				UnitPrice = $("#UnitPrice"+n).val();
+
+
 				if (isNaN(UnitPrice) || UnitPrice.length == 0 || UnitPrice < 0) {
-					$(TheVar).attr("value", "0");
+					$("#UnitPrice"+n).val(0);
 					UnitPrice = 0;
 				}
 				TheUP = parseFloat(UnitPrice).toFixed(2);
 				TheUP = UnitPrice;
-				$(TheVar).attr("value", TheUP);
+				$("#UnitPrice"+n).val(TheUP);
 				Amount = parseInt(Qty) * parseFloat(UnitPrice);
 				Amount = Qty * UnitPrice;
 				if (isNaN(Amount)) {
@@ -195,10 +197,11 @@ console.log(Qty);
 
 				Amount = Amount.toFixed(2)
 				TheVar = "#" + this.id + " input:eq(3)";
-				$(TheVar).attr("value", Amount);
+				$("#Amount"+n).val(TheUP);
+//n++;
 			}
 			n++;
-		})
+		});
 		var Total = 0;
 		$(".amount").each(function(i) {
 			Total = (parseFloat(Total) + parseFloat(this.value))
