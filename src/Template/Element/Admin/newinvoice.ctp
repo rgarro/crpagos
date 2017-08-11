@@ -75,7 +75,7 @@ $session = $this->request->session();
 		<td class="title"><?php echo __('Amount') ?></td>
 		</tr>
 		<tr id="Line1" class="line">
-			<td align="center" nowrap="nowrap"><input name="Qty[]" tabindex="17" type="number" id="Qty[]" size="2" maxlength="2" value="1" class="qty" required="required"></td>
+			<td align="center" nowrap="nowrap"><input name="Qty[]" tabindex="17" type="number" id="Qty0" size="2" maxlength="2" value="1" class="qty" required="required"></td>
 			<td nowrap="nowrap"><input name="Desc[]" tabindex="18"  type="text" id="Desc[]" size="50" maxlength="255" value="" required="required"></td>
 			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="UnitPrice[]" tabindex="19"  type="number" id="UnitPrice[]" size="9" maxlength="9" class="unitprice" value=""></td>
 			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="Amount[]" type="number" id="Amount[]" tabindex="-1" value="" size="9" maxlength="9" readonly="readonly" class="amount"></td>
@@ -132,7 +132,7 @@ $(document).ready(function() {
     return false;
   });
 
-	var count = $(".line").length + 1;
+	var count = $(".line").length;// + 1;
 	$("#AddRow").click(function() {
 		NewLine = $("#Line1").clone(true);
 		TheNewID = "Line" + count;
@@ -140,7 +140,9 @@ $(document).ready(function() {
 		NewLine.insertBefore("#LastLine");
 		$("#" + TheNewID + " :text").attr("value", "");
 		$(NewLine).find("a").show();
-		$("#" + TheNewID + " #Qty").focus();
+		$("#" + TheNewID + " #Qty0").focus();
+$("#" + TheNewID + " #Qty0").attr("id","Qty"+count);
+		$("#" + TheNewID + " #Qty"+count).focus();
 		count++;
 		return false;
 	});
@@ -163,10 +165,13 @@ $(document).ready(function() {
 
 	//$("#FormDetail :text").blur(function() {
 	$("#FormDetail :input").blur(function(evt) {
+		var n = 0;
 		$("tr .line").each(function(i) {
 			if ($(this).attr("id") != '') {
+var myqty = $(this).find(".qty");
+console.log(myqty);
 				TheVar = "#" + this.id + " input:eq(0)";
-console.log(TheVar);				
+console.log(TheVar);
 				Qty = $(TheVar).attr("value");
 console.log(Qty);
 				if ((isNaN(Qty) || Qty.length == 0) || Qty < 1) {
@@ -192,6 +197,7 @@ console.log(Qty);
 				TheVar = "#" + this.id + " input:eq(3)";
 				$(TheVar).attr("value", Amount);
 			}
+			n++;
 		})
 		var Total = 0;
 		$(".amount").each(function(i) {
