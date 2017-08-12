@@ -197,17 +197,17 @@ $("#" + TheNewID + " #UnitPrice0").attr("id","UnitPrice"+count);
 
 				Amount = Amount.toFixed(2)
 				TheVar = "#" + this.id + " input:eq(3)";
-				$("#Amount"+n).val(TheUP);
+				$("#Amount"+n).val(Amount);
 //n++;
 			}
 			n++;
 		});
 		var Total = 0;
 		$(".amount").each(function(i) {
-			Total = (parseFloat(Total) + parseFloat(this.value))
+			Total = (parseFloat(Total) + parseFloat(this.value));
 		})
-		Total = Total.toFixed(2)
-		$("#InvoiceTotal").attr("value", Total)
+		Total = Total.toFixed(2);
+		$("#InvoiceTotal").attr("value", Total);
 	});
 
 	$("#ClientID").addToList({

@@ -16,7 +16,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
    		 <td>
 			<table width="100%" border="0">
 				<tr>
-					<td><img hspace="10" src="<?php echo '/img',$session->read('Company.CurrentURL'),$session->read('Company.CurrentLogo') ?>" alt=""></td>
+					<td>&nbsp;</td>
 					<td style="text-align:center;"><h3 style="font-size:23pt"><?php echo __('InvoiceRequestFrom') ?></h3></td>
 				</tr>
 				<tr>
@@ -34,7 +34,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
    	 				</select><br>
 					  	<div style="display:none;" id="RefNumber">
 <label for="Reference">*<?php echo __('RefNumber') ?>:</label><br>
-&nbsp;&nbsp;&nbsp;<input tabindex="3" type="text" id="RefNumber" size="50" maxlength="100" name="RefNumber" value="">
+&nbsp;&nbsp;&nbsp;<input tabindex="3" type="text" id="RefNumber" size="50" maxlength="100" name="RefNumber" value="" required="required">
   </div>
 
 					<label for="LocaleCode">*<?php echo __('Language') ?>:</label>&nbsp;&nbsp;&nbsp;
@@ -96,7 +96,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 	</td>
   </tr>
     <tr>
-    <td nowrap="nowrap"><label for="EmailSubject">*<?php echo __('EmailSubject') ?>:</label> <input tabindex="15" type="text" id="EmailSubject" size="79" maxlength="255" name="EmailSubject" value="<?php echo $ThisInvoice['EmailSubject'] ?>"></td>
+    <td nowrap="nowrap"><label for="EmailSubject">*<?php echo __('EmailSubject') ?>:</label> <input tabindex="15" type="text" id="EmailSubject" size="79" maxlength="255" name="EmailSubject" value="<?php echo $ThisInvoice['EmailSubject'] ?>" required="required"></td>
   </tr>
   <tr>
     <td><label for="Note"><?php echo __('Note') ?>:</label><blockquote><textarea tabindex="16" wrap="soft" cols="75" rows="3" id="Note" name="Note"><?php echo $ThisInvoice['Note'] ?></textarea></blockquote></td>
@@ -116,11 +116,11 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 		$Total = 0;
 		$LineNum = 1;
 		foreach ($InvoiceDetailQ as $ThisDetail) {
-			echo '<tr id="Lineb', $LineNum, '" class="lineb">';
-			echo '<td align="center" nowrap="nowrap"> <input name="Qty[]" type="text" id="Qty" size="2" maxlength="2" value="', $ThisDetail['Qty'], '" class="qty"></td>';
+			echo '<tr id="Line', $LineNum, '" class="line">';
+			echo '<td align="center" nowrap="nowrap"> <input name="Qty[]" type="number" id="Qty'.$LineNum.'" size="2" maxlength="2" value="', $ThisDetail['Qty'], '" class="qty"></td>';
 			echo '<td nowrap="nowrap"><input name="Desc[]" type="text" id="Desc" size="50" maxlength="255" value="', $ThisDetail['Description'], '"></td>';
-			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="UnitPrice[]"  type="text" id="UnitPrice" size="9" maxlength="9" class="unitprice" value="', number_format($ThisDetail['UnitPrice'], 2), '"></td>';
-			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="Amount[]" type="text" id="Amount" tabindex="-1" value="', number_format($ThisDetail['Amount'], 2), '" size="9" maxlength="9" readonly="readonly" class="amount"></td>';
+			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="UnitPrice[]"  type="number" id="UnitPrice'.$LineNum.'" size="9" maxlength="9" class="unitprice" value="', number_format($ThisDetail['UnitPrice'], 2), '"></td>';
+			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="Amount[]" type="number" id="Amount'.$LineNum.'" tabindex="-1" value="', number_format($ThisDetail['Amount'], 2), '" size="9" maxlength="9" readonly="readonly" class="amount"></td>';
 			echo '<td align="center" nowrap="nowrap" style="text-align:center;width:30px;">';
 	      	if($LineNum == 1){
 	  			$TheStyle = 'display:none';
@@ -140,9 +140,9 @@ echo '<h3>', $this -> pageTitle, '</h3>';
        </tr>
       <tr>
         <td align="right">&nbsp;</td>
-        <td align="center"><a href="#" name="AddRow" id="AddRowb" tabindex="20"><b>&raquo;<?php echo __('AddRow') ?></b></a></td>
+        <td align="center"><button class="btn btn-default" name="AddRowb" id="AddRowb" > <?php echo __('AddRow') ?></button></td>
         <td align="right"><label><b><?php echo __('Total') ?>:</b></label></td>
-        <td align="center" nowrap="nowrap"><label><span class="currency"><?php echo $ThisInvoice['CurrencySymbol'] ?></span></label><input name="InvoiceTotal" type="text" id="InvoiceTotal" tabindex="-1" size="9" maxlength="12" readonly="readonly" class="total" value="<?php echo number_format($Total, 2) ?>"></td>
+        <td align="center" nowrap="nowrap"><label><span class="currency"><?php echo $ThisInvoice['CurrencySymbol'] ?></span></label><input name="InvoiceTotal" type="text" id="InvoiceTotalb" tabindex="-1" size="9" maxlength="12" readonly="readonly" class="total" value="<?php echo number_format($Total, 2) ?>"></td>
         </tr>
 			</table>
 			</td>
@@ -194,18 +194,23 @@ $(document).ready(function() {
     return false;
   });
 
-	var count = $(".lineb").length;
-	$("#AddRowb").click(function() {
-		NewLine = $("#Lineb1").clone(true);
-		TheNewID = "Lineb" + count;
+	var count = $(".line").length;// + 1;
+	$("#AddRowb").on("click",function() {
+		NewLine = $("#Line0").clone(true);
+		TheNewID = "Line" + count;
 		NewLine.attr("id", TheNewID);
 		NewLine.insertBefore("#LastLineb");
-		$("#" + TheNewID + " :text").attr("value", "")
+		$("#" + TheNewID + " :text").attr("value", "");
 		$(NewLine).find("a").show();
-		$("#" + TheNewID + " #Qty").focus()
-		count++
+		$("#" + TheNewID + " #Qty0").focus();
+$("#" + TheNewID + " #Qty0").attr("id","Qty"+count);
+$("#" + TheNewID + " #Amount0").attr("id","Amount"+count);
+$("#" + TheNewID + " #UnitPrice0").attr("id","UnitPrice"+count);
+		$("#" + TheNewID + " #Qty"+count).focus();
+		count++;
 		return false;
 	});
+
 
 	$("#InvoiceDate").datepicker({
 		showOn : "both",
@@ -213,7 +218,7 @@ $(document).ready(function() {
 		buttonImage : '/img/calendar.gif',
 		buttonImageOnly : true,
 		dateFormat : "mm/dd/yy"
-	})
+	});
 
 	$("#StatusID").change(function() {
 		if ($("#StatusID").attr("value") == 4) {
@@ -221,43 +226,52 @@ $(document).ready(function() {
 		} else {
 			$("#RefNumber").hide();
 		}
-	})
+	});
 
-	$("#FormDetail :text").blur(function() {
+	$("#FormDetail :input").blur(function(evt) {
+		var n = 0;
 		$("tr .line").each(function(i) {
 			if ($(this).attr("id") != '') {
+
 				TheVar = "#" + this.id + " input:eq(0)";
-				Qty = $(TheVar).attr("value")
+
+				Qty = $("#Qty"+n).val();
+
 				if ((isNaN(Qty) || Qty.length == 0) || Qty < 1) {
-					$(TheVar).attr("value", "0")
-					Qty = 0
+					$("#Qty"+n).val(0);
+					Qty = 0;
 				}
 				TheVar = "#" + this.id + " input:eq(2)";
-				UnitPrice = $(TheVar).attr("value")
+				UnitPrice = $("#UnitPrice"+n).val();
+
+
 				if (isNaN(UnitPrice) || UnitPrice.length == 0 || UnitPrice < 0) {
-					$(TheVar).attr("value", "0")
-					UnitPrice = 0
+					$("#UnitPrice"+n).val(0);
+					UnitPrice = 0;
 				}
-				TheUP = parseFloat(UnitPrice).toFixed(2)
-				TheUP = UnitPrice
-				$(TheVar).attr("value", TheUP)
-				Amount = parseInt(Qty) * parseFloat(UnitPrice)
+				TheUP = parseFloat(UnitPrice).toFixed(2);
+				TheUP = UnitPrice;
+				$("#UnitPrice"+n).val(TheUP);
+				Amount = parseInt(Qty) * parseFloat(UnitPrice);
 				Amount = Qty * UnitPrice;
 				if (isNaN(Amount)) {
-					Amount = 0
+					Amount = 0;
 				}
 
 				Amount = Amount.toFixed(2)
 				TheVar = "#" + this.id + " input:eq(3)";
-				$(TheVar).attr("value", Amount)
+				$("#Amount"+n).val(Amount);
+//n++;
 			}
-		})
-		var Total = 0
+			n++;
+		});
+		var Total = 0;
 		$(".amount").each(function(i) {
-			Total = (parseFloat(Total) + parseFloat(this.value))
+			Total = (parseFloat(Total) + parseFloat(this.value));
 		})
-		Total = Total.toFixed(2)
-		$("#InvoiceTotal").attr("value", Total)
+		Total = Total.toFixed(2);
+//console.log(Total);
+		$("#InvoiceTotalb").attr("value", Total)
 	});
 
 	$("#ClientID").addToList({
@@ -272,25 +286,25 @@ $(document).ready(function() {
 	});
 
 	$('#ClientID').bind('form-open', function() {
-		$('#TheClientForm').clearForm()
-		$('#TheBusForm').clearForm()
-		$('#TheClientForm label.error').remove()
-		$('#TheBusForm label.error').remove()
-		$('#TheClientForm *').removeClass("error")
-		$('#TheBusForm *').removeClass("error")
-		$('#TheClientForm *').removeClass("checked")
-		$('#TheBusForm *').removeClass("checked	")
-		$('#QuickSubmitP').attr("value", $('#ButOrValP').attr("value"))
-		$('#QuickSubmitP').attr("disabled", false)
-		$('#CloseP').attr("disabled", false)
-		$('#QuickSubmitB').attr("value", $('#ButOrValB').attr("value"))
-		$('#QuickSubmitB').attr("disabled", false)
-		$('#CloseB').attr("disabled", false)
+		$('#TheClientForm').clearForm();
+		$('#TheBusForm').clearForm();
+		$('#TheClientForm label.error').remove();
+		$('#TheBusForm label.error').remove();
+		$('#TheClientForm *').removeClass("error");
+		$('#TheBusForm *').removeClass("error");
+		$('#TheClientForm *').removeClass("checked");
+		$('#TheBusForm *').removeClass("checked	");
+		$('#QuickSubmitP').attr("value", $('#ButOrValP').attr("value"));
+		$('#QuickSubmitP').attr("disabled", false);
+		$('#CloseP').attr("disabled", false);
+		$('#QuickSubmitB').attr("value", $('#ButOrValB').attr("value"));
+		$('#QuickSubmitB').attr("disabled", false);
+		$('#CloseB').attr("disabled", false);
 
 	});
 
 	$('#CloseB, #CloseP').click(function() {
-		$('#ClientID').trigger('form-cancel')
+		$('#ClientID').trigger('form-cancel');
 	});
 
 	$('#New').click(function() {
@@ -299,39 +313,39 @@ $(document).ready(function() {
 
 	$("#CurrencyID").change(function() {
 		$("#CurrencyID option:selected").each(function() {
-			$(".currency").html(($(this).attr("symbol")))
+			$(".currency").html(($(this).attr("symbol")));
 		})
 	});
 
 	$(".commentslink").click(function() {
 		if ($(".comments").is(":hidden")) {
-			$(".showcomments").fadeOut("slow")
+			$(".showcomments").fadeOut("slow");
 			$(".comments").slideDown("slow", function() {
-				$(".hidecomments").fadeIn("slow")
+				$(".hidecomments").fadeIn("slow");
 			});
 
 		} else {
-			$(".hidecomments").fadeOut("slow")
+			$(".hidecomments").fadeOut("slow");
 			$(".comments").slideUp("slow", function() {
 				$(".showcomments").fadeIn("slow");
 			});
 
 		}
-		return false
+		return false;
 	});
 
 	$(".DelLine").click(function(){
 		if(confirm($(this).attr('msg'))){
-			$(this).parent().parent().fadeOut('slow').remove()
+			$(this).parent().parent().fadeOut('slow').remove();
 			$("#Qty").focus();
 			var Total = 0
 			$(".amount").each(function(i) {
-				Total = (parseFloat(Total) + parseFloat(this.value))
+				Total = (parseFloat(Total) + parseFloat(this.value));
 			})
-			Total = Total.toFixed(2)
-			$("#InvoiceTotal").attr("value", Total)
+			Total = Total.toFixed(2);
+			$("#InvoiceTotal").attr("value", Total);
 		};
-		return false
-	})
+		return false;
+	});
 });
 </script>
