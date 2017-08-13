@@ -38,7 +38,7 @@ $session = $this->request->session();
 					<td nowrap style="text-align:left;border: 1px none #999999; border-top-style:solid; border-left-style:solid;padding-left:40px">
 					<label for="InvoiceDate">*<?php echo __('InvoiceDate') ?>:</label>
 	<?php if($session->read('LocaleCode') == 'spa_cr'){$DateMask="m/d/Y";}else{$DateMask="m/d/Y";} ?> <input type="text" name="InvoiceDate" id="InvoiceDate" value="<?php echo date($DateMask); ?>" size="10" maxlength="10" tabindex="4"><br>
-<label for="InvoiceNumber">*<?php echo __('InvoiceNumber') ?>:</label><input type="number" name="InvoiceNumber" id="InvoiceNumber" value="" size="15" maxlength="25" required="required"></td>
+<label for="InvoiceNumber">*<?php echo __('InvoiceNumber') ?>:</label><input type="text" name="InvoiceNumber" id="InvoiceNumber" value="" size="15" maxlength="25" required="required"></td>
 					</td>
 					</tr>
 			</table>

@@ -70,7 +70,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 						} else {$DateMask = "m/d/Y";
 						}
  ?> <input type="text" name="InvoiceDate" id="InvoiceDate" value="<?php echo date($DateMask, strtotime($ThisInvoice['InvoiceDate'])); ?>" size="10" maxlength="10" tabindex="4"><br>
-<label for="InvoiceNumber">*<?php echo __('InvoiceNumber') ?>:</label><input type="text" name="InvoiceNumber" id="InvoiceNumber" value="<?php echo $ThisInvoice['InvoiceNumber'] ?>" size="15" maxlength="25"></td>
+<label for="InvoiceNumber">*<?php echo __('InvoiceNumber') ?>:</label><input type="text" name="InvoiceNumber" id="InvoiceNumber" value="<?php echo $ThisInvoice['InvoiceNumber'] ?>" size="15" maxlength="25" required="required"></td>
 					</td>
 					</tr>
       		</table>
@@ -203,9 +203,9 @@ $(document).ready(function() {
 		$("#" + TheNewID + " :text").attr("value", "");
 		$(NewLine).find("a").show();
 		$("#" + TheNewID + " #Qty0").focus();
-$("#" + TheNewID + " #Qty0").attr("id","Qty"+count);
-$("#" + TheNewID + " #Amount0").attr("id","Amount"+count);
-$("#" + TheNewID + " #UnitPrice0").attr("id","UnitPrice"+count);
+		$("#" + TheNewID + " #Qty0").attr("id","Qty"+count);
+		$("#" + TheNewID + " #Amount0").attr("id","Amount"+count);
+		$("#" + TheNewID + " #UnitPrice0").attr("id","UnitPrice"+count);
 		$("#" + TheNewID + " #Qty"+count).focus();
 		count++;
 		return false;
