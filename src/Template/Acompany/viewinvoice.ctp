@@ -1,18 +1,14 @@
 <?php
 $session = $this->request->session();
+$ThisInvoice = current($InvoiceQ);
 
-	$ThisInvoice = current($InvoiceQ);
-	//echo $this->Html->script("jquery/validate");
-	$this->pageTitle= __('InvoiceRequestFrom', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['InvoiceNumber'];
-//localized validation code
-	//$TheJs = $session->read('LocaleCode').'/confirmsend';
-	//echo $this->Html->script($TheJs);
- ?>
- <div align="center">
+$this->pageTitle= __('InvoiceRequestFrom', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['InvoiceNumber'];
+?>
+ <div class="animated pulse" align="center">
  	<?php
 		echo '<h3>',$this->pageTitle,'</h3>';
-    echo $this->element('Admin/invoice',["ThisInvoice"=>$ThisInvoice]);
-    //include 'invoice.ctp';
+    //echo $this->element('Admin/invoice',["ThisInvoice"=>$ThisInvoice]);
+    include 'invoice.ctp';
 		if($ThisInvoice['StatusID'] < 3){
 	?>
 	<form name="TheForm" id="TheForm" method="post" action="'/company/saveinvoice/">
@@ -59,9 +55,36 @@ $session = $this->request->session();
 	 </form>
 	 <?php }else{ ?><br>&nbsp;
 	 	<table border="0" cellpadding="0" cellspacing="0" align="center">
-			    <?php //require 'notes.ctp'; ?>
-          <?php echo $this->element('Admin/notes'); ?>
+			    <?php require 'notes.ctp'; ?>
+          <?php //echo $this->element('Admin/notes'); ?>
 		</table>
 	<?php } ?>
-	 <?php //echo '<p align="center"><a href="/company/">', __('BackToList'),'</a></p>';  ?>
 </div>
+<script>
+$(document).ready(function(){
+
+
+	$(".hidecomments").fadeOut("slow");
+	$(".comments").slideUp("slow", function() {
+		$(".showcomments").fadeIn("slow");
+	});
+
+	$(".commentslink").click(function() {
+		if ($(".comments").is(":hidden")) {
+			$(".showcomments").fadeOut("slow");
+			$(".comments").slideDown("slow", function() {
+				$(".hidecomments").fadeIn("slow");
+			});
+
+		} else {
+			$(".hidecomments").fadeOut("slow");
+			$(".comments").slideUp("slow", function() {
+				$(".showcomments").fadeIn("slow");
+			});
+
+		}
+		return false;
+	});
+
+});
+</script>

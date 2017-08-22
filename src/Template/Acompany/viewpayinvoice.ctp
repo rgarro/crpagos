@@ -3,7 +3,7 @@ $session = $this->request->session();
 $ThisInvoice = current($InvoiceQ);
 $this->pageTitle= __('Paying', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['InvoiceNumber'];
 ?>
-<div align="center">
+<div class="animated pulse" align="center">
  	<?php
 		echo '<h3>',$this->pageTitle,'</h3>';
 	 	include 'invoice.ctp';
@@ -69,6 +69,28 @@ $(document).ready(function() {
         }
       }
     });
+    return false;
+  });
+
+  $(".hidecomments").fadeOut("slow");
+  $(".comments").slideUp("slow", function() {
+    $(".showcomments").fadeIn("slow");
+  });
+
+  $(".commentslink").click(function() {
+    if ($(".comments").is(":hidden")) {
+      $(".showcomments").fadeOut("slow");
+      $(".comments").slideDown("slow", function() {
+        $(".hidecomments").fadeIn("slow");
+      });
+
+    } else {
+      $(".hidecomments").fadeOut("slow");
+      $(".comments").slideUp("slow", function() {
+        $(".showcomments").fadeIn("slow");
+      });
+
+    }
     return false;
   });
 

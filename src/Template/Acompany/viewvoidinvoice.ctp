@@ -7,7 +7,7 @@ $session = $this->request->session();
 	//$TheJs = $session->read('LocaleCode').'/voidinvoice';
 	//echo $this->Html->script($TheJs);
  ?>
- <div align="center">
+ <div class="animated pulse" align="center">
  	<?php
 		echo '<h3>',$this->pageTitle,'</h3>';
 	 	require 'invoice.ctp';
@@ -69,6 +69,29 @@ $(document).ready(function() {
     });
     return false;
   });
+
+
+	$(".hidecomments").fadeOut("slow");
+	$(".comments").slideUp("slow", function() {
+		$(".showcomments").fadeIn("slow");
+	});
+
+	$(".commentslink").click(function() {
+		if ($(".comments").is(":hidden")) {
+			$(".showcomments").fadeOut("slow");
+			$(".comments").slideDown("slow", function() {
+				$(".hidecomments").fadeIn("slow");
+			});
+
+		} else {
+			$(".hidecomments").fadeOut("slow");
+			$(".comments").slideUp("slow", function() {
+				$(".showcomments").fadeIn("slow");
+			});
+
+		}
+		return false;
+	});
 
 });
 </script>

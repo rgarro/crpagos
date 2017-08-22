@@ -6,7 +6,7 @@ $this->pageTitle= __('Invoices').' '.$session->read('Company.CurrentName');
 
 $newFormTitle= __('AddNewInvoiceFor').' '.$session->read('Company.CurrentName');
 ?>
-<div class="panel panel-primary">
+<div class="panel panel-primary animated pulse">
                         <div class="panel-heading">
 <i class="fa fa-file-o fa-fw"></i>  <?= $this->pageTitle ?>
                         </div>

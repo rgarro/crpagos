@@ -9,7 +9,7 @@ $session = $this->request->session();
 $this->pageTitle= $session->read('Company.CurrentName');
 ?>
   <h4><i class="fa fa-users"></i> <?php echo $this->pageTitle; ?></h4>
-<div class="panel panel-primary">
+<div class="panel panel-primary animated pulse">
     <div class="panel-heading">
       <i class="fa fa-building fa-fw"></i> <?= $this->pageTitle ?>
     </div>
@@ -77,7 +77,7 @@ $(document).ready(function(){
 	    data:cia_datos,
 	    type:"GET",
 	    dataType:"json",
-	    success:function(dat){				
+	    success:function(dat){
 	      var data = dat.__serialize;
 	      CRContactos_Manager.check_errors(data);
 	      if(data.is_success == 1){

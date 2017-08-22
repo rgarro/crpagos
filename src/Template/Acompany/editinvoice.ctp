@@ -333,6 +333,11 @@ $(document).ready(function() {
 		}
 		return false;
 	});
+	
+	$(".hidecomments").fadeOut("slow");
+	$(".comments").slideUp("slow", function() {
+		$(".showcomments").fadeIn("slow");
+	});
 
 	$(".DelLine").click(function(){
 		if(confirm($(this).attr('msg'))){

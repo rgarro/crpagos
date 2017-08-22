@@ -2,7 +2,7 @@
 $session = $this->request->session();
 $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
 ?>
-<div class="panel panel-primary">
+<div class="panel panel-primary animated pulse">
   <div class="panel-heading">
     <i class="fa fa-child fa-fw"></i> <?= __('ClientsOf').' '.$session->read('Company.CurrentName') ?>
   </div>
