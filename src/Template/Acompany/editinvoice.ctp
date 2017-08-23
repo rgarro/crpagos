@@ -92,7 +92,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 				 <optgroup label="-------------------------------------">
 				<option value="-1"><?php echo __('AddNewClient') ?></option>
 				</optgroup>
-    			</select>&nbsp;<input type="button" name="New" id="New" value="<?php echo __('AddNewClient')?>">
+    			</select>
 	</td>
   </tr>
     <tr>
@@ -333,7 +333,7 @@ $(document).ready(function() {
 		}
 		return false;
 	});
-	
+
 	$(".hidecomments").fadeOut("slow");
 	$(".comments").slideUp("slow", function() {
 		$(".showcomments").fadeIn("slow");

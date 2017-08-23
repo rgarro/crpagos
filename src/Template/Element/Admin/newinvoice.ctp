@@ -124,8 +124,23 @@ $(document).ready(function() {
                   close: 'animated bounceOutLeft', // Animate.css class names
               }
           }).show();
-          loadStage("/dashboard/company");
-          //window.location.href = "#/MyCompany/";
+					var invoice_id = data.invoice_id;
+				  $.ajax({
+				    url:"/acompany/editinvoice",
+				    data:{
+				      invoice_id:invoice_id
+				    },
+				    type:"GET",
+				    success:function(data){
+				      CRContactos_Manager.check_errors(data);
+							$("#invoiceTheForm")[0].reset();
+				      $(".invoice-edit-form-spot").html(data);
+							$(".invoiceTabs a:first").tab("show");
+				      $("#invoiceEditModal").modal("show");
+							//loadStage("/dashboard/company");
+				    }
+				  });
+
         }
       }
     });

@@ -202,7 +202,7 @@ class AcompanyController extends AppController
         require current(App::path("Template")).'/Company' . DS . 'mail.ctp';
   		}
 
-      $this->set('__serialize',["is_success"=>1,"flash"=>$Flash]);
+      $this->set('__serialize',["is_success"=>1,"flash"=>$Flash,"invoice_id"=>$InvoiceID]);
     }
 
 }
