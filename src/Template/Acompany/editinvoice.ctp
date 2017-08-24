@@ -34,7 +34,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
    	 				</select><br>
 					  	<div style="display:none;" id="RefNumber">
 <label for="Reference">*<?php echo __('RefNumber') ?>:</label><br>
-&nbsp;&nbsp;&nbsp;<input tabindex="3" type="text" id="RefNumber" size="50" maxlength="100" name="RefNumber" value="" required="required">
+&nbsp;&nbsp;&nbsp;<!-- <input tabindex="3" type="text" id="RefNumber" size="50" maxlength="100" name="RefNumber" value="" required="required"/> -->
   </div>
 
 					<label for="LocaleCode">*<?php echo __('Language') ?>:</label>&nbsp;&nbsp;&nbsp;
@@ -140,7 +140,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
        </tr>
       <tr>
         <td align="right">&nbsp;</td>
-        <td align="center"><button class="btn btn-default" name="AddRowb" id="AddRowb" > <?php echo __('AddRow') ?></button></td>
+        <td align="center"><button type="button" class="btn btn-default" name="AddRowb" id="AddRowb" > <?php echo __('AddRow') ?></button></td>
         <td align="right"><label><b><?php echo __('Total') ?>:</b></label></td>
         <td align="center" nowrap="nowrap"><label><span class="currency"><?php echo $ThisInvoice['CurrencySymbol'] ?></span></label><input name="InvoiceTotal" type="text" id="InvoiceTotalb" tabindex="-1" size="9" maxlength="12" readonly="readonly" class="total" value="<?php echo number_format($Total, 2) ?>"></td>
         </tr>
@@ -153,7 +153,8 @@ echo '<h3>', $this -> pageTitle, '</h3>';
  <?php echo $this->element('Admin/notes'); ?>
     <tr>
     <th>
-      <input tabindex="23" name="Continue" type="submit" id="Continue" value="<?php echo __('Continue') ?>">&nbsp;
+
+			<button type="submit" class="btn btn-default"> <?php echo __('Continue') ?></button>&nbsp;
      <?php echo __('CopyClient') ?>:<input type="checkbox" name="CopyClient" id="CopyClient" checked="checked" value="1" onclick="if(this.checked==false){return confirm('<?php echo __('DoNotCopyClient')?>');}"><br>&nbsp;
    </th>
   </tr>
