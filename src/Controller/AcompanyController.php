@@ -229,6 +229,8 @@ class AcompanyController extends AppController
 			$TheTemplate = "invoice_html";
 			$this->Set('ThisInvoice', $InvoiceQ);
 			$this->Set('InvoiceDetailQ', $InvoiceDetailQ);
+      $TheCode = rawurlencode($this->Crypter->enCrypt($InvoiceID));
+
 			$this->Set('TheCode',rawurlencode($this->Crypter->enCrypt($InvoiceID)));
 
 

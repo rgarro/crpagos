@@ -8,7 +8,7 @@ $session = $this->request->session();
 $Email = new Email('default');
 $Email->setCharset("iso-8859-1");
 
-if(isset($_POST['CopyClient'])){
+if(isset($_POST['CopyClient']) || isset($_GET['invoice_id'])){
 	$Emailb = html_entity_decode(htmlspecialchars_decode($InvoiceQ['Email']));
 	$ClientName = html_entity_decode(htmlspecialchars_decode($InvoiceQ['ClientName'].' '.$InvoiceQ['ClientLastName']));
 	$Email->to(array($Emailb => $ClientName));
@@ -32,7 +32,7 @@ if(strlen($ReplyTo) > 0){
 
 
 $this->pageTitle=  html_entity_decode($Subject,ENT_NOQUOTES,'iso-8859-1');
-$Email->viewVars(['ThisInvoice'=> $InvoiceQ,'InvoiceDetailQ'=> $InvoiceDetailQ]);
+$Email->viewVars(['ThisInvoice'=> $InvoiceQ,'InvoiceDetailQ'=> $InvoiceDetailQ,"TheCode"=>$TheCode]);
 
 //$Email->viewVars(array('Title'=>$EmailSubject));
 $Email->emailFormat('html');
@@ -43,5 +43,3 @@ $Email->replyTo(array("info@nicapagos.com" => "NicaPagos"));
 $Email->subject($Subject);
 
 $res = $Email->send();
-print_r($res);
-exit;
