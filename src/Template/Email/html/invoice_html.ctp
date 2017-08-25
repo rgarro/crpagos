@@ -8,8 +8,8 @@ $session = $this->request->session();
 		$Protocol = "http://";
 	}
 	$FirstURI = $Protocol.$_SERVER['SERVER_NAME'].$session->read('Company.CurrentURL').__('CodeLink', true).'/';
-	$Code = '?'.__('InvoiceCode', true).'='.rawurlencode($TheCode);
-	$FullURI = $FirstURI.$Code;
+	//$Code = '?'.__('InvoiceCode', true).'='.rawurlencode($TheCode);
+	//$FullURI = $FirstURI.$Code;
 
 	require current(App::path("Template")).'/Company'.DS.'invoice.ctp';
 ?>

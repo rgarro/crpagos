@@ -38,8 +38,10 @@ $Email->viewVars(['ThisInvoice'=> $InvoiceQ,'InvoiceDetailQ'=> $InvoiceDetailQ])
 $Email->emailFormat('html');
 $Email->template($TheTemplate);
 $Email->from(array($session->read('Company.CurrentEmail') => $session->read('Company.CurrentName')));
-$Email->replyTo(array("info@crpagos.com" => "InfoCRPagos"));
+$Email->replyTo(array("info@nicapagos.com" => "NicaPagos"));
 
 $Email->subject($Subject);
 
 $res = $Email->send();
+print_r($res);
+exit;
