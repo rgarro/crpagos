@@ -191,15 +191,14 @@ class AcompanyController extends AppController
   			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
   			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmManualPaid', true);
   			$TheTemplate = "invoicepaid_html";
-  			require current(App::path("Template")). '/Company' . DS . 'mail.ctp';
+  			require current(App::path("Template")). '/Acompany' . DS . 'mail.ctp';
   		}
   		if ($ActionID == 9) {
   			$InvoiceQ = current($this -> Invoices -> index($InvoiceID));
   			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
   			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmVoid', true);
   			$TheTemplate = "invoicepaid_html";
-  			//require VIEWS . 'company' . DS . 'mail.ctp';
-        require current(App::path("Template")).'/Company' . DS . 'mail.ctp';
+        require current(App::path("Template")).'/Acompany' . DS . 'mail.ctp';
   		}
 
       $this->set('__serialize',["is_success"=>1,"flash"=>$Flash,"invoice_id"=>$InvoiceID]);
