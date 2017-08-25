@@ -72,13 +72,19 @@ $session = $this->request->session();
 		<td class="title"><?php echo __('Qty') ?></td>
 		<td class="title"><?php echo __('Description') ?></td>
 		<td class="title"><?php echo __('UnitPrice') ?></td>
-		<td class="title"><?php echo __('Amount') ?></td>
+		<td colspan="2" class="title"><?php echo __('Amount') ?></td>
 		</tr>
 		<tr id="Line0" class="line">
 			<td align="center" nowrap="nowrap"><input name="Qty[]" tabindex="17" type="number" id="Qty0" size="2" maxlength="2" value="1" class="qty" required="required"></td>
-			<td nowrap="nowrap"><input name="Desc[]" tabindex="18"  type="text" id="Desc[]" size="50" maxlength="255" value="" required="required"></td>
-			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="UnitPrice[]" tabindex="19"  type="number" id="UnitPrice0" size="9" maxlength="9" class="unitprice" value=""></td>
-			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="Amount[]" type="number" id="Amount0" tabindex="-1" value="" size="9" maxlength="9" readonly="readonly" class="amount"></td>
+			<td nowrap="nowrap"><input name="Desc[]" tabindex="18"  type="text" id="Desc[]" size="30" maxlength="255" value="" required="required"></td>
+			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="UnitPrice[]" tabindex="19"  type="number" id="UnitPrice0" size="4" maxlength="9" class="unitprice" value=""></td>
+			<td align="center" nowrap="nowrap">
+				<label><span class="currency">$</span></label>
+				<input name="Amount[]" type="number" id="Amount0" tabindex="-1" value="" size="6" maxlength="9" readonly="readonly" class="amount">
+			</td>
+			<td>
+				<button type="button" trid="Line0" class="btn btn-danger btn-xs remove-line hide"><i class="fa fa-times"></i></button>
+			</td>
 			</tr>
 	<tr id="LastLine">
 		<td colspan="4">&nbsp;</td>
@@ -151,17 +157,70 @@ $(document).ready(function() {
 	$("#AddRow").click(function() {
 		NewLine = $("#Line0").clone(true);
 		TheNewID = "Line" + count;
+		TheNewIDb = "Line" + (count-1);
 		NewLine.attr("id", TheNewID);
 		NewLine.insertBefore("#LastLine");
 		$("#" + TheNewID + " :text").attr("value", "");
 		$(NewLine).find("a").show();
 		$("#" + TheNewID + " #Qty0").focus();
-$("#" + TheNewID + " #Qty0").attr("id","Qty"+count);
-$("#" + TheNewID + " #Amount0").attr("id","Amount"+count);
-$("#" + TheNewID + " #UnitPrice0").attr("id","UnitPrice"+count);
+		$("#" + TheNewID + " #Qty0").attr("id","Qty"+count);
+		$("#" + TheNewID + " #Amount0").attr("id","Amount"+count);
+		$("#" + TheNewID + " #UnitPrice0").attr("id","UnitPrice"+count);
 		$("#" + TheNewID + " #Qty"+count).focus();
+		$("#" + TheNewID + " .remove-line").attr("trid",TheNewID);
+		$("#" + TheNewID + " .remove-line").addClass("show");
+
 		count++;
 		return false;
+	});
+
+	$(".remove-line").on("click",function(){
+		var trid  = $(this).attr("trid");
+		$("#"+trid).remove();
+
+		var n = 0;
+		$("tr .line").each(function(i) {
+			if ($(this).attr("id") != '') {
+
+				TheVar = "#" + this.id + " input:eq(0)";
+
+				Qty = $("#Qty"+n).val();
+
+				if ((isNaN(Qty) || Qty.length == 0) || Qty < 1) {
+					$("#Qty"+n).val(0);
+					Qty = 0;
+				}
+				TheVar = "#" + this.id + " input:eq(2)";
+				UnitPrice = $("#UnitPrice"+n).val();
+
+
+				if (isNaN(UnitPrice) || UnitPrice.length == 0 || UnitPrice < 0) {
+					$("#UnitPrice"+n).val(0);
+					UnitPrice = 0;
+				}
+				TheUP = parseFloat(UnitPrice).toFixed(2);
+				TheUP = UnitPrice;
+				$("#UnitPrice"+n).val(TheUP);
+				Amount = parseInt(Qty) * parseFloat(UnitPrice);
+				Amount = Qty * UnitPrice;
+				if (isNaN(Amount)) {
+					Amount = 0;
+				}
+
+				Amount = Amount.toFixed(2)
+				TheVar = "#" + this.id + " input:eq(3)";
+				$("#Amount"+n).val(Amount);
+//n++;
+			}
+			n++;
+		});
+		var Total = 0;
+		$(".amount").each(function(i) {
+			Total = (parseFloat(Total) + parseFloat(this.value));
+		})
+		Total = Total.toFixed(2);
+		$("#InvoiceTotal").attr("value", Total);
+
 	});
 
 	$("#InvoiceDate").datepicker({
