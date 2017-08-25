@@ -153,16 +153,46 @@ echo '<h3>', $this -> pageTitle, '</h3>';
  <?php echo $this->element('Admin/notes'); ?>
     <tr>
     <th>
-
 			<button type="submit" class="btn btn-default"> <?php echo __('Continue') ?></button>&nbsp;
-     <?php echo __('CopyClient') ?>:<input type="checkbox" name="CopyClient" id="CopyClient" checked="checked" value="1" onclick="if(this.checked==false){return confirm('<?php echo __('DoNotCopyClient')?>');}"><br>&nbsp;
+     <button invoice_id="<?php echo $ThisInvoice['InvoiceID']; ?>" type="button" class="btn btn-info btn-sendmail"><i class="fa fa-envelope"></i> <?php echo __('SendInvoice') ?></button>
    </th>
   </tr>
 </table>
 </form>
-<?php //echo $this->element('Admin/quickadd'); ?>
 <script>
 $(document).ready(function() {
+
+	$(".btn-sendmail").on("click",function(){
+		if(window.confirm("<?php echo __('SendInvoice') ?>?")){
+			var invoice_id = $(this).attr("invoice_id");
+			$.ajax({
+	      url:"/acompany/sendemail",
+	      data:{invoice_id:invoice_id},
+	      type:"get",
+	      dataType:"json",
+	      success:function(dat){
+	        var data = dat.__serialize;
+	        CRContactos_Manager.check_errors(data);
+	        if(data.is_success == 1){
+	          new Noty({
+	              text: data.flash,
+	              type:'alert',
+	              timeout:4000,
+	                layout:'top',
+	              animation: {
+	                  open: 'animated bounceInLeft', // Animate.css class names
+	                  close: 'animated bounceOutLeft', // Animate.css class names
+	              }
+	          }).show();
+						$(".invoice-edit-form-spot").html(" ");
+			      $("#invoiceEditModal").modal("hide");
+						setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
+	          //window.location.href = "#/MyCompany/";
+	        }
+	      }
+	    });
+		}
+	});
 
   $("#TheEditForm").on("submit",function(){
     var cia_datos = $("#TheEditForm").serializeHash();
@@ -262,7 +292,6 @@ $(document).ready(function() {
 				Amount = Amount.toFixed(2)
 				TheVar = "#" + this.id + " input:eq(3)";
 				$("#Amount"+n).val(Amount);
-//n++;
 			}
 			n++;
 		});
@@ -271,7 +300,6 @@ $(document).ready(function() {
 			Total = (parseFloat(Total) + parseFloat(this.value));
 		})
 		Total = Total.toFixed(2);
-//console.log(Total);
 		$("#InvoiceTotalb").attr("value", Total)
 	});
 

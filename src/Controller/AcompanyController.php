@@ -204,4 +204,38 @@ class AcompanyController extends AppController
       $this->set('__serialize',["is_success"=>1,"flash"=>$Flash,"invoice_id"=>$InvoiceID]);
     }
 
+    function sendemail() {
+      $session = $this->request->session();
+      //$this->viewBuilder()->setLayout('ajax');
+  		$SentTo = array();
+
+			$InvoiceID = $_GET['invoice_id'];
+			$InvoiceQ = current($this->Invoices->index($InvoiceID));
+			$InvoiceDetailQ = $this->Invoices->GetInvoiceDetail($InvoiceID);
+			if (count($this->Invoices->GetInvoiceLog($InvoiceID, 3)) == 0) {
+				$ActionID = 3;
+			} else {
+				$ActionID = 4;
+			}
+			if (isset($_POST['Coment'])) {
+				$Comment = $_POST['Coment'];
+			} else {
+				$Comment = __('BatchResend', true);
+			}
+			$this->Invoices->UpdateInvoiceStatus($InvoiceID, 2);
+			$this->Invoices->AddInvoiceLog($InvoiceID, $ActionID, $Comment);
+			//Email Goes Here
+			$Subject = $InvoiceQ['EmailSubject'] . '. ' . __('InvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'];
+			$TheTemplate = "invoice_html";
+			$this->Set('ThisInvoice', $InvoiceQ);
+			$this->Set('InvoiceDetailQ', $InvoiceDetailQ);
+			$this->Set('TheCode',rawurlencode($this->Crypter->enCrypt($InvoiceID)));
+
+
+      require  current(App::path("Template")).'/Acompany/mail.ctp';
+			$Flash = $InvoiceQ['ClientName'] . ' ' . $InvoiceQ['ClientLastName'] . '(' . $InvoiceQ['Email'] . ') ' . __('InvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('Amount', true) . ':' . $InvoiceQ['CurrencySymbol'] . number_format($InvoiceQ['TheTotal'], 2);
+
+      $this->set('__serialize',["is_success"=>1,"flash"=>$Flash,"invoice_id"=>$InvoiceID]);
+  	}
+
 }
