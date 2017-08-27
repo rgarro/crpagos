@@ -344,7 +344,7 @@ msgstr ""
 msgid "PayInstructions1"
 msgstr ""
 "To pay this Payment Request in an easy and secure way, you can make it in "
-"two different ways."
+"this way."
 
 msgid "PayInstructions2"
 msgstr ""

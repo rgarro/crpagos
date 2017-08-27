@@ -349,7 +349,7 @@ msgstr ""
 msgid "PayInstructions1"
 msgstr ""
 "Para pagar esta solicitud de una forma fácil y segura, Ud puede "
-"hacerlo de dos formas."
+"hacerlo."
 
 msgid "PayInstructions2"
 msgstr ""
