@@ -9,10 +9,15 @@ use Cake\Core\App;
  */
 class VposComponent extends Component
 {
-/*
-  var $name="Vpos";
-  var $useTable=false;
-  function initialize($InvoiceID = 0, $Amount = 100, $TransactionID = null, $VposCurCode = 188, $VposLocaleCode = 'SP', $ClientName='', $ClientLastName = '', $ClientEmail = '', $ClientPhone = ''){
+  public $name="Vpos";
+  public $useTable=false;
+
+  public function initialize(array $config){
+
+  }
+
+  public function initializeB($InvoiceID = 0, $Amount = 100, $TransactionID = null, $VposCurCode = 188, $VposLocaleCode = 'SP', $ClientName='', $ClientLastName = '', $ClientEmail = '', $ClientPhone = ''){
+
     include current(App::path("Lib")).DS.'bncr'.DS.'vpos_plugin.php';
 //Todos los parámetros del componente se colocan en un arreglo de
 //cadenas, cuyo campo llave es el nombre del parámetro
@@ -85,5 +90,5 @@ file_get_contents(current(App::path("Lib")).'/keys'.DS.$_SESSION['Company']['Cur
         return false;
       }
      }
-  }*/
+  }
 }

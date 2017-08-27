@@ -294,7 +294,7 @@ class AcompanyController extends AppController
   			//if ($_SESSION['Company']['CurrentCompanyID'] == 6) {
   			//	$this->Set('TheActionURL', "/intercontinental/");
   			//}
-  				$TheVposData = $this->Vpos->initialize($InvoiceID, $Amount, $TransactionID, $VposCurCode, $VposLocaleCode, $ClientName, $ClientLastName, $ClientEmail );
+  				$TheVposData = $this->Vpos->initializeB($InvoiceID, $Amount, $TransactionID, $VposCurCode, $VposLocaleCode, $ClientName, $ClientLastName, $ClientEmail);
   				//Set The View's Variables
   					$this->Set('VPosData', $TheVposData);
   				break;

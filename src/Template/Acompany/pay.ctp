@@ -25,6 +25,7 @@ $session = $this->request->session();
 		</tr>
 		<tr>
 			<td colspan="4" style="text-align:left"><?php
+echo 'procesors' . DS . $session -> read('Company.Processor') . ".ctp";			
 			require 'procesors' . DS . $session -> read('Company.Processor') . ".ctp";
 			?></td>
 		</tr>
