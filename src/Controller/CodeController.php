@@ -92,12 +92,14 @@ class CodeController extends AppController
         $this->redirect("/dopay");
       }else{
 //Invalid Number,  send to "Home"
-        $this->layout = 'noheader';
-        $this->Flash(__('NoneFound', true));
+        //$this->viewBuilder()->setLayout("noheader")
+      $this -> Flash->error("invalid number");
+      $this->redirect("/dashboard");
       }
     }else{
 //No Code, send to "Home"
-      $this->layout = 'noheader';
+        $this -> Flash->error("no code");
+      $this->redirect("/dashboard");
     }
   }
 
