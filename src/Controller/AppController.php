@@ -110,8 +110,8 @@ var $L10n;
           }
     		}
 
-I18n::locale('en_US');
-$session -> write('LocaleCodeb', 'en_US');
+        I18n::locale('en_US');
+        $session -> write('LocaleCodeb', 'en_US');
         if($session->read('LocaleCode') == 'spa_cr'){
           I18n::locale('es_CR');
           $session -> write('LocaleCodeb', 'es_CR');
@@ -129,7 +129,7 @@ $session -> write('LocaleCodeb', 'en_US');
     		}*/
     		//Avoid peering eyes, but allow Pages
     		$AllowPaths = array('pages', 'pay_invoice');
-    		if ($session -> check('Company.PayURL') === true && $this->request->here() !== $session -> read('Company.PayURL') && !in_array($this -> viewPath, $AllowPaths)) {
+    		if ($session -> check('Company.PayURL') === true && $this->request->here() !== $session -> read('Company.PayURL') && !in_array(0,$AllowPaths)) {
     			//Redirect to company's Pay URL
     			$this -> redirect($session -> read('Company.PayURL'));
     			exit ;

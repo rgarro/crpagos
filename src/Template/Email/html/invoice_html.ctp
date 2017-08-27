@@ -27,7 +27,7 @@ $session = $this->request->session();
     <td width="50%" valign="top"><?php
 		echo '<p>',__('PayInstructions2'),'<ol>';
 		echo '<li>',__('PayInstructions2a'), ':<br> ', $TheCode,' </li>' ;
-		echo '<li>',__('PayInstructions2b'),'<br><a href="',$FirstURI,'" target="_blank">',$FirstURI,'</a></li>';
+		echo '<li>',__('PayInstructions2b'),'<br><a href="',$FullURI,'" target="_blank">',$FirstURI,'</a></li>';
 		echo '<li>',__('PayInstructions2c'),'</li>';
 	echo '</ol></p>';
 

@@ -251,7 +251,8 @@ class AcompanyController extends AppController
 
   		//Prepare the values for the VPOS plugin only if not paid
   		if (count($InvoiceQ) > 0 && $InvoiceQ[0]['StatusID'] == 2) {
-  			$Amount = $InvoiceQ[0][0]['TheTotal'];
+
+  			$Amount = $InvoiceQ[0]['TheTotal'];
   			$InvoiceNumber = $InvoiceQ[0]['InvoiceNumber'];
   			$VposCurCode = $InvoiceQ[0]['VPOSCurCode'];
   			$VposLocaleCode = $InvoiceQ[0]['VPOSLangCode'];

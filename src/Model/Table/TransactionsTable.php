@@ -94,7 +94,7 @@ class TransactionsTable extends Table
 			$TheSql.=" VALUES (";
 			$TheSql.="'".substr(trim($_SERVER['REMOTE_ADDR']),0,20)."',";
 			$TheSql.="'".$_SESSION['Client']['InvoiceID']."',";
-			$TheSql.= "'".$_COOKIE['CRPAGOS']."',";
+			$TheSql.= "'".session_id()."',";
 			$TheSql.= intval($_SESSION['Company']['CommerceID']).",";
 			$TheSql.= "'".$_SERVER['HTTP_USER_AGENT']."')";
       $res = $this->connection()->execute($TheSql);

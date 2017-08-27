@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use App\Lib\L10n;
+use Cake\Core\Configure;
 
 /**
  * Code Controller
