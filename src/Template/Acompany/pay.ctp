@@ -1,4 +1,6 @@
 <?php
+use Cake\Core\App;
+
 $session = $this->request->session();
 	$this->pageTitle= __('InvoiceRequestFrom', true).' '.$session->read('Company.CurrentName');
 	$ThisInvoice = current($InvoiceQ);
@@ -25,8 +27,9 @@ $session = $this->request->session();
 		</tr>
 		<tr>
 			<td colspan="4" style="text-align:left"><?php
-echo 'procesors' . DS . $session -> read('Company.Processor') . ".ctp";			
-			require 'procesors' . DS . $session -> read('Company.Processor') . ".ctp";
+//echo 'procesors' . DS . $session -> read('Company.Processor') . ".ctp";
+			//require 'procesors' . DS . $session -> read('Company.Processor') . ".ctp";
+			require current(App::path("Template")).'/Acompany/procesors'.DS.$session -> read('Company.Processor').'.ctp';
 			?></td>
 		</tr>
 		<tr>
