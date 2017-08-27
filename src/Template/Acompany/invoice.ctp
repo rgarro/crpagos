@@ -22,7 +22,8 @@ if(isset($ThisInvoice['StatusID'])){
     <td>
 			<table width="100%" border="0">
 				<tr>
-					<td><img src="<?php echo $Protocol,$_SERVER['SERVER_NAME'],'/img',$session->read('Company.CurrentURL'),$session->read('Company.CurrentLogo') ?>" alt="<?php echo $session->read('Company.CurrentName') ?>" align="left"></td>
+					<td>&nbsp;
+			<!-- <img src="<?php //echo $Protocol,$_SERVER['SERVER_NAME'],'/img',$session->read('Company.CurrentURL'),$session->read('Company.CurrentLogo') ?>" alt="<?php //echo $session->read('Company.CurrentName') ?>" align="left">--></td>
 					<td style="text-align:center;"><h3 style="font-size:23pt"><b><?php echo __('InvoiceRequestFrom') ?></b></h3></td>
 				</tr>
 				<tr>

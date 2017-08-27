@@ -7,7 +7,7 @@ $session = $this->request->session();
 	}else{
 		$Protocol = "http://";
 	}
-	$FirstURI = $Protocol.$_SERVER['SERVER_NAME'].$session->read('Company.CurrentURL').__('CodeLink', true).'/';
+	$FirstURI = $Protocol.$_SERVER['SERVER_NAME']."/payment/".__('CodeLink', true).'/';
 	$Code = '?'.__('InvoiceCode', true).'='.rawurlencode($TheCode);
 	$FullURI = $FirstURI.$Code;
 
