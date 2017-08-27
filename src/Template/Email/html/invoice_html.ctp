@@ -18,20 +18,13 @@ $session = $this->request->session();
     <td colspan="2" bgcolor="#CCD6D8" align="center"><?php echo __('PayInstructions1') ?></td>
   </tr>
   <tr>
-    <td width="50%" align="center" valign="top"><?php
+    <td width="50%" align="center" valign="top" colspan="2">
+			<?php
 		echo '<p align="left">',__('PayInstructions3'),'</p>';
 		echo '<div class="homebutton">';
 		echo '<a href="',$FullURI,'" target="_blank">',__('Pay'),'</a>';
 		echo '</div>';
 		?></td>
-    <td width="50%" valign="top"><?php
-		echo '<p>',__('PayInstructions2'),'<ol>';
-		echo '<li>',__('PayInstructions2a'), ':<br> ', $TheCode,' </li>' ;
-		echo '<li>',__('PayInstructions2b'),'<br><a href="',$FullURI,'" target="_blank">',$FirstURI,'</a></li>';
-		echo '<li>',__('PayInstructions2c'),'</li>';
-	echo '</ol></p>';
-
-    ?></td>
   </tr>
   <tr>
     <td colspan="2" align="center" bgcolor="#CCD6D8">
