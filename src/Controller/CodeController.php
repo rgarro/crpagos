@@ -88,7 +88,8 @@ class CodeController extends AppController
 
         $this->Invoices->AddInvoiceLog($InvoiceID, 7, $Comment);
 //Redirect to company's PayURL
-        $this->redirect($session->read('Company.PayURL'));
+        //$this->redirect($session->read('Company.PayURL'));
+        $this->redirect("/dopay");
       }else{
 //Invalid Number,  send to "Home"
         $this->layout = 'noheader';

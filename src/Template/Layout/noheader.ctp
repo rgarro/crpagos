@@ -1,3 +1,6 @@
+<?php
+$session = $this->request->session();
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -29,7 +32,6 @@
 		});
 	</script>
 	</head>
-
 	<?php
 		if(!isset($CurrentBgImage)){
 			$CurrentBgImage = $session->read('Company.CurrentURL').$session->read('Company.CurrentBgImage');
