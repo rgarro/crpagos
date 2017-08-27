@@ -240,4 +240,68 @@ class AcompanyController extends AppController
       $this->set('__serialize',["is_success"=>1,"flash"=>$Flash,"invoice_id"=>$InvoiceID]);
   	}
 
+    function pay() {
+      $session = $this->request->session();
+      $this->viewBuilder()->setLayout('noheader');
+  		//Read the InvoiceData from Session
+
+  		$InvoiceID = $session -> read('Client.InvoiceID');
+  		//Read the InvoiceData from DB
+  		$InvoiceQ = $this -> Invoices -> index($InvoiceID, 1);
+
+  		//Prepare the values for the VPOS plugin only if not paid
+  		if (count($InvoiceQ) > 0 && $InvoiceQ[0]['StatusID'] == 2) {
+  			$Amount = $InvoiceQ[0][0]['TheTotal'];
+  			$InvoiceNumber = $InvoiceQ[0]['InvoiceNumber'];
+  			$VposCurCode = $InvoiceQ[0]['VPOSCurCode'];
+  			$VposLocaleCode = $InvoiceQ[0]['VPOSLangCode'];
+  			$ClientName = substr($InvoiceQ[0]['ClientName'], 0, 30);
+  			$ClientLastName = substr($InvoiceQ[0]['ClientLastName'],0, 50);
+  			$ClientEmail = substr($InvoiceQ[0]['Email'],0, 50);
+  			$ClientPhone = substr($InvoiceQ[0]['Phone'],0, 15);
+  			$session->write('Client.ClientName', $ClientName);
+  			$session->write('Client.ClientLastName', $ClientLastName);
+  			$session->write('Client.ClientEmail', $ClientEmail);
+
+  			//Get the  new TransactionID
+  			$TransactionID = $this -> Transactions -> AddTransaction();
+  			$session -> write('TransactionID', $TransactionID);
+  			$session -> write('Amount', $Amount);
+  			$session -> write('Currency', $VposCurCode);
+
+  			switch ($session -> read('Company.Processor')) {
+  			//Credomatic Cardinal
+  				case 'cardinal':
+  				$this->Set('TheActionURL', '/pay-invoice/');
+  				break;
+
+  			//Credomatic PayCom
+  				case 'paycom':
+
+  				break;
+  				default:
+  				//BNCR untill we have more
+  				//Call The VPOS Plugin
+  				if (strrchr($_SESSION['Company']['KeyName'], '.') == '.TESTING') {
+  					$this->Set('TheActionURL',"https://preprod.verifika.com/VPOS/MM/transactionStart20.do");
+  				} else {
+  					$this->Set('TheActionURL',"https://vpayment.verifika.com/VPOS/MM/transactionStart20.do");
+  				}
+  				if ($_SESSION['Company']['CurrentCompanyID'] == 2) {
+  					$this->Set('TheActionURL', "/company/");
+  				}
+  			//if ($_SESSION['Company']['CurrentCompanyID'] == 6) {
+  			//	$this->Set('TheActionURL', "/intercontinental/");
+  			//}
+  				$TheVposData = $this->Vpos->initialize($InvoiceID, $Amount, $TransactionID, $VposCurCode, $VposLocaleCode, $ClientName, $ClientLastName, $ClientEmail );
+  				//Set The View's Variables
+  					$this->Set('VPosData', $TheVposData);
+  				break;
+  			}
+
+  		}
+  		$this -> Set('InvoiceQ', $InvoiceQ);
+  		$this -> Set('InvoiceDetailQ', $this -> Invoices -> GetInvoiceDetail($InvoiceID));
+  	}
+
 }

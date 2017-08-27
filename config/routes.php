@@ -76,7 +76,8 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->fallbacks(DashedRoute::class);
 });
 
-
+Router::connect('/payment/codigo-de-solicitud/',  array('controller' => 'code', 'action' => 'index'));
+Router::connect('/payment/invoice-code/',  array('controller' => 'code', 'action' => 'index'));
 /******/
 Router::connect('/clients/:action/:id',  array('controller' => 'clients', 'action' => 'index'), array('pass' => array('id'), 0) );
 Router::connect('/users/:action/:id',  array('controller' => 'users', 'action' => 'index'), array('pass' => array('id'), 0) );
