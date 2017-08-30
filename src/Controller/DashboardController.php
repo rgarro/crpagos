@@ -85,7 +85,12 @@ class DashboardController extends AppController
           $session -> write('LocaleCodeb', 'es_CR');
         }
         $this -> Flash->success(__('Language').": ".$session->read('LocaleCodeb'));
-        $this -> redirect("/dashboard?Lang=".$_GET['Lang']);
+        if(isset($_GET['is_invoice'])){
+          $_SESSION['is_invoice'] = 1;
+          $this -> redirect("/dashboard#/Company/");
+        }else{
+            $this -> redirect("/dashboard?Lang=".$_GET['Lang']);
+        }
       }else{
         throw new Exception("invalid change language attempt.");
       }

@@ -87,6 +87,16 @@ echo $this->element('Admin/newinvoice');
                     <!-- /.modal -->
 <script>
     $(document).ready(function(){
+
+<?php
+if($_SESSION['is_invoice']){
+  ?>
+$(".invoiceTabs a:last").tab("show");
+<?php
+  $_SESSION['is_invoice'] = 0;
+}
+?>
+
   var cia = new company();
   cia.loadPendingInvoicesList(<?= $session->read('Company.CurrentCompanyID')?>);
   $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {

@@ -14,7 +14,7 @@ $session = $this->request->session();
 				<tr>
 					<td align="left">
 					<label for="LocaleCode">*<?php echo __('Language') ?>:</label>&nbsp;&nbsp;&nbsp;
-					<select name="LocaleCode" id="LocaleCode" tabindex="2">
+					<select class="invoice-locale-chooser" name="LocaleCode" id="LocaleCode" tabindex="2">
 						<?php
 						if($_SESSION['LocaleCodeb'] == "eng_us"){
 							echo  '<option value="',$_SESSION['LocaleCode'],'" Selected>English</option>',"\n";
@@ -83,9 +83,9 @@ $session = $this->request->session();
 		<td colspan="2" class="title"><?php echo __('Amount') ?></td>
 		</tr>
 		<tr id="Line0" class="line">
-			<td align="center" nowrap="nowrap"><input name="Qty[]" tabindex="17" type="number" id="Qty0" size="2" maxlength="2" value="1" class="qty" required="required"></td>
+			<td align="center" nowrap="nowrap"><input name="Qty[]" min="0" tabindex="17" type="number" id="Qty0" size="2" maxlength="2" value="1" class="qty" required="required"></td>
 			<td nowrap="nowrap"><input name="Desc[]" tabindex="18"  type="text" id="Desc[]" size="30" maxlength="255" value="" required="required"></td>
-			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="UnitPrice[]" tabindex="19"  type="number" id="UnitPrice0" size="4" maxlength="9" class="unitprice" value=""></td>
+			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="UnitPrice[]"  min="0" tabindex="19"  type="number" id="UnitPrice0" size="4" maxlength="9" class="unitprice" value=""></td>
 			<td align="center" nowrap="nowrap">
 				<label><span class="currency">$</span></label>
 				<input name="Amount[]" type="number" id="Amount0" tabindex="-1" value="" size="6" maxlength="9" readonly="readonly" class="amount">
@@ -117,10 +117,15 @@ $session = $this->request->session();
 <script>
 $(document).ready(function() {
 
+$(".invoice-locale-chooser").on("change",function(){
+	var lang = $(this).val();
+	var url = "/dashboard/changelang?is_invoice=1&Lang=" + lang;
+	window.location = url;
+});
+
   $("#invoiceTheForm").on("submit",function(){
     var cia_datos = $("#invoiceTheForm").serializeHash();
     $.ajax({
-      url:"/acompany/saveinvoice",
       data:cia_datos,
       type:"post",
       dataType:"json",
