@@ -15,10 +15,19 @@ $session = $this->request->session();
 					<td align="left">
 					<label for="LocaleCode">*<?php echo __('Language') ?>:</label>&nbsp;&nbsp;&nbsp;
 					<select name="LocaleCode" id="LocaleCode" tabindex="2">
-						<?php foreach($LocalesQ as $ThisLocale){
-							if($ThisLocale['Locales']['LocaleCode'] == Configure::read('Config.language')){$Sel = " Selected ";}else{$Sel = "";}
-							echo  '<option value="',$ThisLocale['LocaleCode'],'"',$Sel,'>',$ThisLocale['Locale'],'</option>',"\n";
-							}?>
+						<?php
+						if($_SESSION['LocaleCodeb'] == "eng_us"){
+							echo  '<option value="',$_SESSION['LocaleCode'],'" Selected>English</option>',"\n";
+						}else{
+							echo  '<option value="',$_SESSION['LocaleCode'],'" Selected>Español</option>',"\n";
+						}
+						foreach($LocalesQ as $ThisLocale){
+							if($ThisLocale['Locales']['LocaleCode'] == Configure::read('Config.language')){
+								$Sel = " Selected ";}else{$Sel = "";
+							}
+							echo  '<option value="',$ThisLocale['LocaleCode'],'">',$ThisLocale['Locale'],'</option>',"\n";
+							}
+							?>
 					</select><br>
 					<label for="CurrencyID">*<?php echo __('Currency') ?>:</label>&nbsp;&nbsp;
 					<?php
@@ -49,12 +58,11 @@ $session = $this->request->session();
 			<label for="ClientID">*<?php echo __('Client') ?>:</label>
 				<select name="ClientID" id="ClientID" tabindex="6" style="width:316px;">
 					<option value=""><?php echo __('PleaseSelect') ?></option>
-					<?php foreach($ClientsQ as $ThisClient){
+					<?php
+					foreach($ClientsQ as $ThisClient){
 							echo  '<option value="',$ThisClient['ClientID'],'">',$ThisClient['ClientName'],' ',$ThisClient['ClientLastName'],' (',$ThisClient['Email'],')</option>',"\n";
-					}?>
-				<optgroup label="-------------------------------------">
-				<option value="-1"><?php echo __('AddNewClient') ?></option>
-				</optgroup>
+					}
+					?>
 				</select>&nbsp;
 	</td>
 </tr>
