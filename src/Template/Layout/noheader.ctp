@@ -7,7 +7,7 @@ $session = $this->request->session();
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>NicaPagos Pago</title>
+	<title>:: NicaPagos Pago ::</title>
 	<?php
 		header("Cache-Control: no-cache, must-revalidate");
 		header("Expires: Mon, 01 Jan 1990 00:00:01 GMT");
@@ -19,9 +19,6 @@ $session = $this->request->session();
 	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" type="text/css" href="/css/crpagos.css" />
 	<script type="text/javascript" src="/js/jquery/jquery.js"></script>
-	<?php
-		//echo $scripts_for_layout."\n";
-	?>
 	<script language="javascript" src="/js/jquery/jquery.corner.js"></script>
 	<script language="JavaScript" type="text/javascript">
 		$(document).ready(function(){

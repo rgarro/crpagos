@@ -3,6 +3,8 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 use Cake\I18n\I18n;
+use App\Lib\L10n;
+use Cake\Controller\Component\CookieComponent;
 
 class DashboardController extends AppController
 {
@@ -83,7 +85,7 @@ class DashboardController extends AppController
           $session -> write('LocaleCodeb', 'es_CR');
         }
         $this -> Flash->success(__('Language').": ".$session->read('LocaleCodeb'));
-        $this -> redirect("/dashboard");
+        $this -> redirect("/dashboard?Lang=".$_GET['Lang']);
       }else{
         throw new Exception("invalid change language attempt.");
       }

@@ -83,7 +83,8 @@ var $L10n;
     		//Time Zone Fix
     		putenv("TZ=America/Costa_Rica");
     		//Language Change
-    		if (!$session -> check('Languages')) {
+    		if (!isset($_SESSION['Languages'])) {
+
     			session_name('CRPagos');
     			$this -> loadModel('Locales');
     			$Langs = $this -> Locales -> index();
@@ -110,16 +111,17 @@ var $L10n;
           }
     		}
 
-        I18n::locale('en_US');
-        $session -> write('LocaleCodeb', 'en_US');
-        if($session->read('LocaleCode') == 'spa_cr'){
-          I18n::locale('es_CR');
-          $session -> write('LocaleCodeb', 'es_CR');
-        }
+if (!isset($_SESSION['LocaleCodeb'])){
+  I18n::locale('en_US');
+  $session -> write('LocaleCodeb', 'en_US');
+  if($session->read('LocaleCode') == 'spa_cr'){
+    I18n::locale('es_CR');
+    $session -> write('LocaleCodeb', 'es_CR');
+  }
+  Configure::write('Config.language', $session -> read('LocaleCode'));
+}
 
 
-
-    		Configure::write('Config.language', $session -> read('LocaleCode'));
     		//Check if Session has timed out
     		/*if ($this -> viewPath != 'pages' && $this -> viewPath != 'code') {
     			$Allowed = array("/", "/login/", "/myaccount/recpass/", "/contactus/", "/contactenos/", "/invoice-code/", "/codigo-de-solicitud/");
