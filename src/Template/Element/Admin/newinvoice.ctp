@@ -157,7 +157,7 @@ $(".invoice-locale-chooser").on("change",function(){
 				      $(".invoice-edit-form-spot").html(data);
 							$(".invoiceTabs a:first").tab("show");
 				      $("#invoiceEditModal").modal("show");
-							//loadStage("/dashboard/company");
+		
 				    }
 				  });
 
