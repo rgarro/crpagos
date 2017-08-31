@@ -89,7 +89,7 @@ echo $this->element('Admin/newinvoice');
     $(document).ready(function(){
 
 <?php
-if($_SESSION['is_invoice']){
+if(isset($_SESSION['is_invoice']) && $_SESSION['is_invoice'] == 1){
   ?>
 $(".invoiceTabs a:last").tab("show");
 <?php
