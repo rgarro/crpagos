@@ -132,7 +132,7 @@ $(".invoice-locale-chooser").on("change",function(){
       dataType:"json",
       success:function(dat){
         var data = dat.__serialize;
-//console.log(data);				
+			
         CRContactos_Manager.check_errors(data);
         if(data.is_success == 1){
           new Noty({
@@ -141,8 +141,8 @@ $(".invoice-locale-chooser").on("change",function(){
               timeout:4000,
                 layout:'top',
               animation: {
-                  open: 'animated bounceInLeft', // Animate.css class names
-                  close: 'animated bounceOutLeft', // Animate.css class names
+                  open: 'animated bounceInLeft',
+                  close: 'animated bounceOutLeft',
               }
           }).show();
 					var invoice_id = data.invoice_id;
