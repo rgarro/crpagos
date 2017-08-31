@@ -31,7 +31,7 @@ $cakeDescription = 'crpagos cakephp3 version';
 		<meta http-equiv="refresh" content="<?php echo ini_get('session.gc_maxlifetime');?>,url=http://nicapagos.com">
   	<meta name="robots" content="no index,no follow">
   	<meta name="robots" content="all">
-    <? //$this->Html->charset() ?>
+  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="stylesheet" href="/css/main.css">

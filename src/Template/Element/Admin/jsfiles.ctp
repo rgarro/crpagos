@@ -31,7 +31,7 @@
 <script src="/js/users.js"></script>
 <script src="/js/custom.js"></script>
 <script src="/js/jquery/jquery.tinymce.js"></script>
-<?
+<?php
 $session = $this->request->session();
 echo $this->Html-> css("ui");
 //	echo $this->Html-> css("tabs","stylesheet", array(), false);

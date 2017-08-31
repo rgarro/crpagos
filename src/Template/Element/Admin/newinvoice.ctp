@@ -126,6 +126,7 @@ $(".invoice-locale-chooser").on("change",function(){
   $("#invoiceTheForm").on("submit",function(){
     var cia_datos = $("#invoiceTheForm").serializeHash();
     $.ajax({
+			url:"/acompany/saveinvoice",
       data:cia_datos,
       type:"post",
       dataType:"json",

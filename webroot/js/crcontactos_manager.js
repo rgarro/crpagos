@@ -26,6 +26,7 @@ var CRContactos_Manager = {
 				}
 			},
 			'check_errors':function(data){
+				//console.log(data);
 				if(typeof data == "string"){
 					try {
 						d = JSON.parse(data);
