@@ -5,8 +5,6 @@ use Cake\Error\Debugger;
 $session = $this->request->session();
 $ThisInvoice = current($InvoiceQ);
 $this -> pageTitle = __('Editing', true) . ' ' . __('InvoiceNumber', true) . ' ' . $ThisInvoice['InvoiceNumber'];
-//echo $this->Html-> css("default/ui.datepicker","stylesheet", array(), false);
-
 echo '<h3>', $this -> pageTitle, '</h3>';
 ?>
 <form name="TheEditForm" id="TheEditForm" method="post">
@@ -21,17 +19,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 				</tr>
 				<tr>
 					<td>
-				<label for="StatusID">*<?php echo __('Status') ?>:</label>&nbsp;&nbsp;
-				<select name="StatusID" id="StatusID" tabindex="1">
-			    	<?php
-					foreach ($StatusQ as $ThisStatus) {
-						if ($ThisStatus['StatusID'] == $ThisInvoice['StatusID']) {$Sel = " Selected ";
-						} else {$Sel = "";
-						}
-						echo '<option value="', $ThisStatus['StatusID'], '"', $Sel, '>', __($ThisStatus['Status']), '</option>', "\n";
-					}
-					?>
-   	 				</select><br>
+				<br>
 					  	<div style="display:none;" id="RefNumber">
 <label for="Reference">*<?php echo __('RefNumber') ?>:</label><br>
 &nbsp;&nbsp;&nbsp;<!-- <input tabindex="3" type="text" id="RefNumber" size="50" maxlength="100" name="RefNumber" value="" required="required"/> -->
@@ -118,7 +106,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 		foreach ($InvoiceDetailQ as $ThisDetail) {
 			echo '<tr id="Line', $LineNum, '" class="line">';
 			echo '<td align="center" nowrap="nowrap"> <input name="Qty[]" type="number" id="Qty'.$LineNum.'" size="2" maxlength="2" value="', $ThisDetail['Qty'], '" class="qty"></td>';
-			echo '<td nowrap="nowrap"><input name="Desc[]" type="text" id="Desc" size="50" maxlength="255" value="', $ThisDetail['Description'], '"></td>';
+			echo '<td nowrap="nowrap"><input name="Desc[]" type="text" id="Desc[]" size="50" maxlength="255" value="', $ThisDetail['Description'], '" style="width:100;"></td>';
 			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="UnitPrice[]"  type="number" id="UnitPrice'.$LineNum.'" size="9" maxlength="9" class="unitprice" value="', number_format($ThisDetail['UnitPrice'], 2), '"></td>';
 			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="Amount[]" type="number" id="Amount'.$LineNum.'" tabindex="-1" value="', number_format($ThisDetail['Amount'], 2), '" size="9" maxlength="9" readonly="readonly" class="amount"></td>';
 			echo '<td align="center" nowrap="nowrap" style="text-align:center;width:30px;">';
