@@ -132,6 +132,7 @@ $(".invoice-locale-chooser").on("change",function(){
       dataType:"json",
       success:function(dat){
         var data = dat.__serialize;
+//console.log(data);				
         CRContactos_Manager.check_errors(data);
         if(data.is_success == 1){
           new Noty({
@@ -157,7 +158,7 @@ $(".invoice-locale-chooser").on("change",function(){
 				      $(".invoice-edit-form-spot").html(data);
 							$(".invoiceTabs a:first").tab("show");
 				      $("#invoiceEditModal").modal("show");
-		
+
 				    }
 				  });
 
