@@ -102,14 +102,14 @@ echo '<h3>', $this -> pageTitle, '</h3>';
         </tr>
 		<?php
 		$Total = 0;
-		$LineNum = 1;
+		$LineNum = 0;
 		foreach ($InvoiceDetailQ as $ThisDetail) {
-			echo '<tr id="Line', $LineNum, '" class="line">';
-			echo '<td align="center" nowrap="nowrap"> <input name="Qty[]" type="number" id="Qty'.$LineNum.'" size="2" maxlength="2" value="', $ThisDetail['Qty'], '" class="qty"></td>';
-			echo '<td nowrap="nowrap"><input name="Desc[]" type="text" id="Desc[]" size="50" maxlength="255" value="', $ThisDetail['Description'], '" style="width:100;"></td>';
-			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="UnitPrice[]"  type="number" id="UnitPrice'.$LineNum.'" size="9" maxlength="9" class="unitprice" value="', number_format($ThisDetail['UnitPrice'], 2), '"></td>';
-			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="Amount[]" type="number" id="Amount'.$LineNum.'" tabindex="-1" value="', number_format($ThisDetail['Amount'], 2), '" size="9" maxlength="9" readonly="readonly" class="amount"></td>';
-			echo '<td align="center" nowrap="nowrap" style="text-align:center;width:30px;">';
+			echo '<tr id="Line', $LineNum, '" class="line linebb'.$LineNum.'">';
+			echo '<td align="center" nowrap="nowrap"> <input name="Qty[]" type="number"  size="2" maxlength="2" value="', $ThisDetail['Qty'], '" class="qty"/></td>';
+			echo '<td><input name="Desc[]" type="text" size="50" maxlength="255" value="', $ThisDetail['Description'], '" class="form-control" /></td>';
+			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="UnitPrice[]"  type="number" id="UnitPrice'.$LineNum.'" size="9" maxlength="9" class="unitprice" value="', number_format($ThisDetail['UnitPrice'], 2), '"/></td>';
+			echo '<td align="center" nowrap="nowrap"><label><span class="currency">', $ThisInvoice['CurrencySymbol'], '</span></label><input name="Amount[]" type="number" id="Amount'.$LineNum.'" tabindex="-1" value="', number_format($ThisDetail['Amount'], 2), '" size="9" maxlength="9" readonly="readonly" class="amount"/></td>';
+			echo '<td align="center" nowrap="nowrap" style="text-align:center;width:30px;"> ';
 	      	if($LineNum == 1){
 	  			$TheStyle = 'display:none';
 	      	}else{
@@ -135,8 +135,8 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 			</table>
 			</td>
   </tr>
-  <?php $ShowReq = "yes";
-	//include 'notes.ctp';
+  <?php
+	$ShowReq = "yes";
  ?>
  <?php echo $this->element('Admin/notes'); ?>
     <tr>
@@ -168,14 +168,13 @@ $(document).ready(function() {
 	              timeout:4000,
 	                layout:'top',
 	              animation: {
-	                  open: 'animated bounceInLeft', // Animate.css class names
-	                  close: 'animated bounceOutLeft', // Animate.css class names
+	                  open: 'animated bounceInLeft',
+	                  close: 'animated bounceOutLeft',
 	              }
 	          }).show();
 						$(".invoice-edit-form-spot").html(" ");
 			      $("#invoiceEditModal").modal("hide");
 						setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
-	          //window.location.href = "#/MyCompany/";
 	        }
 	      }
 	    });
@@ -206,7 +205,6 @@ $(document).ready(function() {
 					$(".invoice-edit-form-spot").html(" ");
 		      $("#invoiceEditModal").modal("hide");
 					setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
-          //window.location.href = "#/MyCompany/";
         }
       }
     });
@@ -215,15 +213,17 @@ $(document).ready(function() {
 
 	var count = $(".line").length;// + 1;
 	$("#AddRowb").on("click",function() {
-		NewLine = $("#Line0").clone(true);
+		NewLine = $(".linebb0").clone(true);
 		TheNewID = "Line" + count;
 		NewLine.attr("id", TheNewID);
 		NewLine.insertBefore("#LastLineb");
-		$("#" + TheNewID + " :text").attr("value", "");
+		$("#" + TheNewID + " :text").attr("value", " ");
 		$(NewLine).find("a").show();
 		$("#" + TheNewID + " #Qty0").focus();
 		$("#" + TheNewID + " #Qty0").attr("id","Qty"+count);
 		$("#" + TheNewID + " #Amount0").attr("id","Amount"+count);
+		$("#Desc" + count ).css("width","100%");
+		$("#" + TheNewID + " #Desc0").attr("id","Desc"+count);
 		$("#" + TheNewID + " #UnitPrice0").attr("id","UnitPrice"+count);
 		$("#" + TheNewID + " #Qty"+count).focus();
 		count++;
