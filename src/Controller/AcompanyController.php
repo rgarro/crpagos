@@ -41,6 +41,15 @@ class AcompanyController extends AppController
       }
     }
 
+    public function newinvoicev(){
+      $this->viewBuilder()->setLayout('ajax');
+
+      $this -> Set('LocalesQ', $this -> Locales -> index());
+      $this -> Set('ClientsQ', $this -> Clients -> index());
+      $this -> Set('CurrencyQ', $this -> Currencies -> index());
+      $this -> Set('InvoiceLogQ', array());
+    }
+
     public function viewvoidinvoice(){
       $this->viewBuilder()->setLayout('ajax');
       $session = $this->request->session();

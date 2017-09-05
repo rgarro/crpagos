@@ -57,8 +57,9 @@ $newFormTitle= __('AddNewInvoiceFor').' '.$session->read('Company.CurrentName');
                                   </div>
                                   <div class="tab-pane fade" id="addnew">
                                       <h4><i class="fa fa-plus"></i> </h4>
+<div id="newFormContainer"></div>
 <?php
-echo $this->element('Admin/newinvoice');
+//echo $this->element('Admin/newinvoice');
 ?>
                                   </div>
                               </div>
@@ -94,6 +95,21 @@ $(".invoiceTabs a:last").tab("show");
   $_SESSION['is_invoice'] = 0;
 }
 ?>
+
+$('.invoiceTabs a:last').on('shown.bs.tab', function (e) {
+  $.ajax({
+    url:"/acompany/newinvoicev",
+    type:"GET",
+    success:function(data){
+      CRContactos_Manager.check_errors(data);
+      $("#newFormContainer").html(data);
+    }
+  });
+});
+
+$('.invoiceTabs a:last').on('hidden.bs.tab', function (e) {
+  $("#newFormContainer").html(" ");
+});
 
   var cia = new company();
   cia.loadPendingInvoicesList(<?= $session->read('Company.CurrentCompanyID')?>);

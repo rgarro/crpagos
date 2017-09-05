@@ -151,8 +151,29 @@ echo '<h3>', $this -> pageTitle, '</h3>';
   </tr>
 </table>
 </form>
+<table style="display:none;">
+	<tr id="Line0" class="lines">
+		<td align="center" nowrap="nowrap"><input name="Qty[]" min="0" tabindex="17" type="number" id="Qty0" size="2" maxlength="2" value="1" class="qty" required="required"></td>
+		<td nowrap="nowrap"><input name="Desc[]" tabindex="18"  type="text" id="Desc[]" size="30" maxlength="255" value="" required="required" class="form-control" ></td>
+		<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="UnitPrice[]"  min="0" tabindex="19"  type="number" id="UnitPrice0" size="4" maxlength="9" class="unitprice" value="0"></td>
+		<td align="center" nowrap="nowrap">
+			<label><span class="currency">$</span></label>
+			<input name="Amount[]" type="number" id="Amount0" tabindex="-1" value="0" size="6" maxlength="9" readonly="readonly" class="amount">
+		</td>
+		<td><button type="button" trid="Line0" class="btn btn-danger btn-xs remove-lines hide"><i class="fa fa-times"></i></button></td></tr>
+</table>
 <script>
 $(document).ready(function() {
+
+var lineTpl = '<tr id="Line0" class="lines">\
+	<td align="center" nowrap="nowrap"><input name="Qty[]" min="0" tabindex="17" type="number" id="Qty0" size="2" maxlength="2" value="1" class="qty" required="required"></td>\
+	<td nowrap="nowrap"><input name="Desc[]" tabindex="18"  type="text" id="Desc[]" size="30" maxlength="255" value="" required="required" class="form-control" ></td>\
+	<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="UnitPrice[]"  min="0" tabindex="19"  type="number" id="UnitPrice0" size="4" maxlength="9" class="unitprice" value=""></td>\
+	<td align="center" nowrap="nowrap">\
+		<label><span class="currency">$</span></label>\
+		<input name="Amount[]" type="number" id="Amount0" tabindex="-1" value="" size="6" maxlength="9" readonly="readonly" class="amount">\
+	</td>\
+	<td><button type="button" trid="Line0" class="btn btn-danger btn-xs remove-lines hide"><i class="fa fa-times"></i></button></td></tr>';
 
 	$(".btn-sendmail").on("click",function(){
 		if(window.confirm("<?php echo __('SendInvoice') ?>?")){
@@ -215,9 +236,10 @@ $(document).ready(function() {
     return false;
   });
 
-	var count = $(".line").length;// + 1;
+	var count = $(".lines").length;// + 1;
 	$("#AddRowb").on("click",function() {
 		NewLine = $("#Line0").clone(true);
+//NewLine = lineTpl;
 		TheNewID = "Lineb" + count;
 		NewLine.attr("id", TheNewID);
 		NewLine.insertBefore("#LastLineb");
@@ -230,9 +252,9 @@ $(document).ready(function() {
 		$("#" + TheNewID + " #Desc0").attr("id","Desc"+count);
 		$("#" + TheNewID + " #UnitPrice0").attr("id","UnitPrice"+count);
 		$("#" + TheNewID + " #Qty"+count).focus();
-		$("#" + TheNewID + " .remove-line").attr("trid",TheNewID);
-		$("#" + TheNewID + " .remove-line").addClass("show");
-		$("#" + TheNewID + " .remove-line").addClass("remove-lines");
+		$("#" + TheNewID + " .remove-lines").attr("trid",TheNewID);
+		$("#" + TheNewID + " .remove-lines").addClass("show");
+		$("#" + TheNewID + " .remove-lines").addClass("remove-lines");
 		count++;
 		return false;
 	});
@@ -280,24 +302,22 @@ function updateLines(){
 		if ($(this).attr("id") != '') {
 
 		TheVar = "#" + this.id + " input:eq(0)";
-//console.log(TheVar);
-		Qty = $("#Qty"+n).val();
-
+		Qty = $(TheVar).val();
 		if ((isNaN(Qty) || Qty.length == 0) || Qty < 1) {
-			$("#Qty"+n).val(0);
+			$(TheVar).val(0);
 			Qty = 0;
 		}
 		TheVar = "#" + this.id + " input:eq(2)";
-		UnitPrice = $("#UnitPrice"+n).val();
 
+		UnitPrice = $(TheVar).val();
 
 		if (isNaN(UnitPrice) || UnitPrice.length == 0 || UnitPrice < 0) {
-			$("#UnitPrice"+n).val(0);
+			$(TheVar).val(0);
 			UnitPrice = 0;
 		}
 		TheUP = parseFloat(UnitPrice).toFixed(2);
 		TheUP = UnitPrice;
-		$("#UnitPrice"+n).val(TheUP);
+		$(TheVar).val(TheUP);
 		Amount = parseInt(Qty) * parseFloat(UnitPrice);
 		Amount = Qty * UnitPrice;
 		if (isNaN(Amount)) {
@@ -306,15 +326,16 @@ function updateLines(){
 
 		Amount = Amount.toFixed(2)
 		TheVar = "#" + this.id + " input:eq(3)";
-		$("#Amount"+n).val(Amount);
+		//$("#Amount"+n).val(Amount);
+		$(TheVar).val(Amount);
 	}
 	n++;
 });
 var Total = 0;
 $(".amount").each(function(i) {
-	Total = (parseFloat(Total) + parseFloat(this.value));
+	Total = (parseFloat(Total) + parseFloat($(this).val()));
 })
-Total = Total.toFixed(2);
+//Total = Total.toFixed(2);
 $("#InvoiceTotalb").attr("value", Total);
 }
 
