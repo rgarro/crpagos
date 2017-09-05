@@ -207,7 +207,8 @@ var lineTpl = '<tr id="Line0" class="lines">\
 	});
 
   $("#TheEditForm").on("submit",function(){
-    var cia_datos = $("#TheEditForm").serializeHash();
+    //var cia_datos = $("#TheEditForm").serializeHash();
+		var cia_datos = $("#TheEditForm").serialize();
     $.ajax({
       url:"/acompany/saveinvoice",
       data:cia_datos,
@@ -260,7 +261,11 @@ var lineTpl = '<tr id="Line0" class="lines">\
 	});
 
 $(document).on("click",".remove-lineb",function(){
-console.log($(this).attr("trid")+" ==== "+ $(this).attr("invoice_detail_id"));
+//console.log($(this).attr("trid")+" ==== "+ $(this).attr("invoice_detail_id"));
+var trid  = $(this).attr("trid");
+$("#"+trid).remove();
+
+updateLines();
 });
 
 	$(".remove-lines").on("click",function(){

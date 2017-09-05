@@ -84,7 +84,7 @@ $session = $this->request->session();
 		</tr>
 		<tr id="Line0" class="line">
 			<td align="center" nowrap="nowrap"><input name="Qty[]" min="0" tabindex="17" type="number" id="Qty0" size="2" maxlength="2" value="1" class="qty" required="required"></td>
-			<td nowrap="nowrap"><input name="Desc[]" tabindex="18"  type="text" id="Desc[]" size="30" maxlength="255" value="" required="required" class="form-control" ></td>
+			<td nowrap="nowrap"><input name="Desc[]" tabindex="18"  type="text" id="Desc[]" size="30" maxlength="255" value="" required="required" class="form-control desc" ></td>
 			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="UnitPrice[]"  min="0" tabindex="19"  type="number" id="UnitPrice0" size="4" maxlength="9" class="unitprice" value=""></td>
 			<td align="center" nowrap="nowrap">
 				<label><span class="currency">$</span></label>
@@ -124,7 +124,8 @@ $(".invoice-locale-chooser").on("change",function(){
 });
 
   $("#invoiceTheForm").on("submit",function(){
-    var cia_datos = $("#invoiceTheForm").serializeHash();
+    //var cia_datos = $("#invoiceTheForm").serializeHash();
+		var cia_datos = $("#invoiceTheForm").serialize();
     $.ajax({
 			url:"/acompany/saveinvoice",
       data:cia_datos,
@@ -132,7 +133,6 @@ $(".invoice-locale-chooser").on("change",function(){
       dataType:"json",
       success:function(dat){
         var data = dat.__serialize;
-
         CRContactos_Manager.check_errors(data);
         if(data.is_success == 1){
           new Noty({
@@ -174,6 +174,9 @@ $(".invoice-locale-chooser").on("change",function(){
 		TheNewID = "Line" + count;
 		TheNewIDb = "Line" + (count-1);
 		NewLine.attr("id", TheNewID);
+
+		//$("#" + TheNewID + " #Qty0").attr('id',"#Qty"+count);
+
 		NewLine.insertBefore("#LastLine");
 		$("#" + TheNewID + " :text").attr("value", "");
 		$(NewLine).find("a").show();
