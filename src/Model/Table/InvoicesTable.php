@@ -262,7 +262,7 @@ class InvoicesTable extends Table
 			$TheSql.=" Modified = NOW(),";
 			$TheSql.=" ModifiedBy ='".trim($_SESSION['User']['FullName'])."'";
 			$TheSql.=" WHERE InvoiceID =".$InvoiceID;
-			$TheSql.=" AND CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
+			$TheSql.=" AND CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];      
       $res = $this->connection()->execute($TheSql);
       //return $res->lastInsertId();
       return $InvoiceID;

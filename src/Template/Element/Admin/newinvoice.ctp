@@ -84,7 +84,7 @@ $session = $this->request->session();
 		</tr>
 		<tr id="Line0" class="line">
 			<td align="center" nowrap="nowrap"><input name="Qty[]" min="0" tabindex="17" type="number" id="Qty0" size="2" maxlength="2" value="1" class="qty" required="required"></td>
-			<td nowrap="nowrap"><input name="Desc[]" tabindex="18"  type="text" id="Desc[]" size="30" maxlength="255" value="" required="required"></td>
+			<td nowrap="nowrap"><input name="Desc[]" tabindex="18"  type="text" id="Desc[]" size="30" maxlength="255" value="" required="required" class="form-control" ></td>
 			<td align="center" nowrap="nowrap"><label><span class="currency">$</span></label><input name="UnitPrice[]"  min="0" tabindex="19"  type="number" id="UnitPrice0" size="4" maxlength="9" class="unitprice" value=""></td>
 			<td align="center" nowrap="nowrap">
 				<label><span class="currency">$</span></label>
@@ -132,7 +132,7 @@ $(".invoice-locale-chooser").on("change",function(){
       dataType:"json",
       success:function(dat){
         var data = dat.__serialize;
-			
+
         CRContactos_Manager.check_errors(data);
         if(data.is_success == 1){
           new Noty({
@@ -193,48 +193,7 @@ $(".invoice-locale-chooser").on("change",function(){
 		var trid  = $(this).attr("trid");
 		$("#"+trid).remove();
 
-		var n = 0;
-		$("tr .line").each(function(i) {
-			if ($(this).attr("id") != '') {
-
-				TheVar = "#" + this.id + " input:eq(0)";
-
-				Qty = $("#Qty"+n).val();
-
-				if ((isNaN(Qty) || Qty.length == 0) || Qty < 1) {
-					$("#Qty"+n).val(0);
-					Qty = 0;
-				}
-				TheVar = "#" + this.id + " input:eq(2)";
-				UnitPrice = $("#UnitPrice"+n).val();
-
-
-				if (isNaN(UnitPrice) || UnitPrice.length == 0 || UnitPrice < 0) {
-					$("#UnitPrice"+n).val(0);
-					UnitPrice = 0;
-				}
-				TheUP = parseFloat(UnitPrice).toFixed(2);
-				TheUP = UnitPrice;
-				$("#UnitPrice"+n).val(TheUP);
-				Amount = parseInt(Qty) * parseFloat(UnitPrice);
-				Amount = Qty * UnitPrice;
-				if (isNaN(Amount)) {
-					Amount = 0;
-				}
-
-				Amount = Amount.toFixed(2)
-				TheVar = "#" + this.id + " input:eq(3)";
-				$("#Amount"+n).val(Amount);
-//n++;
-			}
-			n++;
-		});
-		var Total = 0;
-		$(".amount").each(function(i) {
-			Total = (parseFloat(Total) + parseFloat(this.value));
-		})
-		Total = Total.toFixed(2);
-		$("#InvoiceTotal").attr("value", Total);
+		updateNewLines();
 
 	});
 
@@ -255,49 +214,53 @@ $(".invoice-locale-chooser").on("change",function(){
 	});
 
 	$("#FormDetail :input").blur(function(evt) {
-		var n = 0;
-		$("tr .line").each(function(i) {
-			if ($(this).attr("id") != '') {
-
-				TheVar = "#" + this.id + " input:eq(0)";
-
-				Qty = $("#Qty"+n).val();
-
-				if ((isNaN(Qty) || Qty.length == 0) || Qty < 1) {
-					$("#Qty"+n).val(0);
-					Qty = 0;
-				}
-				TheVar = "#" + this.id + " input:eq(2)";
-				UnitPrice = $("#UnitPrice"+n).val();
-
-
-				if (isNaN(UnitPrice) || UnitPrice.length == 0 || UnitPrice < 0) {
-					$("#UnitPrice"+n).val(0);
-					UnitPrice = 0;
-				}
-				TheUP = parseFloat(UnitPrice).toFixed(2);
-				TheUP = UnitPrice;
-				$("#UnitPrice"+n).val(TheUP);
-				Amount = parseInt(Qty) * parseFloat(UnitPrice);
-				Amount = Qty * UnitPrice;
-				if (isNaN(Amount)) {
-					Amount = 0;
-				}
-
-				Amount = Amount.toFixed(2)
-				TheVar = "#" + this.id + " input:eq(3)";
-				$("#Amount"+n).val(Amount);
-//n++;
-			}
-			n++;
-		});
-		var Total = 0;
-		$(".amount").each(function(i) {
-			Total = (parseFloat(Total) + parseFloat(this.value));
-		})
-		Total = Total.toFixed(2);
-		$("#InvoiceTotal").attr("value", Total);
+updateNewLines();
 	});
+
+function updateNewLines(){
+	var n = 0;
+	$("tr .line").each(function(i) {
+		if ($(this).attr("id") != '') {
+
+			TheVar = "#" + this.id + " input:eq(0)";
+
+			Qty = $("#Qty"+n).val();
+
+			if ((isNaN(Qty) || Qty.length == 0) || Qty < 1) {
+				$("#Qty"+n).val(0);
+				Qty = 0;
+			}
+			TheVar = "#" + this.id + " input:eq(2)";
+			UnitPrice = $("#UnitPrice"+n).val();
+
+
+			if (isNaN(UnitPrice) || UnitPrice.length == 0 || UnitPrice < 0) {
+				$("#UnitPrice"+n).val(0);
+				UnitPrice = 0;
+			}
+			TheUP = parseFloat(UnitPrice).toFixed(2);
+			TheUP = UnitPrice;
+			$("#UnitPrice"+n).val(TheUP);
+			Amount = parseInt(Qty) * parseFloat(UnitPrice);
+			Amount = Qty * UnitPrice;
+			if (isNaN(Amount)) {
+				Amount = 0;
+			}
+
+			Amount = Amount.toFixed(2)
+			TheVar = "#" + this.id + " input:eq(3)";
+			$("#Amount"+n).val(Amount);
+//n++;
+		}
+		n++;
+	});
+	var Total = 0;
+	$(".amount").each(function(i) {
+		Total = (parseFloat(Total) + parseFloat(this.value));
+	})
+	Total = Total.toFixed(2);
+	$("#InvoiceTotal").attr("value", Total);
+}
 
 	$("#ClientID").addToList({
 		form : '#ClientForm',

@@ -76,7 +76,7 @@ echo $this->element('Admin/newinvoice');
                                 <div class="modal-body invoice-edit-form-spot">
                                     ...
                                 </div>
-                                
+
                             </div>
                             <!-- /.modal-content -->
                         </div>
@@ -119,6 +119,10 @@ $(".invoiceTabs a:last").tab("show");
     break;
   }
 });
+
+$('#invoiceEditModal').on('hidden.bs.modal', function (e) {
+  $(".invoice-edit-form-spot").html(" ");
+})
 
 $(document).on("click",".edit-invoice-btn",function(){
   $(".invoice-edit-form-spot").html(" ");
