@@ -130,7 +130,7 @@ class InvoicesTable extends Table
     }
 
     public function allByCompanyIDAndStatusID($company_id,$status_id){
-      $invoices = $this->find('all',["conditions"=>["Invoices.CompanyID"=>$company_id,"Invoices.StatusID"=>$status_id],"contain"=>["Clients","InvoiceDetail","Currencies"]]);
+      $invoices = $this->find('all',["order" => ["Invoices.InvoiceID" => "DESC"],"conditions"=>["Invoices.CompanyID"=>$company_id,"Invoices.StatusID"=>$status_id],"contain"=>["Clients","InvoiceDetail","Currencies"]]);
       $invoices->hydrate(false);
       return $invoices->all();
     }
@@ -262,7 +262,7 @@ class InvoicesTable extends Table
 			$TheSql.=" Modified = NOW(),";
 			$TheSql.=" ModifiedBy ='".trim($_SESSION['User']['FullName'])."'";
 			$TheSql.=" WHERE InvoiceID =".$InvoiceID;
-			$TheSql.=" AND CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];      
+			$TheSql.=" AND CompanyID = ".$_SESSION['Company']['CurrentCompanyID'];
       $res = $this->connection()->execute($TheSql);
       //return $res->lastInsertId();
       return $InvoiceID;
