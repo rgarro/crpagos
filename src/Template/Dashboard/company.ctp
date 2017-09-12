@@ -72,7 +72,7 @@ $newFormTitle= __('AddNewInvoiceFor').' '.$session->read('Company.CurrentName');
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-money"></i><?php echo __("Invoice")?></h4>
+                                    <h4 class="modal-title" id="myModalLabel"><i class="fa fa-money"></i> <?php echo __('InvoiceRequestFrom') ?></h4>
                                 </div>
                                 <div class="modal-body invoice-edit-form-spot">
                                     ...

@@ -53,12 +53,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 					?>
 					</td>
 					<td nowrap  style="text-align:left;border: 1px none #999999; border-top-style:solid; border-left-style:solid;">
-					<label for="InvoiceDate">*<?php echo __('InvoiceDate') ?>:</label>
-	<?php
-						if ($session -> read('LocaleCode') == 'spa_cr') {$DateMask = "m/d/Y";
-						} else {$DateMask = "m/d/Y";
-						}
- ?> <input type="text" name="InvoiceDate" id="InvoiceDate" value="<?php echo date($DateMask, strtotime($ThisInvoice['InvoiceDate'])); ?>" size="10" maxlength="10" tabindex="4"><br>
+
 <label for="InvoiceNumber">*<?php echo __('InvoiceNumber') ?>:</label><input type="text" name="InvoiceNumber" id="InvoiceNumber" value="<?php echo $ThisInvoice['InvoiceNumber'] ?>" size="15" maxlength="25" required="required"></td>
 					</td>
 					</tr>
@@ -145,7 +140,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
  <?php echo $this->element('Admin/notes'); ?>
     <tr>
     <th>
-			<button type="submit" class="btn btn-default"> <?php echo __('Continue') ?></button>&nbsp;
+			<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> <?php echo __('PendSend') ?></button>&nbsp;
      <button invoice_id="<?php echo $ThisInvoice['InvoiceID']; ?>" type="button" class="btn btn-info btn-sendmail"><i class="fa fa-envelope"></i> <?php echo __('SendInvoice') ?></button>
    </th>
   </tr>
