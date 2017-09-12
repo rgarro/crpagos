@@ -15,19 +15,15 @@ $session = $this->request->session();
 					<td align="left">
 					<label for="LocaleCode">*<?php echo __('Language') ?>:</label>&nbsp;&nbsp;&nbsp;
 					<select class="invoice-locale-chooser" name="LocaleCode" id="LocaleCode" tabindex="2">
-						<?php
-						if($_SESSION['LocaleCodeb'] == "eng_us"){
-							echo  '<option value="',$_SESSION['LocaleCode'],'" Selected>English</option>',"\n";
+					<?php
+						if($_SESSION['LocaleCodeb'] == "en_US"){
+							echo  '<option value="eng_us" Selected>English</option>',"\n";
+							echo  '<option value="spa_cr">Español</option>',"\n";
 						}else{
-							echo  '<option value="',$_SESSION['LocaleCode'],'" Selected>Español</option>',"\n";
+							echo  '<option value="spa_cr" Selected>Español</option>',"\n";
+							echo  '<option value="eng_us">English</option>',"\n";
 						}
-						foreach($LocalesQ as $ThisLocale){
-							if($ThisLocale['Locales']['LocaleCode'] == Configure::read('Config.language')){
-								$Sel = " Selected ";}else{$Sel = "";
-							}
-							echo  '<option value="',$ThisLocale['LocaleCode'],'">',$ThisLocale['Locale'],'</option>',"\n";
-							}
-							?>
+					?>
 					</select><br>
 					<label for="CurrencyID">*<?php echo __('Currency') ?>:</label>&nbsp;&nbsp;
 					<?php
