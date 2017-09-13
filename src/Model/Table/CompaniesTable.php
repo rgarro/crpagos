@@ -35,6 +35,7 @@ class CompaniesTable extends Table
         $this->setPrimaryKey('CompanyID');
         $this->hasMany('Clients', ['className' => 'Clients']);
         $this->hasMany('Invoices', ['className' => 'Invoices']);
+        $this->addBehavior('Josegonzalez/Upload.Upload',['photo']);
     }
 
     /**

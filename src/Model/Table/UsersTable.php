@@ -127,14 +127,14 @@ class UsersTable extends Table
 			return $this->connection()->execute($TheSql)->fetch('assoc');
 		}
 
-		public function CheckCompany($UserID = null){
-			$TheSql ="SELECT * ";
-			$TheSql.=" FROM Companies ";
-			$TheSql.=" INNER JOIN CompanyUsers ON Companies.CompanyID = CompanyUsers.CompanyID";
-			$TheSql.=" WHERE CompanyUsers.UserID = ".$UserID;
-			$TheSql.=" AND Companies.CompanyStatus = 1";
-			$TheSql.=" ORDER BY Companies.CompanyID";
-			return $this->connection()->execute($TheSql)->fetchAll('assoc');
+		public function CheckCompany($UserID){
+			$sql ="SELECT * ";
+			$sql.=" FROM Companies ";
+			$sql.=" INNER JOIN CompanyUsers ON Companies.CompanyID = CompanyUsers.CompanyID";
+			$sql.=" WHERE CompanyUsers.UserID = ".$UserID;
+			$sql.=" AND Companies.CompanyStatus = 1";
+			$sql.=" ORDER BY Companies.CompanyID";
+			return $this->connection()->execute($sql)->fetchAll('assoc');
 		}
 
 		public function GetUsers($UserID = null){

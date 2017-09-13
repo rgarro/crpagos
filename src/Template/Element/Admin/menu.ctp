@@ -22,6 +22,9 @@ $session = $this->request->session();
                 <a href="#/MyCompany/"><i class="fa fa-building fa-fw"></i> <?= __('MyCompany') ?></a>
             </li>
             <li>
+                <a href="#/MyCompanyLogo/"><i class="fa fa-file-picture-o fa-fw"></i> <?= __('Logo') ?></a>
+            </li>
+            <li>
                 <a href="#/Terms/"><i class="fa fa-book fa-fw"></i> <?= __('Terms') ?></a>
             </li>
 <?php } ?>
