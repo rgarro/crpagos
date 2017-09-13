@@ -6,8 +6,10 @@ $session = $this->request->session();
     <i class="fa fa-child fa-fw"></i> <?= __('Logo').' '.$session->read('Company.CurrentName') ?>
   </div>
   <div class="panel-body">
+    <div class="indexAttContainer">
+</div>
         <!-- Nav tabs -->
-        <form class="form-horizontal style-form" id="LogoAddForm" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+        <form class="form-horizontal style-form" action="/acompany/savelogo" id="LogoAddForm" enctype="multipart/form-data" method="post" accept-charset="utf-8">
           <fieldset>
         		<legend><?= __('AddLogo') ?></legend>
         		<center>
@@ -18,11 +20,13 @@ $session = $this->request->session();
             </div>
           </div>
         		</center>
-        	<input type="hidden" name="data[Attachment][model]" class="form-control" value="Evento" id="AttachmentModel"/>
-          <input type="hidden" name="data[Attachment][foreign_key]" class="form-control" value="7" id="AttachmentForeignKey"/>
-          <div class="form-group required"><label for="AttachmentAttachment" class="col col-md-3 control-label"><?= __('Logo') ?></label>
-            <div class="col col-md-9 required"><input type="file" name="data[Attachment][attachment]"  class="form-control" id="AttachmentAttachment" required="required"/></div></div>
-            <input type="hidden" name="data[Attachment][dir]" class="form-control" id="AttachmentDir"/>
+        	<input type="hidden" name="CompanyID" class="form-control" value="<?= $_SESSION['Company']['CurrentCompanyID']?>" id="CompanyID"/>
+          <div class="form-group required">
+            <label for="AttachmentAttachment" class="col col-md-3 control-label"><?= __('Logo') ?></label>
+            <div class="col col-md-9 required">
+              <input type="file" name="photo" accept="image/*" class="form-control" id="AttachmentAttachment" required="required"/>
+            </div>
+          </div>
           </fieldset>
         <div class="submit">
           <button type="reset" class="btn btn-warning"> Reset</button>
@@ -35,3 +39,70 @@ $session = $this->request->session();
 <!-- /.panel-body -->
 </div>
 <!-- Modal -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		var bar = $('.bar');
+		var status = $('.progress');
+   		status.hide();
+   		$('#previewModelPic').hide();
+
+   		$("#AttachmentAttachment").change(function(){
+        	if (this.files && this.files[0]) {
+            	var reader = new FileReader();
+            	reader.onload = function (e) {
+                	$('#previewModelPic').attr('src', e.target.result);
+                	$('#previewModelPic').show();
+            	}
+            	reader.readAsDataURL(this.files[0]);
+        	}
+    	});
+
+   	 $("#LogoAddForm").on("reset",function(){
+   		$('#previewModelPic').hide();
+   	});
+
+   	$("#LogoAddForm").ajaxForm({
+    	beforeSend: function() {
+        	status.show();
+        	var percentVal = '0%';
+        	bar.css("width",percentVal);
+    	},
+    	uploadProgress: function(event, position, total, percentComplete) {
+        	var percentVal = percentComplete + '%';
+        	bar.css("width",percentVal);
+    	},
+      error:function(evt){
+console.log(evt);        
+      },
+    	success: function(data) {
+console.log(data);
+			CRContactos_Manager.check_errors(data);
+			if(data.invalid_form == 1){
+				//CRArt_Manager.noty_form_errors(data.error_list);
+				status.hide();
+				$("#LogoAddForm")[0].reset();
+			}
+			if(data.is_success == 1){
+        new Noty({
+            text: "<?= __('LogoAdded')?>",
+            type:'alert',
+            timeout:4000,
+              layout:'top',
+            animation: {
+                open: 'animated bounceInLeft',
+                close: 'animated bounceOutLeft',
+            }
+        }).show();
+				var percentVal = '100%';
+        bar.css("width",percentVal);
+        setTimeout(function(){ window.location.href = "#/MyCompany/"; }, 3000);
+			}
+    	},
+		dataType:'JSON',
+    type:"POST",
+    url:"/acompany/savelogo"
+	});
+
+
+	});
+</script>

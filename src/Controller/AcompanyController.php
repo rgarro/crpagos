@@ -131,6 +131,28 @@ class AcompanyController extends AppController
         $this->set('__serialize',["is_success"=>1,"flash"=>$flash,"invalid_form"=>$invalid_form,"error_list"=>$errors]);
     }
 
+    public function savelogo(){
+        $session = $this->request->session();
+        if(isset($_POST['CompanyID']) && is_numeric($_POST['CompanyID'])){
+            $company = $this->Companies->get($_POST['CompanyID'],['contain' => []]);
+            $cia = $this->Companies->patchEntity($company,$_POST);
+            if ($this->Companies->save($cia)) {
+                $flash = __('The Company has been saved.');
+                $success = 1;
+                $invalid_form = 0;
+                $errors = [];
+            }else{
+              $success = 0;
+              $flash = __('The Company could not be saved. Please, try again.');
+              $invalid_form = 1;
+              $errors = $cia->errors();
+            }
+            $this->set('__serialize',["is_success"=>1,"flash"=>$flash,"invalid_form"=>$invalid_form,"error_list"=>$errors]);
+        }else{
+          throw new Exception("Must POST a numeric company_id and valid photo image file.");
+        }
+    }
+
     public function saveinvoice(){
       $session = $this->request->session();
       //$this->viewBuilder()->setLayout('ajax');

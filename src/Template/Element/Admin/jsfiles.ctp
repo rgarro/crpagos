@@ -4,6 +4,7 @@
 <link href="/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
 <script src="/vendor/jquery/jquery.min.js"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- Metis Menu Plugin JavaScript -->
@@ -36,7 +37,7 @@ $session = $this->request->session();
 echo $this->Html-> css("ui");
 //	echo $this->Html-> css("tabs","stylesheet", array(), false);
 echo $this->Html->script("jquery/jquery.ui");
-echo $this->Html->script("jquery/jquery.form");
+//echo $this->Html->script("jquery/jquery.form");
 echo $this->Html->script("jquery/jquery.addtolist");
 echo $this->Html->script("jquery/jquery.cookie");
 echo $this->Html->script("jquery/validate");
