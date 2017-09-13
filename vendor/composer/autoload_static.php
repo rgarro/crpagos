@@ -53,9 +53,15 @@ class ComposerStaticInit8983239b2b80055d79ed41ee201e8714
         array (
             'Migrations\\' => 11,
         ),
+        'L' => 
+        array (
+            'League\\Flysystem\\' => 17,
+        ),
         'J' => 
         array (
             'JsonSchema\\' => 11,
+            'Josegonzalez\\Upload\\Test\\Fixture\\' => 33,
+            'Josegonzalez\\Upload\\' => 20,
         ),
         'D' => 
         array (
@@ -166,9 +172,21 @@ class ComposerStaticInit8983239b2b80055d79ed41ee201e8714
         array (
             0 => __DIR__ . '/..' . '/cakephp/migrations/src',
         ),
+        'League\\Flysystem\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/flysystem/src',
+        ),
         'JsonSchema\\' => 
         array (
             0 => __DIR__ . '/..' . '/justinrainbow/json-schema/src/JsonSchema',
+        ),
+        'Josegonzalez\\Upload\\Test\\Fixture\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/josegonzalez/cakephp-upload/tests/Fixture',
+        ),
+        'Josegonzalez\\Upload\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/josegonzalez/cakephp-upload/src',
         ),
         'DebugKit\\Test\\Fixture\\' => 
         array (
