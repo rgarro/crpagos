@@ -12,13 +12,13 @@ $(document).ready(function() {
 		return false;
 	});
 
-	$("#InvoiceDate").datepicker({
+	/*$("#InvoiceDate").datepicker({
 		showOn : "both",
 		defaultDate : +1,
 		buttonImage : '/img/calendar.gif',
 		buttonImageOnly : true,
 		dateFormat : "mm/dd/yy"
-	})
+	});*/
 
 	$("#StatusID").change(function() {
 		if ($("#StatusID").attr("value") == 4) {
@@ -26,9 +26,9 @@ $(document).ready(function() {
 		} else {
 			$("#RefNumber").hide();
 		}
-	})
+	});
 
-	$("#FormDetail :text").blur(function() {
+	/*$("#FormDetail :text").blur(function() {
 		$("tr .line").each(function(i) {
 			if ($(this).attr("id") != '') {
 				TheVar = "#" + this.id + " input:eq(0)";
@@ -63,7 +63,7 @@ $(document).ready(function() {
 		})
 		Total = Total.toFixed(2)
 		$("#InvoiceTotal").attr("value", Total)
-	});
+	});*/
 
 	$("#ClientID").addToList({
 		form : '#ClientForm',

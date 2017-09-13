@@ -119,7 +119,7 @@ $(document).ready(function() {
       dataType:"json",
       success:function(dat){
         var data = dat.__serialize;
-		
+
         CRContactos_Manager.check_errors(data);
         if(data.is_success == 1){
           new Noty({
@@ -153,13 +153,13 @@ $(document).ready(function() {
 		return false;
 	});
 
-	$("#InvoiceDate").datepicker({
+	/*$("#InvoiceDate").datepicker({
 		showOn : "both",
 		defaultDate : +1,
 		buttonImage : '/img/calendar.gif',
 		buttonImageOnly : true,
 		dateFormat : "mm/dd/yy"
-	})
+	})*/
 
 	$("#StatusID").change(function() {
 		if ($("#StatusID").attr("value") == 4) {
@@ -167,7 +167,7 @@ $(document).ready(function() {
 		} else {
 			$("#RefNumber").hide();
 		}
-	})
+	});
 
 	$("#FormDetail :text").blur(function() {
 		$("tr .line").each(function(i) {

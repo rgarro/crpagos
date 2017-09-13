@@ -276,13 +276,13 @@ setInterval(function(){
 	updateLines();
 }, 1000);
 
-	$("#InvoiceDate").datepicker({
+	/*$("#InvoiceDate").datepicker({
 		showOn : "both",
 		defaultDate : +1,
 		buttonImage : '/img/calendar.gif',
 		buttonImageOnly : true,
 		dateFormat : "mm/dd/yy"
-	});
+	});*/
 
 	$("#StatusID").change(function() {
 		if ($("#StatusID").attr("value") == 4) {
