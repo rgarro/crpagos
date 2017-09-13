@@ -37,6 +37,11 @@ class DashboardController extends AppController
       $this->set("void_invoices",$this->Invoices->countByCompanyIDAndStatusID($session->read('Company.CurrentCompanyID'),5));
     }
 
+    public function mycompanylogo(){
+      $session = $this->request->session();
+      $this->viewBuilder()->setLayout('ajax');
+    }
+
     public function changecompany(){
       $session = $this->request->session();
       //$data = array("is_success"=>1,"flash"=>'Cliente Actualizado.');

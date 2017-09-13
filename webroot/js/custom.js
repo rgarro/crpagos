@@ -59,5 +59,9 @@ $(document).ready(function(){
     	loadStage("/dashboard/terms");
     });
 
+    router.add('#/MyCompanyLogo/',function(){
+      loadStage("/dashboard/mycompanylogo");
+    });
+
     router.drive();
 });

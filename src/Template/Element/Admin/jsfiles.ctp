@@ -15,8 +15,8 @@
 <script src="/vendor/datatables/js/jquery.dataTables.min.js"></script>
 <script src="/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
-
-<!-- Custom heme JavaScript -->
+<script type="text/javascript" src="http://malsup.github.com/jquery.form.js"></script>
+<!-- Custom Theme JavaScript -->
 <script src="/dist/js/sb-admin-2.js"></script>
 <script src="/js/pace.min.js"></script>
 <link href="/css/animate.css" rel="stylesheet"></script>
