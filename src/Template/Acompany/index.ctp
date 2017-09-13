@@ -39,7 +39,7 @@ switch ($status_id) {
 foreach ($invoices as $c) {
 ?>
      <tr class="">
-         <td><?= $c['InvoiceDate'] ?></td>
+         <td><?= $c['Entered'] ?></td>
          <td><?= $c['InvoiceNumber'] ?> </td>
          <td>
            <a href="mailto:<?= $c['Client']['Email']?>"><?= $c['Client']['ClientName']?> <?= $c['Client']['ClientLastName']?></a></td>
@@ -133,6 +133,7 @@ $('.view-invoice-btn').on('click',function(){
 
         $('#dataTables-<?=$status_name?>-Invoices').DataTable({
             responsive: true,
+            order: [[ 0, 'desc' ]],
             language: {
               decimal:        "",
               emptyTable:     "No data available in table",
