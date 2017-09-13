@@ -130,7 +130,7 @@ class InvoicesTable extends Table
     }
 
     public function allByCompanyIDAndStatusID($company_id,$status_id){
-      $invoices = $this->find('all',["order" => ["Invoices.InvoiceID" => "DESC"],"conditions"=>["Invoices.CompanyID"=>$company_id,"Invoices.StatusID"=>$status_id],"contain"=>["Clients","InvoiceDetail","Currencies"]]);
+      $invoices = $this->find('all',["group"=>["Invoices.InvoiceID"],"order" => ["Invoices.InvoiceID" => "DESC"],"conditions"=>["Invoices.CompanyID"=>$company_id,"Invoices.StatusID"=>$status_id],"contain"=>["Clients","InvoiceDetail","Currencies"]]);
       $invoices->hydrate(false);
       return $invoices->all();
     }
