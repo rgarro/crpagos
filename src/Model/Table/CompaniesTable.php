@@ -35,7 +35,7 @@ class CompaniesTable extends Table
         $this->setPrimaryKey('CompanyID');
         $this->hasMany('Clients', ['className' => 'Clients']);
         $this->hasMany('Invoices', ['className' => 'Invoices']);
-        $this->addBehavior('Josegonzalez/Upload.Upload',['photo']);
+        //$this->addBehavior('Josegonzalez/Upload.Upload',['Companies.photo'=>['dir' => 'photo_dir']]);
     }
 
     /**
@@ -132,7 +132,10 @@ class CompaniesTable extends Table
 
         $validator
             ->allowEmpty('DefaultNote');
-
+        $validator
+            ->allowEmpty('photo');
+        $validator
+            ->allowEmpty('dir');
         return $validator;
     }
 

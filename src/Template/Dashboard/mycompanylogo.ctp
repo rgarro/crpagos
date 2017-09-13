@@ -72,9 +72,10 @@ $session = $this->request->session();
         	bar.css("width",percentVal);
     	},
       error:function(evt){
-console.log(evt);        
+//console.log(evt);
       },
-    	success: function(data) {
+    	success: function(dat) {
+        var data = dat.__serialize;
 console.log(data);
 			CRContactos_Manager.check_errors(data);
 			if(data.invalid_form == 1){
