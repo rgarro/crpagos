@@ -27,7 +27,9 @@ if(isset($ThisInvoice['StatusID'])){
 					<td style="text-align:center;"><h3 style="font-size:23pt"><b><?php echo __('InvoiceRequestFrom') ?></b></h3></td>
 				</tr>
 				<tr>
-					<td align="left" nowrap="nowrap"><?php
+					<td align="left" nowrap="nowrap">
+  <img src="<?= $_SESSION['Company']['CurrentLogo']?>" height="50"/>
+						<?php
 					echo '<b>',$session->read('Company.CurrentName'),'</b>';
 					if($session->check('Company.CurrentInfo')){
 						echo '<br>',$session->read('Company.CurrentInfo');
