@@ -64,6 +64,7 @@ var $L10n;
 			$this->Set('OtherSort','desc');
 		}
 		$this -> Set('InvoicesQ', $this -> Invoices -> index(null,null,null, $TheSort));
+      $this -> redirect("/dashboard");
   }
 
   function indexb($ThisCompany = 0) {
@@ -78,7 +79,12 @@ var $L10n;
 				if ($CurrentCompany['CompanyID'] == $ThisCompany) {
 					//If Access OK, set the variables
 					$session -> write('Company.CurrentSubject', $CurrentCompany['EmailSubject']);
-					$session -> write('Company.CurrentLogo', $CurrentCompany['Logo']);
+					//$session -> write('Company.CurrentLogo', $CurrentCompany['Logo']);
+          if(strlen($CurrentCompany['photo']) > 2){
+              $session -> write('Company.CurrentLogo', $CurrentCompany['dir']."/".$CurrentCompany['photo']);
+          }else{
+            $session -> write('Company.CurrentLogo', "/img/attachment.jpg");
+          }
 					//$session -> write('Company.CurrentURL', $CurrentCompany['CompanyUrl']);
 					//$session -> write('Company.CurrentCompanyURL', $CurrentCompany['CompanyUrl']);
           $session -> write('Company.CurrentURL', "/company/");
@@ -93,7 +99,7 @@ var $L10n;
 					//break;
 				}
 			}
-      $this -> redirect("/company");
+      $this -> redirect("/dashboard");
       //exit()
 		}
 
