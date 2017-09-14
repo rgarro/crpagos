@@ -28,7 +28,7 @@ if(isset($ThisInvoice['StatusID'])){
 				</tr>
 				<tr>
 					<td align="left" nowrap="nowrap">
-  <img src="<?= $_SESSION['Company']['CurrentLogo']?>" height="50"/>
+  <img src="http://nicapagos.com<?= $_SESSION['Company']['CurrentLogo']?>" height="50"/>
 						<?php
 					echo '<b>',$session->read('Company.CurrentName'),'</b>';
 					if($session->check('Company.CurrentInfo')){
