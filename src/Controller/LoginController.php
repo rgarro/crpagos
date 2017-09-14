@@ -38,7 +38,11 @@ class LoginController extends AppController
 
           $session -> write('Company.CurrentCompanyID', $CurrentCompany['CompanyID']);
           $session -> write('Company.CurrentSubject', $CurrentCompany['EmailSubject']);
-          $session -> write('Company.CurrentLogo', $CurrentCompany['Logo']);
+          if(strlen($CurrentCompany['photo']) > 2){
+              $session -> write('Company.CurrentLogo', $CurrentCompany['dir']."/".$CurrentCompany['photo']);
+          }else{
+            $session -> write('Company.CurrentLogo', "/img/attachment.jpg");
+          }
           //$session -> write('Company.CurrentURL', $CurrentCompany['CompanyUrl']);
           $session -> write('Company.CurrentURL', "/dashboard");
           //$session -> write('Company.CurrentURL',"/company?currentCo=".$CurrentCompany['CompanyID']);

@@ -56,7 +56,13 @@ class DashboardController extends AppController
   				if ($CurrentCompany['CompanyID'] == $ThisCompany) {
   					//If Access OK, set the variables
   					$session -> write('Company.CurrentSubject', $CurrentCompany['EmailSubject']);
-  					$session -> write('Company.CurrentLogo', $CurrentCompany['Logo']);
+  					//$session -> write('Company.CurrentLogo', $CurrentCompany['Logo']);
+            if(strlen($CurrentCompany['photo']) > 2){
+                $session -> write('Company.CurrentLogo', $CurrentCompany['dir']."/".$CurrentCompany['photo']);
+            }else{
+
+              $session -> write('Company.CurrentLogo', "/img/attachment.jpg");
+            }
   					//$session -> write('Company.CurrentURL', $CurrentCompany['CompanyUrl']);
   					//$session -> write('Company.CurrentCompanyURL', $CurrentCompany['CompanyUrl']);
             $session -> write('Company.CurrentURL', "/company/");
@@ -71,6 +77,7 @@ class DashboardController extends AppController
   					//break;
   				}
   			}
+          //$this -> Flash->success("");
   		}
       $this->set('__serialize',["is_success"=>1,"flash"=>__('PleaseSelectCompany').' '.$session->read('Company.CurrentName')]);
     }

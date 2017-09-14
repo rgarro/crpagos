@@ -3,6 +3,9 @@ $session = $this->request->session();
 ?>
 <ul class="nav navbar-top-links navbar-right">
   <li>
+    <img src="<?= $_SESSION['Company']['CurrentLogo']?>" height="50"/>
+  </li>
+  <li>
     <?php echo $this->element('Admin/companyswitch'); ?>
   </li>
     <!-- /.dropdown -->
@@ -22,7 +25,7 @@ $session = $this->request->session();
             <i class="fa fa-user fa-fw"></i> <?= $session->read('User.FullName')?> <i class="fa fa-caret-down"></i>
         </a>
         <ul class="dropdown-menu dropdown-user">
-          
+
             <li class="divider"></li>
             <li><a href="/?logout=yes"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
             </li>

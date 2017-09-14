@@ -153,11 +153,16 @@ Array
         $session = $this->request->session();
         if(isset($_POST['CompanyID']) && is_numeric($_POST['CompanyID'])){
             $company = $this->Companies->get($_POST['CompanyID'],['contain' => []]);
-            $fields = ['photo'=>$_FILES['photo']['name']];
+            $dir = "/files/Companies/".$_POST['CompanyID'];
+            $fields = ['photo'=>$_FILES['photo']['name'],"dir"=>$dir];
             $cia = $this->Companies->patchEntity($company,$fields);
             //print_r($cia);
             //exit;
             if ($this->Companies->save($cia)) {
+              $file_dir = WWW_ROOT.$dir;
+              mkdir($file_dir);
+              move_uploaded_file($_FILES['photo']['tmp_name'],$file_dir."/".$_FILES['photo']['name']);
+              $session -> write('Company.CurrentLogo', $dir."/".$_FILES['photo']['name']);
                 $flash = __('The Company has been saved.');
                 $success = 1;
                 $invalid_form = 0;

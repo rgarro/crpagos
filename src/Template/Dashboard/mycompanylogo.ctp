@@ -13,7 +13,7 @@ $session = $this->request->session();
           <fieldset>
         		<legend><?= __('AddLogo') ?></legend>
         		<center>
-        		<img id="previewModelPic" src="/attachment.jpg" class='img-polaroid'/>
+        		<img id="previewModelPic" src="<?= $_SESSION['Company']['CurrentLogo']?>" class='img-polaroid'/>
         <div class="progress progress-striped active">
             <div class="progress-bar progress-bar-primary"  role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
               <span class="sr-only">45% Complete</span>
@@ -44,7 +44,7 @@ $session = $this->request->session();
 		var bar = $('.bar');
 		var status = $('.progress');
    		status.hide();
-   		$('#previewModelPic').hide();
+   		//$('#previewModelPic').hide();
 
    		$("#AttachmentAttachment").change(function(){
         	if (this.files && this.files[0]) {
@@ -72,14 +72,12 @@ $session = $this->request->session();
         	bar.css("width",percentVal);
     	},
       error:function(evt){
-//console.log(evt);
+//con>>
       },
     	success: function(dat) {
         var data = dat.__serialize;
-console.log(data);
 			CRContactos_Manager.check_errors(data);
 			if(data.invalid_form == 1){
-				//CRArt_Manager.noty_form_errors(data.error_list);
 				status.hide();
 				$("#LogoAddForm")[0].reset();
 			}

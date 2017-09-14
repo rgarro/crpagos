@@ -20,6 +20,11 @@ $this->pageTitle= $session->read('Company.CurrentName');
 <form class="form-horizontal" method="post" id="myCompanyForm" name="TheForm" enctype="multipart/form-data">
 	<input type="hidden" name="CompanyID" value="<?= $company['CompanyID'] ?>"/>
 	<div class="form-group">
+		<div class="col-sm-12">
+<img src="<?= $_SESSION['Company']['CurrentLogo']?>" class="img-rounded"/>
+		</div>
+	</div>
+	<div class="form-group">
     <label for="LocaleCode" class="col-sm-2 control-label"><?php echo __('DefaultLanguage') ?></label>
     <div class="col-sm-10">
 				<select class="form-control" name="LocaleCode" id="LocaleCode" required="required">
