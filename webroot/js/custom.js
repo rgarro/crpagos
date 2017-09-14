@@ -63,5 +63,9 @@ $(document).ready(function(){
       loadStage("/dashboard/mycompanylogo");
     });
 
+    router.add('#/MyProfile/',function(){
+      loadStage("/dashboard/myprofile");
+    });
+
     router.drive();
 });

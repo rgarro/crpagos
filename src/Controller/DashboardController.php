@@ -21,6 +21,7 @@ class DashboardController extends AppController
       $this->loadModel("AccessLevels");
       $this->loadModel("Clients");
       $this->loadModel("Currencies");
+      $this->loadModel('Users');
   }
 
     public function index()
@@ -121,6 +122,23 @@ class DashboardController extends AppController
     public function clients()
     {
       $this->viewBuilder()->setLayout('ajax');
+    }
+
+    public function myprofile(){
+      $this->viewBuilder()->setLayout('ajax');
+      $session = $this->request->session();
+      if(isset($_SESSION['User']['UserID']) && is_numeric($_SESSION['User']['UserID'])){
+        $this->viewBuilder()->setLayout('ajax');
+        $session = $this->request->session();
+        $user = $this->Users->find('all',["conditions"=>["Users.UserID"=>$_SESSION['User']['UserID']],"contain"=>["AccessLevels"]]);
+        $user->hydrate(false);
+        $this->set('user',$user->first());
+        $alevels = $this->AccessLevels->find('all');
+        $alevels->hydrate(false);
+        $this->set('alevels',$alevels->all());
+      }else{
+        throw new Exception("Must GET a numeric user_id.");
+      }
     }
 
     public function users()
