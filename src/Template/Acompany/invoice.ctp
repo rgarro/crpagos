@@ -17,6 +17,19 @@ if(isset($ThisInvoice['StatusID'])){
 	}
 }
 ?>
+<style>
+.button {
+  font: bold 14px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 4px 8px 4px 4px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+}
+</style>
 <table align="center" class="main" style="background-color:<?php echo $session->read('Company.CurrentBgColor') ?>">
 	<tr>
     <td>
@@ -140,7 +153,7 @@ if(isset($ThisInvoice['StatusID'])){
 			<table class="detail" align="right">
         <tr>
 					<td class="total" width="150px" align="right"><b><?php echo __('Total') ?>:</b></td>
-					<td class="detail" width="150px" align="right"><?php echo $ThisInvoice['CurrencySymbol']; ?>&nbsp;</td>
+					<td class="detail" width="150px" align="right"><?php echo $ThisInvoice['CurrencySymbol']; ?>&nbsp;<?=$Total;?></td>
 			  </tr>
 			</table>		</td>
   </tr>

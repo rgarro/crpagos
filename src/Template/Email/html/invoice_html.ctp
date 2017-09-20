@@ -22,7 +22,7 @@ $session = $this->request->session();
 			<?php
 		echo '<p align="left">',__('PayInstructions3'),'</p>';
 		echo '<div class="homebutton">';
-		echo '<a href="',$FullURI,'" target="_blank">',__('Pay'),'</a>';
+		echo '<a href="',$FullURI,'" class="button" target="_blank">',__('Pay'),'</a>';
 		echo '</div>';
 		?></td>
   </tr>

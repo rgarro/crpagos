@@ -133,32 +133,13 @@ class AcompanyController extends AppController
     }
 
     public function savelogo(){
-/*
-Array
-(
-    [photo] => Array
-        (
-            [name] => logo_pragma_21nov07.gif
-            [type] => image/gif
-            [tmp_name] => /private/var/folders/p2/w9tyqllx763gn4nb__m6w_yc0000gp/T/phpBDjo7U
-            [error] => 0
-            [size] => 5070
-        )
-
-)
-Array
-(
-    [CompanyID] => 1
-)
-*/
         $session = $this->request->session();
         if(isset($_POST['CompanyID']) && is_numeric($_POST['CompanyID'])){
             $company = $this->Companies->get($_POST['CompanyID'],['contain' => []]);
             $dir = "/files/Companies/".$_POST['CompanyID'];
             $fields = ['photo'=>$_FILES['photo']['name'],"dir"=>$dir];
             $cia = $this->Companies->patchEntity($company,$fields);
-            //print_r($cia);
-            //exit;
+            
             if ($this->Companies->save($cia)) {
               $file_dir = WWW_ROOT.$dir;
               mkdir($file_dir);
