@@ -37,6 +37,10 @@ class PagesController extends AppController
   public function login(){
     $session = $this->request->session();
     $this->viewBuilder()->setLayout('login');
+    if(isset($_SESSION['Company']['CurrentCompanyID'])){
+        //$this->Flash->success("in session ...");
+        $this -> redirect("/dashboard");
+    }
   }
 
   public function  index(){
@@ -126,7 +130,7 @@ class PagesController extends AppController
      *   be found or \Cake\View\Exception\MissingTemplateException in debug mode.
      */
      public function display($page = home){
-       
+
  			$this->render("/Pages/".$page);
  		}
     /*public function display(...$path)

@@ -26,6 +26,7 @@ class MycompanyController extends AppController
 
       $this->FileHandler = new FileHandler();
       //$this->loadComponent('ImageToolbox');
+      $this->handle_timeout();
   }
 
   function index() {

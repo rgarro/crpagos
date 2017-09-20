@@ -26,6 +26,7 @@ class AcompanyController extends AppController
       $this->loadComponent("Vpos");
       $this->loadModel("Transactions");
       $this->loadComponent("Crypter");
+      $this->handle_timeout();
   }
 
 

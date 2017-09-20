@@ -13,6 +13,7 @@ class AclientsController extends AppController
       I18n::locale($session->read('LocaleCodeb'));
       $this->loadModel('Clients');
       $this->loadComponent('RequestHandler');
+      $this->handle_timeout();
   }
 
 

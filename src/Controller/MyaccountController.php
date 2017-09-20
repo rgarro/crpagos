@@ -15,6 +15,7 @@ class MyaccountController extends AppController {
       parent::initialize();
       //$this->loadModel('L10n');
       $this->loadModel('Users');
+      $this->handle_timeout();
   }
 
   public function recpass() {

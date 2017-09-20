@@ -22,6 +22,7 @@ class DashboardController extends AppController
       $this->loadModel("Clients");
       $this->loadModel("Currencies");
       $this->loadModel('Users');
+      $this->handle_timeout();
   }
 
     public function index()

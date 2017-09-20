@@ -13,6 +13,7 @@ class AusersController extends AppController
       I18n::locale($session->read('LocaleCodeb'));
       $this->loadModel('Users');
       $this->loadModel("AccessLevels");
+      $this->handle_timeout();
   }
 
 
@@ -43,7 +44,7 @@ class AusersController extends AppController
     }
 
     public function setactive(){
-      
+
     }
 
     public function save(){

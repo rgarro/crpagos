@@ -33,6 +33,21 @@ class AppController extends Controller
 {
 
 var $L10n;
+
+
+  public function handle_timeout(){
+    $session = $this->request->session();
+    if(!isset($_SESSION['Company']['CurrentCompanyID'])){
+      if($this->request->is('ajax')){
+        echo json_encode(array("error"=>1,"timed_out"=>1));
+        exit;
+      } else {
+        $this->Flash->success("session expired ...");
+        $this -> redirect("/");
+      }
+    }
+  }
+
     public function initialize()
     {
         parent::initialize();
