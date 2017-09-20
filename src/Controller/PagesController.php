@@ -34,13 +34,17 @@ class PagesController extends AppController
       $this->loadComponent('Crypter');
   }
 
+  
+
   public function login(){
     $session = $this->request->session();
     $this->viewBuilder()->setLayout('login');
-    if(isset($_SESSION['Company']['CurrentCompanyID']) && $_SESSION['Company']['CurrentCompanyID'] > 0){
+    if(isset($_SESSION['logged_out']) && $_SESSION['logged_out'] == 0){
         //$this->Flash->success("in session ...");
         $this -> redirect("/dashboard");
     }
+    //print_r(session_get_cookie_params());
+    //exit;
   }
 
   public function  index(){

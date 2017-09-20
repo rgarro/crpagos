@@ -16,9 +16,9 @@ class LoginController extends AppController
 
   public function index(){
     $session = $this->request->session();
-    if ($session->check('User.UserID')) {
+    /*if ($session->check('User.UserID')) {
       $this->redirect($session->read('Company.CurrentURL'));
-    }
+    }*/
     $this -> pageTitle = __('Welcome', true);
     if (isset($_POST['Login'])) {
       $CheckLoginQ = $this -> Users -> index();
@@ -28,6 +28,7 @@ class LoginController extends AppController
         $CheckCompanyQ = $this -> Users -> CheckCompany($CheckLogin['UserID']);
         if (count($CheckCompanyQ) > 0) {
           //Set Vatriables
+          $session -> write('logged_out',0);
           $session -> write('User.UserID', $CheckLogin['UserID']);
           $session -> write('User.AccessLevelID', $CheckLogin['AccessLevelID']);
           $session -> write('User.FirstName', $CheckLogin['FirstName']);

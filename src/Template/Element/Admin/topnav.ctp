@@ -28,7 +28,7 @@ $session = $this->request->session();
           <li><a href="#/MyProfile/"><i class="fa fa-user fa-fw"></i> <?= __("MyProfile")?></a>
           </li>
             <li class="divider"></li>
-            <li><a href="/?logout=yes"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            <li><a href="/dashboard/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
             </li>
         </ul>
         <!-- /.dropdown-user -->

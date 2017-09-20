@@ -50,7 +50,7 @@ var $L10n;
 
     public function initialize()
     {
-        parent::initialize();
+        //parent::initialize();
         $this->loadComponent('RequestHandler');
         $this->loadComponent('Flash');
         $this->loadComponent('Cookie');
@@ -62,7 +62,7 @@ var $L10n;
         //$this->loadComponent('Csrf');
         $session = $this->request->session();
         //Check if we are loggin out;
-    		if (isset($_GET['logout']) && $_GET['logout'] == 'yes') {
+    		if (isset($_GET['logoutx']) && $_GET['logoutx'] == 'yes') {
 //print_r(get_class_methods($session));
           $session->delete("User");
           $session->delete("Company");
@@ -86,14 +86,25 @@ var $L10n;
           $session->delete('Company.CurrentReplyTo');
           $session->delete('Company.CurrentExtraCC');
           $session->delete('Companies');
-          $_SESSION['Company']['CurrentCompanyID'] = 0;
-          $session->write('Company.CurrentCompanyID',0);
-    			$session->destroy();
+          //$_SESSION['Company']['CurrentCompanyID'] = 0;
+          //$session->write('Company.CurrentCompanyID',0);
+          //$session -> write('logged_out',1);
+          $this->request->session()->write('logged_out',1);
+          $_SESSION = array();
+    			//$session->destroy();
           //$session -> renew();
           //session_start();
           //session_reset();
+          if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
           session_destroy();
           header("Location: /");
+          //$this -> redirect('/');
           exit;
     		}
     		//Time Zone Fix
