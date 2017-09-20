@@ -29,10 +29,7 @@ class DashboardController extends AppController
     $session = $this->request->session();
     $session->destroy();
     $_SESSION = array();
-    //
-    //$session -> renew();
-    //session_start();
-    //session_reset();
+
     if (ini_get("session.use_cookies")) {
       $params = session_get_cookie_params();
       setcookie(session_name(), '', time() - 42000,$params["path"], $params["domain"],$params["secure"], $params["httponly"]);
