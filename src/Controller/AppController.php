@@ -92,7 +92,7 @@ var $L10n;
           //$session -> renew();
           //session_start();
           //session_reset();
-          //session_destroy();
+          session_destroy();
           header("Location: /");
           exit;
     		}
