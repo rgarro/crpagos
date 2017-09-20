@@ -86,6 +86,7 @@ var $L10n;
           $session -> delete('Company.CurrentReplyTo');
           $session -> delete('Company.CurrentExtraCC');
           $session -> delete('Companies');
+          $_SESSION['Company']['CurrentCompanyID'] = 0;
     			//$session -> destroy();
           //$session -> renew();
           //session_start();

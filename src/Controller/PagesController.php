@@ -37,7 +37,7 @@ class PagesController extends AppController
   public function login(){
     $session = $this->request->session();
     $this->viewBuilder()->setLayout('login');
-    if(isset($_SESSION['Company']['CurrentCompanyID'])){
+    if(isset($_SESSION['Company']['CurrentCompanyID']) && $_SESSION['Company']['CurrentCompanyID'] > 0){
         //$this->Flash->success("in session ...");
         $this -> redirect("/dashboard");
     }
