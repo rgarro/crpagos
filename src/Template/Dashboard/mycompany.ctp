@@ -21,7 +21,7 @@ $this->pageTitle= $session->read('Company.CurrentName');
 	<input type="hidden" name="CompanyID" value="<?= $company['CompanyID'] ?>"/>
 	<div class="form-group">
 		<div class="col-sm-12"><center>
-<img src="<?= $_SESSION['Company']['CurrentLogo']?>" class="img-rounded"/>
+<img src="<?= $_SESSION['Company']['CurrentLogo']?>" height="50"/>
 </center>
 		</div>
 	</div>
