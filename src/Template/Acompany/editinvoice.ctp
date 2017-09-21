@@ -140,7 +140,7 @@ echo '<h3>', $this -> pageTitle, '</h3>';
  <?php echo $this->element('Admin/notes'); ?>
     <tr>
     <th>
-			<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> <?php echo __('PendSend') ?></button>&nbsp;
+			<button type="submit" class="btn btn-success"><i class="fa fa-save"></i> <?php echo __('Edit') ?></button>&nbsp;
      <button invoice_id="<?php echo $ThisInvoice['InvoiceID']; ?>" type="button" class="btn btn-info btn-sendmail"><i class="fa fa-envelope"></i> <?php echo __('SendInvoice') ?></button>
    </th>
   </tr>
