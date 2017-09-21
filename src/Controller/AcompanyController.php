@@ -111,9 +111,9 @@ class AcompanyController extends AppController
     }
 
     public function save(){
-        $session = $this->request->session();
-        if(isset($_GET['CompanyID']) && is_numeric($_GET['CompanyID'])){
-          $company = $this->Companies->get($_GET['CompanyID'],['contain' => []]);
+      $session = $this->request->session();        
+      if(isset($_GET['CompanyID']) && is_numeric($_GET['CompanyID'])){
+          $company = $this->Companies->get($_0GET['CompanyID'],['contain' => []]);
         }else{
           $company = $this->Companies->newEntity();
         }
@@ -139,7 +139,7 @@ class AcompanyController extends AppController
             $dir = "/files/Companies/".$_POST['CompanyID'];
             $fields = ['photo'=>$_FILES['photo']['name'],"dir"=>$dir];
             $cia = $this->Companies->patchEntity($company,$fields);
-            
+
             if ($this->Companies->save($cia)) {
               $file_dir = WWW_ROOT.$dir;
               mkdir($file_dir);

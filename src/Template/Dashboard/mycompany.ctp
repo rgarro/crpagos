@@ -78,7 +78,7 @@ $(document).ready(function(){
 	$("#myCompanyForm").on("submit",function(){
 		var cia_datos = $("#myCompanyForm").serializeHash();
 		$.ajax({
-	    url:"/Acompany/save",
+	    url:"/acompany/save",
 	    data:cia_datos,
 	    type:"GET",
 	    dataType:"json",

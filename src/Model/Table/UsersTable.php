@@ -114,17 +114,23 @@ class UsersTable extends Table
       return $users->all();
     }
 
+    public function getByEmail($email){
+      $sql ="SELECT * ";
+			$sql .=" FROM Users ";
+			$sql .=" WHERE UserStatus = 1 ";
+			$sql .=" AND Email ='".trim($email)."'";
+			$sql .=" ORDER BY AccessLevelID, FirstName, LastName";
+			return $this->connection()->execute($sql)->fetch('assoc');
+    }
 
-    public function index(){
-			$TheLogin = $_POST['Login'];
-			$ThePass = $_POST['Password'];
-			$TheSql ="SELECT * ";
-			$TheSql.=" FROM Users ";
-			$TheSql.=" WHERE UserStatus = 1 AND Email <> ''";
-			$TheSql.=" AND Email ='".trim($TheLogin)."'";
-			$TheSql.=" AND Password = '".trim($ThePass)."'";
-			$TheSql.=" ORDER BY AccessLevelID, FirstName, LastName= '".trim($ThePass)."'";
-			return $this->connection()->execute($TheSql)->fetch('assoc');
+    public function index($login,$password){
+			$sql ="SELECT * ";
+			$sql .=" FROM Users ";
+			$sql .=" WHERE UserStatus = 1 ";
+			$sql .=" AND Email ='".trim($login)."'";
+			$sql .=" AND Password = '".trim($password)."'";
+			$sql .=" ORDER BY AccessLevelID, FirstName, LastName ";
+			return $this->connection()->execute($sql)->fetch('assoc');
 		}
 
 		public function CheckCompany($UserID){
