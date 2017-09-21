@@ -204,7 +204,6 @@ class DashboardController extends AppController
   				$TheTerms[$ThisTerm['LocaleCode']] = null;
   			}
   		}
-
   		$this -> Set('GetMyCompanyQ', $this -> Companies -> GetSites($session -> read('Company.CurrentCompanyID')));
   		$this -> Set('TermsQ', $TheTerms);
   		$this -> Set('LocalesQ', $LocalesQ);
