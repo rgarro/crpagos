@@ -20,8 +20,9 @@ $this->pageTitle= $session->read('Company.CurrentName');
 <form class="form-horizontal" method="post" id="myCompanyForm" name="TheForm" enctype="multipart/form-data">
 	<input type="hidden" name="CompanyID" value="<?= $company['CompanyID'] ?>"/>
 	<div class="form-group">
-		<div class="col-sm-12">
+		<div class="col-sm-12"><center>
 <img src="<?= $_SESSION['Company']['CurrentLogo']?>" class="img-rounded"/>
+</center>
 		</div>
 	</div>
 	<div class="form-group">
@@ -97,7 +98,8 @@ $(document).ready(function(){
 	            }
 	        }).show();
 	        loadStage("/dashboard/mycompany");
-	        window.location.href = "#/MyCompany/";
+	        //window.location.href = "#/MyCompany/";
+					setTimeout(function(){ window.location.href = "/dashboard"; }, 2000);
 	      }
 	    }
 	  });

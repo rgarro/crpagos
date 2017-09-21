@@ -26,6 +26,7 @@ class AcompanyController extends AppController
       $this->loadComponent("Vpos");
       $this->loadModel("Transactions");
       $this->loadComponent("Crypter");
+      $this->loadComponent('CompanySession');
       $this->handle_timeout();
   }
 
@@ -111,14 +112,17 @@ class AcompanyController extends AppController
     }
 
     public function save(){
-      $session = $this->request->session();        
+      $session = $this->request->session();
       if(isset($_GET['CompanyID']) && is_numeric($_GET['CompanyID'])){
-          $company = $this->Companies->get($_0GET['CompanyID'],['contain' => []]);
+          $company = $this->Companies->get($_GET['CompanyID'],['contain' => []]);
         }else{
           $company = $this->Companies->newEntity();
         }
         $cia = $this->Companies->patchEntity($company,$_GET);
         if ($this->Companies->save($cia)) {
+            $current_user = $this->Users->getByEmail($session->read('User.Email'));
+            $current_company = $this->Users->CheckCompany($current_user['UserID']);
+            $this->CompanySession->loadData($current_user,$current_company);
             $flash = __('The Company has been saved.');
             $success = 1;
             $invalid_form = 0;
