@@ -278,6 +278,7 @@ class ComposerStaticInit8983239b2b80055d79ed41ee201e8714
         'App\\Controller\\CodeController' => __DIR__ . '/../..' . '/src/Controller/CodeController.php',
         'App\\Controller\\CompanyController' => __DIR__ . '/../..' . '/src/Controller/CompanyController.php',
         'App\\Controller\\Component\\CardinalComponent' => __DIR__ . '/../..' . '/src/Controller/Component/CardinalComponent.php',
+        'App\\Controller\\Component\\CompanySessionComponent' => __DIR__ . '/../..' . '/src/Controller/Component/CompanySessionComponent.php',
         'App\\Controller\\Component\\CrypterComponent' => __DIR__ . '/../..' . '/src/Controller/Component/CrypterComponent.php',
         'App\\Controller\\Component\\ImageToolboxComponent' => __DIR__ . '/../..' . '/src/Controller/Component/ImageToolboxComponent.php',
         'App\\Controller\\Component\\Image_Toolbox' => __DIR__ . '/../..' . '/src/Controller/Component/Image_Toolbox.php',

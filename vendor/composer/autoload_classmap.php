@@ -16,6 +16,7 @@ return array(
     'App\\Controller\\CodeController' => $baseDir . '/src/Controller/CodeController.php',
     'App\\Controller\\CompanyController' => $baseDir . '/src/Controller/CompanyController.php',
     'App\\Controller\\Component\\CardinalComponent' => $baseDir . '/src/Controller/Component/CardinalComponent.php',
+    'App\\Controller\\Component\\CompanySessionComponent' => $baseDir . '/src/Controller/Component/CompanySessionComponent.php',
     'App\\Controller\\Component\\CrypterComponent' => $baseDir . '/src/Controller/Component/CrypterComponent.php',
     'App\\Controller\\Component\\ImageToolboxComponent' => $baseDir . '/src/Controller/Component/ImageToolboxComponent.php',
     'App\\Controller\\Component\\Image_Toolbox' => $baseDir . '/src/Controller/Component/Image_Toolbox.php',
