@@ -54,9 +54,13 @@ if(isset($ThisInvoice['StatusID'])){
 						echo '<b>', __('InvoiceDate'), ':</b> ';
 						if($session->read('LocaleCode') == 'spa_cr'){
 							//echo strtotime($ThisInvoice['InvoiceDate']);
-							echo date('l, F j Y', strtotime($ThisInvoice['InvoiceDate']));
+							setlocale(LC_ALL,"es_ES");
+							//echo date('l, F j Y', strtotime($ThisInvoice['InvoiceDate']));
+							echo strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']));
 						}else{
-							echo date('l, F j Y', strtotime($ThisInvoice['InvoiceDate']));
+							setlocale(LC_ALL,"en_US");
+							//echo date('l, F j Y', strtotime($ThisInvoice['InvoiceDate']));
+							echo strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']));
 						}
 						echo '<br><b>',__('InvoiceNumber'), '</b>: ', $ThisInvoice['InvoiceNumber'];
 						if($session->check('TransactionID')){
