@@ -129,13 +129,16 @@ if(isset($ThisInvoice['StatusID'])){
 	?>
   <tr>
     <td width="100%">
-			<table  width="100%" class="detail">
-        <tr class="detail">
-          <td class="title"><?php echo __('Qty') ?></td>
-          <td class="title"><?php echo __('Description') ?></td>
-		<td class="title"><?php echo __('UnitPrice') ?></td>
-          <td class="title"><?php echo __('Amount') ?></td>
+			<table  width="100%" class="table table-striped detail">
+<thead>
+				<tr class="detail">
+          <th class="title"><?php echo __('Qty') ?></th>
+          <th class="title"><?php echo __('Description') ?></th>
+		<td class="title"><?php echo __('UnitPrice') ?></th>
+          <th class="title"><?php echo __('Amount') ?></th>
         </tr>
+</thead>
+<tbody>
 		<?php
 		$Total = 0;
 		foreach($InvoiceDetailQ as $ThisDetail){
@@ -155,6 +158,7 @@ if(isset($ThisInvoice['StatusID'])){
 			<td class="total" align="right"><b><?php echo __('Total') ?>:</b> </td>
 			<td class="detail"><?php echo $ThisInvoice['CurrencySymbol']; ?>&nbsp;<?=floatval($Total);?></td>
 		</tr>
+	</tbody>
 			</table>
 			</td>
   </tr>
