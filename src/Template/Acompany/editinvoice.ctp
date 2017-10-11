@@ -256,33 +256,18 @@ var lineTpl = '<tr id="Line0" class="lines">\
 	});
 
 $(document).on("click",".remove-lineb",function(){
-//console.log($(this).attr("trid")+" ==== "+ $(this).attr("invoice_detail_id"));
-var trid  = $(this).attr("trid");
-$("#"+trid).remove();
-
-updateLines();
+	var trid  = $(this).attr("trid");
+	$("#"+trid).remove();
+	updateLines();
 });
 
 	$(".remove-lines").on("click",function(){
 		var trid  = $(this).attr("trid");
 		$("#"+trid).remove();
-
 		updateLines();
-
 	});
 
-setInterval(function(){
-	//console.log("intervel..");
-	updateLines();
-}, 1000);
-
-	/*$("#InvoiceDate").datepicker({
-		showOn : "both",
-		defaultDate : +1,
-		buttonImage : '/img/calendar.gif',
-		buttonImageOnly : true,
-		dateFormat : "mm/dd/yy"
-	});*/
+setInterval(updateLines,1500);
 
 	$("#StatusID").change(function() {
 		if ($("#StatusID").attr("value") == 4) {

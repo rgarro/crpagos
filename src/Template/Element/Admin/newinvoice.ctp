@@ -267,6 +267,8 @@ function updateNewLines(){
 	$("#InvoiceTotal").attr("value", Total);
 }
 
+setInterval(updateNewLines,1500);
+
 	$("#ClientID").addToList({
 		form : '#ClientForm',
 		insertPosition : 'first',
