@@ -3,9 +3,6 @@ $session = $this->request->session();
 	$ThisInvoice = current($InvoiceQ);
 
 	$this->pageTitle= __('Voiding', true).' '.__('InvoiceNumber', true) .' '.$ThisInvoice['InvoiceNumber'];
-//localized validation code
-	//$TheJs = $session->read('LocaleCode').'/voidinvoice';
-	//echo $this->Html->script($TheJs);
  ?>
  <div class="animated pulse" align="center">
  	<?php

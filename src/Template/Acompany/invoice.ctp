@@ -127,10 +127,10 @@ if(isset($ThisInvoice['StatusID'])){
     <td width="100%">
 			<table  width="100%" class="detail">
         <tr class="detail">
-          <td class="title" width="20%"><?php echo __('Qty') ?></td>
-          <td class="title" width="40%"><?php echo __('Description') ?></td>
-		<td class="title" width="20%"><?php echo __('UnitPrice') ?></td>
-          <td class="title" width="20%"><?php echo __('Amount') ?></td>
+          <td class="title"><?php echo __('Qty') ?></td>
+          <td class="title"><?php echo __('Description') ?></td>
+		<td class="title"><?php echo __('UnitPrice') ?></td>
+          <td class="title"><?php echo __('Amount') ?></td>
         </tr>
 		<?php
 		$Total = 0;
@@ -145,17 +145,16 @@ if(isset($ThisInvoice['StatusID'])){
 
 		$Total = $Total + $ThisDetail['Amount'];
 		}?>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td class="total" align="right"><b><?php echo __('Total') ?>:</b> </td>
+			<td class="detail"><?php echo $ThisInvoice['CurrencySymbol']; ?>&nbsp;<?=floatval($Total);?></td>
+		</tr>
 			</table>
 			</td>
   </tr>
 	<tr>
-    <td>
-			<table class="detail" align="right">
-        <tr>
-					<td class="total" width="150px" align="right"><b><?php echo __('Total') ?>:</b></td>
-					<td class="detail" width="150px" align="right"><?php echo $ThisInvoice['CurrencySymbol']; ?>&nbsp;<?=$Total;?></td>
-			  </tr>
-			</table>		</td>
   </tr>
   <tr>
     <td>&nbsp;</td>
