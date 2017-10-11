@@ -16,9 +16,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html>
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <title><?= $this->fetch('title') ?></title>
 </head>
 <body>
-    <?= $this->fetch('content') ?>
+  <div class="navbar navbar-inverse">
+  	<a class="navbar-brand" href="http://nicapagos.com/dashboard"><img src="http://nicapagos.com/img/NICApagos.gif" class="img-thumbnail" style="margin-top: -10px;"></a>
+
+  	</div>
+  <div class="container">
+  	<?php echo $this->fetch('content'); ?>
+  </div>
 </body>
 </html>
