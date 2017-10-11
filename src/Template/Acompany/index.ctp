@@ -41,7 +41,7 @@ foreach ($invoices as $c) {
   $Desc = "";
   foreach($c["Detail"] as $iDet){
     $Monto += $iDet['Amount'];
-    $Desc = $Desc.$iDet['Description']." ".$c['Currency']['CurrencySymbol'].$iDet['Amount']."<br>";
+    $Desc = $Desc.$iDet['Description']." - ".$c['Currency']['CurrencySymbol'].$iDet['Amount']."<br>";
   }
 ?>
      <tr class="">
