@@ -37,6 +37,12 @@ switch ($status_id) {
    <tbody>
 <?php
 foreach ($invoices as $c) {
+  $Monto = 0;
+  $Desc = "";
+  foreach($c["Detail"] as $iDet){
+    $Monto += $iDet['Amount'];
+    $Desc = $Desc.$iDet['Description']." ".$c['Currency']['CurrencySymbol'].$iDet['Amount']."<br>";
+  }
 ?>
      <tr class="">
          <td><?= $c['Entered'] ?></td>
@@ -47,9 +53,9 @@ foreach ($invoices as $c) {
            <?= $c['Currency']['CurrencyName']?>
             </td>
          <td>
-           <?= $c['Currency']['CurrencySymbol']?> <?= $c['Detail']['Amount']?>
+           <?= $c['Currency']['CurrencySymbol']?> <?= $Monto; ?>
           </td>
-         <td><?= $c['Detail']['Description']?> </td>
+         <td><?= $Desc;?> </td>
          <td>
            <?php
 if($status_id == 3 || $status_id == 4){

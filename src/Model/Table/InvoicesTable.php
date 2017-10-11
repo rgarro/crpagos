@@ -36,7 +36,7 @@ class InvoicesTable extends Table
         $this->belongsTo('Companies', ['className' => 'Companies','foreignKey'=>"CompanyID"]);
         $this->belongsTo('Clients', ['className' => 'Clients','foreignKey'=>"ClientID","propertyName"=>"Client"]);
         $this->belongsTo('Currencies', ['className' => 'Currencies','foreignKey'=>"CurrencyID","propertyName"=>"Currency"]);
-        $this->hasOne('InvoiceDetail', ['className' => 'InvoiceDetail','foreignKey'=>"InvoiceID","propertyName"=>"Detail"]);
+        $this->hasMany('InvoiceDetail', ['className' => 'InvoiceDetail','foreignKey'=>"InvoiceID","propertyName"=>"Detail"]);
         $this->belongsTo('Status', ['className' => 'Status','foreignKey'=>"StatusID","propertyName"=>"Status"]);
     }
 
