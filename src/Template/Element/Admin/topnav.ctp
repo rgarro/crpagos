@@ -9,13 +9,6 @@ $session = $this->request->session();
     <?php echo $this->element('Admin/companyswitch'); ?>
   </li>
     <!-- /.dropdown -->
-    <li>
-        <a href="/clients" >
-            <i class="fa fa-plane "></i>
-        </a>
-
-        <!-- /.dropdown-tasks -->
-    </li>
     <!-- /.dropdown -->
   <li><a href="/dashboard/changelang?Lang=eng_us"><img src="/img/usa.png" width="22"/> </a></li>
   <li><a href="/dashboard/changelang?Lang=spa_cr"><img src="/img/cr.gif" width="22"/> </a>  </li>
