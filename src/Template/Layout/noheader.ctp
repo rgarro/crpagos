@@ -17,9 +17,13 @@ $session = $this->request->session();
 	<meta name="robots" content="no index,no follow">
 	<meta name="robots" content="all">
 	<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+	<!-- Bootstrap Core CSS -->
+	 <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/crpagos.css" />
 	<script type="text/javascript" src="/js/jquery/jquery.js"></script>
 	<script language="javascript" src="/js/jquery/jquery.corner.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	 <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 	<script language="JavaScript" type="text/javascript">
 		$(document).ready(function(){
 			$(".mainwrap").corner("top");
@@ -28,6 +32,13 @@ $session = $this->request->session();
 			$(".content").corner();
 		});
 	</script>
+	<link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 	</head>
 	<?php
 		if(!isset($CurrentBgImage)){
