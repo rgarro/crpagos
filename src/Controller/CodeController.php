@@ -28,10 +28,17 @@ class CodeController extends AppController
     if($CompanyID){
       $CurrentCompany = current($this->Companies->GetSites($CompanyID));//['Companies']
       $this->Set('CurrentName', $CurrentCompany['CompanyName'] );
-      $this->Set('CurrentLogo', $CurrentCompany['Logo'] );
+      //$this->Set('CurrentLogo', $CurrentCompany['Logo'] );
       $this->Set('CurrentURL', $CurrentCompany['CompanyUrl'] );
       $this->Set('CurrentBgColor', $CurrentCompany['BgColor'] );
       $this->Set('CurrentBgImage', $CurrentCompany['CompanyUrl'].$CurrentCompany['BgImage'] );
+
+      if(strlen($CurrentCompany['photo']) > 2){
+          $this->Set('CurrentLogo', $CurrentCompany['dir']."/".$CurrentCompany['photo']);
+      }else{
+        $this->Set('CurrentLogo', "/img/attachment.jpg");
+      }
+
     }
 //Check if there's a Code
     if(isset($_GET['CodigoFactura']) &&  strlen(trim($_GET['CodigoFactura'])) > 0){
@@ -69,6 +76,11 @@ class CodeController extends AppController
         $session->write('Company.CurrentName', $CurrentCompany['CompanyName'] );
         $session->write('Company.CurrentSubject', $CurrentCompany['EmailSubject'] );
         $session->write('Company.CurrentLogo', $CurrentCompany['Logo'] );
+        if(strlen($CurrentCompany['photo']) > 2){
+            $session->write('Company.CurrentLogo', $CurrentCompany['dir']."/".$CurrentCompany['photo']);
+        }else{
+          $session->write('Company.CurrentLogo', "/img/attachment.jpg");
+        }
         $session->write('Company.CurrentURL', $CurrentCompany['CompanyUrl'] );
         $session->write('Company.CurrentEmail', $CurrentCompany['Email'] );
         $session->write('Company.CurrentBgColor', $CurrentCompany['BgColor'] );
