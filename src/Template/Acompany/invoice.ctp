@@ -53,7 +53,6 @@ if(isset($ThisInvoice['StatusID'])){
 						<?php
 						echo '<b>', __('InvoiceDate'), ':</b> ';
 						if($session->read('LocaleCode') == 'spa_cr'){
-							//echo strtotime($ThisInvoice['InvoiceDate']);
 							setlocale(LC_ALL,"es_ES");
 							//echo date('l, F j Y', strtotime($ThisInvoice['InvoiceDate']));
 							echo strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']));
