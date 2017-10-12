@@ -48,7 +48,7 @@ $session = $this->request->session();
 		</tr>
 		<tr>
 			<th colspan="4" align="center">
-			<input style="margin-right:15%;" type="image" name="Pay" id="Pay" width="266" height="42" alt="<?php echo __('PayThisInvoice')?>" src="/img/<?php echo strtolower(__('Pay', true))?>.gif">
+			<input style="margin-left:30%;" type="image" name="Pay" id="Pay" width="266" height="42" alt="<?php echo __('PayThisInvoice')?>" src="/img/<?php echo strtolower(__('Pay', true))?>.gif">
 			</th>
 		</tr>
 		<tr>

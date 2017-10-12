@@ -34,7 +34,7 @@ class PagesController extends AppController
       $this->loadComponent('Crypter');
   }
 
-  
+
 
   public function login(){
     $session = $this->request->session();
@@ -118,10 +118,7 @@ class PagesController extends AppController
   }
 
   public function terms(){
-    $this->loadModel('Terms');
-    $this->Set('TermsQ', $this -> Terms -> index());
-    Configure::write('debug', 0);
-    $this->layout = "terms";
+      $this->viewBuilder()->setLayout('ajax');
   }
 
     /**
