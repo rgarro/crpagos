@@ -40,7 +40,7 @@ $session = $this->request->session();
 			//} else {
 			//	$TheLink = '/terminos-y-condiciones.htm';
 			//}
-				$TheLink = '/terms/';
+				$TheLink = '/myterms/terms/';
 				?>
 			<input type="checkbox" value="OK" id="CheckTC" name="CheckTC">
 			<a href="<?php echo $TheLink ?>" class="nyroModal" id="TC"><?php echo __('UndrestoodTS')
