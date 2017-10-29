@@ -292,6 +292,7 @@ class ComposerStaticInit8983239b2b80055d79ed41ee201e8714
         'App\\Controller\\MailerController' => __DIR__ . '/../..' . '/src/Controller/MailerController.php',
         'App\\Controller\\MyaccountController' => __DIR__ . '/../..' . '/src/Controller/MyaccountController.php',
         'App\\Controller\\MycompanyController' => __DIR__ . '/../..' . '/src/Controller/MycompanyController.php',
+        'App\\Controller\\MytermsController' => __DIR__ . '/../..' . '/src/Controller/MytermsController.php',
         'App\\Controller\\PagesController' => __DIR__ . '/../..' . '/src/Controller/PagesController.php',
         'App\\Controller\\PayInvoiceController' => __DIR__ . '/../..' . '/src/Controller/PayInvoiceController.php',
         'App\\Controller\\ResponseController' => __DIR__ . '/../..' . '/src/Controller/ResponseController.php',
