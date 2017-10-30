@@ -17,7 +17,7 @@
 </head>
 <body>
   <div class="navbar navbar-inverse">
-  	<a class="navbar-brand" href="http://nicapagos.com/dashboard"><img src="http://nicapagos.com/img/NICApagos.gif" class="img-thumbnail" style="margin-top: -10px;"></a>
+  	<!-- <a class="navbar-brand" href="http://nicapagos.com/dashboard"><img src="http://nicapagos.com/img/NICApagos.gif" class="img-thumbnail" style="margin-top: -10px;"></a> -->
 
   	</div>
   <div class="container">

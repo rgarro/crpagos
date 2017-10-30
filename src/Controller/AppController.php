@@ -108,7 +108,8 @@ var $L10n;
           exit;
     		}
     		//Time Zone Fix
-    		putenv("TZ=America/Costa_Rica");
+        date_default_timezone_set('America/Costa_Rica');
+
     		//Language Change
     		if (!isset($_SESSION['Languages'])) {
 

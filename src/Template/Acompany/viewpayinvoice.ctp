@@ -66,8 +66,9 @@ $(document).ready(function() {
           }).show();
 					$(".invoice-edit-form-spot").html(" ");
 		      $("#invoiceEditModal").modal("hide");
-          $('.invoiceTabs a:eq(3) a').tab('show'); 
-          //setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
+          //$('.invoiceTabs a:eq(3) a').tab('show');
+          //$(".invoiceTabs a:first").tab("show");
+          setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
           //window.location.href = "#/MyCompany/";
         }
       }
