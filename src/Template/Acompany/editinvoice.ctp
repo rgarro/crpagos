@@ -267,8 +267,8 @@ $(document).on("click",".remove-lineb",function(){
 		updateLines();
 	});
 
-setInterval(updateLines,1500);
-
+//setInterval(updateLines,1500);
+//window.setInterval((function(){ updateLines(); }).bind(this),1500);
 	$("#StatusID").change(function() {
 		if ($("#StatusID").attr("value") == 4) {
 			$("#RefNumber").show();
@@ -278,6 +278,11 @@ setInterval(updateLines,1500);
 	});
 
 	$("#FormDetailB :input").blur(function(evt) {
+		updateLines();
+	});
+
+	$("#FormDetailB").focusout(function(evt) {
+		//console.log("focus out...");
 		updateLines();
 	});
 

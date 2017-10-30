@@ -159,6 +159,7 @@ $(".invoice-locale-chooser").on("change",function(){
 							$("#invoiceTheForm")[0].reset();
 				      $(".invoice-edit-form-spot").html(data);
 							$(".invoiceTabs a:first").tab("show");
+							
 				      $("#invoiceEditModal").modal("show");
 
 				    }
@@ -201,14 +202,6 @@ $(".invoice-locale-chooser").on("change",function(){
 		updateNewLines();
 
 	});
-
-	/*$("#InvoiceDate").datepicker({
-		showOn : "both",
-		defaultDate : +1,
-		buttonImage : '/img/calendar.gif',
-		buttonImageOnly : true,
-		dateFormat : "mm/dd/yy"
-	})*/
 
 	$("#StatusID").change(function() {
 		if ($("#StatusID").attr("value") == 4) {
@@ -267,7 +260,12 @@ function updateNewLines(){
 	$("#InvoiceTotal").attr("value", Total);
 }
 
-setInterval(updateNewLines,1500);
+//setInterval(updateNewLines,1500);
+//window.setInterval((function(){ updateNewLines(); }).bind(this),1500);
+$("#FormDetail").focusout(function(evt) {
+	//console.log("focus out...");
+	updateNewLines();
+});
 
 	$("#ClientID").addToList({
 		form : '#ClientForm',

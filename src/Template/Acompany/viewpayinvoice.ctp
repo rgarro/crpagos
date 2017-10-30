@@ -42,6 +42,7 @@ $this->pageTitle= __('Paying', true).' '.__('InvoiceNumber', true) .' '.$ThisInv
 $(document).ready(function() {
 
   $("#ThePayForm").on("submit",function(){
+//console.log("here");
     var cia_datos = $("#ThePayForm").serializeHash();
     $.ajax({
       url:"/acompany/saveinvoice",
@@ -49,6 +50,7 @@ $(document).ready(function() {
       type:"post",
       dataType:"json",
       success:function(dat){
+//console.log(dat);
         var data = dat.__serialize;
         CRContactos_Manager.check_errors(data);
         if(data.is_success == 1){
@@ -64,7 +66,8 @@ $(document).ready(function() {
           }).show();
 					$(".invoice-edit-form-spot").html(" ");
 		      $("#invoiceEditModal").modal("hide");
-					setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
+          $('.invoiceTabs a:eq(3) a').tab('show'); 
+          //setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
           //window.location.href = "#/MyCompany/";
         }
       }

@@ -234,6 +234,7 @@ class AcompanyController extends AppController
   			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
   			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmManualPaid', true);
   			$TheTemplate = "invoicepaid_html";
+        $TheCode = rawurlencode($this->Crypter->enCrypt($InvoiceID));
   			require current(App::path("Template")). '/Acompany' . DS . 'mail.ctp';
   		}
   		if ($ActionID == 9) {
@@ -241,6 +242,7 @@ class AcompanyController extends AppController
   			$InvoiceDetailQ = $this -> Invoices -> GetInvoiceDetail($InvoiceID);
   			$Subject = __('TheInvoiceNumber', true) . ': ' . $InvoiceQ['InvoiceNumber'] . ' ' . __('ConfirmVoid', true);
   			$TheTemplate = "invoicepaid_html";
+        $TheCode = rawurlencode($this->Crypter->enCrypt($InvoiceID));
         require current(App::path("Template")).'/Acompany' . DS . 'mail.ctp';
   		}
 
