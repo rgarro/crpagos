@@ -43,9 +43,9 @@ $session = $this->request->session();
 					<td nowrap style="text-align:left;border: 1px none #999999; border-top-style:solid; border-left-style:solid;padding-left:40px">
 	<?php
 	if($session->read('LocaleCode') == 'spa_cr'){
-		$DateMask="m/d/Y";
+		$DateMask="Y-m-d H:i:s";
 	}else{
-		$DateMask="m/d/Y";
+		$DateMask="Y-m-d H:i:s";
 	}
 	?>
 	<input type="hidden" name="InvoiceDate" id="InvoiceDate" value="<?php echo date($DateMask); ?>"><br>
@@ -159,7 +159,7 @@ $(".invoice-locale-chooser").on("change",function(){
 							$("#invoiceTheForm")[0].reset();
 				      $(".invoice-edit-form-spot").html(data);
 							$(".invoiceTabs a:first").tab("show");
-							
+
 				      $("#invoiceEditModal").modal("show");
 
 				    }

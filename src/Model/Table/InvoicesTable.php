@@ -248,9 +248,9 @@ class InvoicesTable extends Table
 			}
 			if(isset($_POST['InvoiceDate'])){
 				if($TheLocale == 'eng_us'){
-					$DateFormat =  "%m/%d/%Y";
+					$DateFormat =  "%Y-%m-%d %h:%i:%s";
 				}else{
-					$DateFormat =  "%m/%d/%Y";
+					$DateFormat =  "%Y-%m-%d %h:%i:%s";
 				}
 				$TheSql.=" InvoiceDate =STR_TO_DATE('".$_POST['InvoiceDate']."', '$DateFormat'),";
 			}

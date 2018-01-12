@@ -81,8 +81,8 @@ echo '<h3>', $this -> pageTitle, '</h3>';
 					<td nowrap  style="text-align:left;border: 1px none #999999; border-top-style:solid; border-left-style:solid;">
 					<label for="InvoiceDate">*<?php echo __('InvoiceDate') ?>:</label>
 	<?php
-						if ($session -> read('LocaleCode') == 'spa_cr') {$DateMask = "m/d/Y";
-						} else {$DateMask = "m/d/Y";
+						if ($session -> read('LocaleCode') == 'spa_cr') {$DateMask = "Y-m-d H:i:s";
+						} else {$DateMask = "Y-m-d H:i:s";
 						}
  ?> <input type="text" name="InvoiceDate" id="InvoiceDate" value="<?php echo date($DateMask, strtotime($ThisInvoice['InvoiceDate'])); ?>" size="10" maxlength="10" tabindex="4"><br>
 <label for="InvoiceNumber">*<?php echo __('InvoiceNumber') ?>:</label><input type="text" name="InvoiceNumber" id="InvoiceNumber" value="<?php echo $ThisInvoice['InvoiceNumber'] ?>" size="15" maxlength="25"></td>
