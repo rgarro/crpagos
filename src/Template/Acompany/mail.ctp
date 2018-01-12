@@ -25,7 +25,8 @@ if(strlen($ExtraCCs) > 0){
 $Email->cc(array('mensajes1@pragmatico.com' => 'Mensajes'));
 $ReplyTo = $session->read('Company.CurrentReplyTo');
 if(strlen($ReplyTo) > 0){
-	$Email->replyTo($ReplyTo);
+	//$Email->replyTo($ReplyTo);
+	$Email->replyTo($session->read('Company.CurrentEmail'));
 }else{
 	$Email->replyTo($session->read('Company.CurrentEmail'));
 }
@@ -38,7 +39,8 @@ $Email->viewVars(['ThisInvoice'=> $InvoiceQ,'InvoiceDetailQ'=> $InvoiceDetailQ,"
 $Email->emailFormat('html');
 $Email->template($TheTemplate);
 $Email->from(array($session->read('Company.CurrentEmail') => $session->read('Company.CurrentName')));
-$Email->replyTo(array("info@nicapagos.com" => "NicaPagos"));
+$Email->replyTo($session->read('Company.CurrentEmail'));
+//$Email->replyTo(array("info@nicapagos.com" => "NicaPagos"));
 
 $Email->subject($Subject);
 

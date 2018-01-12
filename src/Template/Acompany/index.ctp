@@ -64,7 +64,7 @@ if($status_id == 3 || $status_id == 4){
 <?php
 } elseif ($status_id == 2) {
 ?>
-<button invoice_id="<?= $c['InvoiceID'] ?>" class="btn btn-xs btn-outline btn-default view-voidinvoice-btn"> <i class="fa fa-warning"></i> <?= __('Void') ?></button>
+<button invoice_id="<?= $c['InvoiceID'] ?>" class="btn btn-xs btn-outline btn-default view-voidinvoice-btn"> <i class="fa fa-warning"></i> <?= __('ToVoid') ?></button>
 <button invoice_id="<?= $c['InvoiceID'] ?>" class="btn btn-xs btn-outline btn-default view-payinvoice-btn"> <i class="fa fa-money"></i> <?= __('Pay') ?></button>
 <?php
 }elseif ($status_id == 5) {
