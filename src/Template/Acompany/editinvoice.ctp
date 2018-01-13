@@ -173,7 +173,33 @@ var lineTpl = '<tr id="Line0" class="lines">\
 	$(".btn-sendmail").on("click",function(){
 		if(window.confirm("<?php echo __('SendInvoice') ?>?")){
 			var invoice_id = $(this).attr("invoice_id");
-			$.ajax({
+			var cia_datos = $("#TheEditForm").serialize();
+	    $.ajax({
+	      url:"/acompany/saveinvoice?invoice_id="+invoice_id,
+	      data:cia_datos,
+	      type:"post",
+	      dataType:"json",
+	      success:function(dat){
+	        var data = dat.__serialize;
+	        CRContactos_Manager.check_errors(data);
+	        if(data.is_success == 1){
+	          new Noty({
+	              text: data.flash,
+	              type:'alert',
+	              timeout:4000,
+	                layout:'top',
+	              animation: {
+	                  open: 'animated bounceInLeft', // Animate.css class names
+	                  close: 'animated bounceOutLeft', // Animate.css class names
+	              }
+	          }).show();
+						$(".invoice-edit-form-spot").html(" ");
+			      $("#invoiceEditModal").modal("hide");
+						setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
+	        }
+	      }
+	    });
+			/*$.ajax({
 	      url:"/acompany/sendemail",
 	      data:{invoice_id:invoice_id},
 	      type:"get",
@@ -197,7 +223,7 @@ var lineTpl = '<tr id="Line0" class="lines">\
 						setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
 	        }
 	      }
-	    });
+	    });*/
 		}
 	});
 

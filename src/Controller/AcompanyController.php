@@ -245,6 +245,9 @@ class AcompanyController extends AppController
         $TheCode = rawurlencode($this->Crypter->enCrypt($InvoiceID));
         require current(App::path("Template")).'/Acompany' . DS . 'mail.ctp';
   		}
+      if(isset($_GET['invoice_id'])){
+        $this->sendemail();
+      }
 
       $this->set('__serialize',["is_success"=>1,"flash"=>$Flash,"invoice_id"=>$InvoiceID]);
     }
