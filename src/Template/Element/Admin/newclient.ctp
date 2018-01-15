@@ -14,7 +14,7 @@ $session = $this->request->session();
     </div>
 	</div>
 	<div class="form-group">
-    <label for="ClientName" class="col-sm-2 control-label"><?php echo __('CompanyName') ?></label>
+    <label for="ClientName" class="col-sm-2 control-label"><?php echo __('ClientName') ?></label>
     <div class="col-sm-10">
 				<input name="ClientName" type="text" class="form-control" value="" placeholder="Client" required="required">
     </div>
@@ -22,21 +22,23 @@ $session = $this->request->session();
 	<div class="form-group">
     <label for="Email" class="col-sm-2 control-label"><?php echo __('Email') ?></label>
     <div class="col-sm-10">
-				<input name="Email" type="email" class="form-control" value="" placeholder="Email" required="required">
+				<input name="Email" type="email" class="form-control main-email" value="" placeholder="Email" required="required">
+<br>
+        <input name="cEmail" type="email" class="form-control confirm-email" value="" placeholder="Confirm Email" required="required">
     </div>
 	</div>
 	<div class="form-group">
-    <label for="TaxID" class="col-sm-2 control-label"><?php echo __('CedulaJuridica') ?></label>
+    <label for="TaxID" class="col-sm-2 control-label"><?php echo __('Cedula') ?></label>
     <div class="col-sm-10">
 				<input name="CedulaJuridica" type="text" class="form-control" value="" placeholder="CedulaJuridica" required="required">
     </div>
 	</div>
-	<div class="form-group">
+	<!-- <div class="form-group">
     <label for="RazonSocial" class="col-sm-2 control-label"><?php echo __('RazonSocial') ?></label>
     <div class="col-sm-10">
 				<textarea name="RazonSocial" wrap="soft" class="form-control" rows="3" required="required"></textarea>
     </div>
-	</div>
+	</div> -->
 	<div class="form-group">
       <label class="col-sm-2 control-label" for="Phone"><?php echo __('Phone') ?></label>
       <div class="col-sm-10">
@@ -52,35 +54,48 @@ $session = $this->request->session();
 <script>
 $(document).ready(function(){
 	$("#myNewClientForm").on("submit",function(){
-		var cia_datos = $("#myNewClientForm").serializeHash();
-		$.ajax({
-	    url:"/Aclients/save",
-	    data:cia_datos,
-	    type:"GET",
-	    dataType:"json",
-	    success:function(dat){
-	      var data = dat.__serialize;
-//console.log(data);
-	      CRContactos_Manager.check_errors(data);
-	      if(data.is_success == 1){
-	        new Noty({
-	            text: data.flash,
-	            type:'success',
-	            timeout:4000,
-	              layout:'top',
-	            animation: {
-	                open: 'animated bounceInLeft', // Animate.css class names
-	                close: 'animated bounceOutLeft', // Animate.css class names
-	            }
-	        }).show();
-          $("#myNewClientForm")[0].reset();
-          var client = new clientes();
-          client.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
-	        //loadStage("/dashboard/clients");
-	        //window.location.href = "#/Clients/";
-	      }
-	    }
-	  });
+    if($('.main-email').val() == $('.confirm-email').val()){
+      var cia_datos = $("#myNewClientForm").serializeHash();
+  		$.ajax({
+  	    url:"/Aclients/save",
+  	    data:cia_datos,
+  	    type:"GET",
+  	    dataType:"json",
+  	    success:function(dat){
+  	      var data = dat.__serialize;
+  //console.log(data);
+  	      CRContactos_Manager.check_errors(data);
+  	      if(data.is_success == 1){
+  	        new Noty({
+  	            text: data.flash,
+  	            type:'success',
+  	            timeout:4000,
+  	              layout:'top',
+  	            animation: {
+  	                open: 'animated bounceInLeft', // Animate.css class names
+  	                close: 'animated bounceOutLeft', // Animate.css class names
+  	            }
+  	        }).show();
+            $("#myNewClientForm")[0].reset();
+            var client = new clientes();
+            client.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
+  	        //loadStage("/dashboard/clients");
+  	        //window.location.href = "#/Clients/";
+  	      }
+  	    }
+  	  });
+    }else{
+      new Noty({
+         text: "Emails must be equals",
+         type:'error',
+         timeout:4000,
+           layout:'top',
+         animation: {
+             open: 'animated bounceInLeft', // Animate.css class names
+             close: 'animated bounceOutLeft', // Animate.css class names
+         }
+     }).show();
+    }
 		return false;
 	});
 });
