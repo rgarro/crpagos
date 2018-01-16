@@ -35,7 +35,7 @@ foreach ($clients as $c) {
               emptyTable:     "No data available in table",
               info:           "<?= __('Showing') ?> _START_ <?= __('to') ?> _END_ <?= __('of') ?> _TOTAL_ <?= __('entries') ?>",
               infoEmpty:      "Showing 0 <?= __('to') ?> 0 <?= __('of') ?> 0 <?= __('entries') ?>",
-              infoFiltered:   "(filtered from _MAX_ total entries)",
+              infoFiltered:   "(<?= __('filtered from') ?> _MAX_ total <?= __('entries') ?>)",
               infoPostFix:    "",
               thousands:      ",",
               lengthMenu:     "<?= __('Show') ?> _MENU_ <?= __('entries') ?>",
