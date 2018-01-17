@@ -83,12 +83,13 @@ class TermsTable extends Table
   	}
 
   	public function AddNew($CompanyID,$EnteredID,$LocaleCode, $Content) {
+      $clean_content = mysql_real_escape_string ($Content);
       $dsql = "DELETE FROM Terms WHERE CompanyID='".$CompanyID."' AND LocaleCode='".$LocaleCode."'";
       $this->connection()->execute($dsql);
   		$sql = "INSERT INTO Terms (CompanyID, LocaleCode, Content, Entered, EnteredBy) ";
   		$sql .= " VALUES(" . $CompanyID . ",";
   		$sql .= "'" . $LocaleCode. "',";
-  		$sql .= "'" . trim($Content) . "',";
+  		$sql .= "'" . trim($clean_content) . "',";
   		$sql .= "NOW(),";
   		$sql .= $EnteredID;
   		$sql .= " )";

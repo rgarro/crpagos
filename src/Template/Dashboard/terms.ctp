@@ -67,15 +67,16 @@
   			foreach ($LocalesQ as $ThisLocale) {
   				echo '<tr>';
   				echo '<th valign="top">',$ThisLocale['Locale'],':</th>';
-  				$ThisOne = $ThisLocale['LocaleCode'];
-  				echo '<input type="hidden" name="Locales[]" value="',$ThisOne,'">';
-  				if(is_null($TermsQ[$ThisLocale['LocaleCode']])){
-  					$FieldName = $ThisOne.'_New';
-  				}else{
-  					$FieldName = $ThisOne.'_Content';
-  				}
+  				echo '<input type="hidden" name="Locales[]" value="',$ThisLocale['LocaleCode'],'">';
+  				
+					$FieldName = $ThisLocale['LocaleCode'].'_Content';
+					if(isset($TermsQ[$ThisLocale['LocaleCode']])){
+						$content = $TermsQ[$ThisLocale['LocaleCode']];
+					}else{
+						$content = " ";
+					}
   				echo '<td>';
-  				echo '<textarea name="',$FieldName,'" rows="20" cols="80">',$TermsQ[$ThisLocale['LocaleCode']],'</textarea>';
+  				echo '<textarea name="',$FieldName,'" rows="20" cols="80">',$content,'</textarea>';
   				echo '</td>';
   				echo '</tr>';
   			}

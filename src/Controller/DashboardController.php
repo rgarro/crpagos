@@ -200,7 +200,7 @@ class DashboardController extends AppController
   			}
   		}
   		$this -> Set('GetMyCompanyQ', $this -> Companies -> GetSites($session -> read('Company.CurrentCompanyID')));
-  		$this -> Set('TermsQ', $TheTerms);
+  		$this -> Set('TermsQ', $TermsQ );
   		$this -> Set('LocalesQ', $LocalesQ);
     }
 
