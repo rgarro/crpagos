@@ -12,6 +12,7 @@ class AclientsController extends AppController
       $session = $this->request->session();
       I18n::locale($session->read('LocaleCodeb'));
       $this->loadModel('Clients');
+      $this->loadModel('Companies');
       $this->loadComponent('RequestHandler');
       $this->handle_timeout();
   }
@@ -23,6 +24,17 @@ class AclientsController extends AppController
         $this->viewBuilder()->setLayout('ajax');
         $clients = $this->Clients->allByCompanyID($_GET['company_id']);
         $this->set('clients',$clients);
+      }else{
+        throw new Exception("Must GET a numeric company_id.");
+      }
+    }
+
+    public function companiesindex()
+    {
+      if(isset($_GET['company_id']) && is_numeric($_GET['company_id'])){
+        $this->viewBuilder()->setLayout('ajax');
+        $companies = $this->Companies->allByCompanyID($_GET['company_id']);
+        $this->set('companies',$companies);
       }else{
         throw new Exception("Must GET a numeric company_id.");
       }

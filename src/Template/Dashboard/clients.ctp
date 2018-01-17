@@ -11,6 +11,8 @@ $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
         <ul class="nav nav-tabs">
             <li class="active"><a href="#list" data-toggle="tab" aria-expanded="true"><i class="fa fa-th-list fa-fw"></i> <?= $this->pageTitle ?></a>
             </li>
+            <li class=""><a href="#cialist" data-toggle="tab" aria-expanded="false"><i class="fa fa-plus-square fa-fw"></i> <?= __('Companies') ?></a>
+            </li>
             <li class=""><a href="#addnew" data-toggle="tab" aria-expanded="false"><i class="fa fa-plus-square fa-fw"></i> <?= __('AddNewClient') ?></a>
             </li>
             <li class=""><a href="#addnewcia" data-toggle="tab" aria-expanded="false"><i class="fa fa-plus-square fa-fw"></i> <?= __('AddNewCompany') ?></a>
@@ -23,6 +25,11 @@ $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
 
 <div id="clientsListContainer">
 
+</div></div>
+<div class="tab-pane fade" id="cialist">
+
+<div id="companiesListContainer">
+
 </div>
 </div>
 <div class="tab-pane fade" id="addnew">
@@ -34,7 +41,7 @@ $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
 <?php echo $this->element('Admin/newcompany'); ?>
 </div>
 </div>
-</div>
+
 <!-- /.panel-body -->
 </div>
 <!-- Modal -->
@@ -62,7 +69,7 @@ $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
 $(document).ready(function(){
   var cliente = new clientes();
   cliente.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
-
+  cliente.loadCiaList(<?= $session->read('Company.CurrentCompanyID')?>);
   $(document).on("click",".edit-client-btn",function(){
     var client_id = $(this).attr("client_id");
     $.ajax({

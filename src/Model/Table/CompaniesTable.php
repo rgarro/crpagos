@@ -146,6 +146,12 @@ class CompaniesTable extends Table
       return $companies->first();
     }
 
+    public function allByCompanyID($company_id){
+      $companies = $this->find('all');
+      $companies->hydrate(false);
+      return $companies->all();
+    }
+
     public function index($CommerceID = 0){
 			$TheSql=" SELECT * ";
 			$TheSql.=" FROM Companies ";

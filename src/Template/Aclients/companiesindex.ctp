@@ -1,24 +1,28 @@
 <?php
 $session = $this->request->session();
+
+//print_r($companies);
 ?>
- <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-Clients">
+ <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-ClientsCias">
                                  <thead>
                                      <tr>
-                                         <th><?= __('ClientName') ?></th>
+                                         <th><?= __('Company') ?></th>
                                          <th><i class="fa fa-envelope-o"></i> <?= __('Email') ?></th>
-                                         <th><i class="fa fa-phone"></i> <?= __('Phone') ?></th>
+                                         <th><i class="fa fa-phone"></i> <?= __('ReplyTo') ?></th>
                                          <th class="center"><i class="fa fa-gears"></i> </th>
                                      </tr>
                                  </thead>
                                  <tbody>
 <?php
-foreach ($clients as $c) {
+foreach ($companies as $c) {
 ?>
                                      <tr class="">
-                                         <td><?= $c['ClientName']." ".$c['ClientLastName']?></td>
+                                         <td><?= $c['CompanyName']?></td>
                                          <td><a href="mailto:<?= $c['Email'] ?>"><?= $c['Email'] ?></a></td>
-                                         <td><?= $c['Phone'] ?></td>
-                                         <td class="center"><button client_id="<?= $c['ClientID'] ?>" class="btn btn-xs btn-outline btn-default edit-client-btn"><i class="fa fa-pencil"></i> <?= __('EditClient') ?></button></td>
+                                         <td><?= $c['ReplyTo'] ?></td>
+                                         <td class="center">
+                      <!--<button client_id="" class="btn btn-xs btn-outline btn-default edit-client-btn"><i class="fa fa-pencil"></i> </button> -->
+                    </td>
 
                                      </tr>
 <?php
@@ -28,7 +32,7 @@ foreach ($clients as $c) {
                              </table>
 <script>
     $(document).ready(function() {
-        $('#dataTables-Clients').DataTable({
+        $('#dataTables-ClientsCias').DataTable({
             responsive: true,
             language: {
               decimal:        "",

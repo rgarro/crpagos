@@ -15,7 +15,7 @@ $session = $this->request->session();
 	<div class="form-group">
     <label for="LocaleCode" class="col-sm-2 control-label"><?php echo __('CompanyName') ?></label>
     <div class="col-sm-10">
-				<input name="CompanyName" type="text" class="form-control" value="" placeholder="Email" required="required">
+				<input name="CompanyName" type="text" class="form-control" value="" placeholder="CompanyName" required="required">
     </div>
 	</div>
 	<div class="form-group">
@@ -52,6 +52,7 @@ $session = $this->request->session();
 $(document).ready(function(){
 	$("#myNewCompanyForm").on("submit",function(){
 		var cia_datos = $("#myNewCompanyForm").serializeHash();
+//console.log(cia_datos);
 		$.ajax({
 	    url:"/Acompany/save",
 	    data:cia_datos,
@@ -73,7 +74,7 @@ $(document).ready(function(){
 	        }).show();
           $("#myNewCompanyForm")[0].reset();
           var client = new clientes();
-          client.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
+          client.loadCiaList(<?= $session->read('Company.CurrentCompanyID')?>);
 	        //loadStage("/dashboard/clients");
 	        //window.location.href = "#/Clients/";
 	      }
