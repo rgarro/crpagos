@@ -174,17 +174,12 @@ class DashboardController extends AppController
     public function saveterms(){
       $session = $this->request->session();
       $this->viewBuilder()->setLayout('ajax');
-			foreach ($_GET['Locales'] as $ThisLocale) {
-				$FieldName = $ThisLocale.'_New';
-				if(isset($_GET[$FieldName])){
-					$Content = $_GET[$FieldName];
-					$this -> Terms -> AddNew($ThisLocale, $Content);
-				}else{
-					$FieldName = $ThisLocale.'_Content';
-					$Content = $_GET[$FieldName];
-					$this -> Terms -> Update($ThisLocale, $Content);
-				}
-			}
+      if(isset($_GET['eng_us_Content'])){
+        $this -> Terms -> AddNew($_SESSION['Company']['CurrentCompanyID'],$_SESSION['User']['UserID'],"eng_us", $_GET['eng_us_Content']);
+      }
+      if(isset($_GET['spa_cr_Content'])){
+        $this -> Terms -> AddNew($_SESSION['Company']['CurrentCompanyID'],$_SESSION['User']['UserID'],"spa_cr", $_GET['spa_cr_Content']);
+      }
   		$this->set('__serialize',["is_success"=>1,"flash"=>__('TermsUpdated').' '.$session->read('Company.CurrentName')]);
     }
 

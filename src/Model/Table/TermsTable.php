@@ -82,16 +82,17 @@ class TermsTable extends Table
       return $DataSet;
   	}
 
-  	public function AddNew($LocaleCode = null, $Content = null) {
-  		$TheSql = "INSERT INTO Terms (CompanyID, LocaleCode, Content, Entered, EnteredBy) ";
-  		$TheSql .= " VALUES(" . $_SESSION['Company']['CurrentCompanyID'] . ",";
-  		$TheSql .= "'" . $LocaleCode. "',";
-  		$TheSql .= "'" . trim($Content) . "',";
-  		$TheSql .= "NOW(),";
-  		$TheSql .= $_SESSION['User']['UserID'];
-  		$TheSql .= " )";
-
-      $res = $this->connection()->execute($TheSql);
+  	public function AddNew($CompanyID,$EnteredID,$LocaleCode, $Content) {
+      $dsql = "DELETE FROM Terms WHERE CompanyID='".$CompanyID."' AND LocaleCode='".$LocaleCode."'";
+      $this->connection()->execute($dsql);
+  		$sql = "INSERT INTO Terms (CompanyID, LocaleCode, Content, Entered, EnteredBy) ";
+  		$sql .= " VALUES(" . $CompanyID . ",";
+  		$sql .= "'" . $LocaleCode. "',";
+  		$sql .= "'" . trim($Content) . "',";
+  		$sql .= "NOW(),";
+  		$sql .= $EnteredID;
+  		$sql .= " )";
+      $res = $this->connection()->execute($sql);
       return $res->lastInsertId();
   	}
 
