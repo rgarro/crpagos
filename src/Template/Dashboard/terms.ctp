@@ -64,16 +64,19 @@
     <form method="post" action="/mycompany/terms/" id="ThermForm" name="ThermForm" enctype="multipart/form-data">
   	<table border="0" class="zebra" align="center" width="600">
   		<?php
+
   			foreach ($LocalesQ as $ThisLocale) {
   				echo '<tr>';
   				echo '<th valign="top">',$ThisLocale['Locale'],':</th>';
   				echo '<input type="hidden" name="Locales[]" value="',$ThisLocale['LocaleCode'],'">';
-  				
+
 					$FieldName = $ThisLocale['LocaleCode'].'_Content';
-					if(isset($TermsQ[$ThisLocale['LocaleCode']])){
-						$content = $TermsQ[$ThisLocale['LocaleCode']];
-					}else{
-						$content = " ";
+					$content = " ";
+					if($TermsQ[0]['LocaleCode'] == $ThisLocale['LocaleCode']){
+						$content = $TermsQ[0]['Content'];
+					}
+					if ($TermsQ[1]['LocaleCode'] == $ThisLocale['LocaleCode']) {
+						$content = $TermsQ[1]['Content'];
 					}
   				echo '<td>';
   				echo '<textarea name="',$FieldName,'" rows="20" cols="80">',$content,'</textarea>';

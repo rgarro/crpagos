@@ -188,17 +188,8 @@ class DashboardController extends AppController
       $session = $this->request->session();
       $this->viewBuilder()->setLayout('ajax');
       $TheTerms = array();
-  		$TermsQ = $this -> Terms -> index(false);
-  		$LocalesQ = $this -> Locales -> index();
-  		if (count($TermsQ) > 0) {
-  			foreach ($TermsQ as $ThisTerm) {
-  				$TheTerms[$ThisTerm['LocaleCode']] = $ThisTerm['Content'];
-  			}
-  		} else {
-  			foreach ($LocalesQ as $ThisTerm) {
-  				$TheTerms[$ThisTerm['LocaleCode']] = null;
-  			}
-  		}
+  		$TermsQ = $this->Terms->index($_SESSION['Company']['CurrentCompanyID']);
+  		$LocalesQ = $this->Locales->index();
   		$this -> Set('GetMyCompanyQ', $this -> Companies -> GetSites($session -> read('Company.CurrentCompanyID')));
   		$this -> Set('TermsQ', $TermsQ );
   		$this -> Set('LocalesQ', $LocalesQ);

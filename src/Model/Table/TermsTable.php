@@ -71,19 +71,16 @@ class TermsTable extends Table
         return $validator;
     }
 
-    public function index($ShowLocale = true) {
+    public function index($CompanyID) {
   		$TheSql = "SELECT LocaleCode, Content ";
   		$TheSql .= " FROM Terms ";
-  		$TheSql .= " WHERE CompanyID = " . $_SESSION['Company']['CurrentCompanyID'];
-  		if($ShowLocale){
-  			$TheSql .= " AND LocaleCode = '" . $_SESSION['LocaleCode']. "'";
-  		}
+  		$TheSql .= " WHERE CompanyID = " . $CompanyID;
       $DataSet = $this->connection()->execute($TheSql)->fetchAll('assoc');
       return $DataSet;
   	}
 
   	public function AddNew($CompanyID,$EnteredID,$LocaleCode, $Content) {
-      $clean_content = mysql_real_escape_string ($Content);
+      $clean_content = addslashes($Content);
       $dsql = "DELETE FROM Terms WHERE CompanyID='".$CompanyID."' AND LocaleCode='".$LocaleCode."'";
       $this->connection()->execute($dsql);
   		$sql = "INSERT INTO Terms (CompanyID, LocaleCode, Content, Entered, EnteredBy) ";
