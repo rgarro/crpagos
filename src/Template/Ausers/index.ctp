@@ -30,7 +30,10 @@ $icon = ($c['UserStatus']? "star" : "star-o");
      <td><?= $c['FirstName'] ?></td>
      <td><?= $c['LastName'] ?></td>
        <td><?= $c['Email'] ?></td>
-       <td><button user_id="<?= $c['UserID'] ?>" class="btn btn-xs btn-outline btn-default edit-user-btn"><i class="fa fa-pencil"></i> <?= __('EditUser') ?></button></td>
+       <td>
+<button user_id="<?= $c['UserID'] ?>" class="btn btn-xs btn-outline btn-default edit-user-btn"><i class="fa fa-pencil"></i> <?= __('EditUser') ?></button>
+<button user_id="<?= $c['UserID'] ?>" class="btn btn-xs btn-outline btn-danger delete-user-btn"><i class="fa fa-window-close"></i> <?= __('DeleteUser') ?></button>
+       </td>
    </tr>
 <?php
 }

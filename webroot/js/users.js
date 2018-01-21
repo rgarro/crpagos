@@ -1,6 +1,7 @@
 var users = (function(){
   function users(){
     this.listUrl = "/ausers/index";
+    this.deleteUrl = "/ausers/delete";
     this.listContainer = "#usersListContainer";
     this.editviewUrl = "/ausers/editview";
     this.editviewContainer = ".user-edit-form-spot";

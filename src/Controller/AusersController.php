@@ -47,6 +47,15 @@ class AusersController extends AppController
 
     }
 
+    public function delete(){
+      if(isset($_GET['user_id']) && is_numeric($_GET['user_id'])){
+        $this->Users->deleteUser($_GET['user_id']);
+        $this->set('__serialize',["is_success"=>1,"flash"=>$flash,"invalid_form"=>$invalid_form,"error_list"=>$errors]);
+      }else{
+        throw new Exception("Must GET a numeric user_id.");
+      }
+    }
+
     public function save(){
       $session = $this->request->session();
       if(isset($_GET['UserID']) && is_numeric($_GET['UserID'])){

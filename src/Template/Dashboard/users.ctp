@@ -96,6 +96,24 @@ foreach($alevels as $ac){
   var userf = new users();
   userf.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
 
+  $(document).on("click",".delete-user-btn",function(){
+    var user_id = $(this).attr("user_id");
+    if(window.confirm("<?= __("DeleteUser") ?>")){
+      $.ajax({
+        url:userf.deleteUrl,
+        data:{
+          user_id:user_id
+        },
+        type:"GET",
+        success:(function(data){
+          CRContactos_Manager.check_errors(data);
+          var userf = new users();
+          userf.loadList(<?= $session->read('Company.CurrentCompanyID')?>);
+        }).bind(this)
+      });
+    }
+  });
+
   $(document).on("click",".edit-user-btn",function(){
     var user_id = $(this).attr("user_id");
     $.ajax({
