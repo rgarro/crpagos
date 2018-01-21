@@ -2,6 +2,27 @@
 $session = $this->request->session();
 $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
 ?>
+<!-- Modal -->
+<div class="modal fade" id="clientEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-edit"></i><?php echo __("EditClient")?></h4>
+            </div>
+            <div class="modal-body client-edit-form-spot">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"> <?php echo __('Close') ?></button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- end edition modal -->
 <div class="panel panel-primary animated pulse">
   <div class="panel-heading">
     <i class="fa fa-child fa-fw"></i> <?= __('ClientsOf').' '.$session->read('Company.CurrentName') ?>
@@ -44,27 +65,6 @@ $this->pageTitle= __('ClientsOf').' '.$session->read('Company.CurrentName');
 
 <!-- /.panel-body -->
 </div>
-<!-- Modal -->
-<div class="modal fade" id="clientEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel"><i class="fa fa-edit"></i><?php echo __("EditClient")?></h4>
-            </div>
-            <div class="modal-body client-edit-form-spot">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal"> <?php echo __('Close') ?></button>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
-<!-- /.modal -->
-<!-- end edition modal -->
 <script>
 $(document).ready(function(){
   var cliente = new clientes();

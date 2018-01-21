@@ -12,7 +12,7 @@ $session = $this->request->session();
             </li>
 
             <li>
-                <a href="#/Clients/"><i class="fa fa-child fa-fw"></i> <?= __('Clients') ?></a>
+                <a href="#/Clients/"><i class="fa fa-child fa-fw"></i> <?= __('listClients') ?></a>
             </li>
 <?php if($session->read('User.AccessLevelID') <= 1){ ?>
             <li>
