@@ -114,6 +114,19 @@ class UsersTable extends Table
       return $users->all();
     }
 
+    public function allNoSaByCompanyID($company_id){
+      $sql = "SELECT UserID FROM CompanyUsers WHERE CompanyID = '".$company_id."'";
+      $res = $this->connection()->execute($sql)->fetchAll('assoc');
+      $ids = [];
+      foreach($res as $r){
+        array_push($ids,$r['UserID']);
+      }
+      $user_ids = implode(",", $ids);
+      $users = $this->find('all',["conditions"=>["Users.UserID IN(".$user_ids.")","Users.AccessLevelID > 0"],"contain"=>["AccessLevels"]]);
+      $users->hydrate(false);
+      return $users->all();
+    }
+
     public function getByEmail($email){
       $sql ="SELECT * ";
 			$sql .=" FROM Users ";
