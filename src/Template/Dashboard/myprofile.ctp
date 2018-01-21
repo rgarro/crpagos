@@ -14,6 +14,9 @@ $session = $this->request->session();
 <form class="form-horizontal" method="post" id="myMyUserForm" name="myMyUserForm" enctype="multipart/form-data">
   <input type="hidden" name="UserID" value="<?= $user['UserID']?>"/>
   <input type="hidden" name="ModifiedBy" value="<?= $_SESSION['User']['FullName']?>"/>
+<?php
+if($session->read('User.AccessLevelID') < 2){
+?>
   <div class="form-group">
     <label for="ClientName" class="col-sm-2 control-label"><?php echo __('Name') ?></label>
     <div class="col-sm-10">
@@ -26,6 +29,9 @@ $session = $this->request->session();
         <input name="LastName" type="text" class="form-control" value="<?= $user['LastName']?>" placeholder="LastName" required="required">
     </div>
   </div>
+<?php
+}
+?>
   <div class="form-group">
     <label for="Password" class="col-sm-2 control-label"><?php echo __('Password') ?></label>
     <div class="col-sm-10">
