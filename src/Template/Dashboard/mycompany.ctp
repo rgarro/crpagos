@@ -99,7 +99,7 @@ $(document).ready(function(){
 	        }).show();
 	        loadStage("/dashboard/mycompany");
 	        //window.location.href = "#/MyCompany/";
-					setTimeout(function(){ window.location.href = "/dashboard"; }, 2000);
+					///setTimeout(function(){ window.location.href = "/dashboard"; }, 2000);
 	      }
 	    }
 	  });
