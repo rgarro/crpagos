@@ -53,6 +53,22 @@ class AclientsController extends AppController
       }
     }
 
+
+    public function companyeditview(){
+      if(isset($_GET['company_id']) && is_numeric($_GET['company_id'])){
+        $this->viewBuilder()->setLayout('ajax');
+        $companies = $this->Companies->find('all',["conditions"=>["Companies.CompanyID"=>$_GET['company_id']]]);
+        $companies->hydrate(false);
+        $this->set('companies',$companies->first());
+      }else{
+        throw new Exception("Must GET a numeric company_id.");
+      }
+    }
+
+    public function savecompany(){
+
+    }
+
     public function save(){
         $session = $this->request->session();
         if(isset($_GET['ClientID']) && is_numeric($_GET['ClientID'])){

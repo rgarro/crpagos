@@ -21,7 +21,7 @@ foreach ($companies as $c) {
                                          <td><a href="mailto:<?= $c['Email'] ?>"><?= $c['Email'] ?></a></td>
                                          <td><?= $c['ReplyTo'] ?></td>
                                          <td class="center">
-                      <!--<button client_id="" class="btn btn-xs btn-outline btn-default edit-client-btn"><i class="fa fa-pencil"></i> </button> -->
+                      <button company_id="<?= $c['CompanyID']?>" class="btn btn-xs btn-outline btn-default edit-company-btn"><i class="fa fa-pencil"></i> <?= __('EditCompany') ?></button>
                     </td>
 
                                      </tr>

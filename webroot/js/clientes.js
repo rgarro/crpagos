@@ -6,6 +6,8 @@ var clientes = (function(){
     this.editUrl = "/aclients/editview";
     this.editContainer = ".client-edit-form-spot";
     this.ciaListUrl = "/aclients/companiesindex";
+    this.companyEditContainer = "#companyEditContainer";
+    this.companyEditUrl = "/aclients/companyeditview";
   }
 
   clientes.prototype.loadList = function(company_id){

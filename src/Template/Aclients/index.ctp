@@ -18,7 +18,8 @@ foreach ($clients as $c) {
                                          <td><?= $c['ClientName']." ".$c['ClientLastName']?></td>
                                          <td><a href="mailto:<?= $c['Email'] ?>"><?= $c['Email'] ?></a></td>
                                          <td><?= $c['Phone'] ?></td>
-                                         <td class="center"><button client_id="<?= $c['ClientID'] ?>" class="btn btn-xs btn-outline btn-default edit-client-btn"><i class="fa fa-pencil"></i> <?= __('EditClient') ?></button></td>
+                                         <td class="center">
+                  <button client_id="<?= $c['ClientID'] ?>" class="btn btn-xs btn-outline btn-default edit-client-btn"><i class="fa fa-pencil"></i> <?= __('EditClient') ?></button></td>
 
                                      </tr>
 <?php
