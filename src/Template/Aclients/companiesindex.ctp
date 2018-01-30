@@ -1,7 +1,5 @@
 <?php
 $session = $this->request->session();
-
-//print_r($companies);
 ?>
  <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-ClientsCias">
                                  <thead>
