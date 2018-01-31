@@ -492,7 +492,7 @@ msgid "ClientsOf"
 msgstr "Clients of "
 
 msgid "AddNewClient"
-msgstr "Add new client"
+msgstr "Create new client"
 
 msgid "ClientSaved"
 msgstr "Client information saved."

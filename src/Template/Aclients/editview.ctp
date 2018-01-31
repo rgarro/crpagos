@@ -87,7 +87,7 @@ $(document).ready(function(){
       });
     }else{
       new Noty({
-         text: "Emails must be equals",
+         text: "Las direcciones de correo electrónico ingresadas no son iguales",
          type:'error',
          timeout:4000,
            layout:'top',

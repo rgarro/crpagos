@@ -15,10 +15,10 @@ msgstr ""
 "X-Poedit-SearchPath-0: D:\\Webs\\CRPagos\\application\\app\\locale\n"
 
 msgid "EditCompany"
-msgstr "Editar Compañia"
+msgstr "Editar Compañía"
 
 msgid "listCompanies"
-msgstr "Lista Compañias"
+msgstr "Lista Compañías"
 
 msgid "listClients"
 msgstr "Lista Clientes"
@@ -33,7 +33,7 @@ msgid "Reset"
 msgstr "Limpiar"
 
 msgid "Companies"
-msgstr "Compañias"
+msgstr "Compañías"
 
 msgid "filtered from"
 msgstr "filtrado de"
@@ -54,10 +54,10 @@ msgid "MyProfile"
 msgstr "Mi Perfil"
 
 msgid "TheCompanycouldnotbesaved"
-msgstr "Compañia No Actualizada"
+msgstr "Compañía No Actualizada"
 
 msgid "TheCompanyhasbeensaved"
-msgstr "Compañia Actualizada"
+msgstr "Compañía Actualizada"
 
 msgid "LogoAdded"
 msgstr "Logo Agregado"
@@ -147,7 +147,7 @@ msgid "MultiCompanyUser"
 msgstr "Cambio de Compañías"
 
 msgid "PleaseSelectCompany"
-msgstr "Seleccione Compañia"
+msgstr "Seleccione Compañía"
 
 msgid "Search"
 msgstr "Buscar"
@@ -495,7 +495,7 @@ msgid "ClientsOf"
 msgstr "Clientes de "
 
 msgid "AddNewClient"
-msgstr "Agregar Nuevo Cliente"
+msgstr "Crear Nuevo Cliente"
 
 msgid "ClientSaved"
 msgstr "El Cliente fue salvado satisfactoriamente"
