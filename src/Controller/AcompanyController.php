@@ -130,7 +130,7 @@ class AcompanyController extends AppController
         }else{
           $success = 0;
           $flash = __('TheCompanycouldnotbesaved');
-          $invalid_form = 1;
+        $invalid_form = 1;
           $errors = $cia->errors();
         }
         $this->set('__serialize',["is_success"=>1,"flash"=>$flash,"invalid_form"=>$invalid_form,"error_list"=>$errors]);

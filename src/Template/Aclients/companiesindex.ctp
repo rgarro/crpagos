@@ -2,15 +2,15 @@
 $session = $this->request->session();
 ?>
  <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-ClientsCias">
-                                 <thead>
-                                     <tr>
-                                         <th><?= __('Company') ?></th>
-                                         <th><i class="fa fa-envelope-o"></i> <?= __('Email') ?></th>
-                                         <th><i class="fa fa-phone"></i> <?= __('ReplyTo') ?></th>
-                                         <th class="center"><i class="fa fa-gears"></i> </th>
-                                     </tr>
-                                 </thead>
-                                 <tbody>
+         <thead>
+             <tr>
+                 <th><?= __('Company') ?></th>
+                 <th><i class="fa fa-envelope-o"></i> <?= __('Email') ?></th>
+                 <th><i class="fa fa-phone"></i> <?= __('ReplyTo') ?></th>
+                 <th class="center"><i class="fa fa-gears"></i> </th>
+             </tr>
+         </thead>
+         <tbody>
 <?php
 foreach ($companies as $c) {
 ?>
