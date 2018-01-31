@@ -123,13 +123,13 @@ class AcompanyController extends AppController
             $current_user = $this->Users->getByEmail($session->read('User.Email'));
             $current_company = $this->Users->CheckCompany($current_user['UserID']);
             $this->CompanySession->loadData($current_user,$current_company);
-            $flash = __('The Company has been saved.');
+            $flash = __('TheCompanyhasbeensaved');
             $success = 1;
             $invalid_form = 0;
             $errors = [];
         }else{
           $success = 0;
-          $flash = __('The Company could not be saved. Please, try again.');
+          $flash = __('TheCompanycouldnotbesaved');
           $invalid_form = 1;
           $errors = $cia->errors();
         }
@@ -149,7 +149,7 @@ class AcompanyController extends AppController
               mkdir($file_dir);
               move_uploaded_file($_FILES['photo']['tmp_name'],$file_dir."/".$_FILES['photo']['name']);
               $session -> write('Company.CurrentLogo', $dir."/".$_FILES['photo']['name']);
-                $flash = __('The Company has been saved.');
+                $flash = __('TheCompanyhasbeensaved');
                 $success = 1;
                 $invalid_form = 0;
                 $errors = [];

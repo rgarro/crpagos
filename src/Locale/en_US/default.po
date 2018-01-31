@@ -26,7 +26,7 @@ msgstr "Clients List"
 msgid "ChangeStatus"
 msgstr "Change Status"
 
-msgid "The User has been saved."
+msgid "TheUserhasbeensaved"
 msgstr "The User has been saved."
 
 msgid "Reset"
@@ -38,7 +38,7 @@ msgstr "Companies"
 msgid "filtered from"
 msgstr "filtered from"
 
-msgid "The Client has been saved."
+msgid "TheClienthasbeensaved"
 msgstr "The Client has been saved."
 
 msgid "ToVoid"
@@ -53,10 +53,10 @@ msgstr "Edit"
 msgid "MyProfile"
 msgstr "My Profile"
 
-msgid "The Company could not be saved. Please, try again."
+msgid "TheCompanycouldnotbesaved"
 msgstr "The Company could not be saved. Please, try again."
 
-msgid "The Company has been saved."
+msgid "TheCompanyhasbeensaved"
 msgstr "The Company has been saved."
 
 msgid "LogoAdded"

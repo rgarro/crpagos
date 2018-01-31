@@ -14,7 +14,6 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: D:\\Webs\\CRPagos\\application\\app\\locale\n"
 
-
 msgid "EditCompany"
 msgstr "Editar Compañia"
 
@@ -27,7 +26,7 @@ msgstr "Lista Clientes"
 msgid "ChangeStatus"
 msgstr "Cambiar Status"
 
-msgid "The User has been saved."
+msgid "TheUserhasbeensaved"
 msgstr "El Usuario ha sido guardado."
 
 msgid "Reset"
@@ -39,7 +38,7 @@ msgstr "Compañias"
 msgid "filtered from"
 msgstr "filtrado de"
 
-msgid "The Client has been saved."
+msgid "TheClienthasbeensaved"
 msgstr "El Cliente ha sido guardado."
 
 msgid "ToVoid"
@@ -54,10 +53,10 @@ msgstr "Editar"
 msgid "MyProfile"
 msgstr "Mi Perfil"
 
-msgid "The Company could not be saved. Please, try again."
+msgid "TheCompanycouldnotbesaved"
 msgstr "Compañia No Actualizada"
 
-msgid "The Company has been saved."
+msgid "TheCompanyhasbeensaved"
 msgstr "Compañia Actualizada"
 
 msgid "LogoAdded"
@@ -130,9 +129,7 @@ msgid "PassSent"
 msgstr "La información fue enviada! Por favor, revise su correo."
 
 msgid "NoPassSent"
-msgstr ""
-"Lo sentimos mucho, la información  no está en nuestros "
-"registros."
+msgstr "Lo sentimos mucho, la información  no está en nuestros registros."
 
 msgid "Welcome"
 msgstr "Bienvenido (a)"
@@ -216,10 +213,7 @@ msgid "SendMailConfirm"
 msgstr "¿ Esta seguro que desea enviar la Solicitud de Pago a"
 
 msgid "SendInstructions"
-msgstr ""
-"Previo al envío, por favor revise y verifique la información."
-" Después de este paso, la Solicitud de Pago ya no se podrá "
-"modificar más."
+msgstr "Previo al envío, por favor revise y verifique la información. después de este paso, la Solicitud de Pago ya no se podrá modificar más."
 
 msgid "AddNewInvoice"
 msgstr "Agregar nueva Solicitud de Pago"
@@ -375,14 +369,10 @@ msgid "InvoicePaidManually"
 msgstr "Esta Solicitud fue Pagada Manualmente"
 
 msgid "ValidationInfo1"
-msgstr ""
-"La siguiente información se muestra como una medida de seguridad y "
-"validación."
+msgstr "La siguiente información se muestra como una medida de seguridad y validación."
 
 msgid "ValidationInfo2"
-msgstr ""
-"Verifique que la información sea correcta y la misma que Ud nos "
-"suministró."
+msgstr "Verifique que la información sea correcta y la misma que Ud nos suministró."
 
 msgid "Logout"
 msgstr "Salir"
@@ -400,19 +390,13 @@ msgid "BackToList"
 msgstr "Regresar a la Lista de Solicitudes de Pago"
 
 msgid "BackConfirm"
-msgstr ""
-"¿Regresar a la Lista de Solicitudes de Pago? Cualquier dato no "
-"salvado se va a perder."
+msgstr "¿Regresar a la Lista de Solicitudes de Pago? Cualquier dato no salvado se va a perder."
 
 msgid "PayInstructions1"
-msgstr ""
-"Para pagar esta solicitud de una forma fácil y segura, Ud puede "
-"hacerlo."
+msgstr "Para pagar esta solicitud de una forma fácil y segura, Ud puede "
 
 msgid "PayInstructions2"
-msgstr ""
-"<h3 align=\"center\">Ingreso Manual</h3> Para procesar en forma manual el "
-"pago de la solicitud de pago."
+msgstr "<h3 align=\"center\">Ingreso Manual</h3> Para procesar en forma manual el pago de la solicitud de pago."
 
 msgid "PayInstructions2a"
 msgstr "Copie el siguiente código"
@@ -427,9 +411,7 @@ msgid "PayInstructions3"
 msgstr "Revise su información y presione el botón de Pagar."
 
 msgid "PayInstructions4"
-msgstr ""
-"Ud será llevado(a) una pantalla de proceso para completar su pago con "
-"toda tranquilidad y seguridad."
+msgstr "Ud será llevado(a) una pantalla de proceso para completar su pago con toda tranquilidad y seguridad."
 
 msgid "PayInstructions5"
 msgstr "Ingrese el Código de Solicitud que recibió en su correo"

@@ -78,7 +78,7 @@ class AclientsController extends AppController
         }
         $cli = $this->Clients->patchEntity($client,$_GET);
         if ($this->Clients->save($cli)) {
-            $flash = __('The Client has been saved.');
+            $flash = __('TheClienthasbeensaved');
             $success = 1;
             $invalid_form = 0;
             $errors = [];

@@ -76,7 +76,7 @@ class AusersController extends AppController
           if($is_new){
               $this->Users->AddUserToCompany($r->UserID);
           }
-          $flash = __('The User has been saved.');
+          $flash = __('TheUserhasbeensaved');
           $success = 1;
           $invalid_form = 0;
           $errors = [];
