@@ -6,7 +6,7 @@ $session = $this->request->session();
              <tr>
                  <th><?= __('Company') ?></th>
                  <th><i class="fa fa-envelope-o"></i> <?= __('Email') ?></th>
-                 <th><i class="fa fa-phone"></i> <?= __('ReplyTo') ?></th>
+                 <th><i class="fa fa-phone"></i> <?= __('Phone') ?></th>
                  <th class="center"><i class="fa fa-gears"></i> </th>
              </tr>
          </thead>
@@ -17,7 +17,7 @@ foreach ($companies as $c) {
                                      <tr class="">
                                          <td><?= $c['CompanyName']?></td>
                                          <td><a href="mailto:<?= $c['Email'] ?>"><?= $c['Email'] ?></a></td>
-                                         <td><?= $c['ReplyTo'] ?></td>
+                                         <td><?= $c['phone'] ?></td>
                                          <td class="center">
                       <button company_id="<?= $c['CompanyID']?>" class="btn btn-xs btn-outline btn-default edit-company-btn"><i class="fa fa-pencil"></i> <?= __('EditCompany') ?></button>
                     </td>

@@ -46,6 +46,12 @@ $lang_label = ($companies['LocaleCode'] == "eng_us" ? "English" : "Español");
     </div>
 	</div>
 	<div class="form-group">
+		<label class="col-sm-2 control-label"><?php echo __('Phone') ?></label>
+		<div class="col-sm-10">
+				<input name="phone" type="text" class="form-control" value="<?= $companies['phone'] ?>" placeholder="8008000" required="required">
+		</div>
+	</div>
+	<div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-default"><i class="fa fa-save"></i> <?php echo __('Save') ?></button>
     </div>
@@ -55,7 +61,6 @@ $lang_label = ($companies['LocaleCode'] == "eng_us" ? "English" : "Español");
 $(document).ready(function(){
 	$("#editCompanyForm").on("submit",function(){
 		var cia_datos = $("#editCompanyForm").serializeHash();
-//console.log(cia_datos);
 		$.ajax({
 	    url:"/Acompany/save",
 	    data:cia_datos,

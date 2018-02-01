@@ -66,6 +66,12 @@ $this->pageTitle= $session->read('Company.CurrentName');
     </div>
 	</div>
 	<div class="form-group">
+		<label class="col-sm-2 control-label"><?php echo __('Phone') ?></label>
+		<div class="col-sm-10">
+				<input name="phone" type="text" class="form-control" value="<?= $company['phone'] ?>" placeholder="8008000" required="required">
+		</div>
+	</div>
+	<div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-default"><i class="fa fa-save"></i> <?php echo __('Save') ?></button>
     </div>
