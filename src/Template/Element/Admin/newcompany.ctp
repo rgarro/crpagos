@@ -15,19 +15,19 @@ $session = $this->request->session();
 	<div class="form-group">
     <label for="LocaleCode" class="col-sm-2 control-label"><?php echo __('CompanyName') ?></label>
     <div class="col-sm-10">
-				<input name="CompanyName" type="text" class="form-control" value="" placeholder="CompanyName" required="required">
+				<input name="CompanyName" type="text" class="form-control" value="" required="required">
     </div>
 	</div>
 	<div class="form-group">
     <label for="Email" class="col-sm-2 control-label"><?php echo __('Email') ?></label>
     <div class="col-sm-10">
-				<input name="Email" type="email" class="form-control" value="" placeholder="Email" required="required">
+				<input name="Email" type="email" class="form-control" value="" required="required">
     </div>
 	</div>
 	<div class="form-group">
     <label for="TaxID" class="col-sm-2 control-label"><?php echo __('CedulaJuridica') ?></label>
     <div class="col-sm-10">
-				<input name="TaxID" type="text" class="form-control" value="" placeholder="TaxID" required="required">
+				<input name="TaxID" type="text" class="form-control" value="" required="required">
     </div>
 	</div>
 	<div class="form-group">

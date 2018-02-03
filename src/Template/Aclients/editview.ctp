@@ -44,7 +44,7 @@ $session = $this->request->session();
 	<div class="form-group">
       <label class="col-sm-2 control-label" for="Phone"><?php echo __('Phone') ?></label>
       <div class="col-sm-10">
-      <input type="text" class="form-control" name="Phone" tabindex="12" size="30" maxlength="20" value="<?= $client['Phone']?>">
+      <input type="text" class="form-control" name="Phone" tabindex="12" size="30" maxlength="20" value="<?= $client['Phone']?>" required="required">
     </div>
 	</div>
 	<div class="form-group">

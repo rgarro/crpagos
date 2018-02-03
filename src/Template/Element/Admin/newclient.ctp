@@ -16,13 +16,13 @@ $session = $this->request->session();
 	<div class="form-group">
     <label for="ClientName" class="col-sm-2 control-label"><?php echo __('ClientName') ?></label>
     <div class="col-sm-10">
-				<input name="ClientName" type="text" class="form-control" value="" placeholder="Client" required="required">
+				<input name="ClientName" type="text" class="form-control" value="" placeholder="<?php echo __('NameHolder') ?>" required="required">
     </div>
 	</div>
 	<div class="form-group">
     <label for="Email" class="col-sm-2 control-label"><?php echo __('Email') ?></label>
     <div class="col-sm-10">
-				<input name="Email" type="email" class="form-control main-email" value="" placeholder="Email" required="required">
+				<input name="Email" type="email" class="form-control main-email" value="" placeholder="<?php echo __('Email') ?>" required="required">
 <br>
         <input name="cEmail" type="email" class="form-control confirm-email" value="" placeholder="Confirm Email" required="required">
     </div>
@@ -30,7 +30,7 @@ $session = $this->request->session();
 	<div class="form-group">
     <label for="TaxID" class="col-sm-2 control-label"><?php echo __('Cedula') ?></label>
     <div class="col-sm-10">
-				<input name="CedulaJuridica" type="text" class="form-control" value="" placeholder="CedulaJuridica" required="required">
+				<input name="CedulaJuridica" type="text" class="form-control" value="" placeholder="<?php echo __('idHolder') ?>" required="required">
     </div>
 	</div>
 	<!-- <div class="form-group">
@@ -42,7 +42,7 @@ $session = $this->request->session();
 	<div class="form-group">
       <label class="col-sm-2 control-label" for="Phone"><?php echo __('Phone') ?></label>
       <div class="col-sm-10">
-      <input type="text" class="form-control" name="Phone" tabindex="12" size="30" maxlength="20" value="">
+      <input type="number" class="form-control" name="Phone" tabindex="12" size="30" maxlength="20" value="" placeholder="8008000" required="required">
     </div>
 	</div>
 	<div class="form-group">
