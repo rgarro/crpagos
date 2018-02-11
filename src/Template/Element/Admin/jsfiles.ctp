@@ -18,6 +18,7 @@
 <script src="/vendor/datatables-responsive/dataTables.responsive.js"></script>
 <script type="text/javascript" src="http://malsup.github.com/jquery.form.js"></script>
 <!-- Custom Theme JavaScript -->
+<script src="/js/handlebars-v4.0.11.js"></script>
 <script src="/dist/js/sb-admin-2.js"></script>
 <script src="/js/pace.min.js"></script>
 <link href="/css/animate.css" rel="stylesheet"></script>
