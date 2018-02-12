@@ -28,6 +28,25 @@ $lang_label = ($companies['LocaleCode'] == "eng_us" ? "English" : "Español");
     </div>
 	</div>
 	<div class="form-group">
+<!-- Begin extraMails -->
+<label for="eENameInput" class="col-sm-2 control-label"><i class="fa fa-cc"></i> Extra Emails</label>
+  <div class="col-sm-10">
+<input type="email" class="form-control-sm" size="15" placeholder="u@domain.com" id="extraEmailNewTInputb">
+<button id="extraEmailAddBtnb" type="button" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Click to Add Emails"><i class="fa fa-plus"></i></button>
+<div id="extraEmailsBoxb" class="form-control">
+<?php
+	$emails = explode(",",$companies['ExtraEmails']);
+	$emails_str = "";
+	foreach($emails as $email){
+		$emails_str .= "<span class='badge badge-pill badge-warning animated fadeInDown' style='margin-right:3px;'>".$email." <i data-index='{{index}}' class='fa fa-trash delexmail' style='cursor:pointer;'></i></span>";
+	}
+	//echo $emails_str;
+?>
+</div>
+<input type="hidden" name="ExtraEmails" id="extraEmailNewInput" value="<?= $companies['ExtraEmails'] ?>">
+<!-- End extraMails --></div>
+                </div>
+	<div class="form-group">
     <label for="TaxID" class="col-sm-2 control-label"><?php echo __('CedulaJuridica') ?></label>
     <div class="col-sm-10">
 				<input name="TaxID" type="text" class="form-control" value="<?= $companies['TaxID'] ?>" placeholder="TaxID" required="required">
@@ -59,6 +78,25 @@ $lang_label = ($companies['LocaleCode'] == "eng_us" ? "English" : "Español");
 </form>
 <script>
 $(document).ready(function(){
+
+	var extraMailsb = new extraEmails();
+console.log(extraMailsb);
+	extraMailsb.newInput = "extraEmailNewTInputb";
+	extraMailsb.hiddenInput = "#extraEmailNewInputb";
+	extraMailsb.addBtn = "#extraEmailAddBtnb";
+	extraMailsb.displayBox = "#extraEmailsBoxb";
+	extraMailsb.init();
+	<?php
+	if(strlen($companies['ExtraEmails'])){
+foreach($emails as $email){
+	?>
+	extraMailsb.add("<?php echo $email ?>");
+	<?php
+}
+}
+	?>
+
+
 	$("#editCompanyForm").on("submit",function(){
 		var cia_datos = $("#editCompanyForm").serializeHash();
 		$.ajax({

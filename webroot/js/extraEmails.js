@@ -80,7 +80,8 @@ var extraEmails = (function(){
 
   extraEmails.prototype.init = function(){
     //add button listener ...
-    $(this.addBtn).on("click",(function(evt){
+    //$(this.addBtn).on("click",(function(evt){
+    $(document).on("click",this.addBtn,(function(evt){
       var email = $("#" + this.newInput).val();
       if(email.length > 5){
           if(document.getElementById(this.newInput).validity.valid){
