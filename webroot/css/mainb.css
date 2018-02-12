@@ -1,3 +1,16 @@
+@font-face {
+    font-family: 'aclonica';
+    src: url('fonts/Aclonica.ttf');
+}
+
+.tituloBrandNav {
+  font-family: 'aclonica';
+  color:#3a5f75;
+  font-size:23px;
+  text-shadow: 2px 2px black;
+  padding: 3px;
+}
+
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;

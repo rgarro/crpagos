@@ -31,7 +31,7 @@ $cakeDescription = 'crpagos cakephp3 version';
 		<meta http-equiv="refresh" content="<?php echo ini_get('session.gc_maxlifetime');?>,url=http://nicapagos.com">
   	<meta name="robots" content="no index,no follow">
   	<meta name="robots" content="all">
-  
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<link rel="stylesheet" href="/css/main.css">
@@ -85,8 +85,8 @@ $cakeDescription = 'crpagos cakephp3 version';
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
        </button>
-       <a class="navbar-brand" href="/">
-<img src="/img/NICApagos.gif" width="133" alt="NicaPagos.com Facil y Seguro" border="0"/>
+       <a class="navbar-brand tituloBrandNav" href="/">NicaPagos
+<!--<img src="/img/NICApagos.gif" width="133" alt="NicaPagos.com Facil y Seguro" border="0"/>-->
 			 </a>
      </div>
 

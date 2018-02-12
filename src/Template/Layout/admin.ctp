@@ -46,7 +46,9 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/dashboard"><img src="/img/NICApagos.gif" width="130" class="img-responsive"></a>
+                <div class="tituloBrandNav" >NicaPagos
+                  <!--<img src="/img/NICApagos.gif" width="130" class="img-responsive">-->
+                </div>
             </div>
             <!-- /.navbar-header -->
 

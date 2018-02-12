@@ -25,6 +25,42 @@ var CRContactos_Manager = {
 					}
 				}
 			},
+			'alert_success':function(msg){
+				new Noty({
+					 text: msg,
+					 type:'success',
+					 timeout:4000,
+						 layout:'top',
+					 animation: {
+							 open: 'animated bounceInLeft', // Animate.css class names
+							 close: 'animated bounceOutLeft', // Animate.css class names
+					 }
+			 }).show();
+			},
+			'alert_warning':function(msg){
+				new Noty({
+					 text: msg,
+					 type:'warning',
+					 timeout:4000,
+						 layout:'top',
+					 animation: {
+							 open: 'animated bounceInLeft', // Animate.css class names
+							 close: 'animated bounceOutLeft', // Animate.css class names
+					 }
+			 }).show();
+			},
+			'alert_error':function(msg){
+				new Noty({
+					 text: msg,
+					 type:'error',
+					 timeout:4000,
+						 layout:'top',
+					 animation: {
+							 open: 'animated bounceInLeft', // Animate.css class names
+							 close: 'animated bounceOutLeft', // Animate.css class names
+					 }
+			 }).show();
+			},
 			'check_errors':function(data){
 				//console.log(data);
 				if(typeof data == "string"){

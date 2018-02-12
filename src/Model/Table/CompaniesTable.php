@@ -137,7 +137,9 @@ class CompaniesTable extends Table
         $validator
             ->allowEmpty('dir');
         $validator
-            ->allowEmpty('phone');    
+            ->allowEmpty('phone');
+        $validator
+            ->allowEmpty('ExtraEmails');      
         return $validator;
     }
 

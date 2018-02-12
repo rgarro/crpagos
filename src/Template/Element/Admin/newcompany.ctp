@@ -25,6 +25,17 @@ $session = $this->request->session();
     </div>
 	</div>
 	<div class="form-group">
+<!-- Begin extraMails -->
+<label for="eENameInput" class="col-sm-2 control-label"><i class="fa fa-cc"></i> Extra Emails</label>
+  <div class="col-sm-10">
+<input type="email" class="form-control-sm" size="15" placeholder="u@domain.com" id="extraEmailNewTInput">
+<button id="extraEmailAddBtn" type="button" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Click to Add Emails"><i class="fa fa-plus"></i></button>
+<div id="extraEmailsBox" class="form-control">
+</div>
+<input type="hidden" name="ExtraEmails" id="extraEmailNewInput" value="">
+<!-- End extraMails --></div>
+                </div>
+	<div class="form-group">
     <label for="TaxID" class="col-sm-2 control-label"><?php echo __('CedulaJuridica') ?></label>
     <div class="col-sm-10">
 				<input name="TaxID" type="text" class="form-control" value="" required="required">
@@ -56,6 +67,10 @@ $session = $this->request->session();
 </form>
 <script>
 $(document).ready(function(){
+
+	var extraMails = new extraEmails();
+	extraMails.init();
+
 	$("#myNewCompanyForm").on("submit",function(){
 		var cia_datos = $("#myNewCompanyForm").serializeHash();
 //console.log(cia_datos);

@@ -15,7 +15,7 @@
 var extraEmails = (function(){
 
   function extraEmails(){
-    this.parentVars();
+    //this.parentVars();
     //this.newInput = "#extraEmailNewTInput";
     this.newInput = "extraEmailNewTInput";
     this.hiddenInput = "#extraEmailNewInput";
@@ -27,7 +27,7 @@ var extraEmails = (function(){
     this.emails = [];
   }
 
-  extraEmails.prototype = Object.create(CRFut.FacturasCR.prototype);
+  //extraEmails.prototype = Object.create(CRFut.FacturasCR.prototype);
   extraEmails.prototype.constructor = extraEmails;
 
   extraEmails.prototype.add = function(email){
@@ -86,7 +86,7 @@ var extraEmails = (function(){
           if(document.getElementById(this.newInput).validity.valid){
             this.add(email);
           }else{
-            this.alert_error(translate("ValidEmail"));
+            CRContactos_Manager.alert_error("Email Debe ser Valido");
           }
       }
     }).bind(this));
@@ -99,5 +99,3 @@ var extraEmails = (function(){
 
   return extraEmails;
 })();
-
-CRFut.Widgets.extraEmails = extraEmails;
