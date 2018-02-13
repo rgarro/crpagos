@@ -43,7 +43,7 @@ $lang_label = ($companies['LocaleCode'] == "eng_us" ? "English" : "Español");
 	//echo $emails_str;
 ?>
 </div>
-<input type="hidden" name="ExtraEmails" id="extraEmailNewInput" value="<?= $companies['ExtraEmails'] ?>">
+<input type="hidden" name="ExtraEmails" id="extraEmailNewInputb" value="<?= $companies['ExtraEmails'] ?>">
 <!-- End extraMails --></div>
                 </div>
 	<div class="form-group">
@@ -95,7 +95,6 @@ foreach($emails as $email){
 }
 }
 	?>
-
 
 	$("#editCompanyForm").on("submit",function(){
 		var cia_datos = $("#editCompanyForm").serializeHash();
