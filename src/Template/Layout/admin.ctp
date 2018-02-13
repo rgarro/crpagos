@@ -46,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <div class="tituloBrandNav" >NicaPagos
+                <div class="tituloBrandNav" > <i class="fa fa-credit-card"></i> NicaPagos
                   <!--<img src="/img/NICApagos.gif" width="130" class="img-responsive">-->
                 </div>
             </div>
