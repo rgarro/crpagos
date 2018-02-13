@@ -48,6 +48,25 @@ $this->pageTitle= $session->read('Company.CurrentName');
     </div>
 	</div>
 	<div class="form-group">
+<!-- Begin extraMails -->
+<label for="eENameInput" class="col-sm-2 control-label"><i class="fa fa-cc"></i> Extra Emails</label>
+  <div class="col-sm-10">
+<input type="email" class="form-control-sm" size="15" placeholder="u@domain.com" id="extraEmailNewTInputc">
+<button id="extraEmailAddBtnc" type="button" class="btn btn-outline-primary btn-sm" data-toggle="tooltip" data-placement="right" title="Click to Add Emails"><i class="fa fa-plus"></i></button>
+<div id="extraEmailsBoxc" class="form-control">
+<?php
+	$emails = explode(",",$company['ExtraEmails']);
+	$emails_str = "";
+	foreach($emails as $email){
+		$emails_str .= "<span class='badge badge-pill badge-warning animated fadeInDown' style='margin-right:3px;'>".$email." <i data-index='{{index}}' class='fa fa-trash delexmail' style='cursor:pointer;'></i></span>";
+	}
+	//echo $emails_str;
+?>
+</div>
+<input type="hidden" name="ExtraEmails" id="extraEmailNewInputc" value="<?= $company['ExtraEmails'] ?>">
+<!-- End extraMails --></div>
+                </div>
+	<div class="form-group">
     <label for="TaxID" class="col-sm-2 control-label"><?php echo __('CedulaJuridica') ?></label>
     <div class="col-sm-10">
 				<input name="TaxID" type="text" class="form-control" value="<?= $company['TaxID'] ?>" placeholder="TaxID" required="required">
@@ -82,6 +101,23 @@ $this->pageTitle= $session->read('Company.CurrentName');
 </div>
 <script>
 $(document).ready(function(){
+
+	var extraMailsc = new extraEmails();
+	extraMailsc.newInput = "extraEmailNewTInputc";
+	extraMailsc.hiddenInput = "#extraEmailNewInputc";
+	extraMailsc.addBtn = "#extraEmailAddBtnc";
+	extraMailsc.displayBox = "#extraEmailsBoxc";
+	extraMailsc.init();
+	<?php
+	if(strlen($company['ExtraEmails'])){
+	foreach($emails as $email){
+	?>
+	extraMailsc.add("<?php echo $email ?>");
+	<?php
+	}
+	}
+	?>
+
 	$("#myCompanyForm").on("submit",function(){
 		var cia_datos = $("#myCompanyForm").serializeHash();
 		$.ajax({

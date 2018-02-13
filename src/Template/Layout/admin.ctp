@@ -32,7 +32,6 @@
     <!-- jQuery -->
     <?php echo $this->element('Admin/jsfiles'); ?>
 </head>
-
 <body>
 
     <div id="wrapper">

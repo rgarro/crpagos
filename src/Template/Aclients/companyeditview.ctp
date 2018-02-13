@@ -80,7 +80,6 @@ $lang_label = ($companies['LocaleCode'] == "eng_us" ? "English" : "Español");
 $(document).ready(function(){
 
 	var extraMailsb = new extraEmails();
-console.log(extraMailsb);
 	extraMailsb.newInput = "extraEmailNewTInputb";
 	extraMailsb.hiddenInput = "#extraEmailNewInputb";
 	extraMailsb.addBtn = "#extraEmailAddBtnb";
