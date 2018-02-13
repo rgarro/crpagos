@@ -142,7 +142,7 @@ $('.view-invoice-btn').on('click',function(){
             order: [[ 0, 'desc' ]],
             language: {
               decimal:        "",
-              emptyTable:     "No data available in table",
+              emptyTable:     "<?= __('Nodata') ?>",
               info:           "<?= __('Showing') ?> _START_ <?= __('to') ?> _END_ <?= __('of') ?> _TOTAL_ <?= __('entries') ?>",
               infoEmpty:      "Showing 0 <?= __('to') ?> 0 <?= __('of') ?> 0 <?= __('entries') ?>",
               infoFiltered:   "(filtered from _MAX_ total entries)",

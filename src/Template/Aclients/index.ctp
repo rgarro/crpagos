@@ -33,9 +33,9 @@ foreach ($clients as $c) {
             responsive: true,
             language: {
               decimal:        "",
-              emptyTable:     "No data available in table",
+              emptyTable:     "<?= __('Nodata') ?>",
               info:           "<?= __('Showing') ?> _START_ <?= __('to') ?> _END_ <?= __('of') ?> _TOTAL_ <?= __('entries') ?>",
-              infoEmpty:      "Showing 0 <?= __('to') ?> 0 <?= __('of') ?> 0 <?= __('entries') ?>",
+              infoEmpty:      "<?= __('Showing') ?> 0 <?= __('to') ?> 0 <?= __('of') ?> 0 <?= __('entries') ?>",
               infoFiltered:   "(<?= __('filtered from') ?> _MAX_ total <?= __('entries') ?>)",
               infoPostFix:    "",
               thousands:      ",",
