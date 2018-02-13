@@ -139,7 +139,7 @@ $('.view-invoice-btn').on('click',function(){
 
         $('#dataTables-<?=$status_name?>-Invoices').DataTable({
             responsive: true,
-            order: [[ 0, 'desc' ]],
+            ordering: false,
             language: {
               decimal:        "",
               emptyTable:     "<?= __('Nodata') ?>",
