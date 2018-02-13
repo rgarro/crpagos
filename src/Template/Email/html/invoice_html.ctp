@@ -20,16 +20,16 @@ $session = $this->request->session();
   <tr>
     <td width="50%" align="center" valign="top" colspan="2">
 			<?php
-		echo '<p align="left">',__('PayInstructions3'),'</p>';
+		echo '<p align="center">',__('PayInstructions3'),'</p>';
 		echo '<div class="homebutton">';
 		echo '<a href="',$FullURI,'" class="btn btn-primary btn-lg" target="_blank">',__('Pay'),'</a>';
 		echo '</div>';
 		?></td>
   </tr>
   <tr>
-    <td colspan="2" align="center" bgcolor="#CCD6D8">
+    <td colspan="2" align="center" bgcolor="#CCD6D8">&nbsp;
     	<?php
-		echo '<p>',__('PayInstructions4'),'</p>';
+		//echo '<p>',__('PayInstructions4'),'</p>';
 	?></td>
   </tr>
 </table>

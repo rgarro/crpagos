@@ -42,8 +42,9 @@ if(isset($ThisInvoice['StatusID'])){
 				<tr>
 					<td align="left" nowrap="nowrap">
   <img src="http://nicapagos.com<?= $_SESSION['Company']['CurrentLogo']?>" height="50"/>
+	<br>
 						<?php
-					echo '<b>',$session->read('Company.CurrentName'),'</b>';
+					echo '<b>',$session->read('Company.CurrentName'),'</b><br>';
 					if($session->check('Company.CurrentInfo')){
 						echo '<br>',$session->read('Company.CurrentInfo');
 					}
@@ -54,12 +55,10 @@ if(isset($ThisInvoice['StatusID'])){
 						echo '<b>', __('InvoiceDate'), ':</b> ';
 						if($session->read('LocaleCode') == 'spa_cr'){
 							setlocale(LC_ALL,"es_ES");
-							//echo date('l, F j Y', strtotime($ThisInvoice['InvoiceDate']));
-							echo strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']));
+							echo ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate'])));
 						}else{
 							setlocale(LC_ALL,"en_US");
-							//echo date('l, F j Y', strtotime($ThisInvoice['InvoiceDate']));
-							echo strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']));
+							echo ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate'])));
 						}
 						echo '<br><b>',__('InvoiceNumber'), '</b>: ', $ThisInvoice['InvoiceNumber'];
 						if($session->check('TransactionID')){
@@ -155,7 +154,7 @@ if(isset($ThisInvoice['StatusID'])){
 			<td>&nbsp;</td>
 			<td>&nbsp;</td>
 			<td class="total" align="right"><b><?php echo __('Total') ?>:</b> </td>
-			<td class="detail"><?php echo $ThisInvoice['CurrencySymbol']; ?>&nbsp;<?=floatval($Total);?></td>
+			<td class="detail"><?php echo $ThisInvoice['CurrencySymbol']; ?>&nbsp;<?= number_format((float)$Total, 2, '.', '');?></td>
 		</tr>
 	</tbody>
 			</table>
