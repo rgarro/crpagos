@@ -42,37 +42,38 @@ $this->pageTitle= __('Paying', true).' '.__('InvoiceNumber', true) .' '.$ThisInv
 $(document).ready(function() {
 
   $("#ThePayForm").on("submit",function(){
-//console.log("here");
+
     var cia_datos = $("#ThePayForm").serializeHash();
-    $.ajax({
-      url:"/acompany/saveinvoice",
-      data:cia_datos,
-      type:"post",
-      dataType:"json",
-      success:function(dat){
-//console.log(dat);
-        var data = dat.__serialize;
-        CRContactos_Manager.check_errors(data);
-        if(data.is_success == 1){
-          new Noty({
-              text: data.flash,
-              type:'alert',
-              timeout:4000,
-                layout:'top',
-              animation: {
-                  open: 'animated bounceInLeft', // Animate.css class names
-                  close: 'animated bounceOutLeft', // Animate.css class names
-              }
-          }).show();
-					$(".invoice-edit-form-spot").html(" ");
-		      $("#invoiceEditModal").modal("hide");
-          //$('.invoiceTabs a:eq(3) a').tab('show');
-          //$(".invoiceTabs a:first").tab("show");
-          setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
-          //window.location.href = "#/MyCompany/";
+    if(window.confirm("<?php echo __('PayThisInvoice') ?>")){
+      $.ajax({
+        url:"/acompany/saveinvoice",
+        data:cia_datos,
+        type:"post",
+        dataType:"json",
+        success:function(dat){
+          var data = dat.__serialize;
+          CRContactos_Manager.check_errors(data);
+          if(data.is_success == 1){
+            new Noty({
+                text: data.flash,
+                type:'alert',
+                timeout:4000,
+                  layout:'top',
+                animation: {
+                    open: 'animated bounceInLeft', // Animate.css class names
+                    close: 'animated bounceOutLeft', // Animate.css class names
+                }
+            }).show();
+  					$(".invoice-edit-form-spot").html(" ");
+  		      $("#invoiceEditModal").modal("hide");
+            //$('.invoiceTabs a:eq(3) a').tab('show');
+            //$(".invoiceTabs a:first").tab("show");
+            setTimeout(function(){ loadStage("/dashboard/company"); }, 3000);
+            //window.location.href = "#/MyCompany/";
+          }
         }
-      }
-    });
+      });
+    }
     return false;
   });
 
