@@ -55,10 +55,10 @@ if(isset($ThisInvoice['StatusID'])){
 						echo '<b>', __('InvoiceDate'), ':</b> ';
 						if($session->read('LocaleCode') == 'spa_cr'){
 							setlocale(LC_ALL,"es_ES");
-							echo str_replace('?','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']))));
+							echo str_replace('�','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']))));
 						}else{
 							setlocale(LC_ALL,"en_US");
-							echo str_replace('?','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']))));
+							echo str_replace('�','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']))));
 						}
 						echo '<br><b>',__('InvoiceNumber'), '</b>: ', $ThisInvoice['InvoiceNumber'];
 						if($session->check('TransactionID')){
@@ -68,10 +68,10 @@ if(isset($ThisInvoice['StatusID'])){
 							echo '<br><b>', __('PaidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
 								setlocale(LC_ALL,"es_ES");
-								echo str_replace('?','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['PaidDate']))));
+								echo str_replace('�','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['PaidDate']))));
 							}else{
 								setlocale(LC_ALL,"en_US");
-								echo str_replace('?','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['PaidDate']))));
+								echo str_replace('�','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['PaidDate']))));
 							}
 							echo '<br><b>',__('AuthNumber'), ':</b> ', $ThisInvoice['AuthNumber'];
 							echo '<br><b>',__('TransactionID'),':</b> ', $ThisInvoice['TransactionID'];
