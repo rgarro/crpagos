@@ -55,10 +55,10 @@ if(isset($ThisInvoice['StatusID'])){
 						echo '<b>', __('InvoiceDate'), ':</b> ';
 						if($session->read('LocaleCode') == 'spa_cr'){
 							setlocale(LC_ALL,"es_ES");
-							echo str_replace('�','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']))));
+							echo str_replace('Mi�rcoles','Míercoles',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']))));
 						}else{
 							setlocale(LC_ALL,"en_US");
-							echo str_replace('�','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']))));
+							echo str_replace('Mi�rcoles','Míercoles',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['InvoiceDate']))));
 						}
 						echo '<br><b>',__('InvoiceNumber'), '</b>: ', $ThisInvoice['InvoiceNumber'];
 						if($session->check('TransactionID')){
@@ -68,10 +68,10 @@ if(isset($ThisInvoice['StatusID'])){
 							echo '<br><b>', __('PaidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
 								setlocale(LC_ALL,"es_ES");
-								echo str_replace('�','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['PaidDate']))));
+								echo str_replace('Mi�rcoles','Míercoles',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['PaidDate']))));
 							}else{
 								setlocale(LC_ALL,"en_US");
-								echo str_replace('�','í',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['PaidDate']))));
+								echo str_replace('Mi�rcoles','Míercoles',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['PaidDate']))));
 							}
 							echo '<br><b>',__('AuthNumber'), ':</b> ', $ThisInvoice['AuthNumber'];
 							echo '<br><b>',__('TransactionID'),':</b> ', $ThisInvoice['TransactionID'];
@@ -80,9 +80,11 @@ if(isset($ThisInvoice['StatusID'])){
 							echo '<br><b>', __('ManualPaidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
 								//echo strtotime($ThisInvoice['PaidDate']);
-								echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
+								//echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
+								echo str_replace('Mi�rcoles','Míercoles',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['PaidDate']))));
 							}else{
-								echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
+								//echo date('l, F j Y', strtotime($ThisInvoice['PaidDate']));
+								echo str_replace('Mi�rcoles','Míercoles',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['PaidDate']))));
 							}
 							echo '<br><b>',__('RefNumber'), ':</b> ', $ThisInvoice['AuthNumber'];
 							}
@@ -90,9 +92,11 @@ if(isset($ThisInvoice['StatusID'])){
 							echo '<br><b>', __('VoidDate'), ':</b> ';
 							if($session->read('LocaleCode') == 'spa_cr'){
 								//echo strtotime($ThisInvoice['VoidDate']);
-								echo date('l, F j Y', strtotime($ThisInvoice['VoidDate']));
+								//echo date('l, F j Y', strtotime($ThisInvoice['VoidDate']));
+								echo str_replace('Mi�rcoles','Míercoles',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['VoidDate']))));
 							}else{
-								echo date('l, F j Y', strtotime($ThisInvoice['VoidDate']));
+								//echo date('l, F j Y', strtotime($ThisInvoice['VoidDate']));
+								echo str_replace('Mi�rcoles','Míercoles',ucfirst(strftime('%A %e %B %Y',strtotime($ThisInvoice['VoidDate']))));
 							}
 							echo '<br><b>',__('VoidBy'), ':</b> ', $ThisInvoice['AuthNumber'];
 							}
